@@ -1,0 +1,6 @@
+{
+  "contentVersion": 1,
+  "openings": [
+    { "id": "french", "name": "French Defense", "side": "black", "file": "openings/french.json" }
+  ]
+}

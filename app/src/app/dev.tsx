@@ -1,8 +1,9 @@
 import { Stack } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
 import { Board } from '@/chess/Board';
+import { Button } from '@/components/Button';
 import { ChessGame, type Color, type GamePosition, type Square } from '@/chess/game';
 import { handleTap, type Selection } from '@/chess/tapToMove';
 
@@ -66,14 +67,6 @@ function describe({ status, turn }: GamePosition): string {
   }
 }
 
-function Button({ label, onPress }: { label: string; onPress: () => void }) {
-  return (
-    <Pressable onPress={onPress} style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}>
-      <Text style={styles.buttonText}>{label}</Text>
-    </Pressable>
-  );
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -89,13 +82,4 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   buttons: { flexDirection: 'row', gap: 12, marginTop: 16 },
-  button: {
-    paddingVertical: 10,
-    paddingHorizontal: 18,
-    borderRadius: 6,
-    borderWidth: 1,
-    borderColor: '#5b6b5b',
-  },
-  buttonPressed: { backgroundColor: '#e2d9c0' },
-  buttonText: { fontSize: 16, fontFamily: 'serif', color: '#2f3a2f' },
 });

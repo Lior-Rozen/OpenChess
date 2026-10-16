@@ -4,6 +4,7 @@ export type { Color, PieceSymbol, Square };
 
 export type BoardPiece = { square: Square; type: PieceSymbol; color: Color };
 export type LastMove = { from: Square; to: Square };
+export type ResolvedMove = { from: Square; to: Square; san: string };
 export type GameStatus = 'playing' | 'check' | 'checkmate' | 'stalemate' | 'draw';
 
 /** A plain, immutable snapshot of the game, safe to keep in React state. */
@@ -48,6 +49,23 @@ export class ChessGame {
   move(from: Square, to: Square): string | null {
     if (!this.legalTargets(from).includes(to)) return null;
     return this.chess.move({ from, to, promotion: 'q' }).san;
+  }
+
+  /** Works out which squares a SAN move (e.g. "Nf3", "O-O") uses, without playing it. */
+  resolveSan(san: string): ResolvedMove | null {
+    const move = this.playSan(san);
+    if (move) this.chess.undo();
+    return move;
+  }
+
+  /** Plays a SAN move; returns it, or null if it is illegal or unreadable here. */
+  playSan(san: string): ResolvedMove | null {
+    try {
+      const move = this.chess.move(san);
+      return { from: move.from, to: move.to, san: move.san };
+    } catch {
+      return null;
+    }
   }
 
   reset(): void {

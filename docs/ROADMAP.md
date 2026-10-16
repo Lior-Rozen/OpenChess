@@ -25,10 +25,11 @@ phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind ea
 - **Done when:** a legal game can be played on the phone by tapping.
 
 ## Phase 3: Trainer with one opening
-- [ ] `content/openings/french.json` (3–5 lines), `content/index.json`, content loader
-- [ ] `content/validate.ts` validation script
-- [ ] Trainer state machine (watch/practice/test, mistakes, hint after 2 errors) with Jest tests
-- [ ] Drill screen: opponent auto-moves, feedback animations, move list, line-complete card
+- [x] `content/openings/french.json` (3–5 lines), `content/index.json`, content loader
+- [x] `content/validate.ts` validation script
+- [x] Trainer state machine (watch/practice/test, mistakes, hint after 2 errors) with Jest tests
+- [x] Drill screen: opponent auto-moves, feedback animations, move list, line-complete card
+      (plus a minimal Opening screen listing the lines; phase 4 builds it out)
 - **Done when:** a French line can be drilled start to finish, with wrong moves rejected.
 
 ## Phase 4: Levels, modes, progress

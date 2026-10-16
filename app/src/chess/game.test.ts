@@ -101,6 +101,25 @@ describe('ChessGame', () => {
     expect(position.checkedKing).toBeNull();
   });
 
+  it('resolves a SAN move without playing it', () => {
+    const game = new ChessGame();
+    play(game, ['e2', 'e4'], ['e7', 'e6'], ['d2', 'd4'], ['d7', 'd5'], ['b1', 'd2'], ['g8', 'f6']);
+    const before = game.position().fen;
+
+    expect(game.resolveSan('Ngf3')).toEqual({ from: 'g1', to: 'f3', san: 'Ngf3' });
+    expect(game.resolveSan('Nf3')).toBeNull(); // ambiguous: both knights can go there
+    expect(game.position().fen).toBe(before);
+  });
+
+  it('plays SAN moves and rejects illegal or unreadable ones', () => {
+    const game = new ChessGame();
+
+    expect(game.playSan('e4')).toEqual({ from: 'e2', to: 'e4', san: 'e4' });
+    expect(game.playSan('e4')).toBeNull();
+    expect(game.playSan('banana')).toBeNull();
+    expect(game.position().turn).toBe('b');
+  });
+
   it('resets to the initial position', () => {
     const game = new ChessGame();
     play(game, ['e2', 'e4']);

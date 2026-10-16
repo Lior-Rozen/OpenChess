@@ -100,15 +100,22 @@ updates and sync later, but it is never required to train.
       "level": 1,
       "tier": "main",
       "moves": ["e4","e6","d4","d5","e5","c5","c3","Nc6","Nf3","Qb6"],
-      "notes": { "5": "…c5 strikes at the d4 base of the chain." }
+      "notes": { "5": "…c5 strikes at the d4 base of the chain." },
+      "summary": "Attack the base of the chain: …c5, …Nc6 and …Qb6 all hit d4."
     }
   ]
 }
 ```
 - `moves` uses SAN from the starting position. `notes` keys are ply indices (0-based).
+- `summary` (optional) is the short takeaway shown on the "Line complete" card.
 - `content/index.json` lists the openings, with a `contentVersion` number.
-- **Validation script** (`content/validate.ts`, run before commit): every line replays legally in
-  chess.js, ids are unique, levels are contiguous, and the moves for `side` are not empty.
+- **Validation script** (`content/validate.ts`, run before commit with `npm run validate-content`
+  in `app/`): every line replays legally in chess.js, ids are unique, levels are contiguous, and
+  the moves for `side` are not empty. The rules live in `app/src/content/validateContent.ts`, so
+  Jest also validates the bundled content.
+- **Bundling:** `app/metro.config.js` lets Metro read `../content`, and every opening file in
+  `index.json` must also be imported in `app/src/content/loader.ts` (Metro can't import by a
+  computed path). A Jest test fails if one is missing.
 - Starter set (phase 5, ~10–12 openings): as White, Italian, Ruy Lopez, London, Queen's Gambit;
   as Black, French, Caro-Kann, Sicilian (Najdorf/Dragon basics), Scandinavian, King's Indian, Slav.
 

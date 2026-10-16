@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { fetchServerMessage } from '@/api/hello';
+import { contentIndex } from '@/content/loader';
 
 export default function Index() {
   // undefined = still loading, null = offline, string = the server's answer
@@ -29,6 +30,15 @@ export default function Index() {
     <View style={styles.container}>
       <Text style={styles.title}>Hello friend</Text>
       <Text style={styles.status}>{status}</Text>
+      {contentIndex.openings.map((opening) => (
+        <Link
+          key={opening.id}
+          href={{ pathname: '/opening/[id]', params: { id: opening.id } }}
+          style={[styles.link, styles.opening]}
+        >
+          {opening.name}
+        </Link>
+      ))}
       <Link href="/dev" style={styles.link}>
         Free play board (dev)
       </Link>
@@ -62,4 +72,5 @@ const styles = StyleSheet.create({
     color: '#2f3a2f',
     textDecorationLine: 'underline',
   },
+  opening: { fontSize: 24 },
 });

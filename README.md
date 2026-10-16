@@ -90,9 +90,16 @@ If the QR code won't connect (for example on guest Wi-Fi that isolates devices),
 ## Tests
 
 ```powershell
-cd app;    npm test; npm run typecheck; npm run lint
+cd app;    npm test; npm run typecheck; npm run lint; npm run validate-content
 cd server; dotnet test
 ```
+
+## Adding or editing openings
+
+Openings are JSON files in `content/openings/` (format in [docs/DESIGN.md](docs/DESIGN.md) §4),
+listed in `content/index.json`. After editing, run `npm run validate-content` in `app/`. It replays
+every line and tells you exactly which move is illegal. A new opening file must also be imported
+in `app/src/content/loader.ts`.
 
 Expo Router generates TypeScript types for the routes (the files in `app/src/app/`) while
 `npx expo start` is running. After adding a new screen, run `npx expo start` once before

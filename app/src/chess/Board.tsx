@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import Svg, { Line, Polygon } from 'react-native-svg';
 
 import type { Color, GamePosition, Square } from './game';
 import { Piece } from './Piece';
@@ -13,7 +14,13 @@ const colors = {
   selected: 'rgba(20, 85, 30, 0.5)',
   check: 'rgba(220, 40, 40, 0.65)',
   target: 'rgba(20, 85, 30, 0.45)',
+  arrow: 'rgba(21, 120, 27, 0.8)',
+  good: 'rgba(60, 170, 60, 0.6)',
+  bad: 'rgba(220, 40, 40, 0.7)',
 };
+
+export type BoardArrow = { from: Square; to: Square };
+export type BoardFlash = { square: Square; kind: 'good' | 'bad' };
 
 type Props = {
   position: GamePosition;
@@ -23,9 +30,13 @@ type Props = {
   onSquarePress: (square: Square) => void;
   /** Width and height in pixels. */
   size: number;
+  /** A move to point out, e.g. a hint. */
+  arrow?: BoardArrow | null;
+  /** A brief green/red tint on a square, as feedback for a move. */
+  flash?: BoardFlash | null;
 };
 
-export function Board({ position, orientation, selection, onSquarePress, size }: Props) {
+export function Board({ position, orientation, selection, onSquarePress, size, arrow, flash }: Props) {
   const squareSize = size / 8;
   // position.board runs rank 8 → 1 and file a → h, which is White's view.
   const rowIndexes = orientation === 'w' ? [0, 1, 2, 3, 4, 5, 6, 7] : [7, 6, 5, 4, 3, 2, 1, 0];
@@ -42,7 +53,9 @@ export function Board({ position, orientation, selection, onSquarePress, size }:
             const isTarget = selection?.targets.includes(square) ?? false;
             const labelColor = isLight ? colors.dark : colors.light;
             const highlight =
-              square === position.checkedKing
+              square === flash?.square
+                ? colors[flash.kind]
+                : square === position.checkedKing
                 ? colors.check
                 : square === selection?.from
                   ? colors.selected
@@ -79,7 +92,49 @@ export function Board({ position, orientation, selection, onSquarePress, size }:
           })}
         </View>
       ))}
+      {arrow && <ArrowOverlay arrow={arrow} orientation={orientation} size={size} />}
     </View>
+  );
+}
+
+/** Centre of a square in pixels, as displayed. */
+function squareCenter(square: Square, orientation: Color, squareSize: number) {
+  const file = square.charCodeAt(0) - 'a'.charCodeAt(0);
+  const rank = Number(square[1]);
+  const col = orientation === 'w' ? file : 7 - file;
+  const row = orientation === 'w' ? 8 - rank : rank - 1;
+  return { x: (col + 0.5) * squareSize, y: (row + 0.5) * squareSize };
+}
+
+function ArrowOverlay({ arrow, orientation, size }: { arrow: BoardArrow; orientation: Color; size: number }) {
+  const squareSize = size / 8;
+  const from = squareCenter(arrow.from, orientation, squareSize);
+  const to = squareCenter(arrow.to, orientation, squareSize);
+  const length = Math.hypot(to.x - from.x, to.y - from.y);
+  const ux = (to.x - from.x) / length;
+  const uy = (to.y - from.y) / length;
+  const headLength = squareSize * 0.45;
+  const headHalfWidth = squareSize * 0.28;
+  const base = { x: to.x - ux * headLength, y: to.y - uy * headLength };
+  const head = [
+    `${to.x},${to.y}`,
+    `${base.x - uy * headHalfWidth},${base.y + ux * headHalfWidth}`,
+    `${base.x + uy * headHalfWidth},${base.y - ux * headHalfWidth}`,
+  ].join(' ');
+
+  return (
+    <Svg width={size} height={size} style={StyleSheet.absoluteFill} pointerEvents="none">
+      <Line
+        x1={from.x}
+        y1={from.y}
+        x2={base.x}
+        y2={base.y}
+        stroke={colors.arrow}
+        strokeWidth={squareSize * 0.18}
+        strokeLinecap="round"
+      />
+      <Polygon points={head} fill={colors.arrow} />
+    </Svg>
   );
 }
 
