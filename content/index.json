@@ -7,6 +7,7 @@
     { "id": "scandinavian", "name": "Scandinavian Defense", "side": "black", "file": "openings/scandinavian.json" },
     { "id": "kings-indian", "name": "King's Indian Defense", "side": "black", "file": "openings/kings-indian.json" },
     { "id": "slav", "name": "Slav Defense", "side": "black", "file": "openings/slav.json" },
-    { "id": "italian", "name": "Italian Game", "side": "white", "file": "openings/italian.json" }
+    { "id": "italian", "name": "Italian Game", "side": "white", "file": "openings/italian.json" },
+    { "id": "ruy-lopez", "name": "Ruy Lopez", "side": "white", "file": "openings/ruy-lopez.json" }
   ]
 }
