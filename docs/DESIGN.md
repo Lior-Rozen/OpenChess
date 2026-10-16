@@ -75,7 +75,7 @@ The opponent is a character: **the Mastermind**, a quiet, terse, slightly parano
 short line only at key moments: the start of a run, a mistake, a hint, a clean finish, a failed
 test, a mastered line, an unlocked level, a passed exam. He never talks on ordinary moves. His
 lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit hooded figure
-(`Avatar.tsx`, no licensed artwork). A setting to quiet him comes with Settings in phase 6.
+(`Avatar.tsx`, no licensed artwork). Settings has an on/off switch for his talk; off, he still plays, silently.
 
 ### Additions (cheap to maintain)
 - **Review queue (spaced repetition):** mastered lines come back after 1d → 3d → 7d → 21d.
