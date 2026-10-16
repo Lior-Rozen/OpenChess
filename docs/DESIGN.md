@@ -48,7 +48,8 @@ updates and sync later, but it is never required to train.
 ### Learning modes per line
 - **Watch:** the app plays the whole line with move notes. Used the first time a line is met.
 - **Practice:** the drill with hints allowed.
-- **Test:** the drill with no hints. A clean run counts toward mastery.
+- **Test:** the drill with no hints and no arrow. The run fails at 2 mistakes
+  (`TEST_MISTAKE_LIMIT`). A clean run (0 mistakes) counts toward mastery.
 
 ### Levels and difficulty
 - Each opening has **levels 1…N**. Each line in the content is tagged with `level`
@@ -60,6 +61,11 @@ updates and sync later, but it is never required to train.
   - **Easy:** only `main` tier lines, so fewer lines per level and faster progress.
   - **Normal:** main lines plus key sidelines.
   - **Hard:** all lines, plus the opponent picks a random branch at forks, so every reply must be known.
+  - With only two tiers (`main`/`side`), Normal and Hard count the same lines. Hard differs in
+    needing 3 clean runs and in how they're earned: lines offer Watch/Practice only, and mastery
+    comes from the per-level **"Test level"** run, where the app branches at random and the run
+    credits whichever line was played to the end. Any book reply is accepted where lines split on
+    the user's move.
 - The levels deepen naturally: level 1 is the first 6–8 moves of the main line, and later levels
   add depth and branches.
 
@@ -138,8 +144,11 @@ chess-openings/
 ```
 - **The trainer is a pure-TS state machine** (no React inside). It takes a line, mode and moves,
   and returns state and events. That makes it unit-testable with Jest; it is the heart of the app.
-- **Progress model:** `{ openingId, mode, lineProgress: { [lineId]: { cleanRuns, lastReviewed, intervalDays, due } } }`.
-  Unlocked levels are *derived* from this, never stored.
+- **Progress model** (`app/src/progress/mastery.ts`, saved with AsyncStorage under `progress:v1`):
+  `{ [openingId]: { difficulty, lines: { [lineId]: { cleanRuns, lastPlayed } } } }`. One
+  `cleanRuns` counter per line serves every difficulty (switching Easy → Hard needs more runs).
+  Phase 6 adds the SRS fields (`intervalDays`, `due`). Unlocked levels are *derived* from this,
+  never stored.
 - **Backend (phase 1):** `GET /api/health` and `GET /api/hello` → `{ "message": "hello friend" }`.
   **Later:** `GET /api/content/index`, `GET /api/content/openings/{id}` (served from the same
   `content/` folder, so the app can pull new openings without an app update), then optional

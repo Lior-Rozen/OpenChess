@@ -71,6 +71,30 @@
         "11": "…Qxe7 recaptures; next Black aims for …c5 and …Nc6."
       },
       "summary": "Develop with …Nf6 and …Be7, then retreat …Nfd7 and prepare …c5."
+    },
+    {
+      "id": "french-advance-be2",
+      "name": "Advance: 6.Be2",
+      "level": 2,
+      "tier": "main",
+      "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nh6"],
+      "notes": {
+        "11": "…cxd4 opens the c-file before White can keep the chain with c3.",
+        "13": "…Nh6 heads for f5, adding a fourth attacker on d4."
+      },
+      "summary": "Placeholder level 2 line, to be reviewed in the chess content session."
+    },
+    {
+      "id": "french-winawer-qg4",
+      "name": "Winawer: 7.Qg4",
+      "level": 2,
+      "tier": "main",
+      "moves": ["e4", "e6", "d4", "d5", "Nc3", "Bb4", "e5", "c5", "a3", "Bxc3+", "bxc3", "Ne7", "Qg4", "Qc7"],
+      "notes": {
+        "12": "Qg4 attacks g7, which the dark-squared bishop no longer defends.",
+        "13": "…Qc7 counterattacks e5 and c3 instead of defending g7."
+      },
+      "summary": "Placeholder level 2 line, to be reviewed in the chess content session."
     }
   ]
 }

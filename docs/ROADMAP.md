@@ -33,12 +33,15 @@ phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind ea
 - **Done when:** a French line can be drilled start to finish, with wrong moves rejected.
 
 ## Phase 4: Levels, modes, progress
-- [ ] Mastery rules and level unlocking (derived from progress)
-- [ ] Test-mode mistake threshold: Test stops behaving like Practice. Too many mistakes fails
-      the run instead of showing the arrow (exact threshold to decide; it could depend on difficulty)
-- [ ] Mode picker (Easy/Normal/Hard) and Hard-mode random branches
-- [ ] Local persistence of progress
-- [ ] Home and Opening screens
+- [x] Mastery rules and level unlocking (derived from progress)
+- [x] Test-mode mistake threshold: Test stops behaving like Practice. Too many mistakes fails
+      the run instead of showing the arrow (for now a flat limit of 2, `TEST_MISTAKE_LIMIT`;
+      it could later depend on difficulty)
+- [x] Mode picker (Easy/Normal/Hard) and Hard-mode random branches
+- [x] Local persistence of progress
+- [x] Home and Opening screens
+- Note: the two level 2 French lines are placeholders to exercise unlocking. Review them in the
+  chess content session.
 - **Done when:** completing level 1 on Easy unlocks level 2, and progress survives an app restart.
 
 ## Phase 5: Content expansion

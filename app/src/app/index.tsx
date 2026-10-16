@@ -1,11 +1,60 @@
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { fetchServerMessage } from '@/api/hello';
-import { contentIndex } from '@/content/loader';
+import { contentIndex, loadOpening } from '@/content/loader';
+import { masteredShare, openingProgress } from '@/progress/mastery';
+import { useProgress } from '@/progress/ProgressContext';
+import { theme } from '@/theme';
 
-export default function Index() {
+const DIFFICULTY_LABELS = { easy: 'Easy', normal: 'Normal', hard: 'Hard' };
+
+export default function Home() {
+  const { progress } = useProgress();
+
+  return (
+    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+      <Text style={styles.title}>Chess Openings</Text>
+      <Text style={styles.subtitle}>Learn them by the book.</Text>
+
+      <View style={styles.grid}>
+        {contentIndex.openings.map((entry) => {
+          const opening = loadOpening(entry.id);
+          if (!opening) return null;
+          const share = Math.round(masteredShare(opening, progress) * 100);
+          const { difficulty } = openingProgress(progress, opening.id);
+          return (
+            <Pressable
+              key={opening.id}
+              onPress={() => router.push({ pathname: '/opening/[id]', params: { id: opening.id } })}
+              style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
+            >
+              <Text style={styles.cardTitle}>{opening.name}</Text>
+              <Text style={styles.cardMeta}>As {opening.side === 'white' ? 'White' : 'Black'}</Text>
+              <View style={styles.bar}>
+                <View style={[styles.barFill, { width: `${share}%` }]} />
+              </View>
+              <Text style={styles.cardMeta}>
+                {share}% mastered · {DIFFICULTY_LABELS[difficulty]}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </View>
+
+      <View style={styles.footer}>
+        <ServerStatus />
+        <Link href="/dev" style={styles.footerLink}>
+          Free play board (dev)
+        </Link>
+      </View>
+    </ScrollView>
+  );
+}
+
+/** Shows whether the optional backend is reachable. The app never needs it. */
+function ServerStatus() {
   // undefined = still loading, null = offline, string = the server's answer
   const [serverMessage, setServerMessage] = useState<string | null | undefined>(undefined);
 
@@ -25,52 +74,29 @@ export default function Index() {
       : serverMessage === null
         ? 'Server offline'
         : `Server says: ${serverMessage}`;
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Hello friend</Text>
-      <Text style={styles.status}>{status}</Text>
-      {contentIndex.openings.map((opening) => (
-        <Link
-          key={opening.id}
-          href={{ pathname: '/opening/[id]', params: { id: opening.id } }}
-          style={[styles.link, styles.opening]}
-        >
-          {opening.name}
-        </Link>
-      ))}
-      <Link href="/dev" style={styles.link}>
-        Free play board (dev)
-      </Link>
-    </View>
-  );
+  return <Text style={styles.footerText}>{status}</Text>;
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#f0e9d6',
-    padding: 24,
+  screen: { backgroundColor: theme.background },
+  content: { padding: 16, paddingTop: 64, flexGrow: 1 },
+  title: { fontSize: 36, fontFamily: theme.font, color: theme.text, textAlign: 'center' },
+  subtitle: { fontSize: 17, fontFamily: theme.font, color: theme.muted, textAlign: 'center', marginBottom: 28 },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
+  card: {
+    flexGrow: 1,
+    flexBasis: 150,
+    backgroundColor: theme.card,
+    borderRadius: 8,
+    padding: 14,
+    gap: 6,
   },
-  title: {
-    fontSize: 44,
-    fontFamily: 'serif',
-    color: '#2f3a2f',
-    marginBottom: 16,
-  },
-  status: {
-    fontSize: 18,
-    fontFamily: 'serif',
-    color: '#5b6b5b',
-  },
-  link: {
-    marginTop: 40,
-    fontSize: 18,
-    fontFamily: 'serif',
-    color: '#2f3a2f',
-    textDecorationLine: 'underline',
-  },
-  opening: { fontSize: 24 },
+  cardPressed: { backgroundColor: theme.pressed },
+  cardTitle: { fontSize: 20, fontFamily: theme.font, color: theme.text },
+  cardMeta: { fontSize: 14, fontFamily: theme.font, color: theme.muted },
+  bar: { height: 6, borderRadius: 3, backgroundColor: theme.pressed, overflow: 'hidden' },
+  barFill: { height: 6, backgroundColor: theme.good },
+  footer: { marginTop: 'auto', paddingTop: 40, alignItems: 'center', gap: 6 },
+  footerText: { fontSize: 13, fontFamily: theme.font, color: theme.muted },
+  footerLink: { fontSize: 13, fontFamily: theme.font, color: theme.muted, textDecorationLine: 'underline' },
 });

@@ -12,11 +12,11 @@ describe('bundled content', () => {
     }
   });
 
-  it('has the French with 3–5 lines', () => {
+  it('has the French, with lines on more than one level', () => {
     const french = loadOpening('french');
     expect(french?.side).toBe('black');
     expect(french?.lines.length).toBeGreaterThanOrEqual(3);
-    expect(french?.lines.length).toBeLessThanOrEqual(5);
+    expect(new Set(french?.lines.map((l) => l.level)).size).toBeGreaterThan(1);
   });
 
   it('loads a line by id and returns null for unknown ids', () => {
