@@ -80,7 +80,8 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
       casual cream. A dark theme with purple/magenta and neon/retro accents across every screen
       (background, cards, buttons, fonts, the Mastermind's speech), readable first
   - [x] Dark "Midnight Arcade" palette on every screen, all colours as tokens in `theme.ts`
-  - [ ] App icon (waits for the user's art)
+  - [x] App icon: a neon magenta pixel knight on a violet board corner (`tools/make_icons.py`).
+    Replace it any time with the user's own art
 - [x] Opening icons: an original 8-bit/neon SVG icon per opening (baguette for the French, …),
       kept in the app (not the content JSON) with a fallback icon. Shown on the Openings cards
       and the Home Continue button
