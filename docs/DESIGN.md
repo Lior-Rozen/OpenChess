@@ -83,7 +83,9 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 - **Move notes:** optional one-line "why" notes on key moves in the JSON.
 - **Stats per opening:** % mastered, accuracy, streak of training days.
 - **Random drill:** a random line from everything unlocked.
-- **Sounds and haptics** on move, mistake and line complete, with an off switch.
+- **Sounds and haptics** on move, mistake and line complete, each with an off switch. The sounds are
+  original, synthesised by `tools/make_sounds.py` into `app/assets/sounds/`. They mix with other
+  audio and stay quiet when the phone is on silent.
 
 ### Out of scope / deferred
 - No engine, no game analysis, no online play: out of scope for good.
@@ -124,7 +126,10 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
   - **Drill:** the Mastermind's line, board, move list, result card.
   - **Free board:** free play for both sides, with Take back (one move at a time, any time,
     checkmate included), Flip board and New game.
-  - **Settings:** a placeholder until phase 6. It holds the server status.
+  - **Settings:** Sounds and Vibration switches; how much the Mastermind talks (Normal: key
+    moments; Minimal: only when a run starts and ends; Silent: no speech bubble); Reset progress,
+    which must be held for 2 seconds (no popup, no accidents); the server status. Saved on the
+    device under `settings:v1`.
 
 ## 4. Content format
 `content/openings/french.json`:

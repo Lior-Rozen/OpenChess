@@ -1,5 +1,7 @@
 // Everything the Mastermind says. Quiet, terse, a little paranoid. Edit freely.
 
+import type { Chatter } from '@/settings/settings';
+
 export const GREETING = 'Hello, friend.';
 
 export const LINES = {
@@ -29,4 +31,24 @@ export type LineKind = keyof typeof LINES;
 export function say(kind: LineKind, random: () => number = Math.random): string {
   const options = LINES[kind];
   return options[Math.min(Math.floor(random() * options.length), options.length - 1)];
+}
+
+// What he still says on the "minimal" setting: the start and the end of a run.
+const MINIMAL: LineKind[] = [
+  'startWatch',
+  'startPractice',
+  'startTest',
+  'startExam',
+  'watchDone',
+  'clean',
+  'unclean',
+  'failed',
+  'mastered',
+  'levelUnlocked',
+  'examPassed',
+];
+
+/** Whether the Mastermind says this kind of line at the given chatter setting. */
+export function speaks(chatter: Chatter, kind: LineKind): boolean {
+  return chatter === 'normal' || (chatter === 'minimal' && MINIMAL.includes(kind));
 }

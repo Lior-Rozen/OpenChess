@@ -6,6 +6,7 @@ import { Board } from '@/chess/Board';
 import { Button } from '@/components/Button';
 import { ChessGame, type Color, type GamePosition, type Square } from '@/chess/game';
 import { handleTap, type Selection } from '@/chess/tapToMove';
+import { useFeedback } from '@/feedback/feedback';
 import { theme } from '@/theme';
 
 /** Free board: play both sides freely, e.g. to try out ideas. */
@@ -14,6 +15,7 @@ export default function FreeBoard() {
   const [position, setPosition] = useState(() => game.position());
   const [selection, setSelection] = useState<Selection>(null);
   const [orientation, setOrientation] = useState<Color>('w');
+  const feedback = useFeedback();
   const { width } = useWindowDimensions();
   const boardSize = Math.min(width - 16, 520);
 
@@ -21,7 +23,9 @@ export default function FreeBoard() {
     const result = handleTap(game, selection, square);
     if (result.move) {
       game.move(result.move.from, result.move.to);
-      setPosition(game.position());
+      const next = game.position();
+      setPosition(next);
+      feedback(next.status === 'checkmate' ? 'complete' : 'move');
     }
     setSelection(result.selection);
   }

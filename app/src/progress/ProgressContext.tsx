@@ -12,6 +12,8 @@ type ProgressContextValue = {
   /** Records a run played to the end; returns the progress from before and after it. */
   recordRun: (openingId: string, lineId: string, run: { mode: RunMode; clean: boolean }) => Change;
   recordExam: (openingId: string, level: number) => Change;
+  /** Forgets all progress, on the device too. */
+  resetProgress: () => void;
 };
 
 const ProgressContext = createContext<ProgressContextValue | null>(null);
@@ -50,6 +52,9 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     loaded,
     recordRun: (openingId, lineId, run) => update((current) => recordRun(current, openingId, lineId, run)),
     recordExam: (openingId, level) => update((current) => recordExam(current, openingId, level)),
+    resetProgress: () => {
+      update(() => ({}));
+    },
   };
 
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>;

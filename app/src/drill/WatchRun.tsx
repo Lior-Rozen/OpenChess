@@ -3,9 +3,11 @@ import { useEffect, useEffectEvent, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
 import { Board } from '@/chess/Board';
-import { GREETING, say } from '@/mastermind/lines';
+import { useFeedback } from '@/feedback/feedback';
+import { GREETING, say, speaks } from '@/mastermind/lines';
 import { MastermindSpeech } from '@/mastermind/Speech';
 import { useProgress } from '@/progress/ProgressContext';
+import { useSettings } from '@/settings/SettingsContext';
 import { theme } from '@/theme';
 import { watchFrames } from '@/trainer/watch';
 
@@ -18,6 +20,8 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
   const line = target.lines[0];
   const userColor = target.opening.side === 'white' ? 'w' : 'b';
   const { progress, recordRun } = useProgress();
+  const { settings } = useSettings();
+  const feedback = useFeedback();
   const [frames] = useState(() => watchFrames(line));
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(true);
@@ -33,13 +37,16 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
 
   function goTo(next: number) {
     const clamped = Math.max(0, Math.min(next, last));
+    if (clamped === index) return;
     setIndex(clamped);
+    const firstFinish = clamped === last && !watched;
+    feedback(firstFinish ? 'complete' : 'move');
     if (clamped === last) {
       setPlaying(false);
-      if (!watched) {
+      if (firstFinish) {
         setWatched(true);
         recordRun(target.opening.id, line.id, { mode: 'watch', clean: true });
-        setSpeech(say('watchDone'));
+        if (speaks(settings.chatter, 'watchDone')) setSpeech(say('watchDone'));
       }
     }
   }
@@ -68,7 +75,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
     <View style={drillStyles.screen}>
       <Stack.Screen options={{ headerShown: true, title: target.title }} />
       <ScrollView contentContainerStyle={drillStyles.content}>
-        <MastermindSpeech text={speech} />
+        {settings.chatter !== 'silent' && <MastermindSpeech text={speech} />}
 
         <View style={drillStyles.statusRow}>
           <Text style={drillStyles.status}>Watch</Text>

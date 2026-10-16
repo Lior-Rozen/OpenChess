@@ -6,10 +6,12 @@ import { Board, type BoardFlash } from '@/chess/Board';
 import type { Square } from '@/chess/game';
 import { handleTap, type Selection } from '@/chess/tapToMove';
 import { Button } from '@/components/Button';
-import { GREETING, say, type LineKind } from '@/mastermind/lines';
+import { useFeedback, type Cue } from '@/feedback/feedback';
+import { GREETING, say, speaks, type LineKind } from '@/mastermind/lines';
 import { MastermindSpeech } from '@/mastermind/Speech';
 import { levelStatuses } from '@/progress/mastery';
 import { useProgress } from '@/progress/ProgressContext';
+import { useSettings } from '@/settings/SettingsContext';
 import { TEST_MISTAKE_LIMIT, Trainer, type TrainerEvent, type TrainerMode, type TrainerState } from '@/trainer/trainer';
 
 import { startRandomDrill } from './random';
@@ -30,6 +32,8 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
   const exam = examLevel !== null;
   const userColor = opening.side === 'white' ? 'w' : 'b';
   const { recordRun, recordExam } = useProgress();
+  const { settings } = useSettings();
+  const feedback = useFeedback();
   const [trainer] = useState(() => new Trainer(lines, userColor, mode));
   const [state, setState] = useState(() => trainer.state());
   const [speech, setSpeech] = useState(() => greeting(mode, exam));
@@ -40,12 +44,26 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
   const { width } = useWindowDimensions();
   const boardSize = Math.min(width - 16, 520);
 
-  /** Lets the Mastermind react, and saves the outcome when a run ends. */
+  /** The Mastermind says a line of this kind, if the chatter setting lets him. */
+  function talk(kind: LineKind) {
+    if (speaks(settings.chatter, kind)) setSpeech(say(kind));
+  }
+
+  /** Plays sounds, lets the Mastermind react, and saves the outcome when a run ends. */
   function handleEvents(events: TrainerEvent[]) {
+    const cue: Cue | null = events.some((e) => e.type === 'lineComplete')
+      ? 'complete'
+      : events.some((e) => e.type === 'wrongMove' || e.type === 'testFailed')
+        ? 'mistake'
+        : events.some((e) => e.type === 'moved')
+          ? 'move'
+          : null;
+    if (cue) feedback(cue);
+
     for (const event of events) {
-      if (event.type === 'wrongMove') setSpeech(say('mistake'));
-      if (event.type === 'hintShown') setSpeech(say('hint'));
-      if (event.type === 'testFailed') setSpeech(say('failed'));
+      if (event.type === 'wrongMove') talk('mistake');
+      if (event.type === 'hintShown') talk('hint');
+      if (event.type === 'testFailed') talk('failed');
       if (event.type !== 'lineComplete') continue;
 
       const saved = recordRun(opening.id, event.lineId, { mode, clean: event.clean });
@@ -71,7 +89,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
             : event.clean
               ? 'clean'
               : 'unclean';
-      setSpeech(say(kind));
+      talk(kind);
     }
   }
 
@@ -129,7 +147,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
     <View style={drillStyles.screen}>
       <Stack.Screen options={{ headerShown: true, title }} />
       <ScrollView contentContainerStyle={drillStyles.content}>
-        <MastermindSpeech text={speech} />
+        {settings.chatter !== 'silent' && <MastermindSpeech text={speech} />}
 
         <View style={drillStyles.statusRow}>
           <Text style={drillStyles.status}>{exam ? 'Exam' : MODE_LABELS[mode]}</Text>

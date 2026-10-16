@@ -74,7 +74,7 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
       (the result card offers "Next random")
 - [x] Openings filter: chips on the Openings screen for side (White/Black), first move
       (1.e4/1.d4/…, derived from the lines) and tags (gambit, aggressive, solid, …)
-- [ ] Sounds/haptics with an off switch; Settings screen (including quieting the Mastermind)
+- [x] Sounds/haptics with an off switch; Settings screen (including quieting the Mastermind)
 - [ ] (parked) Review button on Home with the due count
 - [ ] Theme polish and app icon: **a unique, darker look**. No chess.com green and no bright,
       casual cream. A dark theme with purple/magenta and neon/retro accents across every screen
