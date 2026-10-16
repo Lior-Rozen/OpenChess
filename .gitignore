@@ -21,3 +21,6 @@ TestResults/
 # --- OS / editors ---
 .DS_Store
 Thumbs.db
+
+# Phone screenshots shared during UI work
+docs/screenshots/
