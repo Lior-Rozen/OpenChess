@@ -1,4 +1,4 @@
-import { LINES, say, speaks, type LineKind } from './lines';
+import { LINES, say, type LineKind } from './lines';
 
 describe('Mastermind lines', () => {
   it('has something to say for every moment', () => {
@@ -11,13 +11,4 @@ describe('Mastermind lines', () => {
     }
   });
 
-  it('talks less on the quieter settings', () => {
-    const kinds = Object.keys(LINES) as LineKind[];
-    expect(kinds.every((k) => speaks('normal', k))).toBe(true);
-    expect(kinds.some((k) => speaks('silent', k))).toBe(false);
-    expect(speaks('minimal', 'startTest')).toBe(true);
-    expect(speaks('minimal', 'clean')).toBe(true);
-    expect(speaks('minimal', 'mistake')).toBe(false);
-    expect(speaks('minimal', 'hint')).toBe(false);
-  });
 });

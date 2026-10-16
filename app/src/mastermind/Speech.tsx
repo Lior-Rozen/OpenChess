@@ -4,14 +4,14 @@ import { theme } from '@/theme';
 
 import { MastermindAvatar } from './Avatar';
 
-/** The Mastermind's avatar with what he's saying next to it. */
-export function MastermindSpeech({ text }: { text: string }) {
+/** The Mastermind's avatar with what he's saying next to it. With talk switched off (null), just "…". */
+export function MastermindSpeech({ text }: { text: string | null }) {
   return (
     <View style={styles.row}>
       <MastermindAvatar size={40} />
       <View style={styles.bubble}>
         <Text style={styles.name}>THE MASTERMIND</Text>
-        <Text style={styles.text}>{text}</Text>
+        <Text style={[styles.text, text === null && styles.silent]}>{text ?? '…'}</Text>
       </View>
     </View>
   );
@@ -32,4 +32,5 @@ const styles = StyleSheet.create({
   },
   name: { fontSize: 12, fontFamily: theme.mono, color: theme.accent2, letterSpacing: 1 },
   text: { fontSize: 16, fontFamily: theme.font, color: theme.text },
+  silent: { color: theme.muted },
 });

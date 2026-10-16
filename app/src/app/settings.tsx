@@ -3,24 +3,15 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { Animated, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 
 import { fetchServerMessage } from '@/api/hello';
-import { Chip } from '@/components/Chip';
 import { useProgress } from '@/progress/ProgressContext';
 import { useSettings } from '@/settings/SettingsContext';
-import type { Chatter } from '@/settings/settings';
 import { theme } from '@/theme';
-
-const CHATTER: { value: Chatter; label: string; detail: string }[] = [
-  { value: 'normal', label: 'Normal', detail: 'He speaks at key moments: mistakes, hints, results.' },
-  { value: 'minimal', label: 'Minimal', detail: 'Only when a run starts and ends.' },
-  { value: 'silent', label: 'Silent', detail: 'Not a word. His speech bubble is hidden.' },
-];
 
 /** How long "Reset progress" must be held, in milliseconds. */
 const RESET_HOLD_MS = 2000;
 
 export default function Settings() {
   const { settings, update } = useSettings();
-  const chatter = CHATTER.find((c) => c.value === settings.chatter) ?? CHATTER[0];
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
@@ -33,12 +24,10 @@ export default function Settings() {
       </Section>
 
       <Section label="THE MASTERMIND">
-        <View style={styles.chips}>
-          {CHATTER.map((c) => (
-            <Chip key={c.value} label={c.label} selected={settings.chatter === c.value} onPress={() => update({ chatter: c.value })} />
-          ))}
-        </View>
-        <Text style={styles.hint}>{chatter.detail}</Text>
+        <Toggle label="He talks" value={settings.talk} onChange={(talk) => update({ talk })} />
+        <Text style={styles.hint}>
+          {settings.talk ? 'He speaks at key moments: the start, mistakes, hints, results.' : 'He still plays, just silently.'}
+        </Text>
       </Section>
 
       <Section label="PROGRESS">
@@ -151,7 +140,6 @@ const styles = StyleSheet.create({
   text: { fontSize: 16, fontFamily: theme.font, color: theme.text },
   hint: { fontSize: 14, fontFamily: theme.font, fontStyle: 'italic', color: theme.muted },
   toggle: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
   resetBlock: { gap: 8 },
   reset: {
     borderWidth: 1,

@@ -132,8 +132,8 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
     board to remove it; choose who moves; Start position and Clear. "Play from here" checks one
     king each, no pawns on the edge ranks, and that the side not to move isn't in check. Castling
     is allowed where king and rook are home. Take back stops at the set-up position.
-  - **Settings:** Sounds and Vibration switches; how much the Mastermind talks (Normal: key
-    moments; Minimal: only when a run starts and ends; Silent: no speech bubble); Reset progress,
+  - **Settings:** Sounds and Vibration switches; whether the Mastermind talks (on/off; off, he
+    still plays and his bubble just shows "…"); Reset progress,
     which must be held for 2 seconds (no popup, no accidents); the server status. Saved on the
     device under `settings:v1`.
 

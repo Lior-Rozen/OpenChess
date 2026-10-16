@@ -4,7 +4,7 @@ import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } fr
 
 import { Board } from '@/chess/Board';
 import { useFeedback } from '@/feedback/feedback';
-import { GREETING, say, speaks } from '@/mastermind/lines';
+import { GREETING, say } from '@/mastermind/lines';
 import { MastermindSpeech } from '@/mastermind/Speech';
 import { useProgress } from '@/progress/ProgressContext';
 import { useSettings } from '@/settings/SettingsContext';
@@ -50,7 +50,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
       if (firstFinish) {
         setWatched(true);
         recordRun(target.opening.id, line.id, { mode: 'watch', clean: true });
-        if (speaks(settings.chatter, 'watchDone')) setSpeech(say('watchDone'));
+        if (settings.talk) setSpeech(say('watchDone'));
       }
     }
   }
@@ -82,7 +82,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
     <View style={drillStyles.screen}>
       <DrillHeader target={target} />
       <ScrollView contentContainerStyle={drillStyles.content}>
-        {settings.chatter !== 'silent' && <MastermindSpeech text={speech} />}
+        <MastermindSpeech text={settings.talk ? speech : null} />
 
         <View style={drillStyles.statusRow}>
           <Text style={drillStyles.status}>Watch</Text>

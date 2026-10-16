@@ -7,7 +7,7 @@ import type { Square } from '@/chess/game';
 import { handleTap, type Selection } from '@/chess/tapToMove';
 import { Button } from '@/components/Button';
 import { useFeedback, type Cue } from '@/feedback/feedback';
-import { GREETING, say, speaks, type LineKind } from '@/mastermind/lines';
+import { GREETING, say, type LineKind } from '@/mastermind/lines';
 import { MastermindSpeech } from '@/mastermind/Speech';
 import { levelStatuses } from '@/progress/mastery';
 import { useProgress } from '@/progress/ProgressContext';
@@ -47,9 +47,9 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
   const { width } = useWindowDimensions();
   const boardSize = Math.min(width - 16, 520);
 
-  /** The Mastermind says a line of this kind, if the chatter setting lets him. */
+  /** The Mastermind says a line of this kind, unless he's been switched to silent. */
   function talk(kind: LineKind) {
-    if (speaks(settings.chatter, kind)) setSpeech(say(kind));
+    if (settings.talk) setSpeech(say(kind));
   }
 
   /** Plays sounds, lets the Mastermind react, and saves the outcome when a run ends. */
@@ -152,7 +152,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
     <View style={drillStyles.screen}>
       <DrillHeader target={target} />
       <ScrollView contentContainerStyle={drillStyles.content}>
-        {settings.chatter !== 'silent' && <MastermindSpeech text={speech} />}
+        <MastermindSpeech text={settings.talk ? speech : null} />
 
         <View style={drillStyles.statusRow}>
           <Text style={drillStyles.status}>{exam ? 'Exam' : MODE_LABELS[mode]}</Text>

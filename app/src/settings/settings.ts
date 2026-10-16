@@ -1,15 +1,12 @@
-/** How much the Mastermind talks: everything, only when a run starts and ends, or not at all. */
-export const CHATTER_LEVELS = ['normal', 'minimal', 'silent'] as const;
-export type Chatter = (typeof CHATTER_LEVELS)[number];
-
 export type Settings = {
   sound: boolean;
   /** Vibration on moves, mistakes and finished lines. */
   haptics: boolean;
-  chatter: Chatter;
+  /** The Mastermind speaks at key moments. Off: he still plays, silently. */
+  talk: boolean;
 };
 
-export const DEFAULT_SETTINGS: Settings = { sound: true, haptics: true, chatter: 'normal' };
+export const DEFAULT_SETTINGS: Settings = { sound: true, haptics: true, talk: true };
 
 /** Reads saved settings, keeping the default for anything missing or unreadable. */
 export function parseSettings(saved: unknown): Settings {
@@ -17,6 +14,7 @@ export function parseSettings(saved: unknown): Settings {
   return {
     sound: typeof s.sound === 'boolean' ? s.sound : DEFAULT_SETTINGS.sound,
     haptics: typeof s.haptics === 'boolean' ? s.haptics : DEFAULT_SETTINGS.haptics,
-    chatter: CHATTER_LEVELS.find((c) => c === s.chatter) ?? DEFAULT_SETTINGS.chatter,
+    // Settings saved before the on/off switch had a three-way "chatter"; only "silent" meant off.
+    talk: typeof s.talk === 'boolean' ? s.talk : s.chatter !== 'silent',
   };
 }
