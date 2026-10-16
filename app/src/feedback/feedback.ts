@@ -24,9 +24,12 @@ function player(cue: Cue): AudioPlayer {
   }
   if (!players[cue]) {
     const p = createAudioPlayer(SOURCES[cue]);
-    // Rewind as soon as a sound ends, so the next play() can start at once.
+    // Rewind as soon as a sound ends, so the next play() can start at once. Pause first: on
+    // Android a finished player still counts as playing, and rewinding it would replay it forever.
     p.addListener('playbackStatusUpdate', (status) => {
-      if (status.didJustFinish) p.seekTo(0).catch(() => {});
+      if (!status.didJustFinish) return;
+      p.pause();
+      p.seekTo(0).catch(() => {});
     });
     players[cue] = p;
   }
