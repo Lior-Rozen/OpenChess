@@ -68,6 +68,8 @@ export function Board({ position, orientation, selection, onSquarePress, size, a
                 }}
               >
                 {highlight && <View style={[StyleSheet.absoluteFill, { backgroundColor: highlight }]} />}
+                {piece && <Piece type={piece.type} color={piece.color} size={squareSize} />}
+                {/* Coordinates go on top of the pieces so they stay readable on the edge ranks and files. */}
                 {displayCol === 0 && (
                   <Text style={[styles.label, styles.rankLabel, { color: labelColor, fontSize: squareSize * 0.22 }]}>
                     {8 - row}
@@ -78,7 +80,6 @@ export function Board({ position, orientation, selection, onSquarePress, size, a
                     {FILES[col]}
                   </Text>
                 )}
-                {piece && <Piece type={piece.type} color={piece.color} size={squareSize} />}
                 {isTarget && <TargetMarker capture={piece !== null} squareSize={squareSize} />}
               </Pressable>
             );
