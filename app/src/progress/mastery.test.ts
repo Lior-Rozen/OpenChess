@@ -3,6 +3,7 @@ import {
   continueTarget,
   levelStatuses,
   masteredShare,
+  randomTarget,
   recordExam,
   recordRun,
   suggestedMode,
@@ -137,5 +138,28 @@ describe('continueTarget', () => {
 
     progress = run(progress, 'k1', 'test', true, 'caro');
     expect(continueTarget(index, load, progress)).toBeNull();
+  });
+});
+
+describe('randomTarget', () => {
+  const ids = (progress: Progress) =>
+    [0, 0.2, 0.4, 0.6, 0.8, 0.99].map((r) => randomTarget(index, load, progress, () => r)?.lineId);
+
+  it('picks from the unlocked levels of every opening, bonus lines included', () => {
+    expect(new Set(ids({}))).toEqual(new Set(['a', 'b', 's', 'k1']));
+    const level2 = run(run({}, 'a'), 'b');
+    expect(new Set(ids(level2))).toEqual(new Set(['a', 'b', 's', 'c', 'k1']));
+  });
+
+  it('suggests the mode for the picked line', () => {
+    const progress = run({}, 'a', 'watch');
+    expect(randomTarget(index, load, progress, () => 0)).toEqual({ openingId: 'french', lineId: 'a', mode: 'practice' });
+  });
+
+  it('skips the excluded line unless it is the only one', () => {
+    expect(randomTarget(index, load, {}, () => 0, 'a')?.lineId).toBe('b');
+    const onlyCaro = (id: string) => (id === 'caro' ? caro : null);
+    expect(randomTarget(index, onlyCaro, {}, () => 0, 'k1')?.lineId).toBe('k1');
+    expect(randomTarget(index, () => null, {})).toBeNull();
   });
 });

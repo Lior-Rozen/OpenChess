@@ -9,6 +9,7 @@ import { useProgress } from '@/progress/ProgressContext';
 import { theme } from '@/theme';
 import { watchFrames } from '@/trainer/watch';
 
+import { startRandomDrill } from './random';
 import { ResultCard } from './ResultCard';
 import { drillStyles, formatMoves, type DrillTarget, type Restart } from './shared';
 
@@ -16,7 +17,7 @@ import { drillStyles, formatMoves, type DrillTarget, type Restart } from './shar
 export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart: Restart }) {
   const line = target.lines[0];
   const userColor = target.opening.side === 'white' ? 'w' : 'b';
-  const { recordRun } = useProgress();
+  const { progress, recordRun } = useProgress();
   const [frames] = useState(() => watchFrames(line));
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(true);
@@ -95,6 +96,9 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
             buttons={[
               { label: 'Watch again', onPress: () => onRestart('watch') },
               { label: 'Practice', primary: true, onPress: () => onRestart('practice') },
+              ...(target.random
+                ? [{ label: 'Next random', onPress: () => startRandomDrill(progress, { exclude: line.id, replace: true }) }]
+                : []),
               { label: 'Back', onPress: () => router.back() },
             ]}
           />

@@ -4,8 +4,17 @@ import type { Opening, OpeningLine } from '@/content/types';
 import type { RunMode } from '@/progress/mastery';
 import { theme } from '@/theme';
 
-/** One line, or a level exam: every line of a level, with the Mastermind picking branches at random. */
-export type DrillTarget = { opening: Opening; lines: OpeningLine[]; title: string; examLevel: number | null };
+/**
+ * One line, or a level exam: every line of a level, with the Mastermind picking branches at random.
+ * `random` marks a line picked by the random drill, so the result card offers another one.
+ */
+export type DrillTarget = {
+  opening: Opening;
+  lines: OpeningLine[];
+  title: string;
+  examLevel: number | null;
+  random?: boolean;
+};
 
 export const MODE_LABELS: Record<RunMode, string> = { watch: 'Watch', practice: 'Practice', test: 'Test' };
 

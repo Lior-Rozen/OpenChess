@@ -121,6 +121,31 @@ export function continueTarget(
   return null;
 }
 
+/**
+ * A random line from every unlocked level of every opening (main and bonus lines), in the mode
+ * suggested for it. `exclude` skips a line, e.g. the one just played, unless it's the only one.
+ * `random` returns a number in [0, 1), like Math.random.
+ */
+export function randomTarget(
+  index: ContentIndex,
+  loadOpening: (id: string) => Opening | null,
+  progress: Progress,
+  random: () => number = Math.random,
+  exclude?: string,
+): ContinueTarget | null {
+  const candidates = index.openings.flatMap((entry) => {
+    const opening = loadOpening(entry.id);
+    if (!opening) return [];
+    return levelStatuses(opening, progress)
+      .filter((l) => l.unlocked)
+      .flatMap((l) => [...l.mainLines, ...l.bonusLines])
+      .map((l) => ({ openingId: opening.id, lineId: l.line.id, mode: suggestedMode(l.progress) }));
+  });
+  const pool = candidates.length > 1 ? candidates.filter((c) => c.lineId !== exclude) : candidates;
+  if (pool.length === 0) return null;
+  return pool[Math.min(Math.floor(random() * pool.length), pool.length - 1)];
+}
+
 /** Records a run that was played to the end. Only a clean Test run counts towards mastery. */
 export function recordRun(
   progress: Progress,

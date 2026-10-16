@@ -13,13 +13,21 @@ const MODES: RunMode[] = ['watch', 'practice', 'test'];
 
 /** Route params: opening + line + mode drills one line; opening + level runs that level's exam. */
 export default function DrillScreen() {
-  const params = useLocalSearchParams<{ opening: string; line?: string; level?: string; mode?: string }>();
+  const params = useLocalSearchParams<{ opening: string; line?: string; level?: string; mode?: string; random?: string }>();
   const { loaded } = useProgress();
 
   let target: DrillTarget | null = null;
   if (params.line) {
     const found = loadLine(params.opening, params.line);
-    if (found) target = { opening: found.opening, lines: [found.line], title: found.line.name, examLevel: null };
+    if (found) {
+      target = {
+        opening: found.opening,
+        lines: [found.line],
+        title: found.line.name,
+        examLevel: null,
+        random: params.random === '1',
+      };
+    }
   } else if (params.level) {
     const opening = loadOpening(params.opening);
     const level = Number(params.level);

@@ -67,12 +67,15 @@ Run this in a dedicated chess session: start it with "Read docs/prompts/phase5-c
 ## Phase 6: Retention and polish
 Run this in a dedicated UI/front-end session (also used for later UI work): start it with
 "Read docs/prompts/ui-frontend.md and follow it."
-- [ ] Review queue (SRS: 1d → 3d → 7d → 21d). A review is a normal Test run (same rules)
-- [ ] Stats per opening, random drill
+- [ ] (parked) Review queue (SRS: 1d → 3d → 7d → 21d). A review is a normal Test run (same rules).
+      A failed review drops the interval one step; the line stays mastered
+- [ ] (parked) Stats per opening
+- [x] Random drill: a random line from every unlocked level, in its suggested mode, from Home
+      (the result card offers "Next random")
 - [x] Openings filter: chips on the Openings screen for side (White/Black), first move
       (1.e4/1.d4/…, derived from the lines) and tags (gambit, aggressive, solid, …)
 - [ ] Sounds/haptics with an off switch; Settings screen (including quieting the Mastermind)
-- [ ] Review button on Home with the due count
+- [ ] (parked) Review button on Home with the due count
 - [ ] Theme polish and app icon: **a unique, darker look**. No chess.com green and no bright,
       casual cream. A dark theme with purple/magenta and neon/retro accents across every screen
       (background, cards, buttons, fonts, the Mastermind's speech), readable first
@@ -90,7 +93,9 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
   - **Mastermind avatar and app icon:** supplied by the user. Transparent square PNG (pixel art
     scaled to 512 px without smoothing) or SVG. Optional expressions (neutral, smug, disappointed).
     Icon: 1024 px, plus a transparent foreground layer for Android.
-- [ ] First `eas build -p android --profile preview` APK shared with a friend
+- [ ] Board editor on the Free board, kept simple: drag a piece off the board to remove it, drag
+      pieces in from a pool of all piece types, then play on from the position
+- [ ] (parked) First `eas build -p android --profile preview` APK shared with a friend
 - **Done when:** a friend has the APK installed and working.
 
 ## Phase 7: Real backend
@@ -106,6 +111,5 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
 - **Recharging test energy:** Test runs cost a charge that refills over time, to encourage
   spaced practice. Needs thought: it could feel like a mobile-game gate, it overlaps with the
   review queue (phase 6), and it should never block Practice or Watch.
-- **Board editor:** set up any position on the Free board (place and remove pieces, side to move).
 - **Mastermind artwork:** replace the drawn 8-bit avatar with real retro art (must be original or
   properly licensed, not the show's merchandise art).

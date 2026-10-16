@@ -12,6 +12,7 @@ import { levelStatuses } from '@/progress/mastery';
 import { useProgress } from '@/progress/ProgressContext';
 import { TEST_MISTAKE_LIMIT, Trainer, type TrainerEvent, type TrainerMode, type TrainerState } from '@/trainer/trainer';
 
+import { startRandomDrill } from './random';
 import { ResultCard } from './ResultCard';
 import { drillStyles, formatMoves, MODE_LABELS, type DrillTarget, type Restart } from './shared';
 
@@ -184,8 +185,12 @@ type RunResultCardProps = {
 };
 
 function RunResultCard({ target, mode, state, result, onRestart }: RunResultCardProps) {
+  const { progress } = useProgress();
   const exam = target.examLevel !== null;
   const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
+  const nextRandom = target.random
+    ? [{ label: 'Next random', onPress: () => startRandomDrill(progress, { exclude: target.lines[0].id, replace: true }) }]
+    : [];
   const back = { label: 'Back', onPress: () => router.back() };
 
   if (state.phase === 'failed') {
@@ -197,6 +202,7 @@ function RunResultCard({ target, mode, state, result, onRestart }: RunResultCard
         buttons={[
           { label: 'Try again', primary: true, onPress: () => onRestart('test') },
           ...(exam ? [] : [{ label: 'Practice', onPress: () => onRestart('practice') }]),
+          ...nextRandom,
           back,
         ]}
       />
@@ -229,6 +235,7 @@ function RunResultCard({ target, mode, state, result, onRestart }: RunResultCard
       buttons={[
         { label: 'Again', onPress: () => onRestart(mode) },
         ...(!exam && mode === 'practice' ? [{ label: 'Test', primary: true, onPress: () => onRestart('test') }] : []),
+        ...nextRandom,
         back,
       ]}
     />

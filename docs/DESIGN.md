@@ -114,7 +114,7 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
   Shown on the Openings cards and the Home Continue button.
 - One serif or retro font, a muted palette, almost no chrome. The screens:
   - **Home:** the Mastermind and "Hello, friend.", one big **Continue** button (straight into
-    the next suggested line and mode), **Openings**, **Free board**, a ⚙ for Settings, and
+    the next suggested line and mode), **Random drill**, **Openings**, **Free board**, a ⚙ for Settings, and
     (phase 6) **Review** with the due count.
   - **Openings:** the grid, with % mastered, grouped under AS WHITE and AS BLACK. Filter chips at
     the top (always visible) for side, first move and style tags. Within side and first move,

@@ -6,6 +6,7 @@ import { contentIndex, loadLine, loadOpening } from '@/content/loader';
 import { GREETING } from '@/mastermind/lines';
 import { MastermindAvatar } from '@/mastermind/Avatar';
 import { OpeningIcon } from '@/openings/OpeningIcon';
+import { startRandomDrill } from '@/drill/random';
 import { continueTarget } from '@/progress/mastery';
 import { useProgress } from '@/progress/ProgressContext';
 import { theme } from '@/theme';
@@ -60,6 +61,7 @@ export default function Home() {
             </Text>
           </Pressable>
         )}
+        {loaded && <MenuButton label="Random drill" onPress={() => startRandomDrill(progress)} />}
         <MenuButton label="Openings" onPress={() => router.push('/openings')} />
         <MenuButton label="Free board" onPress={() => router.push('/free-board')} />
       </View>
