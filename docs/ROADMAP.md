@@ -58,10 +58,10 @@ phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind ea
 
 ## Phase 5: Content expansion
 Run this in a dedicated chess session: start it with "Read docs/prompts/phase5-content.md and follow it."
-- [ ] Review the French (5 level 1 lines + 2 placeholder level 2 lines)
-- [ ] Tag every opening (`tags`: gambit, aggressive, solid, positional, system, beginner-friendly)
-- [ ] ~10–12 openings × 2–4 levels each (see the starter set in DESIGN.md §4)
-- [ ] All content passes validation
+- [x] Review the French (5 level 1 lines + 2 placeholder level 2 lines)
+- [x] Tag every opening (`tags`: gambit, aggressive, solid, positional, system, beginner-friendly)
+- [x] ~10–12 openings × 2–4 levels each (see the starter set in DESIGN.md §4)
+- [x] All content passes validation
 - **Done when:** every opening in the starter set is playable.
 
 ## Phase 6: Retention and polish
