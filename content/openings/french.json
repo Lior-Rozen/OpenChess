@@ -3,7 +3,8 @@
   "name": "French Defense",
   "side": "black",
   "eco": "C00-C19",
-  "description": "Solid defence: 1.e4 e6 2.d4 d5.",
+  "description": "Solid defence: 1.e4 e6 2.d4 d5, then hit the centre with …c5.",
+  "tags": ["solid", "positional"],
   "lines": [
     {
       "id": "french-advance-main",
@@ -59,42 +60,83 @@
       "summary": "Meet 3.Nd2 with …c5: active pieces in return for an isolated d-pawn."
     },
     {
-      "id": "french-classical-steinitz",
-      "name": "Classical: 4.Bg5",
+      "id": "french-kia",
+      "name": "King's Indian Attack (2.d3)",
       "level": 1,
       "tier": "side",
-      "moves": ["e4", "e6", "d4", "d5", "Nc3", "Nf6", "Bg5", "Be7", "e5", "Nfd7", "Bxe7", "Qxe7"],
+      "moves": ["e4", "e6", "d3", "d5", "Nd2", "Nf6", "Ngf3", "c5", "g3", "Nc6", "Bg2", "Be7", "O-O", "O-O"],
       "notes": {
-        "5": "…Nf6 attacks e4 a second time.",
-        "7": "…Be7 breaks the pin on the f6 knight.",
-        "9": "…Nfd7 retreats; the knight will support …c5 later.",
-        "11": "…Qxe7 recaptures; next Black aims for …c5 and …Nc6."
+        "3": "…d5 still claims the centre; White has chosen a slow set-up.",
+        "7": "…c5 grabs space on the queenside, where Black will attack.",
+        "13": "…O-O: White usually plays e5 and attacks the king, so Black races with …b5."
       },
-      "summary": "Develop with …Nf6 and …Be7, then retreat …Nfd7 and prepare …c5."
+      "summary": "Against the slow 2.d3 set-up, take space with …d5 and …c5, then push on the queenside."
+    },
+    {
+      "id": "french-advance-a3",
+      "name": "Advance: 6.a3 c4 7.Nbd2",
+      "level": 2,
+      "tier": "main",
+      "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "a3", "c4", "Nbd2", "Na5", "Rb1", "Bd7"],
+      "notes": {
+        "11": "…c4 locks the queenside; White's b4 push is the plan Black must stop.",
+        "13": "…Na5 heads for b3, a strong square White can no longer guard with a pawn.",
+        "15": "…Bd7 develops and supports …Bb5 or …Nb3 later."
+      },
+      "summary": "After …c4, the queenside is Black's: aim the knight at b3 and keep White's b4 in check."
     },
     {
       "id": "french-advance-be2",
       "name": "Advance: 6.Be2",
       "level": 2,
       "tier": "main",
-      "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nh6"],
+      "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nh6", "Nc3", "Nf5"],
       "notes": {
-        "11": "…cxd4 opens the c-file before White can keep the chain with c3.",
-        "13": "…Nh6 heads for f5, adding a fourth attacker on d4."
+        "11": "…cxd4 opens the c-file and leaves d4 without its c3 support.",
+        "13": "…Nh6 heads for f5, where the knight attacks d4.",
+        "15": "…Nf5 adds a third attacker on d4, next to the c6 knight and the b6 queen."
       },
-      "summary": "Placeholder level 2 line, to be reviewed in the chess content session."
+      "summary": "Trade on d4, then bring the g8 knight via h6 to f5 to pile up on the d4 pawn."
     },
     {
       "id": "french-winawer-qg4",
-      "name": "Winawer: 7.Qg4",
+      "name": "Winawer: 7.Qg4 (Poisoned Pawn)",
       "level": 2,
       "tier": "main",
-      "moves": ["e4", "e6", "d4", "d5", "Nc3", "Bb4", "e5", "c5", "a3", "Bxc3+", "bxc3", "Ne7", "Qg4", "Qc7"],
+      "moves": ["e4", "e6", "d4", "d5", "Nc3", "Bb4", "e5", "c5", "a3", "Bxc3+", "bxc3", "Ne7", "Qg4", "Qc7", "Qxg7", "Rg8", "Qxh7", "cxd4", "Ne2", "Nbc6", "f4", "Bd7"],
       "notes": {
         "12": "Qg4 attacks g7, which the dark-squared bishop no longer defends.",
-        "13": "…Qc7 counterattacks e5 and c3 instead of defending g7."
+        "13": "…Qc7 counterattacks e5 and c3 instead of defending g7.",
+        "17": "…cxd4 opens the c-file; Black gives kingside pawns for a strong centre attack.",
+        "21": "…Bd7 prepares …O-O-O, so the black king hides on the queenside."
       },
-      "summary": "Placeholder level 2 line, to be reviewed in the chess content session."
+      "summary": "Let White take g7 and h7: hit c3 and the centre, then castle long."
+    },
+    {
+      "id": "french-advance-milner-barry",
+      "name": "Advance: Milner-Barry Gambit",
+      "level": 2,
+      "tier": "side",
+      "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Bd3", "cxd4", "cxd4", "Bd7", "O-O", "Nxd4", "Nxd4", "Qxd4", "Nc3", "a6"],
+      "notes": {
+        "13": "…Bd7 first: taking on d4 now loses the queen to Bb5+.",
+        "15": "…Nxd4 takes the offered pawn, now that Bb5+ is covered.",
+        "19": "…a6 stops Nb5, which would hit the queen and c7."
+      },
+      "summary": "Never grab d4 before …Bd7 (Bb5+ wins the queen); with …Bd7 in, the pawn is safe to take."
+    },
+    {
+      "id": "french-tarrasch-deep",
+      "name": "Tarrasch: 7.O-O",
+      "level": 2,
+      "tier": "side",
+      "moves": ["e4", "e6", "d4", "d5", "Nd2", "c5", "exd5", "exd5", "Ngf3", "Nc6", "Bb5", "Bd6", "O-O", "Ne7", "dxc5", "Bxc5", "Nb3", "Bd6"],
+      "notes": {
+        "13": "…Ne7 keeps the f-pawn free and lets Black meet Bxc6 with …Nxc6.",
+        "15": "…Bxc5 takes back; the isolated pawn is gone and Black's pieces stay active.",
+        "17": "…Bd6 keeps the bishop aimed at the kingside and away from Nxc5."
+      },
+      "summary": "With the isolated d-pawn, play actively: fast development and pressure, not passive defence."
     }
   ]
 }
