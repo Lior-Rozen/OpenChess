@@ -34,6 +34,8 @@ phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind ea
 
 ## Phase 4: Levels, modes, progress
 - [ ] Mastery rules and level unlocking (derived from progress)
+- [ ] Test-mode mistake threshold: Test stops behaving like Practice. Too many mistakes fails
+      the run instead of showing the arrow (exact threshold to decide; it could depend on difficulty)
 - [ ] Mode picker (Easy/Normal/Hard) and Hard-mode random branches
 - [ ] Local persistence of progress
 - [ ] Home and Opening screens
@@ -58,3 +60,10 @@ phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind ea
 - [ ] Optional: accounts, progress sync, friend leaderboard (EF Core + SQLite/Postgres)
 - [ ] Optional: deploy (e.g. Azure App Service free tier or Fly.io)
 - **Done when:** a new opening added on the server appears in the app without an app update.
+
+## Ideas (not scheduled, not in v1)
+- **Kids mode** on the home screen: a simpler, friendlier presentation for children. Needs a
+  design pass first: which openings, how simple, whether it has its own progress.
+- **Recharging test energy:** Test runs cost a charge that refills over time, to encourage
+  spaced practice. Needs thought: it could feel like a mobile-game gate, it overlaps with the
+  review queue (phase 6), and it should never block Practice or Watch.
