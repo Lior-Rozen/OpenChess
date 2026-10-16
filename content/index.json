@@ -2,6 +2,7 @@
   "contentVersion": 1,
   "openings": [
     { "id": "french", "name": "French Defense", "side": "black", "file": "openings/french.json" },
-    { "id": "caro-kann", "name": "Caro-Kann Defense", "side": "black", "file": "openings/caro-kann.json" }
+    { "id": "caro-kann", "name": "Caro-Kann Defense", "side": "black", "file": "openings/caro-kann.json" },
+    { "id": "sicilian", "name": "Sicilian Defense: Najdorf", "side": "black", "file": "openings/sicilian.json" }
   ]
 }
