@@ -46,6 +46,6 @@ function ServerStatus() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: theme.background, padding: 16, gap: 20 },
   section: { gap: 6 },
-  label: { fontSize: 12, fontFamily: 'monospace', color: theme.muted, letterSpacing: 1 },
+  label: { fontSize: 12, fontFamily: theme.mono, color: theme.accent2, letterSpacing: 1 },
   text: { fontSize: 16, fontFamily: theme.font, color: theme.text },
 });

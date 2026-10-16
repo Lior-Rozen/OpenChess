@@ -1,5 +1,7 @@
 import Svg, { Rect } from 'react-native-svg';
 
+import { theme } from '@/theme';
+
 // An original 8-bit hooded figure. Each character is one pixel: H hood, S shadow, F face, E eye.
 const PIXELS = [
   '....HHHH....',
@@ -16,7 +18,8 @@ const PIXELS = [
   'HHHHHHHHHHHH',
 ];
 
-const COLORS: Record<string, string> = { H: '#1f2421', S: '#9c8670', F: '#e3c9ad', E: '#1f2421' };
+const { hood, shadow, skin, eyes } = theme.mastermind;
+const COLORS: Record<string, string> = { H: hood, S: shadow, F: skin, E: eyes };
 
 export function MastermindAvatar({ size = 40 }: { size?: number }) {
   const n = PIXELS.length;

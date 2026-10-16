@@ -30,5 +30,5 @@ export const drillStyles = StyleSheet.create({
   bad: { color: theme.bad },
   below: { alignSelf: 'stretch', alignItems: 'center', gap: 10, paddingHorizontal: 8 },
   note: { fontSize: 16, fontFamily: theme.font, fontStyle: 'italic', color: theme.muted, textAlign: 'center' },
-  moveList: { fontSize: 15, fontFamily: theme.font, color: theme.text, alignSelf: 'stretch', paddingHorizontal: 8 },
+  moveList: { fontSize: 15, fontFamily: theme.mono, color: theme.muted, alignSelf: 'stretch', paddingHorizontal: 8 },
 });

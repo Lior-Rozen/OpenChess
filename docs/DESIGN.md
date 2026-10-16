@@ -94,14 +94,18 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 - **Readability first:** the board and pieces must be clear and easy to see for everyone, so no
   pixel art on the board. The 8-bit style belongs to the Mastermind and small accents only.
 - **A board of its own:** not green (that's chess.com's look). The board is violet (`#b9a6d6` /
-  `#5e3b8c` in `Board.tsx`), with neon accents: magenta for the last move and selection, cyan for
-  the hint arrow.
+  `#5e3b8c`), with neon accents: magenta for the last move and selection, cyan for the hint arrow.
 - **Pieces:** PNG images in `app/assets/pieces/` (`wK.png` … `bP.png`), cut from a public piece
   sheet the user supplied. They're about 65 px, so slightly soft when scaled up. A higher-resolution
   or SVG version would be sharper.
-- **Direction for the whole app (phase 6):** darker and more distinctive. A dark, slightly retro and
-  neon look (purple/magenta, with neon highlights) instead of the current bright cream, which
-  feels casual. Readability still comes first.
+- **Palette ("Midnight Arcade", chosen in phase 6):** dark violet-black background (`#130c20`),
+  violet cards with a thin border, near-white text. **Magenta** (`#ff40c8`) is the user's colour:
+  main buttons (with a soft glow), progress bars, selection. **Cyan** (`#00e5ff`) is the
+  Mastermind's: his name, his speech bubble's edge, his eyes, the hint arrow, the blinking cursor
+  after "Hello, friend.". The app is dark-only. **Every colour is a named token in
+  `app/src/theme.ts`** (the board's too), so the palette changes in one place. Readability first.
+  Fonts are the phone's serif (text) and monospace (8-bit accents); a custom font would need a
+  CC0 licence.
 - One serif or retro font, a muted palette, almost no chrome. The screens:
   - **Home:** the Mastermind and "Hello, friend.", one big **Continue** button (straight into
     the next suggested line and mode), **Openings**, **Free board**, a ⚙ for Settings, and

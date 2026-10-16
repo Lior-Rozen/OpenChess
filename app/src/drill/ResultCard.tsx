@@ -44,6 +44,8 @@ const styles = StyleSheet.create({
   card: {
     alignSelf: 'stretch',
     backgroundColor: theme.card,
+    borderWidth: 1,
+    borderColor: theme.border,
     borderRadius: 8,
     padding: 16,
     gap: 8,

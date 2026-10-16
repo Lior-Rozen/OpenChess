@@ -1,4 +1,5 @@
 import { router } from 'expo-router';
+import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { contentIndex, loadLine, loadOpening } from '@/content/loader';
@@ -23,7 +24,10 @@ export default function Home() {
 
       <View style={styles.hero}>
         <MastermindAvatar size={96} />
-        <Text style={styles.greeting}>{GREETING}</Text>
+        <Text style={styles.greeting}>
+          {GREETING}
+          <BlinkingCursor />
+        </Text>
         <Text style={styles.title}>Chess Openings</Text>
       </View>
 
@@ -55,6 +59,16 @@ export default function Home() {
   );
 }
 
+/** A retro terminal cursor after the greeting. */
+function BlinkingCursor() {
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const timer = setInterval(() => setVisible((v) => !v), 530);
+    return () => clearInterval(timer);
+  }, []);
+  return <Text style={{ opacity: visible ? 1 : 0 }}>_</Text>;
+}
+
 function MenuButton({ label, onPress }: { label: string; onPress: () => void }) {
   return (
     <Pressable onPress={onPress} style={({ pressed }) => [styles.menu, pressed && styles.menuPressed]}>
@@ -68,14 +82,34 @@ const styles = StyleSheet.create({
   settings: { position: 'absolute', top: 52, right: 20 },
   settingsIcon: { fontSize: 28, color: theme.muted },
   hero: { alignItems: 'center', gap: 6, marginBottom: 40 },
-  greeting: { fontSize: 18, fontFamily: 'monospace', color: theme.muted, marginTop: 8 },
+  greeting: {
+    fontSize: 18,
+    fontFamily: theme.mono,
+    color: theme.accent2,
+    marginTop: 8,
+    textShadowColor: theme.accent2,
+    textShadowRadius: 8,
+  },
   title: { fontSize: 34, fontFamily: theme.font, color: theme.text },
   actions: { gap: 12 },
-  main: { backgroundColor: theme.text, borderRadius: 10, paddingVertical: 18, paddingHorizontal: 20, gap: 4 },
-  mainPressed: { backgroundColor: theme.muted },
-  mainLabel: { fontSize: 24, fontFamily: theme.font, color: theme.background, textAlign: 'center' },
-  mainDetail: { fontSize: 14, fontFamily: theme.font, color: theme.pressed, textAlign: 'center' },
-  menu: { borderWidth: 1, borderColor: theme.muted, borderRadius: 10, paddingVertical: 14 },
+  main: {
+    backgroundColor: theme.accent,
+    borderRadius: 10,
+    paddingVertical: 18,
+    paddingHorizontal: 20,
+    gap: 4,
+    boxShadow: theme.glow,
+  },
+  mainPressed: { opacity: 0.8 },
+  mainLabel: { fontSize: 24, fontFamily: theme.font, fontWeight: '600', color: theme.onAccent, textAlign: 'center' },
+  mainDetail: { fontSize: 14, fontFamily: theme.font, color: theme.onAccent, opacity: 0.85, textAlign: 'center' },
+  menu: {
+    backgroundColor: theme.card,
+    borderWidth: 1,
+    borderColor: theme.border,
+    borderRadius: 10,
+    paddingVertical: 14,
+  },
   menuPressed: { backgroundColor: theme.pressed },
   menuLabel: { fontSize: 19, fontFamily: theme.font, color: theme.text, textAlign: 'center' },
 });

@@ -6,6 +6,7 @@ import { Board } from '@/chess/Board';
 import { Button } from '@/components/Button';
 import { ChessGame, type Color, type GamePosition, type Square } from '@/chess/game';
 import { handleTap, type Selection } from '@/chess/tapToMove';
+import { theme } from '@/theme';
 
 /** Free board: play both sides freely, e.g. to try out ideas. */
 export default function FreeBoard() {
@@ -72,13 +73,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f0e9d6',
+    backgroundColor: theme.background,
     padding: 8,
   },
   status: {
     fontSize: 20,
-    fontFamily: 'serif',
-    color: '#2f3a2f',
+    fontFamily: theme.font,
+    color: theme.text,
     marginBottom: 12,
   },
   buttons: { flexDirection: 'row', gap: 12, marginTop: 16 },
