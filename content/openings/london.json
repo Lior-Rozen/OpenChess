@@ -1,0 +1,99 @@
+{
+  "id": "london",
+  "name": "London System",
+  "side": "white",
+  "eco": "D02, A46",
+  "description": "1.d4 and 2.Bf4, then the same e3, c3, Nbd2 and Bd3 set-up against almost anything.",
+  "tags": ["system", "solid", "beginner-friendly"],
+  "lines": [
+    {
+      "id": "london-main",
+      "name": "Main Line vs …d5, …c5",
+      "level": 1,
+      "tier": "main",
+      "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "e6", "Nf3", "c5", "c3", "Nc6", "Nbd2", "Bd6", "Bg3", "O-O", "Bd3"],
+      "notes": {
+        "2": "Bf4 develops the bishop before e3 shuts it in.",
+        "8": "c3 holds the d4 pawn firmly against …c5.",
+        "12": "Bg3 keeps the bishop when …Bd6 offers a trade, and opens the h-file if Black takes.",
+        "14": "Bd3 aims at Black's king; Ne5 and a kingside attack can follow."
+      },
+      "summary": "Bf4, e3, Nf3, c3, Nbd2, Bd3: the London pyramid, the same set-up every time."
+    },
+    {
+      "id": "london-vs-kid",
+      "name": "vs King's Indian set-up",
+      "level": 1,
+      "tier": "main",
+      "moves": ["d4", "Nf6", "Bf4", "g6", "e3", "Bg7", "Nf3", "O-O", "Be2", "d6", "h3"],
+      "notes": {
+        "4": "e3 supports d4 and frees the f1 bishop.",
+        "8": "Be2 is the usual square here: against …g6 the bishop has little to aim at on d3.",
+        "10": "h3 gives the f4 bishop a retreat on h2, so …Nh5 can't trade it."
+      },
+      "summary": "Against …g6, keep the pyramid, put the bishop on e2 and play h3 to save the f4 bishop."
+    },
+    {
+      "id": "london-qb6",
+      "name": "vs early …Qb6",
+      "level": 1,
+      "tier": "side",
+      "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "e6", "Nf3", "c5", "c3", "Qb6", "Qb3", "c4", "Qc2"],
+      "notes": {
+        "9": "…Qb6 attacks b2, which the f4 bishop no longer defends.",
+        "10": "Qb3 offers a queen trade that would open the a-file for White's rook.",
+        "12": "Qc2 keeps the queen; White wants e4 next to break the black centre."
+      },
+      "summary": "Meet …Qb6 with Qb3; if …c4 kicks the queen, go to c2 and aim for e4."
+    },
+    {
+      "id": "london-2c5",
+      "name": "vs 2…c5",
+      "level": 1,
+      "tier": "side",
+      "moves": ["d4", "d5", "Bf4", "c5", "e3", "Nc6", "c3", "Nf6", "Nf3", "e6", "Nbd2", "Bd6", "Bg3", "O-O", "Bd3"],
+      "notes": {
+        "4": "e3 backs up d4 and keeps the set-up.",
+        "6": "c3 holds d4 firmly.",
+        "14": "Bd3: the same position as the main line."
+      },
+      "summary": "2…c5 changes nothing: build the same pyramid and you reach the main line."
+    },
+    {
+      "id": "london-main-deep",
+      "name": "Main Line: Ne5 and f4",
+      "level": 2,
+      "tier": "main",
+      "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "e6", "Nf3", "c5", "c3", "Nc6", "Nbd2", "Bd6", "Bg3", "O-O", "Bd3", "b6", "Ne5", "Bb7", "f4"],
+      "notes": {
+        "16": "Ne5 grabs the outpost and starts a kingside attack.",
+        "18": "f4 supports the e5 knight, a Stonewall-style attacking set-up."
+      },
+      "summary": "When Black plays slowly, put a knight on e5, back it with f4 and attack the king."
+    },
+    {
+      "id": "london-vs-kid-deep",
+      "name": "vs King's Indian: …c5 and …Qb6",
+      "level": 2,
+      "tier": "main",
+      "moves": ["d4", "Nf6", "Bf4", "g6", "e3", "Bg7", "Nf3", "O-O", "Be2", "d6", "h3", "c5", "c3", "Qb6", "Qb3"],
+      "notes": {
+        "12": "c3 holds d4 against …c5.",
+        "14": "Qb3 meets …Qb6 as always, defending b2 and offering a trade."
+      },
+      "summary": "Same rules against the King's Indian set-up: c3 against …c5, Qb3 against …Qb6."
+    },
+    {
+      "id": "london-3c5",
+      "name": "vs 3…c5 (transposes)",
+      "level": 2,
+      "tier": "side",
+      "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "c5", "c3", "Nc6", "Nf3", "e6", "Nbd2", "Bd6", "Bg3", "O-O", "Bd3"],
+      "notes": {
+        "6": "c3 holds d4.",
+        "14": "Bd3: the same position as the main line."
+      },
+      "summary": "Different move order, same London: keep building the pyramid."
+    }
+  ]
+}
