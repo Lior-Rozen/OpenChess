@@ -1,0 +1,101 @@
+{
+  "id": "slav",
+  "name": "Slav Defense",
+  "side": "black",
+  "eco": "D10-D19",
+  "description": "Defend the d5 pawn with …c6, keeping the c8 bishop free to develop.",
+  "tags": ["solid", "positional"],
+  "lines": [
+    {
+      "id": "slav-main",
+      "name": "Main Line (5.a4 Bf5)",
+      "level": 1,
+      "tier": "main",
+      "moves": ["d4", "d5", "c4", "c6", "Nf3", "Nf6", "Nc3", "dxc4", "a4", "Bf5", "e3", "e6", "Bxc4", "Bb4"],
+      "notes": {
+        "3": "…c6 supports d5 without blocking the c8 bishop, unlike …e6.",
+        "7": "…dxc4 takes the pawn when White can't easily win it back with tempo.",
+        "9": "…Bf5 develops the bishop before …e6.",
+        "13": "…Bb4 pins the c3 knight and stops White's e4 push."
+      },
+      "summary": "Take on c4, develop the bishop to f5 before …e6, then pin with …Bb4."
+    },
+    {
+      "id": "slav-exchange",
+      "name": "Exchange (3.cxd5)",
+      "level": 1,
+      "tier": "main",
+      "moves": ["d4", "d5", "c4", "c6", "cxd5", "cxd5", "Nc3", "Nf6", "Bf4", "Nc6", "e3", "Bf5", "Nf3", "e6"],
+      "notes": {
+        "5": "…cxd5 keeps a symmetrical, very solid pawn structure.",
+        "9": "…Nc6 develops and adds a defender to d4 and e5.",
+        "11": "…Bf5 mirrors White's active bishop."
+      },
+      "summary": "Symmetry is fine for Black: develop knights and bishop actively, then …e6."
+    },
+    {
+      "id": "slav-4e3",
+      "name": "Quiet 4.e3",
+      "level": 1,
+      "tier": "main",
+      "moves": ["d4", "d5", "c4", "c6", "Nf3", "Nf6", "e3", "Bf5", "Nc3", "e6", "Nh4", "Bg6", "Nxg6", "hxg6"],
+      "notes": {
+        "7": "…Bf5: White's e3 shut in their own bishop, so Black gets this bishop out at once.",
+        "11": "…Bg6 keeps the bishop; Black is happy to recapture towards the centre.",
+        "13": "…hxg6 opens the h-file for Black's rook and gives a solid pawn structure."
+      },
+      "summary": "Against 4.e3, play …Bf5 at once; if White's knight chases it, recapture with …hxg6."
+    },
+    {
+      "id": "slav-main-deep",
+      "name": "Main Line: 9.Qe2",
+      "level": 2,
+      "tier": "main",
+      "moves": ["d4", "d5", "c4", "c6", "Nf3", "Nf6", "Nc3", "dxc4", "a4", "Bf5", "e3", "e6", "Bxc4", "Bb4", "O-O", "O-O", "Qe2", "Nbd7", "e4", "Bg6", "Bd3", "Bh5"],
+      "notes": {
+        "17": "…Nbd7 prepares for e4 by covering e5.",
+        "19": "…Bg6 steps back from the pawn's attack, still eyeing e4.",
+        "21": "…Bh5 pins the f3 knight, so White's e5 push leaves d4 weaker."
+      },
+      "summary": "When White pushes e4, retreat the bishop to g6 and then pin with …Bh5."
+    },
+    {
+      "id": "slav-exchange-deep",
+      "name": "Exchange: 8.Qb3",
+      "level": 2,
+      "tier": "main",
+      "moves": ["d4", "d5", "c4", "c6", "cxd5", "cxd5", "Nc3", "Nf6", "Bf4", "Nc6", "e3", "Bf5", "Nf3", "e6", "Qb3", "Bb4", "Bb5", "O-O"],
+      "notes": {
+        "15": "…Bb4 counters the queen's attack on b7 by pinning the c3 knight.",
+        "17": "…O-O: Black lets White take on c6 and recaptures with the b-pawn."
+      },
+      "summary": "Against Qb3 and Bb5, pin with …Bb4 and castle; the position stays balanced."
+    },
+    {
+      "id": "slav-krause",
+      "name": "Krause (6.Ne5)",
+      "level": 2,
+      "tier": "side",
+      "moves": ["d4", "d5", "c4", "c6", "Nf3", "Nf6", "Nc3", "dxc4", "a4", "Bf5", "Ne5", "Nbd7", "Nxc4", "Qc7", "g3", "e5"],
+      "notes": {
+        "11": "…Nbd7 challenges the e5 knight right away.",
+        "13": "…Qc7 supports the …e5 push.",
+        "15": "…e5 frees Black's game in the centre."
+      },
+      "summary": "Against 6.Ne5, challenge the knight with …Nbd7, then free your game with …Qc7 and …e5."
+    },
+    {
+      "id": "slav-5e3",
+      "name": "5.e3 b5",
+      "level": 2,
+      "tier": "side",
+      "moves": ["d4", "d5", "c4", "c6", "Nf3", "Nf6", "Nc3", "dxc4", "e3", "b5", "a4", "b4", "Na2", "e6", "Bxc4", "Be7"],
+      "notes": {
+        "9": "…b5 holds the extra c4 pawn for now.",
+        "11": "…b4 kicks the knight to a poor square on the rim.",
+        "15": "…Be7 develops; Black plans …O-O and …c5."
+      },
+      "summary": "When White plays slowly with 5.e3, hold the pawn with …b5, then kick the knight with …b4."
+    }
+  ]
+}
