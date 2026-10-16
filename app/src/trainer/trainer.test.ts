@@ -171,22 +171,9 @@ describe('Trainer with one line', () => {
 
     expect(events[events.length - 1]).toMatchObject({ type: 'lineComplete', mistakes: 1, clean: false });
   });
-
-  it('plays every move automatically in watch mode', () => {
-    const trainer = new Trainer([advance], 'b', 'watch');
-
-    expect(trainer.phase).toBe('auto');
-    trainer.advance();
-    expect(trainer.phase).toBe('auto'); // even on the user's own move
-    expect(trainer.tryMove('e7', 'e6')).toEqual([]);
-
-    const events = playThrough(trainer, [advance]);
-    expect(events.every((e) => e.type !== 'moved' || e.by === 'auto')).toBe(true);
-    expect(trainer.phase).toBe('complete');
-  });
 });
 
-describe('Trainer with several lines (Hard mode)', () => {
+describe('Trainer with several lines (level exam)', () => {
   const lines = [advance, exchange, winawer, classical];
 
   it("picks the opponent's branch at random", () => {

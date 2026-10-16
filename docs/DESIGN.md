@@ -47,6 +47,8 @@ updates and sync later, but it is never required to train.
 
 ### Learning modes per line
 - **Watch:** the app plays the whole line with move notes. Used the first time a line is met.
+  It has player controls (start, back, pause/play, forward, end), and stepping by hand pauses
+  the autoplay.
 - **Practice:** the drill with hints allowed.
 - **Test:** the drill with no hints and no arrow. The run fails at 2 mistakes
   (`TEST_MISTAKE_LIMIT`). A clean run (0 mistakes) counts toward mastery.

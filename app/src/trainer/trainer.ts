@@ -1,7 +1,8 @@
 import { ChessGame, type Color, type GamePosition, type ResolvedMove, type Square } from '../chess/game';
 import type { OpeningLine } from '../content/types';
 
-export type TrainerMode = 'watch' | 'practice' | 'test';
+/** Watch mode isn't a drill: it steps through precomputed frames (see watch.ts). */
+export type TrainerMode = 'practice' | 'test';
 
 /**
  * auto = the app plays the next book move; user = waiting for the user's move;
@@ -47,13 +48,13 @@ export type TrainerOptions = {
   random?: () => number;
 };
 
-/** Practice/Watch: wrong tries on one move before the answer is shown as an arrow. */
+/** Practice: wrong tries on one move before the answer is shown as an arrow. */
 export const TRIES_BEFORE_HINT = 2;
 /** Test: the run fails when it reaches this many mistakes. Test never shows the answer. */
 export const TEST_MISTAKE_LIMIT = 2;
 
 /**
- * Drills opening lines. The app plays the opponent's book moves (every move in watch mode);
+ * Drills opening lines. The app plays the opponent's book moves;
  * the user must find their side's book moves.
  *
  * With several lines (Hard mode), the lines form a tree: wherever they split on the opponent's
@@ -100,7 +101,6 @@ export class Trainer {
   get phase(): TrainerPhase {
     if (this.failed) return 'failed';
     if (this.completedLine) return 'complete';
-    if (this.mode === 'watch') return 'auto';
     return this.game.turn === this.userColor ? 'user' : 'auto';
   }
 

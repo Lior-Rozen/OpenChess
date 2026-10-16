@@ -52,10 +52,13 @@ phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind ea
       every run, one short line at key moments
 - [x] New Home: Continue (next suggested line and mode), Openings, Free board, ⚙ Settings
       placeholder; the openings grid moves to its own screen
+- [x] Watch player: pause/play, step back and forth (|◁ ◁ ❙❙/▷ ▷ ▷|); stepping pauses autoplay
 - **Done when:** Continue walks a new user through Watch → Practice → Test of the first line,
   and mastering level 1's main lines unlocks level 2.
 
 ## Phase 5: Content expansion
+Run this in a dedicated chess session: start it with "Read docs/prompts/phase5-content.md and follow it."
+- [ ] Review the French (5 level 1 lines + 2 placeholder level 2 lines)
 - [ ] ~10–12 openings × 2–4 levels each (see the starter set in DESIGN.md §4)
 - [ ] All content passes validation
 - **Done when:** every opening in the starter set is playable.
