@@ -91,6 +91,8 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 - No drag-to-move in v1 (tap-to-move is simpler and reliable on phones).
 
 ### Visual direction ("old-school, simple")
+- **Readability first:** the board and pieces must be clear and easy to see for everyone, so no
+  pixel art on the board. The 8-bit style belongs to the Mastermind and small accents only.
 - A classic board in green/cream or brown/beige. Pieces are currently the Unicode chess symbols
   (♔♕♖♗♘♙), drawn by the phone's font, so there are no assets or licences. A flat SVG piece set
   (e.g. cburnett from Lichess, which needs a credit line) can replace them during theme polish.

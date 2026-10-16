@@ -70,10 +70,11 @@ Run this in a dedicated chess session: start it with "Read docs/prompts/phase5-c
 - [ ] Review button on Home with the due count
 - [ ] Theme polish and app icon
 - [ ] Art, with no credit line needed (CC0/public domain, or made by the user):
-  - **Pieces:** user's pick from the CC0 candidates
-    - RhosGFX Vector Chess Pieces: https://rhosgfx.itch.io/vector-chess-pieces
-    - AV Reference Pixel Chess: https://opengameart.org/content/pixel-chess
+  - **Pieces:** user's pick from the CC0 candidates. Board and pieces must be highly visible
+    and readable, not 8-bit; the retro style stays on the Mastermind and small accents.
+    - RhosGFX Vector Chess Pieces (leading candidate): https://rhosgfx.itch.io/vector-chess-pieces
     - Screaming Brain 2D Chess Pack: https://opengameart.org/content/2d-chess-pack
+    - AV Reference Pixel Chess (pixel style, likely too hard to read): https://opengameart.org/content/pixel-chess
   - **Mastermind avatar and app icon:** supplied by the user. Transparent square PNG (pixel art
     scaled to 512 px without smoothing) or SVG. Optional expressions (neutral, smug, disappointed).
     Icon: 1024 px, plus a transparent foreground layer for Android.
