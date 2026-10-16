@@ -64,6 +64,8 @@ Run this in a dedicated chess session: start it with "Read docs/prompts/phase5-c
 - **Done when:** every opening in the starter set is playable.
 
 ## Phase 6: Retention and polish
+Run this in a dedicated UI/front-end session (also used for later UI work): start it with
+"Read docs/prompts/ui-frontend.md and follow it."
 - [ ] Review queue (SRS: 1d → 3d → 7d → 21d). A review is a normal Test run (same rules)
 - [ ] Stats per opening, random drill
 - [ ] Sounds/haptics with an off switch; Settings screen (including quieting the Mastermind)
