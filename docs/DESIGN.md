@@ -93,9 +93,15 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 ### Visual direction ("old-school, simple")
 - **Readability first:** the board and pieces must be clear and easy to see for everyone, so no
   pixel art on the board. The 8-bit style belongs to the Mastermind and small accents only.
-- A classic board in green/cream or brown/beige. Pieces are currently the Unicode chess symbols
-  (♔♕♖♗♘♙), drawn by the phone's font, so there are no assets or licences. A flat SVG piece set
-  (e.g. cburnett from Lichess, which needs a credit line) can replace them during theme polish.
+- **A board of its own:** not green (that's chess.com's look). The board is violet (`#b9a6d6` /
+  `#5e3b8c` in `Board.tsx`), with neon accents: magenta for the last move and selection, cyan for
+  the hint arrow.
+- **Pieces:** PNG images in `app/assets/pieces/` (`wK.png` … `bP.png`), cut from a public piece
+  sheet the user supplied. They're about 65 px, so slightly soft when scaled up. A higher-resolution
+  or SVG version would be sharper.
+- **Direction for the whole app (phase 6):** darker and more distinctive. A dark, slightly retro and
+  neon look (purple/magenta, with neon highlights) instead of the current bright cream, which
+  feels casual. Readability still comes first.
 - One serif or retro font, a muted palette, almost no chrome. The screens:
   - **Home:** the Mastermind and "Hello, friend.", one big **Continue** button (straight into
     the next suggested line and mode), **Openings**, **Free board**, a ⚙ for Settings, and

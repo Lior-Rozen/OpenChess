@@ -7,16 +7,17 @@ import type { Selection } from './tapToMove';
 
 const FILES = 'abcdefgh';
 
+// Violet board with neon accents (magenta for the user's focus, cyan for the Mastermind's hints).
 const colors = {
-  light: '#eeeed2',
-  dark: '#769656',
-  lastMove: 'rgba(205, 210, 106, 0.75)',
-  selected: 'rgba(20, 85, 30, 0.5)',
-  check: 'rgba(220, 40, 40, 0.65)',
-  target: 'rgba(20, 85, 30, 0.45)',
-  arrow: 'rgba(21, 120, 27, 0.8)',
-  good: 'rgba(60, 170, 60, 0.6)',
-  bad: 'rgba(220, 40, 40, 0.7)',
+  light: '#b9a6d6',
+  dark: '#5e3b8c',
+  lastMove: 'rgba(255, 64, 200, 0.42)',
+  selected: 'rgba(255, 64, 200, 0.6)',
+  check: 'rgba(255, 40, 70, 0.7)',
+  target: 'rgba(30, 10, 55, 0.5)',
+  arrow: 'rgba(0, 229, 255, 0.85)',
+  good: 'rgba(0, 230, 170, 0.6)',
+  bad: 'rgba(255, 40, 70, 0.75)',
 };
 
 export type BoardArrow = { from: Square; to: Square };
