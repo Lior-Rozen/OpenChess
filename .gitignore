@@ -1,0 +1,23 @@
+# --- Node / Expo ---
+node_modules/
+.expo/
+dist/
+web-build/
+npm-debug.*
+*.tsbuildinfo
+
+# Local env (holds your LAN IP); commit .env.example instead
+.env
+.env*.local
+
+# --- .NET ---
+bin/
+obj/
+TestResults/
+*.user
+*.suo
+.vs/
+
+# --- OS / editors ---
+.DS_Store
+Thumbs.db
