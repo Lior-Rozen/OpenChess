@@ -120,6 +120,23 @@ describe('ChessGame', () => {
     expect(game.position().turn).toBe('b');
   });
 
+  it('takes back moves, even checkmate, until there are none', () => {
+    const game = new ChessGame();
+    play(game, ['f2', 'f3'], ['e7', 'e5'], ['g2', 'g4'], ['d8', 'h4']);
+
+    expect(game.undo()).toBe(true);
+    const position = game.position();
+    expect(position.status).toBe('playing');
+    expect(position.turn).toBe('b');
+    expect(position.lastMove).toEqual({ from: 'g2', to: 'g4' });
+
+    expect(game.undo()).toBe(true);
+    expect(game.undo()).toBe(true);
+    expect(game.undo()).toBe(true);
+    expect(game.position()).toEqual(new ChessGame().position());
+    expect(game.undo()).toBe(false);
+  });
+
   it('resets to the initial position', () => {
     const game = new ChessGame();
     play(game, ['e2', 'e4']);

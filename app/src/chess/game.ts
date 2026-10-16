@@ -68,6 +68,11 @@ export class ChessGame {
     }
   }
 
+  /** Takes back the last move (checkmate included); returns false if there is none. */
+  undo(): boolean {
+    return this.chess.undo() !== null;
+  }
+
   reset(): void {
     this.chess.reset();
   }

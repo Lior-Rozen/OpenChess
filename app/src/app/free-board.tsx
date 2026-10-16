@@ -26,6 +26,12 @@ export default function FreeBoard() {
     setSelection(result.selection);
   }
 
+  /** Takes back one move at a time, at any point, checkmate included. */
+  function takeBack() {
+    if (game.undo()) setPosition(game.position());
+    setSelection(null);
+  }
+
   function newGame() {
     game.reset();
     setPosition(game.position());
@@ -44,6 +50,7 @@ export default function FreeBoard() {
         size={boardSize}
       />
       <View style={styles.buttons}>
+        <Button label="Take back" onPress={takeBack} disabled={position.lastMove === null} />
         <Button label="Flip board" onPress={() => setOrientation((o) => (o === 'w' ? 'b' : 'w'))} />
         <Button label="New game" onPress={newGame} />
       </View>
@@ -82,5 +89,5 @@ const styles = StyleSheet.create({
     color: theme.text,
     marginBottom: 12,
   },
-  buttons: { flexDirection: 'row', gap: 12, marginTop: 16 },
+  buttons: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 10, marginTop: 16 },
 });

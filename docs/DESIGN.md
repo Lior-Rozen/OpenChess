@@ -122,7 +122,8 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
     Each card shows its first move and tags. The logic is `app/src/openings/filter.ts`.
   - **Opening:** levels, main and bonus lines, exam.
   - **Drill:** the Mastermind's line, board, move list, result card.
-  - **Free board:** free play for both sides.
+  - **Free board:** free play for both sides, with Take back (one move at a time, any time,
+    checkmate included), Flip board and New game.
   - **Settings:** a placeholder until phase 6. It holds the server status.
 
 ## 4. Content format
