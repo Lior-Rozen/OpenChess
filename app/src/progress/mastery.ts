@@ -1,95 +1,148 @@
-import type { Opening, OpeningLine } from '../content/types';
-
-export type Difficulty = 'easy' | 'normal' | 'hard';
+import type { ContentIndex, Opening, OpeningLine } from '../content/types';
 
 export type LineProgress = {
-  /** Clean Test runs so far. A failed run doesn't reset it (spaced review comes in phase 6). */
+  /** Clean Test runs so far; one masters the line. Kept as a count for stats and review later. */
   cleanRuns: number;
-  /** ISO timestamp of the last finished Practice/Test run. */
+  /** A Watch run was played to the end. */
+  watched?: boolean;
+  /** A Practice or Test run was played to the end. */
+  practiced?: boolean;
+  /** ISO timestamp of the last finished run. */
   lastPlayed?: string;
 };
 
 export type OpeningProgress = {
-  difficulty: Difficulty;
   lines: Record<string, LineProgress>;
+  /** Levels whose exam (random branches, every line) was passed cleanly. */
+  examsPassed?: number[];
 };
 
 /** All progress, keyed by opening id. Unlocked levels are derived from it, never stored. */
 export type Progress = Record<string, OpeningProgress>;
 
-export const DEFAULT_DIFFICULTY: Difficulty = 'easy';
-
-/** Clean Test runs needed to master a line. */
-export const REQUIRED_CLEAN_RUNS: Record<Difficulty, number> = { easy: 1, normal: 2, hard: 3 };
-
-export type LineStatus = { line: OpeningLine; cleanRuns: number; mastered: boolean };
+export type LineStatus = { line: OpeningLine; progress: LineProgress; mastered: boolean };
 
 export type LevelStatus = {
   level: number;
-  /** Lines in this level that count for the difficulty. */
-  lines: LineStatus[];
+  /** Required to complete the level. */
+  mainLines: LineStatus[];
+  /** Optional sidelines. */
+  bonusLines: LineStatus[];
   unlocked: boolean;
-  /** Every counting line is mastered (vacuously true if none count). */
+  /** Every main line is mastered. */
   complete: boolean;
+  /** The optional level exam was passed (shown as a star). */
+  examPassed: boolean;
 };
 
+export type RunMode = 'watch' | 'practice' | 'test';
+
 export function openingProgress(progress: Progress, openingId: string): OpeningProgress {
-  return progress[openingId] ?? { difficulty: DEFAULT_DIFFICULTY, lines: {} };
+  return progress[openingId] ?? { lines: {} };
 }
 
-/** Easy: main lines only. Normal and Hard: every line (Hard also randomises branches). */
-export function countsFor(line: OpeningLine, difficulty: Difficulty): boolean {
-  return difficulty !== 'easy' || line.tier === 'main';
+export function lineProgress(progress: Progress, openingId: string, lineId: string): LineProgress {
+  return openingProgress(progress, openingId).lines[lineId] ?? { cleanRuns: 0 };
 }
 
-/** Levels 1…N of an opening with their lines, mastery and lock state for the chosen difficulty. */
+export const isMastered = (line: LineProgress) => line.cleanRuns >= 1;
+
+/** Levels 1…N of an opening, with mastery and lock state. A level unlocks when the one before is complete. */
 export function levelStatuses(opening: Opening, progress: Progress): LevelStatus[] {
-  const { difficulty, lines } = openingProgress(progress, opening.id);
-  const required = REQUIRED_CLEAN_RUNS[difficulty];
+  const saved = openingProgress(progress, opening.id);
   const maxLevel = Math.max(0, ...opening.lines.map((l) => l.level));
+  const status = (line: OpeningLine): LineStatus => {
+    const p = saved.lines[line.id] ?? { cleanRuns: 0 };
+    return { line, progress: p, mastered: isMastered(p) };
+  };
 
-  const statuses: LevelStatus[] = [];
+  const levels: LevelStatus[] = [];
   let previousComplete = true;
   for (let level = 1; level <= maxLevel; level++) {
-    const levelLines = opening.lines
-      .filter((l) => l.level === level && countsFor(l, difficulty))
-      .map((line) => {
-        const cleanRuns = lines[line.id]?.cleanRuns ?? 0;
-        return { line, cleanRuns, mastered: cleanRuns >= required };
-      });
-    const complete = levelLines.every((l) => l.mastered);
-    statuses.push({ level, lines: levelLines, unlocked: previousComplete, complete });
+    const lines = opening.lines.filter((l) => l.level === level);
+    const mainLines = lines.filter((l) => l.tier === 'main').map(status);
+    const complete = mainLines.every((l) => l.mastered);
+    levels.push({
+      level,
+      mainLines,
+      bonusLines: lines.filter((l) => l.tier === 'side').map(status),
+      unlocked: previousComplete,
+      complete,
+      examPassed: saved.examsPassed?.includes(level) ?? false,
+    });
     previousComplete = previousComplete && complete;
   }
-  return statuses;
+  return levels;
 }
 
-/** Share of counting lines mastered, 0…1, for the chosen difficulty. */
+/** Share of main lines mastered, 0…1. */
 export function masteredShare(opening: Opening, progress: Progress): number {
-  const lines = levelStatuses(opening, progress).flatMap((l) => l.lines);
+  const lines = levelStatuses(opening, progress).flatMap((l) => l.mainLines);
   return lines.length === 0 ? 0 : lines.filter((l) => l.mastered).length / lines.length;
 }
 
-/** Records a finished Practice/Test run. Only a clean Test run counts towards mastery. */
+/** The mode to suggest for a line: Watch it first, then Practice, then Test until mastered. */
+export function suggestedMode(line: LineProgress): RunMode {
+  if (line.practiced) return 'test';
+  if (line.watched) return 'practice';
+  return 'watch';
+}
+
+export type ContinueTarget = { openingId: string; lineId: string; mode: RunMode };
+
+/**
+ * What the Home screen's Continue button opens: in the most recently played opening (else the
+ * first one), the first unmastered main line of an unlocked level, then the bonus lines; if that
+ * opening is all done, the next opening with something left. Null when everything is mastered.
+ */
+export function continueTarget(
+  index: ContentIndex,
+  loadOpening: (id: string) => Opening | null,
+  progress: Progress,
+): ContinueTarget | null {
+  const lastPlayed = (id: string) =>
+    Object.values(openingProgress(progress, id).lines).reduce(
+      (latest, l) => (l.lastPlayed && l.lastPlayed > latest ? l.lastPlayed : latest),
+      '',
+    );
+  const ids = index.openings.map((o) => o.id);
+  const recent = [...ids].sort((a, b) => lastPlayed(b).localeCompare(lastPlayed(a)))[0];
+  const order = recent ? [recent, ...ids.filter((id) => id !== recent)] : ids;
+
+  for (const id of order) {
+    const opening = loadOpening(id);
+    if (!opening) continue;
+    const unlocked = levelStatuses(opening, progress).filter((l) => l.unlocked);
+    const next =
+      unlocked.flatMap((l) => l.mainLines).find((l) => !l.mastered) ??
+      unlocked.flatMap((l) => l.bonusLines).find((l) => !l.mastered);
+    if (next) return { openingId: id, lineId: next.line.id, mode: suggestedMode(next.progress) };
+  }
+  return null;
+}
+
+/** Records a run that was played to the end. Only a clean Test run counts towards mastery. */
 export function recordRun(
   progress: Progress,
   openingId: string,
   lineId: string,
-  run: { mode: 'practice' | 'test'; clean: boolean },
+  run: { mode: RunMode; clean: boolean },
   now = new Date(),
 ): Progress {
   const opening = openingProgress(progress, openingId);
   const line = opening.lines[lineId] ?? { cleanRuns: 0 };
-  const cleanRuns = line.cleanRuns + (run.mode === 'test' && run.clean ? 1 : 0);
-  return {
-    ...progress,
-    [openingId]: {
-      ...opening,
-      lines: { ...opening.lines, [lineId]: { ...line, cleanRuns, lastPlayed: now.toISOString() } },
-    },
+  const updated: LineProgress = {
+    ...line,
+    cleanRuns: line.cleanRuns + (run.mode === 'test' && run.clean ? 1 : 0),
+    lastPlayed: now.toISOString(),
+    ...(run.mode === 'watch' ? { watched: true } : { practiced: true }),
   };
+  return { ...progress, [openingId]: { ...opening, lines: { ...opening.lines, [lineId]: updated } } };
 }
 
-export function setDifficulty(progress: Progress, openingId: string, difficulty: Difficulty): Progress {
-  return { ...progress, [openingId]: { ...openingProgress(progress, openingId), difficulty } };
+/** Records a passed level exam. */
+export function recordExam(progress: Progress, openingId: string, level: number): Progress {
+  const opening = openingProgress(progress, openingId);
+  const examsPassed = [...new Set([...(opening.examsPassed ?? []), level])].sort((a, b) => a - b);
+  return { ...progress, [openingId]: { ...opening, examsPassed } };
 }

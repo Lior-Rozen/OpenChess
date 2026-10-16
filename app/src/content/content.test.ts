@@ -56,6 +56,11 @@ describe('validateOpening', () => {
     expect(errors).toContain('test.json: levels must be contiguous, level 2 is missing');
   });
 
+  it('reports a level with only sidelines', () => {
+    const errors = validateOpening(opening([validLine, { ...validLine, id: 'l2', level: 2, tier: 'side' }]), 'test.json');
+    expect(errors).toContain('test.json: level 2 needs at least one main line (main lines unlock the next level)');
+  });
+
   it('reports a line with no moves for the opening side', () => {
     const errors = validateOpening(opening([{ ...validLine, moves: ['e4'] }]), 'test.json');
     expect(errors).toContain('test.json "l1": has no moves for black');

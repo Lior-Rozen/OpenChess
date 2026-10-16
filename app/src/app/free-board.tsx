@@ -7,8 +7,8 @@ import { Button } from '@/components/Button';
 import { ChessGame, type Color, type GamePosition, type Square } from '@/chess/game';
 import { handleTap, type Selection } from '@/chess/tapToMove';
 
-/** Dev screen: free play for both sides on the board. */
-export default function FreePlay() {
+/** Free board: play both sides freely, e.g. to try out ideas. */
+export default function FreeBoard() {
   const [game] = useState(() => new ChessGame());
   const [position, setPosition] = useState(() => game.position());
   const [selection, setSelection] = useState<Selection>(null);
@@ -33,7 +33,7 @@ export default function FreePlay() {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ headerShown: true, title: 'Free play' }} />
+      <Stack.Screen options={{ headerShown: true, title: 'Free board' }} />
       <Text style={styles.status}>{describe(position)}</Text>
       <Board
         position={position}

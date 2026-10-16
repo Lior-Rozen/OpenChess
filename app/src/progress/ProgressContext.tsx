@@ -1,19 +1,17 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 
-import { recordRun, setDifficulty, type Difficulty, type Progress } from './mastery';
+import { recordExam, recordRun, type Progress, type RunMode } from './mastery';
 import { loadProgress, saveProgress } from './storage';
+
+type Change = { before: Progress; after: Progress };
 
 type ProgressContextValue = {
   progress: Progress;
   /** False until saved progress has been read from the device. */
   loaded: boolean;
-  /** Records a finished run; returns the progress from before and after it. */
-  recordRun: (
-    openingId: string,
-    lineId: string,
-    run: { mode: 'practice' | 'test'; clean: boolean },
-  ) => { before: Progress; after: Progress };
-  setDifficulty: (openingId: string, difficulty: Difficulty) => void;
+  /** Records a run played to the end; returns the progress from before and after it. */
+  recordRun: (openingId: string, lineId: string, run: { mode: RunMode; clean: boolean }) => Change;
+  recordExam: (openingId: string, level: number) => Change;
 };
 
 const ProgressContext = createContext<ProgressContextValue | null>(null);
@@ -38,7 +36,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  function update(change: (current: Progress) => Progress): { before: Progress; after: Progress } {
+  function update(change: (current: Progress) => Progress): Change {
     const before = latest.current;
     const after = change(before);
     latest.current = after;
@@ -51,9 +49,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     progress,
     loaded,
     recordRun: (openingId, lineId, run) => update((current) => recordRun(current, openingId, lineId, run)),
-    setDifficulty: (openingId, difficulty) => {
-      update((current) => setDifficulty(current, openingId, difficulty));
-    },
+    recordExam: (openingId, level) => update((current) => recordExam(current, openingId, level)),
   };
 
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>;

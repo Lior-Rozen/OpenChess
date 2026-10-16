@@ -1,11 +1,13 @@
-import type { Opening, OpeningLine } from '../content/types';
+import type { ContentIndex, Opening, OpeningLine } from '../content/types';
 import {
-  countsFor,
+  continueTarget,
   levelStatuses,
   masteredShare,
+  recordExam,
   recordRun,
-  setDifficulty,
+  suggestedMode,
   type Progress,
+  type RunMode,
 } from './mastery';
 
 const line = (id: string, level: number, tier: 'main' | 'side'): OpeningLine => ({
@@ -16,7 +18,7 @@ const line = (id: string, level: number, tier: 'main' | 'side'): OpeningLine => 
   moves: ['e4', 'e6'],
 });
 
-const opening: Opening = {
+const french: Opening = {
   id: 'french',
   name: 'French',
   side: 'black',
@@ -24,81 +26,116 @@ const opening: Opening = {
   description: '',
   lines: [line('a', 1, 'main'), line('b', 1, 'main'), line('s', 1, 'side'), line('c', 2, 'main'), line('d', 3, 'main')],
 };
+const caro: Opening = { ...french, id: 'caro', lines: [line('k1', 1, 'main')] };
 
-type Run = { mode: 'practice' | 'test'; clean: boolean };
-const test: Run = { mode: 'test', clean: true };
+const index: ContentIndex = {
+  contentVersion: 1,
+  openings: [
+    { id: 'french', name: 'French', side: 'black', file: 'f' },
+    { id: 'caro', name: 'Caro', side: 'black', file: 'c' },
+  ],
+};
+const load = (id: string) => ({ french, caro })[id as 'french' | 'caro'] ?? null;
 
-/** Records the same run `times` times. */
-function runs(progress: Progress, lineId: string, times: number, run: Run = test): Progress {
-  let next = progress;
-  for (let i = 0; i < times; i++) next = recordRun(next, 'french', lineId, run);
-  return next;
-}
+const run = (progress: Progress, lineId: string, mode: RunMode = 'test', clean = true, openingId = 'french') =>
+  recordRun(progress, openingId, lineId, { mode, clean });
 
-describe('mastery', () => {
-  it('counts only main lines on Easy, every line otherwise', () => {
-    expect(countsFor(line('s', 1, 'side'), 'easy')).toBe(false);
-    expect(countsFor(line('s', 1, 'side'), 'normal')).toBe(true);
-    expect(countsFor(line('s', 1, 'side'), 'hard')).toBe(true);
-  });
-
-  it('starts with only level 1 unlocked, on Easy', () => {
-    const levels = levelStatuses(opening, {});
+describe('levels', () => {
+  it('starts with only level 1 unlocked, sidelines as bonus', () => {
+    const levels = levelStatuses(french, {});
 
     expect(levels.map((l) => [l.level, l.unlocked, l.complete])).toEqual([
       [1, true, false],
       [2, false, false],
       [3, false, false],
     ]);
-    expect(levels[0].lines.map((l) => l.line.id)).toEqual(['a', 'b']); // no sideline on Easy
+    expect(levels[0].mainLines.map((l) => l.line.id)).toEqual(['a', 'b']);
+    expect(levels[0].bonusLines.map((l) => l.line.id)).toEqual(['s']);
   });
 
-  it('unlocks level 2 once every Easy line of level 1 has a clean Test run', () => {
-    const halfway = runs({}, 'a', 1);
-    expect(levelStatuses(opening, halfway)[1].unlocked).toBe(false);
+  it('masters a line with one clean Test run', () => {
+    expect(levelStatuses(french, run({}, 'a'))[0].mainLines[0].mastered).toBe(true);
+  });
 
-    const done = runs(halfway, 'b', 1);
-    const levels = levelStatuses(opening, done);
-    expect(levels[0]).toMatchObject({ complete: true });
+  it('does not master a line with Practice or an unclean Test', () => {
+    const progress = run(run({}, 'a', 'practice'), 'a', 'test', false);
+    expect(levelStatuses(french, progress)[0].mainLines[0].mastered).toBe(false);
+  });
+
+  it('unlocks the next level when every main line is mastered, bonus lines not needed', () => {
+    const halfway = run({}, 'a');
+    expect(levelStatuses(french, halfway)[1].unlocked).toBe(false);
+
+    const levels = levelStatuses(french, run(halfway, 'b'));
+    expect(levels[0].complete).toBe(true);
     expect(levels[1]).toMatchObject({ unlocked: true, complete: false });
-    expect(levels[2]).toMatchObject({ unlocked: false });
-  });
-
-  it('needs 2 clean runs on Normal and 3 on Hard, sidelines included', () => {
-    let progress = setDifficulty({}, 'french', 'normal');
-    progress = runs(progress, 'a', 2);
-    progress = runs(progress, 'b', 2);
-    expect(levelStatuses(opening, progress)[1].unlocked).toBe(false); // sideline 's' still missing
-
-    progress = runs(progress, 's', 2);
-    expect(levelStatuses(opening, progress)[1].unlocked).toBe(true);
-
-    progress = setDifficulty(progress, 'french', 'hard');
-    expect(levelStatuses(opening, progress)[1].unlocked).toBe(false); // 2 runs aren't enough on Hard
-  });
-
-  it('only counts clean Test runs', () => {
-    let progress = runs({}, 'a', 1, { mode: 'practice', clean: true });
-    progress = runs(progress, 'a', 1, { mode: 'test', clean: false });
-
-    expect(progress.french.lines.a.cleanRuns).toBe(0);
-    expect(progress.french.lines.a.lastPlayed).toEqual(expect.any(String));
+    expect(levels[2].unlocked).toBe(false);
   });
 
   it('keeps later levels locked behind an incomplete earlier one', () => {
-    const progress = runs({}, 'c', 1); // level 2 mastered, level 1 not
-    expect(levelStatuses(opening, progress)[2].unlocked).toBe(false);
+    expect(levelStatuses(french, run({}, 'c'))[2].unlocked).toBe(false);
   });
 
-  it('reports the share of mastered lines', () => {
-    expect(masteredShare(opening, {})).toBe(0);
-    expect(masteredShare(opening, runs({}, 'a', 1))).toBe(0.25); // 1 of 4 main lines
+  it('records a passed exam as a star on that level', () => {
+    const progress = recordExam(recordExam({}, 'french', 1), 'french', 1);
+    expect(progress.french.examsPassed).toEqual([1]);
+    expect(levelStatuses(french, progress).map((l) => l.examPassed)).toEqual([true, false, false]);
+  });
+
+  it('reports the share of main lines mastered', () => {
+    expect(masteredShare(french, {})).toBe(0);
+    expect(masteredShare(french, run({}, 'a'))).toBe(0.25);
+  });
+});
+
+describe('runs', () => {
+  it('tracks watched, practiced and when', () => {
+    const watched = run({}, 'a', 'watch');
+    expect(watched.french.lines.a).toMatchObject({ cleanRuns: 0, watched: true, lastPlayed: expect.any(String) });
+
+    const practiced = run(watched, 'a', 'practice', false);
+    expect(practiced.french.lines.a).toMatchObject({ watched: true, practiced: true });
+  });
+
+  it('suggests Watch, then Practice, then Test', () => {
+    expect(suggestedMode({ cleanRuns: 0 })).toBe('watch');
+    expect(suggestedMode({ cleanRuns: 0, watched: true })).toBe('practice');
+    expect(suggestedMode({ cleanRuns: 0, watched: true, practiced: true })).toBe('test');
   });
 
   it('does not mutate the progress it is given', () => {
     const before: Progress = {};
-    recordRun(before, 'french', 'a', test);
-    setDifficulty(before, 'french', 'hard');
+    run(before, 'a');
+    recordExam(before, 'french', 1);
     expect(before).toEqual({});
+  });
+});
+
+describe('continueTarget', () => {
+  it('starts with the first line of the first opening, in Watch', () => {
+    expect(continueTarget(index, load, {})).toEqual({ openingId: 'french', lineId: 'a', mode: 'watch' });
+  });
+
+  it('moves on to the next unmastered main line, then the bonus lines', () => {
+    expect(continueTarget(index, load, run({}, 'a'))).toMatchObject({ lineId: 'b', mode: 'watch' });
+    expect(continueTarget(index, load, run(run({}, 'a'), 'b'))).toMatchObject({ lineId: 'c' });
+  });
+
+  it('suggests the next mode for a line in progress', () => {
+    expect(continueTarget(index, load, run({}, 'a', 'watch'))).toMatchObject({ lineId: 'a', mode: 'practice' });
+  });
+
+  it('prefers the most recently played opening', () => {
+    const progress = run({}, 'k1', 'watch', true, 'caro');
+    expect(continueTarget(index, load, progress)).toMatchObject({ openingId: 'caro', lineId: 'k1' });
+  });
+
+  it('moves to another opening when one is finished, and returns null when all are', () => {
+    let progress: Progress = {};
+    for (const id of ['a', 'b', 's', 'c', 'd']) progress = run(progress, id);
+    expect(continueTarget(index, load, progress)).toMatchObject({ openingId: 'caro', lineId: 'k1' });
+
+    progress = run(progress, 'k1', 'test', true, 'caro');
+    expect(continueTarget(index, load, progress)).toBeNull();
   });
 });

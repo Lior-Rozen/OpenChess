@@ -51,23 +51,29 @@ updates and sync later, but it is never required to train.
 - **Test:** the drill with no hints and no arrow. The run fails at 2 mistakes
   (`TEST_MISTAKE_LIMIT`). A clean run (0 mistakes) counts toward mastery.
 
-### Levels and difficulty
+### Levels (the only progression; there is no difficulty picker)
 - Each opening has **levels 1…N**. Each line in the content is tagged with `level`
   and `tier` (`main` | `side`).
-- A line is **mastered** after K clean Test runs (Easy K=1, Normal K=2, Hard K=3).
-- A level is **complete** when all lines in it that count for the chosen mode are mastered.
-  That unlocks the next level.
-- **Difficulty modes** (chosen per opening, changeable):
-  - **Easy:** only `main` tier lines, so fewer lines per level and faster progress.
-  - **Normal:** main lines plus key sidelines.
-  - **Hard:** all lines, plus the opponent picks a random branch at forks, so every reply must be known.
-  - With only two tiers (`main`/`side`), Normal and Hard count the same lines. Hard differs in
-    needing 3 clean runs and in how they're earned: lines offer Watch/Practice only, and mastery
-    comes from the per-level **"Test level"** run, where the app branches at random and the run
-    credits whichever line was played to the end. Any book reply is accepted where lines split on
-    the user's move.
-- The levels deepen naturally: level 1 is the first 6–8 moves of the main line, and later levels
-  add depth and branches.
+- Levels are where "harder" lives: level 1 is the first 6–8 moves of the main lines, and later
+  levels go deeper and add branches. (An Easy/Normal/Hard picker was tried in phase 4 and
+  dropped: it duplicated what levels already do.)
+- A line is **mastered** after **one clean Test run**.
+- **Main lines are required:** a level is **complete** when all its main lines are mastered,
+  and that unlocks the next level. **Sidelines are optional bonus lines.** Every level needs at
+  least one main line (the validator checks this).
+- **Level exam (optional, earns a ★):** a Test over every line of the level, main and bonus.
+  The Mastermind picks his moves at random wherever the lines split, so every reply must be known.
+  Any book reply is accepted where lines split on the user's move. A clean exam also masters the
+  line it ended in.
+- The app suggests the next step for each line: Watch it first, then Practice, then Test.
+
+### The Mastermind
+The opponent is a character: **the Mastermind**, a quiet, terse, slightly paranoid hacker type
+(inspired by Elliot from *Mr. Robot*). Every run opens with **"Hello, friend."** He speaks one
+short line only at key moments: the start of a run, a mistake, a hint, a clean finish, a failed
+test, a mastered line, an unlocked level, a passed exam. He never talks on ordinary moves. His
+lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit hooded figure
+(`Avatar.tsx`, no licensed artwork). A setting to quiet him comes with Settings in phase 6.
 
 ### Additions (cheap to maintain)
 - **Review queue (spaced repetition):** mastered lines come back after 1d → 3d → 7d → 21d.
@@ -87,8 +93,14 @@ updates and sync later, but it is never required to train.
   (♔♕♖♗♘♙), drawn by the phone's font, so there are no assets or licences. A flat SVG piece set
   (e.g. cburnett from Lichess, which needs a credit line) can replace them during theme polish.
 - One serif or retro font, a muted palette, almost no chrome. The screens:
-  **Home** (openings grid + review count) → **Opening** (levels list, mode picker, progress) →
-  **Drill** (board, move list, feedback) → **Settings**.
+  - **Home:** the Mastermind and "Hello, friend.", one big **Continue** button (straight into
+    the next suggested line and mode), **Openings**, **Free board**, a ⚙ for Settings, and
+    (phase 6) **Review** with the due count.
+  - **Openings:** the grid, with % mastered.
+  - **Opening:** levels, main and bonus lines, exam.
+  - **Drill:** the Mastermind's line, board, move list, result card.
+  - **Free board:** free play for both sides.
+  - **Settings:** a placeholder until phase 6. It holds the server status.
 
 ## 4. Content format
 `content/openings/french.json`:
@@ -145,8 +157,7 @@ chess-openings/
 - **The trainer is a pure-TS state machine** (no React inside). It takes a line, mode and moves,
   and returns state and events. That makes it unit-testable with Jest; it is the heart of the app.
 - **Progress model** (`app/src/progress/mastery.ts`, saved with AsyncStorage under `progress:v1`):
-  `{ [openingId]: { difficulty, lines: { [lineId]: { cleanRuns, lastPlayed } } } }`. One
-  `cleanRuns` counter per line serves every difficulty (switching Easy → Hard needs more runs).
+  `{ [openingId]: { lines: { [lineId]: { cleanRuns, watched, practiced, lastPlayed } }, examsPassed: number[] } }`.
   Phase 6 adds the SRS fields (`intervalDays`, `due`). Unlocked levels are *derived* from this,
   never stored.
 - **Backend (phase 1):** `GET /api/health` and `GET /api/hello` → `{ "message": "hello friend" }`.

@@ -1,0 +1,25 @@
+import { StyleSheet, Text, View } from 'react-native';
+
+import { theme } from '@/theme';
+
+import { MastermindAvatar } from './Avatar';
+
+/** The Mastermind's avatar with what he's saying next to it. */
+export function MastermindSpeech({ text }: { text: string }) {
+  return (
+    <View style={styles.row}>
+      <MastermindAvatar size={40} />
+      <View style={styles.bubble}>
+        <Text style={styles.name}>The Mastermind</Text>
+        <Text style={styles.text}>{text}</Text>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  row: { flexDirection: 'row', alignItems: 'center', gap: 10, alignSelf: 'stretch', paddingHorizontal: 4 },
+  bubble: { flex: 1, backgroundColor: theme.card, borderRadius: 8, paddingVertical: 6, paddingHorizontal: 10 },
+  name: { fontSize: 12, fontFamily: 'monospace', color: theme.muted, letterSpacing: 1 },
+  text: { fontSize: 16, fontFamily: theme.font, color: theme.text },
+});

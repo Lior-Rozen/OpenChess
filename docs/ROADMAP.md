@@ -44,6 +44,17 @@ phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind ea
   chess content session.
 - **Done when:** completing level 1 on Easy unlocks level 2, and progress survives an app restart.
 
+## Phase 4b: Rework (levels only, the Mastermind, a real Home)
+- [x] Drop the Easy/Normal/Hard picker: levels are the only progression. One clean Test masters
+      a line, main lines are required to unlock the next level, sidelines are optional bonus lines
+- [x] Hard-mode random branches become the optional **level exam** (★)
+- [x] The Mastermind: opponent character with an 8-bit avatar, "Hello, friend." at the start of
+      every run, one short line at key moments
+- [x] New Home: Continue (next suggested line and mode), Openings, Free board, ⚙ Settings
+      placeholder; the openings grid moves to its own screen
+- **Done when:** Continue walks a new user through Watch → Practice → Test of the first line,
+  and mastering level 1's main lines unlocks level 2.
+
 ## Phase 5: Content expansion
 - [ ] ~10–12 openings × 2–4 levels each (see the starter set in DESIGN.md §4)
 - [ ] All content passes validation
@@ -52,7 +63,8 @@ phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind ea
 ## Phase 6: Retention and polish
 - [ ] Review queue (SRS: 1d → 3d → 7d → 21d)
 - [ ] Stats per opening, random drill
-- [ ] Sounds/haptics with an off switch; Settings screen
+- [ ] Sounds/haptics with an off switch; Settings screen (including quieting the Mastermind)
+- [ ] Review button on Home with the due count
 - [ ] Theme polish and app icon
 - [ ] First `eas build -p android --profile preview` APK shared with a friend
 - **Done when:** a friend has the APK installed and working.
@@ -70,3 +82,6 @@ phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind ea
 - **Recharging test energy:** Test runs cost a charge that refills over time, to encourage
   spaced practice. Needs thought: it could feel like a mobile-game gate, it overlaps with the
   review queue (phase 6), and it should never block Practice or Watch.
+- **Board editor:** set up any position on the Free board (place and remove pieces, side to move).
+- **Mastermind artwork:** replace the drawn 8-bit avatar with real retro art (must be original or
+  properly licensed, not the show's merchandise art).

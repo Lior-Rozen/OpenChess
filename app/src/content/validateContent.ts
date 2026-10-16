@@ -79,6 +79,7 @@ export function validateOpening(opening: unknown, file: string, lineIds = new Se
   // Ply parity of the user's moves: White moves on even plies, Black on odd ones.
   const userParity = opening.side === 'white' ? 0 : 1;
   const levels = new Set<number>();
+  const levelsWithMainLine = new Set<number>();
 
   opening.lines.forEach((line: unknown, i) => {
     let where = `${file} lines[${i}]`;
@@ -96,6 +97,7 @@ export function validateOpening(opening: unknown, file: string, lineIds = new Se
     if (!isPositiveInt(line.level)) errors.push(`${where}: level must be a positive integer`);
     else levels.add(line.level);
     if (!TIERS.includes(line.tier as string)) errors.push(`${where}: tier must be "main" or "side"`);
+    if (line.tier === 'main' && isPositiveInt(line.level)) levelsWithMainLine.add(line.level);
     if (line.summary !== undefined && !isNonEmptyString(line.summary)) {
       errors.push(`${where}: summary must be a non-empty string`);
     }
@@ -133,6 +135,9 @@ export function validateOpening(opening: unknown, file: string, lineIds = new Se
   const maxLevel = Math.max(0, ...levels);
   for (let level = 1; level <= maxLevel; level++) {
     if (!levels.has(level)) errors.push(`${file}: levels must be contiguous, level ${level} is missing`);
+    else if (!levelsWithMainLine.has(level)) {
+      errors.push(`${file}: level ${level} needs at least one main line (main lines unlock the next level)`);
+    }
   }
 
   return errors;
