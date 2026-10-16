@@ -2,6 +2,7 @@ import index from '../../../content/index.json';
 import french from '../../../content/openings/french.json';
 import caroKann from '../../../content/openings/caro-kann.json';
 import sicilian from '../../../content/openings/sicilian.json';
+import scandinavian from '../../../content/openings/scandinavian.json';
 
 import type { ContentIndex, Opening, OpeningLine } from './types';
 
@@ -11,6 +12,7 @@ const bundledByFile: Record<string, unknown> = {
   'openings/french.json': french,
   'openings/caro-kann.json': caroKann,
   'openings/sicilian.json': sicilian,
+  'openings/scandinavian.json': scandinavian,
 };
 
 export const contentIndex = index as ContentIndex;
