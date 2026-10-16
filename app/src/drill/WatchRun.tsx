@@ -26,6 +26,8 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [watched, setWatched] = useState(false);
+  // Stepping forward one move slides the piece; going back or jumping shows the position at once.
+  const [slideIn, setSlideIn] = useState(false);
   const [speech, setSpeech] = useState(() => `${GREETING} ${say('startWatch')}`);
   const { width } = useWindowDimensions();
   const boardSize = Math.min(width - 16, 520);
@@ -38,6 +40,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
   function goTo(next: number) {
     const clamped = Math.max(0, Math.min(next, last));
     if (clamped === index) return;
+    setSlideIn(clamped === index + 1);
     setIndex(clamped);
     const firstFinish = clamped === last && !watched;
     feedback(firstFinish ? 'complete' : 'move');
@@ -59,7 +62,10 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
 
   function togglePlay() {
     if (playing) return setPlaying(false);
-    if (index === last) setIndex(0);
+    if (index === last) {
+      setSlideIn(false);
+      setIndex(0);
+    }
     setPlaying(true);
   }
 
@@ -84,7 +90,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
           </Text>
         </View>
 
-        <Board position={frame.position} orientation={userColor} selection={null} onSquarePress={() => {}} size={boardSize} />
+        <Board position={frame.position} orientation={userColor} selection={null} onSquarePress={() => {}} size={boardSize} slide={slideIn} />
 
         <View style={styles.controls}>
           <Control label="|◁" description="Start" onPress={() => step(0)} disabled={index === 0} />

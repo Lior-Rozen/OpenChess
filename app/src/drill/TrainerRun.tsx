@@ -40,6 +40,8 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
   const [selection, setSelection] = useState<Selection>(null);
   const [flash, setFlash] = useState<(BoardFlash & { id: number }) | null>(null);
   const [result, setResult] = useState<RunResult | null>(null);
+  // The Mastermind's moves slide in; the user's own moves land at once.
+  const [slideLast, setSlideLast] = useState(false);
   const [shake] = useState(() => new Animated.Value(0));
   const { width } = useWindowDimensions();
   const boardSize = Math.min(width - 16, 520);
@@ -95,6 +97,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
 
   const autoMove = useEffectEvent(() => {
     const events = trainer.advance();
+    setSlideLast(true);
     setState(trainer.state());
     handleEvents(events);
   });
@@ -126,6 +129,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
     if (!tap.move) return;
 
     const events = trainer.tryMove(tap.move.from, tap.move.to);
+    if (events.some((e) => e.type === 'moved')) setSlideLast(false);
     setState(trainer.state());
     if (events.some((e) => e.type === 'wrongMove')) {
       showFlash(tap.move.to, 'bad');
@@ -167,6 +171,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
             size={boardSize}
             arrow={state.hint}
             flash={flash}
+            slide={slideLast}
           />
         </Animated.View>
 

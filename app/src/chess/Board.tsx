@@ -1,9 +1,10 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Animated, Easing, Pressable, StyleSheet, Text, View } from 'react-native';
 import Svg, { Line, Polygon } from 'react-native-svg';
 
 import { theme } from '@/theme';
 
-import type { Color, GamePosition, Square } from './game';
+import type { BoardPiece, Color, GamePosition, Square } from './game';
 import { Piece } from './Piece';
 import type { Selection } from './tapToMove';
 
@@ -11,6 +12,9 @@ const FILES = 'abcdefgh';
 
 // Violet board with neon accents (magenta for the user's focus, cyan for the Mastermind's hints).
 const colors = theme.board;
+
+/** How long a sliding piece takes to reach its square. */
+const SLIDE_MS = 200;
 
 export type BoardArrow = { from: Square; to: Square };
 export type BoardFlash = { square: Square; kind: 'good' | 'bad' };
@@ -27,10 +31,15 @@ type Props = {
   arrow?: BoardArrow | null;
   /** A brief green/red tint on a square, as feedback for a move. */
   flash?: BoardFlash | null;
+  /** Slide the last move's piece into place instead of showing it there at once. */
+  slide?: boolean;
 };
 
-export function Board({ position, orientation, selection, onSquarePress, size, arrow, flash }: Props) {
+export function Board({ position, orientation, selection, onSquarePress, size, arrow, flash, slide = false }: Props) {
   const squareSize = size / 8;
+  // While sliding, the moved piece is drawn on its own layer above the squares, not in its square.
+  const lastMove = position.lastMove;
+  const slider = slide && lastMove ? findPiece(position, lastMove.to) : null;
   // position.board runs rank 8 → 1 and file a → h, which is White's view.
   const rowIndexes = orientation === 'w' ? [0, 1, 2, 3, 4, 5, 6, 7] : [7, 6, 5, 4, 3, 2, 1, 0];
   const colIndexes = orientation === 'w' ? [0, 1, 2, 3, 4, 5, 6, 7] : [7, 6, 5, 4, 3, 2, 1, 0];
@@ -68,7 +77,7 @@ export function Board({ position, orientation, selection, onSquarePress, size, a
                 }}
               >
                 {highlight && <View style={[StyleSheet.absoluteFill, { backgroundColor: highlight }]} />}
-                {piece && <Piece type={piece.type} color={piece.color} size={squareSize} />}
+                {piece && square !== slider?.square && <Piece type={piece.type} color={piece.color} size={squareSize} />}
                 {/* Coordinates go on top of the pieces so they stay readable on the edge ranks and files. */}
                 {displayCol === 0 && (
                   <Text style={[styles.label, styles.rankLabel, { color: labelColor, fontSize: squareSize * 0.22 }]}>
@@ -86,8 +95,58 @@ export function Board({ position, orientation, selection, onSquarePress, size, a
           })}
         </View>
       ))}
+      {slider && lastMove && (
+        // Keyed by the position, so each new move starts a fresh slide.
+        <SlidingPiece
+          key={position.fen}
+          piece={slider}
+          from={lastMove.from}
+          orientation={orientation}
+          squareSize={squareSize}
+        />
+      )}
       {arrow && <ArrowOverlay arrow={arrow} orientation={orientation} size={size} />}
     </View>
+  );
+}
+
+function findPiece(position: GamePosition, square: Square): BoardPiece | null {
+  return position.board.flat().find((p) => p?.square === square) ?? null;
+}
+
+type SlidingPieceProps = { piece: BoardPiece; from: Square; orientation: Color; squareSize: number };
+
+/** A piece gliding from `from` to its square. */
+function SlidingPiece({ piece, from, orientation, squareSize }: SlidingPieceProps) {
+  const [progress] = useState(() => new Animated.Value(0));
+  const start = squareCenter(from, orientation, squareSize);
+  const end = squareCenter(piece.square, orientation, squareSize);
+
+  useEffect(() => {
+    Animated.timing(progress, {
+      toValue: 1,
+      duration: SLIDE_MS,
+      easing: Easing.out(Easing.quad),
+      useNativeDriver: true,
+    }).start();
+  }, [progress]);
+
+  const translateX = progress.interpolate({ inputRange: [0, 1], outputRange: [start.x - end.x, 0] });
+  const translateY = progress.interpolate({ inputRange: [0, 1], outputRange: [start.y - end.y, 0] });
+  return (
+    <Animated.View
+      pointerEvents="none"
+      style={{
+        position: 'absolute',
+        left: end.x - squareSize / 2,
+        top: end.y - squareSize / 2,
+        width: squareSize,
+        height: squareSize,
+        transform: [{ translateX }, { translateY }],
+      }}
+    >
+      <Piece type={piece.type} color={piece.color} size={squareSize} />
+    </Animated.View>
   );
 }
 

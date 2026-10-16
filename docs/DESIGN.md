@@ -97,6 +97,8 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
   pixel art on the board. The 8-bit style belongs to the Mastermind and small accents only.
 - **A board of its own:** not green (that's chess.com's look). The board is violet (`#b9a6d6` /
   `#5e3b8c`), with neon accents: magenta for the last move and selection, cyan for the hint arrow.
+- **Motion:** the Mastermind's moves, and stepping forward in Watch, slide the piece into place
+  (200 ms, ease-out). The user's own moves, stepping back and jumping land at once.
 - **Pieces:** PNG images in `app/assets/pieces/` (`wK.png` … `bP.png`), cut from a public piece
   sheet the user supplied. They're about 65 px, so slightly soft when scaled up. A higher-resolution
   or SVG version would be sharper.
