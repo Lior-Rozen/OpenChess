@@ -69,7 +69,7 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
 "Read docs/prompts/ui-frontend.md and follow it."
 - [ ] Review queue (SRS: 1d → 3d → 7d → 21d). A review is a normal Test run (same rules)
 - [ ] Stats per opening, random drill
-- [ ] Openings filter: chips on the Openings screen for side (White/Black), first move
+- [x] Openings filter: chips on the Openings screen for side (White/Black), first move
       (1.e4/1.d4/…, derived from the lines) and tags (gambit, aggressive, solid, …)
 - [ ] Sounds/haptics with an off switch; Settings screen (including quieting the Mastermind)
 - [ ] Review button on Home with the due count

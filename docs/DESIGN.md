@@ -116,7 +116,10 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
   - **Home:** the Mastermind and "Hello, friend.", one big **Continue** button (straight into
     the next suggested line and mode), **Openings**, **Free board**, a ⚙ for Settings, and
     (phase 6) **Review** with the due count.
-  - **Openings:** the grid, with % mastered.
+  - **Openings:** the grid, with % mastered, grouped under AS WHITE and AS BLACK. Filter chips at
+    the top (always visible) for side, first move and style tags. Within side and first move,
+    several chips mean "any of them"; each tag narrows further (an opening needs all picked tags).
+    Each card shows its first move and tags. The logic is `app/src/openings/filter.ts`.
   - **Opening:** levels, main and bonus lines, exam.
   - **Drill:** the Mastermind's line, board, move list, result card.
   - **Free board:** free play for both sides.
