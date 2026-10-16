@@ -93,3 +93,7 @@ If the QR code won't connect (for example on guest Wi-Fi that isolates devices),
 cd app;    npm test; npm run typecheck; npm run lint
 cd server; dotnet test
 ```
+
+Expo Router generates TypeScript types for the routes (the files in `app/src/app/`) while
+`npx expo start` is running. After adding a new screen, run `npx expo start` once before
+`npm run typecheck`, or it will report the new route as unknown.

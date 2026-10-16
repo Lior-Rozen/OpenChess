@@ -17,10 +17,11 @@ phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind ea
 - **Done when:** the phone shows "Hello friend" and "Server says: hello friend".
 
 ## Phase 2: Board
-- [ ] Board component: 8×8, coordinates, flip, piece SVGs
-- [ ] Tap-to-move with selected-piece and legal-target highlights, plus last-move highlight
-- [ ] chess.js wrapper; promotion handled (auto-queen is fine for book lines)
-- [ ] Dev screen for free play on the board; Jest tests for the wrapper
+- [x] Board component: 8×8, coordinates, flip, pieces (Unicode chess symbols for now: no image
+      files or licence; a drawn piece set can come with the phase 6 theme polish)
+- [x] Tap-to-move with selected-piece and legal-target highlights, plus last-move highlight
+- [x] chess.js wrapper; promotion handled (auto-queen is fine for book lines)
+- [x] Dev screen for free play on the board; Jest tests for the wrapper
 - **Done when:** a legal game can be played on the phone by tapping.
 
 ## Phase 3: Trainer with one opening

@@ -77,8 +77,9 @@ updates and sync later, but it is never required to train.
 - No drag-to-move in v1 (tap-to-move is simpler and reliable on phones).
 
 ### Visual direction ("old-school, simple")
-- A classic board in green/cream or brown/beige, with simple flat piece SVGs (e.g. the cburnett
-  set used by Lichess, CC BY-SA, credited).
+- A classic board in green/cream or brown/beige. Pieces are currently the Unicode chess symbols
+  (♔♕♖♗♘♙), drawn by the phone's font, so there are no assets or licences. A flat SVG piece set
+  (e.g. cburnett from Lichess, which needs a credit line) can replace them during theme polish.
 - One serif or retro font, a muted palette, almost no chrome. The screens:
   **Home** (openings grid + review count) → **Opening** (levels list, mode picker, progress) →
   **Drill** (board, move list, feedback) → **Settings**.

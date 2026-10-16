@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -28,6 +29,9 @@ export default function Index() {
     <View style={styles.container}>
       <Text style={styles.title}>Hello friend</Text>
       <Text style={styles.status}>{status}</Text>
+      <Link href="/dev" style={styles.link}>
+        Free play board (dev)
+      </Link>
     </View>
   );
 }
@@ -50,5 +54,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'serif',
     color: '#5b6b5b',
+  },
+  link: {
+    marginTop: 40,
+    fontSize: 18,
+    fontFamily: 'serif',
+    color: '#2f3a2f',
+    textDecorationLine: 'underline',
   },
 });
