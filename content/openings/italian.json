@@ -1,0 +1,112 @@
+{
+  "id": "italian",
+  "name": "Italian Game",
+  "side": "white",
+  "eco": "C50-C59",
+  "description": "Bishop to c4 aiming at f7, then the slow, flexible c3 and d3 plan.",
+  "tags": ["positional", "beginner-friendly"],
+  "lines": [
+    {
+      "id": "italian-giuoco",
+      "name": "Giuoco Pianissimo (3…Bc5)",
+      "level": 1,
+      "tier": "main",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "c3", "Nf6", "d3", "d6", "O-O", "O-O", "Re1", "a6", "Bb3"],
+      "notes": {
+        "4": "Bc4 develops towards f7, the weakest point in Black's camp.",
+        "6": "c3 prepares d4 one day and takes d4 away from Black's knight.",
+        "8": "d3 protects e4 calmly; White keeps the centre solid and plays slowly.",
+        "14": "Bb3 keeps the bishop safe from …b5 and …Na5."
+      },
+      "summary": "c3, d3, castle, Re1 and Bb3: a solid set-up, then slowly improve before breaking with d4."
+    },
+    {
+      "id": "italian-two-knights-bc5",
+      "name": "Two Knights: 4…Bc5",
+      "level": 1,
+      "tier": "main",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d3", "Bc5", "c3", "d6", "O-O", "O-O", "Re1", "a6", "Bb3"],
+      "notes": {
+        "6": "d3 defends e4 and avoids the sharp theory after 4.Ng5.",
+        "8": "c3: the position is now the same as the Giuoco Pianissimo."
+      },
+      "summary": "4.d3 and 5.c3 bring the Two Knights back into the Giuoco: one plan for both."
+    },
+    {
+      "id": "italian-two-knights-be7",
+      "name": "Two Knights: 4…Be7",
+      "level": 1,
+      "tier": "main",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d3", "Be7", "O-O", "O-O", "Re1", "d6", "c3"],
+      "notes": {
+        "6": "d3 defends e4; White isn't in a hurry.",
+        "10": "Re1 adds support to e4 and gets the rook to the centre.",
+        "12": "c3 prepares d4 and gives the bishop a retreat on c2."
+      },
+      "summary": "Against …Be7, the same plan: castle, Re1, c3, then think about d4."
+    },
+    {
+      "id": "italian-hungarian",
+      "name": "Hungarian (3…Be7)",
+      "level": 1,
+      "tier": "side",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Be7", "d3", "Nf6", "O-O", "O-O", "Re1", "d6", "c3"],
+      "notes": {
+        "6": "d3 keeps things simple; after …Nf6 this is the Two Knights with …Be7.",
+        "12": "c3: the same position as Two Knights 4…Be7."
+      },
+      "summary": "The Hungarian move order changes nothing: d3, O-O, Re1 and c3."
+    },
+    {
+      "id": "italian-blackburne",
+      "name": "Blackburne Shilling Trap (3…Nd4)",
+      "level": 1,
+      "tier": "side",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nd4", "Nxd4", "exd4", "O-O"],
+      "notes": {
+        "5": "…Nd4 is a trap: 4.Nxe5?? Qg5! wins material for Black.",
+        "6": "Nxd4 takes the knight instead of the e5 pawn; Black's centre pawn is pulled to d4.",
+        "8": "O-O and White is ahead in development, ready for c3 to attack d4."
+      },
+      "summary": "Against 3…Nd4, don't grab e5: take the knight, castle, and use your lead in development."
+    },
+    {
+      "id": "italian-giuoco-deep",
+      "name": "Giuoco: knight tour Nbd2-f1",
+      "level": 2,
+      "tier": "main",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "c3", "Nf6", "d3", "d6", "O-O", "O-O", "Re1", "a6", "Bb3", "Ba7", "h3", "h6", "Nbd2", "Re8", "Nf1"],
+      "notes": {
+        "16": "h3 stops …Bg4 and …Ng4.",
+        "18": "Nbd2 starts the classic knight tour d2-f1-g3.",
+        "20": "Nf1 heads for g3, where the knight eyes f5 and supports the kingside."
+      },
+      "summary": "The Italian knight tour: Nbd2, Nf1, Ng3, slowly building up before d4 or a kingside push."
+    },
+    {
+      "id": "italian-two-knights-na5",
+      "name": "Two Knights: 7…Na5",
+      "level": 2,
+      "tier": "main",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d3", "Be7", "O-O", "O-O", "Re1", "d6", "c3", "Na5", "Bb5", "a6", "Ba4", "b5", "Bc2", "c5", "Nbd2"],
+      "notes": {
+        "14": "Bb5 dodges the knight while keeping the bishop on the board.",
+        "18": "Bc2 tucks the bishop behind e4, eyeing the kingside.",
+        "20": "Nbd2 heads for f1 and g3, as in the Giuoco."
+      },
+      "summary": "When …Na5 hits the bishop, keep it with Bb5-a4-c2, then do the Nbd2-f1 knight tour."
+    },
+    {
+      "id": "italian-giuoco-d5",
+      "name": "Giuoco: early …d5",
+      "level": 2,
+      "tier": "side",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "c3", "Nf6", "d3", "O-O", "O-O", "d5", "exd5", "Nxd5", "Re1"],
+      "notes": {
+        "12": "exd5 trades, so the black knight lands on d5 where it can be chased.",
+        "14": "Re1 puts pressure on the e5 pawn at once."
+      },
+      "summary": "If Black plays …d5 early, trade on d5 and hit e5 with Re1."
+    }
+  ]
+}
