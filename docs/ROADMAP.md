@@ -94,7 +94,7 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
   - **Mastermind avatar and app icon:** supplied by the user. Transparent square PNG (pixel art
     scaled to 512 px without smoothing) or SVG. Optional expressions (neutral, smug, disappointed).
     Icon: 1024 px, plus a transparent foreground layer for Android.
-- [ ] Board editor on the Free board, kept simple: drag a piece off the board to remove it, drag
+- [x] Board editor on the Free board, kept simple: drag a piece off the board to remove it, drag
       pieces in from a pool of all piece types, then play on from the position
 - [ ] (parked) First `eas build -p android --profile preview` APK shared with a friend
 - **Done when:** a friend has the APK installed and working.

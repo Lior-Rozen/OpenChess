@@ -127,7 +127,11 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
   - **Opening:** levels, main and bonus lines, exam.
   - **Drill:** the Mastermind's line, board, move list, result card.
   - **Free board:** free play for both sides, with Take back (one move at a time, any time,
-    checkmate included), Flip board and New game.
+    checkmate included), Flip board, New game and **Edit position**. The editor starts from the
+    current position: drag pieces in from a pool of all 12, drag them around, drag one off the
+    board to remove it; choose who moves; Start position and Clear. "Play from here" checks one
+    king each, no pawns on the edge ranks, and that the side not to move isn't in check. Castling
+    is allowed where king and rook are home. Take back stops at the set-up position.
   - **Settings:** Sounds and Vibration switches; how much the Mastermind talks (Normal: key
     moments; Minimal: only when a run starts and ends; Silent: no speech bubble); Reset progress,
     which must be held for 2 seconds (no popup, no accidents); the server status. Saved on the
