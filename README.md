@@ -20,6 +20,13 @@ docs/       design and roadmap
    ```
    Open a new terminal afterwards so `git`, `node`, `npm` and `dotnet` are on the PATH.
 
+   Windows blocks PowerShell scripts by default, and `npm`/`npx` are installed as scripts (you'll
+   see "running scripts is disabled on this system"). Allow local scripts for your user, once, in a
+   normal (non-admin) PowerShell:
+   ```powershell
+   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+   ```
+
 2. **Install Expo Go on the phone** from the Play Store. It's a generic "player" app: it downloads
    your JavaScript from the PC and runs it, so you don't need to build an APK while developing.
 
