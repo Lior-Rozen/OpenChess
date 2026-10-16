@@ -106,6 +106,12 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
   `app/src/theme.ts`** (the board's too), so the palette changes in one place. Readability first.
   Fonts are the phone's serif (text) and monospace (8-bit accents); a custom font would need a
   CC0 licence.
+- **Opening icons:** each opening has an original 8-bit icon (16 × 16 pixel art drawn as code in
+  `app/src/openings/icons.ts`, colours in `theme.pixel`): French baguette, Caro-Kann shield,
+  Sicilian lemon, Scandinavian longship, King's Indian elephant, Slav matryoshka, Italian pizza,
+  Ruy Lopez Spanish guitar, Vienna coffee, London double-decker, Queen's Gambit crown. The map
+  lives in the app, not the content, so a new opening shows a magenta pawn until it gets one.
+  Shown on the Openings cards and the Home Continue button.
 - One serif or retro font, a muted palette, almost no chrome. The screens:
   - **Home:** the Mastermind and "Hello, friend.", one big **Continue** button (straight into
     the next suggested line and mode), **Openings**, **Free board**, a ⚙ for Settings, and

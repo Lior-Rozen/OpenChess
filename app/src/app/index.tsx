@@ -5,6 +5,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { contentIndex, loadLine, loadOpening } from '@/content/loader';
 import { GREETING } from '@/mastermind/lines';
 import { MastermindAvatar } from '@/mastermind/Avatar';
+import { OpeningIcon } from '@/openings/OpeningIcon';
 import { continueTarget } from '@/progress/mastery';
 import { useProgress } from '@/progress/ProgressContext';
 import { theme } from '@/theme';
@@ -44,7 +45,14 @@ export default function Home() {
             }
             style={({ pressed }) => [styles.main, pressed && styles.mainPressed]}
           >
-            <Text style={styles.mainLabel}>{next ? 'Continue' : 'All mastered'}</Text>
+            <View style={styles.mainRow}>
+              {next && (
+                <View style={styles.mainIcon}>
+                  <OpeningIcon openingId={next.openingId} size={28} />
+                </View>
+              )}
+              <Text style={styles.mainLabel}>{next ? 'Continue' : 'All mastered'}</Text>
+            </View>
             <Text style={styles.mainDetail}>
               {nextLine && next
                 ? `${nextLine.opening.name} · ${nextLine.line.name} · ${MODE_LABELS[next.mode]}`
@@ -101,6 +109,8 @@ const styles = StyleSheet.create({
     boxShadow: theme.glow,
   },
   mainPressed: { opacity: 0.8 },
+  mainRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10 },
+  mainIcon: { backgroundColor: theme.background, borderRadius: 6, padding: 3 },
   mainLabel: { fontSize: 24, fontFamily: theme.font, fontWeight: '600', color: theme.onAccent, textAlign: 'center' },
   mainDetail: { fontSize: 14, fontFamily: theme.font, color: theme.onAccent, opacity: 0.85, textAlign: 'center' },
   menu: {

@@ -2,6 +2,7 @@ import { router, Stack } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { contentIndex, loadOpening } from '@/content/loader';
+import { OpeningIcon } from '@/openings/OpeningIcon';
 import { masteredShare } from '@/progress/mastery';
 import { useProgress } from '@/progress/ProgressContext';
 import { theme } from '@/theme';
@@ -23,6 +24,7 @@ export default function Openings() {
               onPress={() => router.push({ pathname: '/opening/[id]', params: { id: opening.id } })}
               style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
             >
+              <OpeningIcon openingId={opening.id} size={40} />
               <Text style={styles.cardTitle}>{opening.name}</Text>
               <Text style={styles.cardMeta}>As {opening.side === 'white' ? 'White' : 'Black'}</Text>
               <View style={styles.bar}>

@@ -35,4 +35,28 @@ export const theme = {
 
   /** The 8-bit Mastermind: hood, skin shadow, skin, eyes. */
   mastermind: { hood: '#3b2a5c', shadow: '#9c8670', skin: '#e3c9ad', eyes: '#00e5ff' },
+
+  /** The opening icons' 8-bit palette, one character per colour (see `src/openings/icons.ts`). */
+  pixel: {
+    Y: '#ffd23f', // yellow
+    y: '#c98a1a',
+    O: '#ff8a3d', // orange
+    o: '#7a4220', // brown
+    B: '#e0a458', // bread
+    b: '#9a5a24',
+    W: '#f4eefc', // white
+    G: '#a79dbf', // grey
+    g: '#5d5378',
+    R: '#ff4766', // red
+    r: '#a8203a',
+    P: '#ff40c8', // magenta
+    p: '#a0207e',
+    C: '#00e5ff', // cyan
+    c: '#0088a8',
+    V: '#9b6dff', // violet
+    N: '#5fd36a', // leaf green
+    n: '#2f8a3a',
+    L: '#ffd9b0', // skin
+    K: '#120a1e', // near black
+  } as Record<string, string>,
 };

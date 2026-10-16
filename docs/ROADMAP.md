@@ -78,7 +78,7 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
       (background, cards, buttons, fonts, the Mastermind's speech), readable first
   - [x] Dark "Midnight Arcade" palette on every screen, all colours as tokens in `theme.ts`
   - [ ] App icon (waits for the user's art)
-- [ ] Opening icons: an original 8-bit/neon SVG icon per opening (baguette for the French, …),
+- [x] Opening icons: an original 8-bit/neon SVG icon per opening (baguette for the French, …),
       kept in the app (not the content JSON) with a fallback icon. Shown on the Openings cards
       and the Home Continue button
 - [ ] Art, with no credit line needed (CC0/public domain, or made by the user):
