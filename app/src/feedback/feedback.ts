@@ -22,17 +22,7 @@ function player(cue: Cue): AudioPlayer {
     // Mix with the user's music instead of pausing it, and stay quiet when the phone is on silent.
     setAudioModeAsync({ interruptionMode: 'mixWithOthers', playsInSilentMode: false }).catch(() => {});
   }
-  if (!players[cue]) {
-    const p = createAudioPlayer(SOURCES[cue]);
-    // Rewind as soon as a sound ends, so the next play() can start at once. Pause first: on
-    // Android a finished player still counts as playing, and rewinding it would replay it forever.
-    p.addListener('playbackStatusUpdate', (status) => {
-      if (!status.didJustFinish) return;
-      p.pause();
-      p.seekTo(0).catch(() => {});
-    });
-    players[cue] = p;
-  }
+  players[cue] ??= createAudioPlayer(SOURCES[cue]);
   return players[cue];
 }
 
@@ -46,8 +36,7 @@ export function playCue(cue: Cue, settings: Settings) {
   try {
     if (settings.sound) {
       const p = player(cue);
-      // Still playing (moves in quick succession): start it over.
-      if (p.playing) p.seekTo(0).catch(() => {});
+      p.seekTo(0).catch(() => {});
       p.play();
     }
     if (settings.haptics) {
