@@ -1,5 +1,6 @@
 import index from '../../../content/index.json';
 import french from '../../../content/openings/french.json';
+import caroKann from '../../../content/openings/caro-kann.json';
 
 import type { ContentIndex, Opening, OpeningLine } from './types';
 
@@ -7,6 +8,7 @@ import type { ContentIndex, Opening, OpeningLine } from './types';
 // path, so every opening file listed in content/index.json must also be listed here.
 const bundledByFile: Record<string, unknown> = {
   'openings/french.json': french,
+  'openings/caro-kann.json': caroKann,
 };
 
 export const contentIndex = index as ContentIndex;
