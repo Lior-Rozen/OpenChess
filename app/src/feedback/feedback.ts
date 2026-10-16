@@ -22,8 +22,20 @@ function player(cue: Cue): AudioPlayer {
     // Mix with the user's music instead of pausing it, and stay quiet when the phone is on silent.
     setAudioModeAsync({ interruptionMode: 'mixWithOthers', playsInSilentMode: false }).catch(() => {});
   }
-  players[cue] ??= createAudioPlayer(SOURCES[cue]);
+  if (!players[cue]) {
+    const p = createAudioPlayer(SOURCES[cue]);
+    // Rewind as soon as a sound ends, so the next play() can start at once.
+    p.addListener('playbackStatusUpdate', (status) => {
+      if (status.didJustFinish) p.seekTo(0).catch(() => {});
+    });
+    players[cue] = p;
+  }
   return players[cue];
+}
+
+/** Loads the sounds ahead of time, so the first one isn't late. */
+export function preloadSounds() {
+  for (const cue of Object.keys(SOURCES) as Cue[]) player(cue);
 }
 
 /** Plays a cue's sound and vibration, as far as the settings allow. Never throws. */
@@ -31,7 +43,8 @@ export function playCue(cue: Cue, settings: Settings) {
   try {
     if (settings.sound) {
       const p = player(cue);
-      p.seekTo(0).catch(() => {});
+      // Still playing (moves in quick succession): start it over.
+      if (p.playing) p.seekTo(0).catch(() => {});
       p.play();
     }
     if (settings.haptics) {

@@ -1,4 +1,4 @@
-import { router, Stack } from 'expo-router';
+import { router } from 'expo-router';
 import { useEffect, useEffectEvent, useState } from 'react';
 import { Animated, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 
@@ -15,6 +15,7 @@ import { useSettings } from '@/settings/SettingsContext';
 import { TEST_MISTAKE_LIMIT, Trainer, type TrainerEvent, type TrainerMode, type TrainerState } from '@/trainer/trainer';
 
 import { startRandomDrill } from './random';
+import { DrillHeader } from './DrillHeader';
 import { ResultCard } from './ResultCard';
 import { drillStyles, formatMoves, MODE_LABELS, type DrillTarget, type Restart } from './shared';
 
@@ -28,7 +29,7 @@ function greeting(mode: TrainerMode, exam: boolean): string {
 
 /** Practice and Test runs (and level exams): the user plays their side against the Mastermind. */
 export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; mode: TrainerMode; onRestart: Restart }) {
-  const { opening, lines, title, examLevel } = target;
+  const { opening, lines, examLevel } = target;
   const exam = examLevel !== null;
   const userColor = opening.side === 'white' ? 'w' : 'b';
   const { recordRun, recordExam } = useProgress();
@@ -149,7 +150,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
 
   return (
     <View style={drillStyles.screen}>
-      <Stack.Screen options={{ headerShown: true, title }} />
+      <DrillHeader target={target} />
       <ScrollView contentContainerStyle={drillStyles.content}>
         {settings.chatter !== 'silent' && <MastermindSpeech text={speech} />}
 

@@ -1,4 +1,4 @@
-import { router, Stack } from 'expo-router';
+import { router } from 'expo-router';
 import { useEffect, useEffectEvent, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
@@ -12,6 +12,7 @@ import { theme } from '@/theme';
 import { watchFrames } from '@/trainer/watch';
 
 import { startRandomDrill } from './random';
+import { DrillHeader } from './DrillHeader';
 import { ResultCard } from './ResultCard';
 import { drillStyles, formatMoves, type DrillTarget, type Restart } from './shared';
 
@@ -79,7 +80,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
 
   return (
     <View style={drillStyles.screen}>
-      <Stack.Screen options={{ headerShown: true, title: target.title }} />
+      <DrillHeader target={target} />
       <ScrollView contentContainerStyle={drillStyles.content}>
         {settings.chatter !== 'silent' && <MastermindSpeech text={speech} />}
 
