@@ -1,5 +1,6 @@
 // Relative imports only: this file also runs outside the app, via content/validate.ts.
 import { ChessGame } from '../chess/game';
+import { OPENING_TAGS } from './types';
 
 const SIDES = ['white', 'black'];
 const TIERS = ['main', 'side'];
@@ -70,6 +71,17 @@ export function validateOpening(opening: unknown, file: string, lineIds = new Se
   if (!SIDES.includes(opening.side as string)) {
     errors.push(`${file}: side must be "white" or "black"`);
     return errors;
+  }
+  if (opening.tags !== undefined) {
+    if (!Array.isArray(opening.tags)) errors.push(`${file}: tags must be an array`);
+    else {
+      for (const tag of opening.tags) {
+        if (!(OPENING_TAGS as readonly unknown[]).includes(tag)) {
+          errors.push(`${file}: unknown tag "${String(tag)}" (allowed: ${OPENING_TAGS.join(', ')})`);
+        }
+      }
+      if (new Set(opening.tags).size !== opening.tags.length) errors.push(`${file}: duplicate tags`);
+    }
   }
   if (!Array.isArray(opening.lines) || opening.lines.length === 0) {
     errors.push(`${file}: lines must be a non-empty array`);

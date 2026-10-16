@@ -67,6 +67,7 @@ One file per opening in `content/openings/<id>.json`. The format is in DESIGN.md
   "side": "black",
   "eco": "B10-B19",
   "description": "One sentence, shown on the Opening screen.",
+  "tags": ["solid", "beginner-friendly"],
   "lines": [
     {
       "id": "caro-kann-advance-main",
@@ -96,6 +97,16 @@ One file per opening in `content/openings/<id>.json`. The format is in DESIGN.md
 - **`summary`:** give every line one, a single sentence with the plan or idea to remember.
   (It's optional in the schema, but treat it as required.)
 - **`name`:** short and recognisable, e.g. "Advance Variation", "Tarrasch: Open (3…c5)".
+- **`tags`** (opening level): labels the Openings screen filters by. Give every opening 1–3 from
+  the fixed list in `app/src/content/types.ts`:
+  - `gambit`: gives up material early for initiative
+  - `aggressive`, `solid`, `positional`
+  - `system`: the same setup against almost anything, like the London
+  - `beginner-friendly`
+  
+  Confirm the tags with the user as part of each opening's plan, and add them to the French
+  during its review. If a useful label is missing, propose adding it to the list rather than
+  inventing one.
 
 ## Chess accuracy (the most important part)
 

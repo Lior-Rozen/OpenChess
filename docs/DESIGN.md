@@ -136,6 +136,11 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 ```
 - `moves` uses SAN from the starting position. `notes` keys are ply indices (0-based).
 - `summary` (optional) is the short takeaway shown on the "Line complete" card.
+- `tags` (optional, opening level) are labels for filtering on the Openings screen, from a fixed
+  vocabulary in `app/src/content/types.ts` (`OPENING_TAGS`): `gambit` (gives up material early),
+  `aggressive`, `solid`, `positional`, `system` (same setup against almost anything),
+  `beginner-friendly`. The validator rejects unknown tags. The side (White/Black) and the first
+  move (1.e4/1.d4/…) are filters too, but they come from `side` and the lines, not from tags.
 - `content/index.json` lists the openings, with a `contentVersion` number.
 - **Validation script** (`content/validate.ts`, run before commit with `npm run validate-content`
   in `app/`): every line replays legally in chess.js, ids are unique, levels are contiguous, and

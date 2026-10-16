@@ -59,6 +59,7 @@ phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind ea
 ## Phase 5: Content expansion
 Run this in a dedicated chess session: start it with "Read docs/prompts/phase5-content.md and follow it."
 - [ ] Review the French (5 level 1 lines + 2 placeholder level 2 lines)
+- [ ] Tag every opening (`tags`: gambit, aggressive, solid, positional, system, beginner-friendly)
 - [ ] ~10–12 openings × 2–4 levels each (see the starter set in DESIGN.md §4)
 - [ ] All content passes validation
 - **Done when:** every opening in the starter set is playable.
@@ -68,6 +69,8 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
 "Read docs/prompts/ui-frontend.md and follow it."
 - [ ] Review queue (SRS: 1d → 3d → 7d → 21d). A review is a normal Test run (same rules)
 - [ ] Stats per opening, random drill
+- [ ] Openings filter: chips on the Openings screen for side (White/Black), first move
+      (1.e4/1.d4/…, derived from the lines) and tags (gambit, aggressive, solid, …)
 - [ ] Sounds/haptics with an off switch; Settings screen (including quieting the Mastermind)
 - [ ] Review button on Home with the due count
 - [ ] Theme polish and app icon: **a unique, darker look**. No chess.com green and no bright,

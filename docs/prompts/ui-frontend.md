@@ -50,6 +50,13 @@ The developer is fluent in C# and **new to mobile/front-end**:
    - Add a **Review** button on Home with the due count.
 2. **Stats per opening:** % mastered, accuracy, a streak of training days. Add a **random drill**
    from everything unlocked.
+   - **Openings filter:** chips on the Openings screen, combinable, for:
+     - side (White/Black)
+     - first move (1.e4/1.d4/…), worked out from the lines' first move
+     - the opening's `tags` (`OPENING_TAGS` in `src/content/types.ts`: gambit, aggressive,
+       solid, …)
+     
+     Keep the filtering logic a pure, tested function. The chess session fills in the tags.
 3. **Sounds and haptics** on move, mistake and line complete, with off switches.
 4. **The real Settings screen:**
    - sound, haptics, and how much the Mastermind talks (e.g. full / key moments only / silent)
