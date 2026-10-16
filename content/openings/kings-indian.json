@@ -1,0 +1,129 @@
+{
+  "id": "kings-indian",
+  "name": "King's Indian Defense",
+  "side": "black",
+  "eco": "E60-E99",
+  "description": "Let White take the centre, then strike back with …e5 and a kingside attack.",
+  "tags": ["aggressive"],
+  "lines": [
+    {
+      "id": "kings-indian-classical",
+      "name": "Classical: 9.d5 Ne7",
+      "level": 1,
+      "tier": "main",
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "Nf3", "O-O", "Be2", "e5", "O-O", "Nc6", "d5", "Ne7"],
+      "notes": {
+        "3": "…g6 prepares …Bg7, a bishop that will press on the long diagonal.",
+        "11": "…e5 is Black's central strike; it fixes the centre for the plans to come.",
+        "13": "…Nc6 adds pressure on d4 and invites d5.",
+        "15": "…Ne7 heads to the kingside, where Black plays …f5 next."
+      },
+      "summary": "Fianchetto, castle, strike with …e5; when White locks the centre with d5, attack with …f5."
+    },
+    {
+      "id": "kings-indian-samisch",
+      "name": "Samisch (5.f3)",
+      "level": 1,
+      "tier": "main",
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "f3", "O-O", "Be3", "e5", "d5", "Nh5", "Qd2", "f5"],
+      "notes": {
+        "9": "…O-O first; White's f3 means a kingside pawn storm may come.",
+        "11": "…e5 hits the centre, the same answer as against the Classical.",
+        "13": "…Nh5 prepares …f5 and eyes the f4 square.",
+        "15": "…f5 strikes at e4, Black's main lever in the King's Indian."
+      },
+      "summary": "Against f3 and Be3, play …e5, then …Nh5 and …f5 to break up White's pawn centre."
+    },
+    {
+      "id": "kings-indian-exchange",
+      "name": "Exchange (7.dxe5)",
+      "level": 1,
+      "tier": "side",
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "Nf3", "O-O", "Be2", "e5", "dxe5", "dxe5", "Qxd8", "Rxd8"],
+      "notes": {
+        "13": "…dxe5 recaptures; the queens come off but Black is fine.",
+        "15": "…Rxd8 takes the open file; the d4 square is a good outpost for a black knight."
+      },
+      "summary": "The early queen trade isn't scary: take with the rook and aim a knight at d4."
+    },
+    {
+      "id": "kings-indian-vs-london",
+      "name": "vs the London (2.Bf4)",
+      "level": 1,
+      "tier": "side",
+      "moves": ["d4", "Nf6", "Bf4", "g6", "e3", "Bg7", "Nf3", "O-O", "Be2", "d6", "h3", "c5"],
+      "notes": {
+        "3": "…g6: the same King's Indian set-up works against the London.",
+        "9": "…d6 prepares …e5 or …c5 against White's quiet set-up.",
+        "11": "…c5 hits d4 and opens the long diagonal for the g7 bishop."
+      },
+      "summary": "Against the London, keep the fianchetto and strike with …c5 at d4."
+    },
+    {
+      "id": "kings-indian-mar-del-plata",
+      "name": "Classical: Mar del Plata (9.Ne1)",
+      "level": 2,
+      "tier": "main",
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "Nf3", "O-O", "Be2", "e5", "O-O", "Nc6", "d5", "Ne7", "Ne1", "Nd7", "Nd3", "f5", "Bd2", "Nf6", "f3", "f4"],
+      "notes": {
+        "17": "…Nd7 clears the f-pawn for …f5.",
+        "19": "…f5 opens the kingside fight; White attacks on the queenside.",
+        "23": "…f4 gains space; next come …g5-g4 and a direct attack on White's king."
+      },
+      "summary": "The race: Black storms the kingside with …f5, …f4, …g5; White pushes c5 on the queenside."
+    },
+    {
+      "id": "kings-indian-petrosian",
+      "name": "Petrosian (7.d5)",
+      "level": 2,
+      "tier": "main",
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "Nf3", "O-O", "Be2", "e5", "d5", "a5", "Bg5", "h6", "Bh4", "Na6", "Nd2", "Qe8"],
+      "notes": {
+        "13": "…a5 slows White's b4 push on the queenside.",
+        "15": "…h6 asks the bishop to decide; it can't keep the pin forever.",
+        "17": "…Na6 heads for c5, a great square for the knight.",
+        "19": "…Qe8 unpins the f6 knight so Black can play …Nh7 and …f5."
+      },
+      "summary": "Against an early d5, stop b4 with …a5, then knight to c5 and break the pin before …f5."
+    },
+    {
+      "id": "kings-indian-bayonet",
+      "name": "Classical: Bayonet (9.b4)",
+      "level": 2,
+      "tier": "side",
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "Nf3", "O-O", "Be2", "e5", "O-O", "Nc6", "d5", "Ne7", "b4", "Nh5", "Re1", "f5", "Ng5", "Nf6"],
+      "notes": {
+        "17": "…Nh5 prepares …f5 at once, faster than …Nd7.",
+        "19": "…f5 hits e4 as usual.",
+        "21": "…Nf6 brings the knight back to the centre and covers h7 against the g5 knight."
+      },
+      "summary": "Against b4, go for …Nh5 and …f5 straight away; speed matters in the race."
+    },
+    {
+      "id": "kings-indian-fianchetto",
+      "name": "Fianchetto (g3)",
+      "level": 2,
+      "tier": "side",
+      "moves": ["d4", "Nf6", "c4", "g6", "Nf3", "Bg7", "g3", "O-O", "Bg2", "d6", "O-O", "Nbd7", "Nc3", "e5", "e4", "c6"],
+      "notes": {
+        "11": "…Nbd7 supports …e5 against White's solid fianchetto.",
+        "13": "…e5 claims the centre.",
+        "15": "…c6 controls d5 and prepares …Qb6 or …a5."
+      },
+      "summary": "Against the fianchetto, play …Nbd7, …e5 and …c6: a solid centre with ideas of …Qb6."
+    },
+    {
+      "id": "kings-indian-four-pawns",
+      "name": "Four Pawns Attack (5.f4)",
+      "level": 2,
+      "tier": "side",
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "f4", "O-O", "Nf3", "c5", "d5", "e6", "Be2", "exd5", "cxd5", "Bg4"],
+      "notes": {
+        "11": "…c5 attacks the overextended centre right away.",
+        "13": "…e6 breaks open the e-file against White's uncastled king.",
+        "17": "…Bg4 pins the f3 knight, which supports White's e5 push."
+      },
+      "summary": "The big pawn centre is a target: hit it with …c5 and …e6, then pin the f3 knight."
+    }
+  ]
+}

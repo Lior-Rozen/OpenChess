@@ -4,6 +4,7 @@
     { "id": "french", "name": "French Defense", "side": "black", "file": "openings/french.json" },
     { "id": "caro-kann", "name": "Caro-Kann Defense", "side": "black", "file": "openings/caro-kann.json" },
     { "id": "sicilian", "name": "Sicilian Defense: Najdorf", "side": "black", "file": "openings/sicilian.json" },
-    { "id": "scandinavian", "name": "Scandinavian Defense", "side": "black", "file": "openings/scandinavian.json" }
+    { "id": "scandinavian", "name": "Scandinavian Defense", "side": "black", "file": "openings/scandinavian.json" },
+    { "id": "kings-indian", "name": "King's Indian Defense", "side": "black", "file": "openings/kings-indian.json" }
   ]
 }
