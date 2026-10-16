@@ -114,7 +114,7 @@ updates and sync later, but it is never required to train.
 ## 5. Architecture
 ```
 chess-openings/
-  app/                 Expo + TS (expo-router, Expo SDK 58)
+  app/                 Expo + TS (expo-router, Expo SDK 57: must match the SDK the Play Store Expo Go supports)
     src/app/           screens (expo-router routes; only route files live here)
     src/api/           server calls (always optional: offline must work)
     src/chess/         board component, chess.js wrapper, move matching
