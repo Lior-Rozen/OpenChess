@@ -4,8 +4,7 @@ One agent per phase. Each phase is done when its tests pass, its "done when" che
 phone in Expo Go, and it is committed. See `DESIGN.md` for the details behind each item.
 
 ## Phase 1: "Hello friend" infra ← start here
-- [ ] Prereqs installed: Node LTS, .NET 10 SDK, Git, Expo Go on the phone
-      (PC tools done: Node 24 LTS, .NET SDK 10.0.402, Git 2.55; Expo Go still to install on the phone)
+- [x] Prereqs installed: Node LTS, .NET 10 SDK, Git, Expo Go on the phone
 - [x] `git init` at the repo root, plus a `.gitignore` for Node and .NET
 - [x] `app/`: `npx create-expo-app@latest app --template blank-typescript` (or the expo-router template)
 - [x] One screen: big "Hello friend" text, and below it "Server says: …" fetched from `/api/hello`
