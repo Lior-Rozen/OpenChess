@@ -39,25 +39,65 @@
       "summary": "When Black plays slowly, put a knight on e5, back it with f4 and attack the king."
     },
     {
-      "id": "london-qb6",
-      "name": "vs early …Qb6",
+      "id": "london-bd6",
+      "name": "vs 4…Bd6",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "Main Line",
-      "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "e6", "Nf3", "c5", "c3", "Qb6", "Qb3", "c4", "Qc2"],
+      "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "e6", "Nf3", "Bd6", "Bg3", "O-O", "Bd3"],
       "notes": {
         "2": "Bf4 develops the bishop before e3 shuts it in.",
-        "8": "c3 holds the d4 pawn firmly against …c5.",
-        "9": "…Qb6 attacks b2, which the f4 bishop no longer defends.",
-        "10": "Qb3 offers a queen trade that would open the a-file for White's rook.",
-        "12": "Qc2 keeps the queen; White wants e4 next to break the black centre."
+        "8": "Bg3 keeps the bishop; if Black takes, hxg3 opens the h-file.",
+        "10": "Bd3 aims at h7, as in the main line."
       },
-      "summary": "Meet …Qb6 with Qb3; if …c4 kicks the queen, go to c2 and aim for e4."
+      "summary": "Against …Bd6, retreat to g3 instead of trading, then Bd3 and the usual pyramid."
+    },
+    {
+      "id": "london-bd6-deep",
+      "name": "4…Bd6 into the main line",
+      "level": 2,
+      "tier": "main",
+      "variation": "Main Line",
+      "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "e6", "Nf3", "Bd6", "Bg3", "O-O", "Bd3", "c5", "c3", "Nc6", "Nbd2"],
+      "notes": {
+        "2": "Bf4 develops the bishop before e3 shuts it in.",
+        "8": "Bg3 keeps the bishop; if Black takes, hxg3 opens the h-file.",
+        "10": "Bd3 aims at h7, as in the main line.",
+        "14": "Nbd2: the same position as the main line."
+      },
+      "summary": "…Bd6 and …c5 bring us to the main line: Bg3, Bd3, c3, Nbd2."
+    },
+    {
+      "id": "london-bf5",
+      "name": "vs 3…Bf5",
+      "level": 1,
+      "tier": "main",
+      "variation": "vs …Bf5",
+      "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "Bf5", "Bd3"],
+      "notes": {
+        "2": "Bf4 develops the bishop before e3 shuts it in.",
+        "6": "Bd3 offers to trade off Black's best minor piece."
+      },
+      "summary": "When Black copies with …Bf5, challenge the bishop with Bd3."
+    },
+    {
+      "id": "london-bf5-deep",
+      "name": "3…Bf5 4.Bd3 Bxd3",
+      "level": 2,
+      "tier": "main",
+      "variation": "vs …Bf5",
+      "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "Bf5", "Bd3", "Bxd3", "Qxd3", "e6", "Nf3"],
+      "notes": {
+        "2": "Bf4 develops the bishop before e3 shuts it in.",
+        "6": "Bd3 offers to trade off Black's best minor piece.",
+        "10": "Nf3: the queen on d3 eyes h7 and supports a later e4."
+      },
+      "summary": "After the bishop trade, develop with Nf3 and Nbd2 and prepare e4 with the queen on d3."
     },
     {
       "id": "london-3c5",
-      "name": "vs 3…c5 (transposes)",
-      "level": 2,
+      "name": "vs 3…c5",
+      "level": 1,
       "tier": "side",
       "variation": "Main Line",
       "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "c5", "c3", "Nc6", "Nf3", "e6", "Nbd2", "Bd6", "Bg3", "O-O", "Bd3"],
@@ -69,9 +109,54 @@
       "summary": "Different move order, same London: keep building the pyramid."
     },
     {
+      "id": "london-qb6",
+      "name": "vs …c5 and …Qb6",
+      "level": 2,
+      "tier": "side",
+      "variation": "Main Line",
+      "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "c5", "c3", "Nc6", "Nf3", "Qb6", "Qb3", "c4", "Qc2"],
+      "notes": {
+        "2": "Bf4 develops the bishop before e3 shuts it in.",
+        "6": "c3 holds d4.",
+        "9": "…Qb6 attacks b2, which the f4 bishop no longer defends.",
+        "10": "Qb3 offers a queen trade that would open the a-file for White's rook.",
+        "12": "Qc2 keeps the queen; White wants e4 next to break the black centre."
+      },
+      "accept": {
+        "10": ["Qc2"]
+      },
+      "summary": "Meet …Qb6 with Qb3 (or Qc2); if …c4 kicks the queen, go to c2 and aim for e4."
+    },
+    {
+      "id": "london-2e6",
+      "name": "vs 2…e6",
+      "level": 1,
+      "tier": "side",
+      "variation": "Main Line",
+      "moves": ["d4", "d5", "Bf4", "e6", "e3", "Nf6", "Nf3"],
+      "notes": {
+        "2": "Bf4 develops the bishop before e3 shuts it in.",
+        "6": "Nf3: the same position as 2…Nf6 3.e3 e6 4.Nf3."
+      },
+      "summary": "2…e6 changes nothing: e3, Nf3, and the usual pyramid."
+    },
+    {
+      "id": "london-2nc6",
+      "name": "vs 2…Nc6",
+      "level": 2,
+      "tier": "side",
+      "variation": "Main Line",
+      "moves": ["d4", "d5", "Bf4", "Nc6", "e3", "Nf6", "Nf3"],
+      "notes": {
+        "2": "Bf4 develops the bishop before e3 shuts it in.",
+        "6": "Nf3: develop as usual; c3 and Bd3 come next."
+      },
+      "summary": "Against 2…Nc6, keep the same set-up: e3, Nf3, then c3 and Bd3."
+    },
+    {
       "id": "london-2c5",
       "name": "vs 2…c5",
-      "level": 1,
+      "level": 2,
       "tier": "side",
       "variation": "Main Line",
       "moves": ["d4", "d5", "Bf4", "c5", "e3", "Nc6", "c3", "Nf6", "Nf3", "e6", "Nbd2", "Bd6", "Bg3", "O-O", "Bd3"],
@@ -95,23 +180,28 @@
         "8": "Be2 is the usual square here: against …g6 the bishop has little to aim at on d3.",
         "10": "h3 gives the f4 bishop a retreat on h2, so …Nh5 can't trade it."
       },
+      "accept": {
+        "10": ["O-O"]
+      },
       "summary": "Against …g6, keep the pyramid, put the bishop on e2 and play h3 to save the f4 bishop."
     },
     {
       "id": "london-vs-kid-deep",
-      "name": "vs King's Indian: …c5 and …Qb6",
+      "name": "vs King's Indian: 6…Nbd7",
       "level": 2,
       "tier": "main",
       "variation": "vs King's Indian set-up",
-      "moves": ["d4", "Nf6", "Bf4", "g6", "e3", "Bg7", "Nf3", "O-O", "Be2", "d6", "h3", "c5", "c3", "Qb6", "Qb3"],
+      "moves": ["d4", "Nf6", "Bf4", "g6", "e3", "Bg7", "Nf3", "O-O", "Be2", "d6", "h3", "Nbd7", "O-O"],
       "notes": {
         "4": "e3 supports d4 and frees the f1 bishop.",
         "8": "Be2 is the usual square here: against …g6 the bishop has little to aim at on d3.",
         "10": "h3 gives the f4 bishop a retreat on h2, so …Nh5 can't trade it.",
-        "12": "c3 holds d4 against …c5.",
-        "14": "Qb3 meets …Qb6 as always, defending b2 and offering a trade."
+        "12": "O-O: if Black plays …e5, the f4 bishop drops back to h2 and keeps its diagonal."
       },
-      "summary": "Same rules against the King's Indian set-up: c3 against …c5, Qb3 against …Qb6."
+      "accept": {
+        "10": ["O-O"]
+      },
+      "summary": "Against …Nbd7 and …e5 ideas, just castle; the h2 square keeps your bishop safe."
     }
   ]
 }
