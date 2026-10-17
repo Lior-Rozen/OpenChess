@@ -1,0 +1,196 @@
+{
+  "id": "scotch",
+  "name": "Scotch Game",
+  "side": "white",
+  "eco": "C44-C45",
+  "description": "3.d4 opens the centre at once: quick development and free piece play.",
+  "tags": ["aggressive", "beginner-friendly"],
+  "lines": [
+    {
+      "id": "scotch-bc5",
+      "name": "4…Bc5",
+      "level": 1,
+      "tier": "main",
+      "variation": "4…Bc5",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Bc5", "Be3", "Qf6", "c3", "Nge7", "Bc4"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "8": "Be3 defends the d4 knight against the c5 bishop.",
+        "10": "c3 holds d4 a second time.",
+        "12": "Bc4 develops to the active diagonal towards f7."
+      },
+      "summary": "Defend d4 with Be3 and c3, then develop Bc4 and castle."
+    },
+    {
+      "id": "scotch-bc5-deep",
+      "name": "4…Bc5 7.Bc4 O-O",
+      "level": 2,
+      "tier": "main",
+      "variation": "4…Bc5",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Bc5", "Be3", "Qf6", "c3", "Nge7", "Bc4", "O-O", "O-O"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "8": "Be3 defends the d4 knight against the c5 bishop.",
+        "10": "c3 holds d4 a second time.",
+        "12": "Bc4 develops to the active diagonal towards f7.",
+        "14": "O-O: White's position is solid; Nd2 or Nc2 comes next."
+      },
+      "summary": "Castle short and keep d4 strong; Black's pieces press on d4 but can't break through."
+    },
+    {
+      "id": "scotch-bc5-bb6",
+      "name": "4…Bc5 5…Bb6",
+      "level": 2,
+      "tier": "side",
+      "variation": "4…Bc5",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Bc5", "Be3", "Bb6", "Nc3"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "8": "Be3 defends the d4 knight against the c5 bishop.",
+        "10": "Nc3 develops; the bishop on b6 has no targets."
+      },
+      "accept": {
+        "10": ["Nf5"]
+      },
+      "summary": "If the bishop retreats to b6, develop with Nc3; Nf5 is also strong."
+    },
+    {
+      "id": "scotch-nxd4",
+      "name": "4…Nxd4",
+      "level": 1,
+      "tier": "main",
+      "variation": "4…Nxd4",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Nxd4", "Qxd4", "d6", "Nc3"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "8": "Qxd4: the queen is strong in the centre and hard to chase.",
+        "10": "Nc3 develops; Bf4 or Be3 and O-O-O can follow."
+      },
+      "accept": {
+        "10": ["Bf4", "Be3"]
+      },
+      "summary": "After the knight trade, the white queen dominates the centre: develop around it."
+    },
+    {
+      "id": "scotch-qxd4-qf6",
+      "name": "5…Qf6",
+      "level": 1,
+      "tier": "main",
+      "variation": "4…Nxd4",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Nxd4", "Qxd4", "Qf6", "e5"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "8": "Qxd4: the queen is strong in the centre and hard to chase.",
+        "10": "e5 gains space with tempo on the queen."
+      },
+      "accept": {
+        "10": ["Qe3"]
+      },
+      "summary": "If Black offers a queen trade with …Qf6, push e5 with tempo (or keep queens with Qe3)."
+    },
+    {
+      "id": "scotch-qxd4-nf6",
+      "name": "5…Nf6",
+      "level": 1,
+      "tier": "side",
+      "variation": "4…Nxd4",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Nxd4", "Qxd4", "Nf6", "e5"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "8": "Qxd4: the queen is strong in the centre and hard to chase.",
+        "10": "e5 kicks the knight; White's space advantage grows."
+      },
+      "summary": "Against 5…Nf6, push e5 at once and chase the knight."
+    },
+    {
+      "id": "scotch-qxd4-c5",
+      "name": "5…c5",
+      "level": 2,
+      "tier": "main",
+      "variation": "4…Nxd4",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Nxd4", "Qxd4", "c5", "Qe3"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "8": "Qxd4: the queen is strong in the centre and hard to chase.",
+        "10": "Qe3 keeps the queen central and eyes e5."
+      },
+      "accept": {
+        "10": ["Qd3", "Qc3"]
+      },
+      "summary": "When …c5 kicks the queen, step back to e3, d3 or c3; Black's d-pawn is now weak."
+    },
+    {
+      "id": "scotch-nf6",
+      "name": "4…Nf6",
+      "level": 1,
+      "tier": "main",
+      "variation": "4…Nf6",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Nf6", "Nxc6", "bxc6", "Bd3", "d5", "exd5"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "10": "Bd3 defends e4 calmly; White plans O-O and quick development.",
+        "12": "exd5 trades in the centre; Black is left with a weak c-pawn structure."
+      },
+      "summary": "Trade on c6 to damage Black's pawns, then Bd3 and exd5 against …d5."
+    },
+    {
+      "id": "scotch-nf6-deep",
+      "name": "4…Nf6 6…d5",
+      "level": 2,
+      "tier": "main",
+      "variation": "4…Nf6",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Nf6", "Nxc6", "bxc6", "Bd3", "d5", "exd5", "cxd5", "O-O"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "10": "Bd3 defends e4 calmly; White plans O-O and quick development.",
+        "12": "exd5 trades in the centre; Black is left with a weak c-pawn structure.",
+        "14": "O-O: White aims at the isolated d5 pawn and the c-file."
+      },
+      "summary": "After the central trade, castle and target Black's isolated d5 pawn."
+    },
+    {
+      "id": "scotch-nf6-bc5",
+      "name": "4…Nf6 6…Bc5",
+      "level": 2,
+      "tier": "main",
+      "variation": "4…Nf6",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Nf6", "Nxc6", "bxc6", "Bd3", "Bc5", "O-O"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "10": "Bd3 defends e4 calmly; White plans O-O and quick development.",
+        "12": "O-O: White is ready for e5 or Nc3."
+      },
+      "accept": {
+        "12": ["e5"]
+      },
+      "summary": "Against …Bc5, castle; e5 to kick the knight is also strong."
+    },
+    {
+      "id": "scotch-qf6",
+      "name": "4…Qf6",
+      "level": 1,
+      "tier": "side",
+      "variation": "4…Qf6",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Qf6", "Be3"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "8": "Be3 develops and protects the d4 knight."
+      },
+      "accept": {
+        "8": ["Nb5", "c3"]
+      },
+      "summary": "Against the early queen, defend d4 with Be3 and keep developing."
+    }
+  ]
+}

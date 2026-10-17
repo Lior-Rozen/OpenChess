@@ -1,0 +1,41 @@
+[Id "scotch"]
+[Name "Scotch Game"]
+[Side "white"]
+[ECO "C44-C45"]
+[Description "3.d4 opens the centre at once: quick development and free piece play."]
+[Tags "aggressive, beginner-friendly"]
+
+1. e4 e5 2. Nf3 Nc6 3. d4 {d4 strikes the centre at once instead of slow Bc4 or Bb5 play.} 3... exd4 4. Nxd4 {Nxd4 recaptures with a strong central knight.} 4... Bc5 {@variation 4…Bc5}
+  (4... Nxd4 {@variation 4…Nxd4} 5. Qxd4 {Qxd4: the queen is strong in the centre and hard to chase.} 5... d6
+    (5... Qf6 6. e5 {e5 gains space with tempo on the queen.} (6. Qe3 {@alt})
+{@line id=scotch-qxd4-qf6 level=1 tier=main name="5…Qf6" summary="If Black offers a queen trade with …Qf6, push e5 with tempo (or keep queens with Qe3)."}
+)
+    (5... Nf6 6. e5 {e5 kicks the knight; White's space advantage grows.}
+{@line id=scotch-qxd4-nf6 level=1 tier=side name="5…Nf6" summary="Against 5…Nf6, push e5 at once and chase the knight."}
+)
+    (5... c5 6. Qe3 {Qe3 keeps the queen central and eyes e5.} (6. Qd3 {@alt}) (6. Qc3 {@alt})
+{@line id=scotch-qxd4-c5 level=2 tier=main name="5…c5" summary="When …c5 kicks the queen, step back to e3, d3 or c3; Black's d-pawn is now weak."}
+)
+  6. Nc3 {Nc3 develops; Bf4 or Be3 and O-O-O can follow.} (6. Bf4 {@alt}) (6. Be3 {@alt})
+{@line id=scotch-nxd4 level=1 tier=main name="4…Nxd4" summary="After the knight trade, the white queen dominates the centre: develop around it."}
+)
+  (4... Nf6 {@variation 4…Nf6} 5. Nxc6 bxc6 6. Bd3 {Bd3 defends e4 calmly; White plans O-O and quick development.} 6... d5
+    (6... Bc5 7. O-O {O-O: White is ready for e5 or Nc3.} (7. e5 {@alt})
+{@line id=scotch-nf6-bc5 level=2 tier=main name="4…Nf6 6…Bc5" summary="Against …Bc5, castle; e5 to kick the knight is also strong."}
+)
+  7. exd5 {exd5 trades in the centre; Black is left with a weak c-pawn structure.}
+{@line id=scotch-nf6 level=1 tier=main name="4…Nf6" summary="Trade on c6 to damage Black's pawns, then Bd3 and exd5 against …d5."}
+7... cxd5 8. O-O {O-O: White aims at the isolated d5 pawn and the c-file.}
+{@line id=scotch-nf6-deep level=2 tier=main name="4…Nf6 6…d5" summary="After the central trade, castle and target Black's isolated d5 pawn."}
+)
+  (4... Qf6 {@variation 4…Qf6} 5. Be3 {Be3 develops and protects the d4 knight.} (5. Nb5 {@alt}) (5. c3 {@alt})
+{@line id=scotch-qf6 level=1 tier=side name="4…Qf6" summary="Against the early queen, defend d4 with Be3 and keep developing."}
+)
+5. Be3 {Be3 defends the d4 knight against the c5 bishop.} 5... Qf6
+  (5... Bb6 6. Nc3 {Nc3 develops; the bishop on b6 has no targets.} (6. Nf5 {@alt})
+{@line id=scotch-bc5-bb6 level=2 tier=side name="4…Bc5 5…Bb6" summary="If the bishop retreats to b6, develop with Nc3; Nf5 is also strong."}
+)
+6. c3 {c3 holds d4 a second time.} 6... Nge7 7. Bc4 {Bc4 develops to the active diagonal towards f7.}
+{@line id=scotch-bc5 level=1 tier=main name="4…Bc5" summary="Defend d4 with Be3 and c3, then develop Bc4 and castle."}
+7... O-O 8. O-O {O-O: White's position is solid; Nd2 or Nc2 comes next.}
+{@line id=scotch-bc5-deep level=2 tier=main name="4…Bc5 7.Bc4 O-O" summary="Castle short and keep d4 strong; Black's pieces press on d4 but can't break through."} *
