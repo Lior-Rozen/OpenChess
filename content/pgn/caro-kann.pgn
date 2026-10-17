@@ -28,7 +28,12 @@
   (4. Bd3 Bxd3 {…Bxd3 swaps off Black's problem bishop, the usual worry in French-type structures.} 5. Qxd3 e6 6. Nf3 Qb6 {…Qb6 eyes d4 and b2.} 7. O-O c5 {…c5 strikes at the base of the chain.} 8. c3 Nc6
 {@line id=caro-kann-advance-bd3 level=2 tier=main name="4.Bd3" summary="4.Bd3 lets you trade your bad bishop; then the French plan with …Qb6, …c5 and …Nc6."}
 )
-4... e6 5. Be2 c5 {…c5 hits d4, the base of White's pawn chain, as in the French.} 6. O-O Nc6 {…Nc6 adds a second attacker on d4.}
-{@line id=caro-kann-advance-main level=1 tier=main name="Short System" summary="Get the bishop out to f5 first, then …e6 and …c5 to attack the base of White's chain."}
+4... e6 5. Be2 c5 {…c5 hits d4, the base of White's pawn chain, as in the French.} 6. Be3 {Be3 defends d4, but the bishop no longer guards b2.}
+  (6. O-O Nc6 {…Nc6 adds a second attacker on d4.}
+{@line id=caro-kann-advance-oo level=1 tier=side name="Short, 6.O-O" summary="Against 6.O-O, develop with …Nc6 and keep hitting d4."}
 7. c3 cxd4 {…cxd4 opens the c-file for Black's rook.} 8. cxd4 Nge7 {…Nge7 develops the last minor piece and keeps the f-pawn free for a later …f6 break.}
-{@line id=caro-kann-advance-deep level=2 tier=main name="Short, 7.c3" summary="Open the c-file with …cxd4 and pile up on d4 with your knights."} *
+{@line id=caro-kann-advance-deep level=2 tier=side name="Short, 6.O-O and 7.c3" summary="Open the c-file with …cxd4 and pile up on d4 with your knights."}
+)
+6... Qb6 {…Qb6 hits b2 and adds a second attacker on d4.}
+  (6... cxd4 {@alt})
+{@line id=caro-kann-advance-main level=1 tier=main name="Short System" summary="Get the bishop out to f5 first, then …e6, …c5 and …Qb6 to hit d4 and b2."} *

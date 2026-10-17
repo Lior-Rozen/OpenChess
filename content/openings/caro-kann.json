@@ -12,6 +12,25 @@
       "level": 1,
       "tier": "main",
       "variation": "Advance",
+      "moves": ["e4", "c6", "d4", "d5", "e5", "Bf5", "Nf3", "e6", "Be2", "c5", "Be3", "Qb6"],
+      "notes": {
+        "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
+        "5": "…Bf5 develops the bishop outside the chain before …e6 shuts it in.",
+        "9": "…c5 hits d4, the base of White's pawn chain, as in the French.",
+        "10": "Be3 defends d4, but the bishop no longer guards b2.",
+        "11": "…Qb6 hits b2 and adds a second attacker on d4."
+      },
+      "accept": {
+        "11": ["cxd4"]
+      },
+      "summary": "Get the bishop out to f5 first, then …e6, …c5 and …Qb6 to hit d4 and b2."
+    },
+    {
+      "id": "caro-kann-advance-oo",
+      "name": "Short, 6.O-O",
+      "level": 1,
+      "tier": "side",
+      "variation": "Advance",
       "moves": ["e4", "c6", "d4", "d5", "e5", "Bf5", "Nf3", "e6", "Be2", "c5", "O-O", "Nc6"],
       "notes": {
         "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
@@ -19,13 +38,13 @@
         "9": "…c5 hits d4, the base of White's pawn chain, as in the French.",
         "11": "…Nc6 adds a second attacker on d4."
       },
-      "summary": "Get the bishop out to f5 first, then …e6 and …c5 to attack the base of White's chain."
+      "summary": "Against 6.O-O, develop with …Nc6 and keep hitting d4."
     },
     {
       "id": "caro-kann-advance-deep",
-      "name": "Short, 7.c3",
+      "name": "Short, 6.O-O and 7.c3",
       "level": 2,
-      "tier": "main",
+      "tier": "side",
       "variation": "Advance",
       "moves": ["e4", "c6", "d4", "d5", "e5", "Bf5", "Nf3", "e6", "Be2", "c5", "O-O", "Nc6", "c3", "cxd4", "cxd4", "Nge7"],
       "notes": {
