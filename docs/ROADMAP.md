@@ -76,7 +76,7 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
       (1.e4/1.d4/…, derived from the lines) and tags (gambit, aggressive, solid, …)
 - [x] Sounds/haptics with an off switch; Settings screen (including quieting the Mastermind)
 - [ ] (parked) Review button on Home with the due count
-- [ ] Theme polish and app icon: **a unique, darker look**. No chess.com green and no bright,
+- [x] Theme polish and app icon: **a unique, darker look**. No chess.com green and no bright,
       casual cream. A dark theme with purple/magenta and neon/retro accents across every screen
       (background, cards, buttons, fonts, the Mastermind's speech), readable first
   - [x] Dark "Midnight Arcade" palette on every screen, all colours as tokens in `theme.ts`
@@ -85,13 +85,14 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
 - [x] Opening icons: an original 8-bit/neon SVG icon per opening (baguette for the French, …),
       kept in the app (not the content JSON) with a fallback icon. Shown on the Openings cards
       and the Home Continue button
-- [ ] Art, with no credit line needed (CC0/public domain, or made by the user):
+- [x] Art, with no credit line needed (CC0/public domain, or made by the user):
   - [x] **Pieces:** cut from the user's public piece sheet into `app/assets/pieces/`; violet
     board with neon highlights applied. Optional upgrade: a sharper (higher-res or SVG) version.
     CC0 alternatives if ever needed:
     - RhosGFX Vector Chess Pieces: https://rhosgfx.itch.io/vector-chess-pieces
     - Screaming Brain 2D Chess Pack: https://opengameart.org/content/2d-chess-pack
-  - **Mastermind avatar and app icon:** supplied by the user. Transparent square PNG (pixel art
+  - **Mastermind avatar:** the drawn 8-bit figure stays (the user's choice); their own art can replace it any time.
+  - Previously planned, if the user supplies art: **Mastermind avatar and app icon** supplied by the user. Transparent square PNG (pixel art
     scaled to 512 px without smoothing) or SVG. Optional expressions (neutral, smug, disappointed).
     Icon: 1024 px, plus a transparent foreground layer for Android.
 - [x] Board editor on the Free board, kept simple: drag a piece off the board to remove it, drag
