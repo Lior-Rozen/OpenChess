@@ -1,0 +1,169 @@
+{
+  "id": "queens-gambit-declined",
+  "name": "Queen's Gambit Declined",
+  "side": "black",
+  "eco": "D30-D69",
+  "description": "Hold the centre with …d5 and …e6, develop quietly and castle: the classical answer to the Queen's Gambit.",
+  "tags": ["solid", "positional"],
+  "lines": [
+    {
+      "id": "queens-gambit-declined-tartakower",
+      "name": "Tartakower (7…b6)",
+      "level": 1,
+      "tier": "main",
+      "variation": "Orthodox (4.Bg5)",
+      "moves": ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "Bg5", "Be7", "e3", "O-O", "Nf3", "h6", "Bh4", "b6"],
+      "notes": {
+        "3": "…e6 supports d5 solidly; the price is a passive c8 bishop for now.",
+        "7": "…Be7 breaks the pin on the f6 knight.",
+        "11": "…h6 asks the bishop to decide.",
+        "13": "…b6 prepares …Bb7: the Tartakower set-up."
+      },
+      "accept": {
+        "11": ["Nbd7"]
+      },
+      "summary": "The Orthodox QGD: …Be7, castle, …h6, then …b6 and …Bb7 to solve the problem bishop."
+    },
+    {
+      "id": "queens-gambit-declined-tartakower-cxd5",
+      "name": "Tartakower: 8.cxd5",
+      "level": 2,
+      "tier": "main",
+      "variation": "Orthodox (4.Bg5)",
+      "moves": ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "Bg5", "Be7", "e3", "O-O", "Nf3", "h6", "Bh4", "b6", "cxd5", "Nxd5"],
+      "notes": {
+        "3": "…e6 supports d5 solidly; the price is a passive c8 bishop for now.",
+        "7": "…Be7 breaks the pin on the f6 knight.",
+        "11": "…h6 asks the bishop to decide.",
+        "13": "…b6 prepares …Bb7: the Tartakower set-up.",
+        "15": "…Nxd5 trades pieces to free Black's game."
+      },
+      "accept": {
+        "11": ["Nbd7"]
+      },
+      "summary": "After cxd5, take back with the knight and trade pieces; then …Bb7 and …c5."
+    },
+    {
+      "id": "queens-gambit-declined-nf3-bf4",
+      "name": "4.Nf3 Be7 5.Bf4",
+      "level": 1,
+      "tier": "main",
+      "variation": "4.Nf3",
+      "moves": ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "Nf3", "Be7", "Bf4", "O-O", "e3", "b6"],
+      "notes": {
+        "3": "…e6 supports d5 solidly; the price is a passive c8 bishop for now.",
+        "7": "…Be7 develops and prepares to castle.",
+        "11": "…b6 prepares …Bb7 and …c5, the plan of the Tartakower."
+      },
+      "accept": {
+        "11": ["c5", "Nbd7"]
+      },
+      "summary": "Against Bf4, castle and play …b6 and …Bb7, or hit the centre with …c5."
+    },
+    {
+      "id": "queens-gambit-declined-exchange",
+      "name": "Exchange (4.cxd5)",
+      "level": 1,
+      "tier": "main",
+      "variation": "Exchange",
+      "moves": ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "cxd5", "exd5", "Bg5", "Be7", "e3", "O-O"],
+      "notes": {
+        "3": "…e6 supports d5 solidly; the price is a passive c8 bishop for now.",
+        "11": "…O-O: Black has a solid position; White usually plans the minority attack."
+      },
+      "accept": {
+        "11": ["c6"]
+      },
+      "summary": "In the Exchange, develop …Be7 and castle; …c6, …Nbd7 and …Re8 make a solid set-up."
+    },
+    {
+      "id": "queens-gambit-declined-exchange-bd3",
+      "name": "Exchange: 7.Bd3",
+      "level": 2,
+      "tier": "main",
+      "variation": "Exchange",
+      "moves": ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "cxd5", "exd5", "Bg5", "Be7", "e3", "O-O", "Bd3", "h6"],
+      "notes": {
+        "3": "…e6 supports d5 solidly; the price is a passive c8 bishop for now.",
+        "11": "…O-O: Black has a solid position; White usually plans the minority attack.",
+        "13": "…h6 asks the g5 bishop to make a decision before Black finishes developing."
+      },
+      "accept": {
+        "11": ["c6"],
+        "13": ["c6"]
+      },
+      "summary": "Against Bd3, ask the bishop with …h6, then …c6, …Nbd7 and …Re8."
+    },
+    {
+      "id": "queens-gambit-declined-e3",
+      "name": "4.e3",
+      "level": 2,
+      "tier": "main",
+      "variation": "4.e3",
+      "moves": ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "e3", "Be7", "Nf3", "O-O"],
+      "notes": {
+        "3": "…e6 supports d5 solidly; the price is a passive c8 bishop for now.",
+        "9": "…O-O: the solid set-up again; …b6 or …c5 next."
+      },
+      "summary": "Against the quiet 4.e3, develop with …Be7 and castle."
+    },
+    {
+      "id": "queens-gambit-declined-bf4",
+      "name": "4.Bf4",
+      "level": 2,
+      "tier": "side",
+      "variation": "4.Bf4",
+      "moves": ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "Bf4", "Be7", "e3", "O-O"],
+      "notes": {
+        "3": "…e6 supports d5 solidly; the price is a passive c8 bishop for now.",
+        "9": "…O-O, with …c5 or …b6 to follow."
+      },
+      "accept": {
+        "9": ["c5"]
+      },
+      "summary": "Against 4.Bf4, develop and castle; …c5 is a good way to hit back."
+    },
+    {
+      "id": "queens-gambit-declined-catalan",
+      "name": "Catalan (4.g3)",
+      "level": 1,
+      "tier": "main",
+      "variation": "Catalan (g3)",
+      "moves": ["d4", "d5", "c4", "e6", "Nf3", "Nf6", "g3", "Be7", "Bg2", "O-O", "O-O", "dxc4"],
+      "notes": {
+        "3": "…e6 supports d5 solidly; the price is a passive c8 bishop for now.",
+        "11": "…dxc4 takes the pawn now that White has castled; Black plays …a6 and …b5 or …c5 next."
+      },
+      "summary": "Against the Catalan, develop and castle, then take on c4 and hold the pawn or hit back with …c5."
+    },
+    {
+      "id": "queens-gambit-declined-3nf3",
+      "name": "3.Nf3 move order",
+      "level": 1,
+      "tier": "side",
+      "variation": "3.Nf3",
+      "moves": ["d4", "d5", "c4", "e6", "Nf3", "Nf6", "Nc3", "Be7"],
+      "notes": {
+        "3": "…e6 supports d5 solidly; the price is a passive c8 bishop for now.",
+        "7": "…Be7: the same position as 3.Nc3 Nf6 4.Nf3 Be7."
+      },
+      "summary": "3.Nf3 and 4.Nc3 reach the normal QGD: develop with …Nf6 and …Be7."
+    },
+    {
+      "id": "queens-gambit-declined-3cxd5",
+      "name": "3.cxd5",
+      "level": 1,
+      "tier": "side",
+      "variation": "Exchange",
+      "moves": ["d4", "d5", "c4", "e6", "cxd5", "exd5", "Nc3", "Nf6"],
+      "notes": {
+        "3": "…e6 supports d5 solidly; the price is a passive c8 bishop for now.",
+        "7": "…Nf6 develops; Bg5 and e3 usually follow."
+      },
+      "accept": {
+        "7": ["c6"]
+      },
+      "summary": "After an early cxd5, take back with the pawn and develop …Nf6, …Be7 and castle."
+    }
+  ]
+}

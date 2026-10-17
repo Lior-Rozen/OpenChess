@@ -15,6 +15,7 @@
     { "id": "alapin", "name": "Sicilian: Alapin (2.c3)", "side": "white", "file": "openings/alapin.json" },
     { "id": "scotch", "name": "Scotch Game", "side": "white", "file": "openings/scotch.json" },
     { "id": "english", "name": "English Opening", "side": "white", "file": "openings/english.json" },
-    { "id": "nimzo-indian", "name": "Nimzo-Indian Defense", "side": "black", "file": "openings/nimzo-indian.json" }
+    { "id": "nimzo-indian", "name": "Nimzo-Indian Defense", "side": "black", "file": "openings/nimzo-indian.json" },
+    { "id": "queens-gambit-declined", "name": "Queen's Gambit Declined", "side": "black", "file": "openings/queens-gambit-declined.json" }
   ]
 }
