@@ -7,6 +7,39 @@
   "tags": ["aggressive"],
   "lines": [
     {
+      "id": "sicilian-najdorf-bg5",
+      "name": "6.Bg5",
+      "level": 1,
+      "tier": "main",
+      "variation": "Najdorf",
+      "moves": ["e4", "c5", "Nf3", "d6", "d4", "cxd4", "Nxd4", "Nf6", "Nc3", "a6", "Bg5", "e6", "f4", "Be7", "Qf3", "Qc7"],
+      "notes": {
+        "1": "…c5 fights for d4 from the side, keeping the game unbalanced.",
+        "9": "…a6 is the Najdorf: it takes b5 from White's pieces and prepares …e5 or …b5.",
+        "11": "…e6 here, not …e5: the pin on f6 makes d5 too weak after …e5.",
+        "13": "…Be7 breaks the pin on the f6 knight.",
+        "15": "…Qc7 watches e5 and the c-file."
+      },
+      "summary": "Against 6.Bg5, switch to …e6, unpin with …Be7, then …Qc7, …Nbd7 and …b5."
+    },
+    {
+      "id": "sicilian-najdorf-bg5-deep",
+      "name": "6.Bg5, 9.O-O-O",
+      "level": 2,
+      "tier": "main",
+      "variation": "Najdorf",
+      "moves": ["e4", "c5", "Nf3", "d6", "d4", "cxd4", "Nxd4", "Nf6", "Nc3", "a6", "Bg5", "e6", "f4", "Be7", "Qf3", "Qc7", "O-O-O", "Nbd7"],
+      "notes": {
+        "1": "…c5 fights for d4 from the side, keeping the game unbalanced.",
+        "9": "…a6 is the Najdorf: it takes b5 from White's pieces and prepares …e5 or …b5.",
+        "11": "…e6 here, not …e5: the pin on f6 makes d5 too weak after …e5.",
+        "13": "…Be7 breaks the pin on the f6 knight.",
+        "15": "…Qc7 watches e5 and the c-file.",
+        "17": "…Nbd7 supports the f6 knight; next is …b5 and a queenside attack."
+      },
+      "summary": "After White castles long, complete the set-up with …Nbd7 and start …b5."
+    },
+    {
       "id": "sicilian-najdorf-english",
       "name": "English Attack (6.Be3)",
       "level": 1,
@@ -40,6 +73,21 @@
       "summary": "Opposite-side castling means a race: White pushes g4-g5, Black answers with …b5-b4."
     },
     {
+      "id": "sicilian-najdorf-english-nf3",
+      "name": "English Attack: 7.Nf3",
+      "level": 2,
+      "tier": "side",
+      "variation": "Najdorf",
+      "moves": ["e4", "c5", "Nf3", "d6", "d4", "cxd4", "Nxd4", "Nf6", "Nc3", "a6", "Be3", "e5", "Nf3", "Be7"],
+      "notes": {
+        "1": "…c5 fights for d4 from the side, keeping the game unbalanced.",
+        "9": "…a6 is the Najdorf: it takes b5 from White's pieces and prepares …e5 or …b5.",
+        "11": "…e5 grabs space and kicks the d4 knight; d5 becomes the key square.",
+        "13": "…Be7 develops and prepares to castle; …Be6 and …Nbd7 follow."
+      },
+      "summary": "If the knight retreats to f3, develop with …Be7, castle, and fight for d5."
+    },
+    {
       "id": "sicilian-najdorf-be2",
       "name": "6.Be2",
       "level": 1,
@@ -53,42 +101,10 @@
         "13": "…Be7 develops and prepares to castle.",
         "15": "…O-O: next come …Be6, …Nbd7 and a fight for d5."
       },
+      "accept": {
+        "13": ["Be6"]
+      },
       "summary": "Same plan as against 6.Be3: …e5, develop, castle, and fight for d5."
-    },
-    {
-      "id": "sicilian-najdorf-be2-deep",
-      "name": "6.Be2, 9.Be3",
-      "level": 2,
-      "tier": "side",
-      "variation": "Najdorf",
-      "moves": ["e4", "c5", "Nf3", "d6", "d4", "cxd4", "Nxd4", "Nf6", "Nc3", "a6", "Be2", "e5", "Nb3", "Be7", "O-O", "O-O", "Be3", "Be6", "Qd2", "Nbd7"],
-      "notes": {
-        "1": "…c5 fights for d4 from the side, keeping the game unbalanced.",
-        "9": "…a6 is the Najdorf: it takes b5 from White's pieces and prepares …e5 or …b5.",
-        "11": "…e5 against the quiet 6.Be2, the same reply as against 6.Be3.",
-        "13": "…Be7 develops and prepares to castle.",
-        "15": "…O-O: next come …Be6, …Nbd7 and a fight for d5.",
-        "17": "…Be6 aims at d5, the key square in every …e5 Najdorf.",
-        "19": "…Nbd7 completes development; …Rc8 and …b5 follow."
-      },
-      "summary": "Quiet White play: develop with …Be6 and …Nbd7, then use the c-file and …b5."
-    },
-    {
-      "id": "sicilian-najdorf-bg5",
-      "name": "6.Bg5",
-      "level": 2,
-      "tier": "main",
-      "variation": "Najdorf",
-      "moves": ["e4", "c5", "Nf3", "d6", "d4", "cxd4", "Nxd4", "Nf6", "Nc3", "a6", "Bg5", "e6", "f4", "Be7", "Qf3", "Qc7", "O-O-O", "Nbd7"],
-      "notes": {
-        "1": "…c5 fights for d4 from the side, keeping the game unbalanced.",
-        "9": "…a6 is the Najdorf: it takes b5 from White's pieces and prepares …e5 or …b5.",
-        "11": "…e6 here, not …e5: the pin on f6 makes d5 too weak after …e5.",
-        "13": "…Be7 breaks the pin on the f6 knight.",
-        "15": "…Qc7 watches e5 and the c-file.",
-        "17": "…Nbd7 supports the f6 knight; next is …b5 and a queenside attack."
-      },
-      "summary": "Against 6.Bg5, switch to …e6, unpin with …Be7, then …Qc7, …Nbd7 and …b5."
     },
     {
       "id": "sicilian-najdorf-bc4",
@@ -135,7 +151,40 @@
         "9": "…Bg4 develops and pins the knight that defends d4.",
         "13": "…Nc6 piles up on d4; Black is comfortable."
       },
+      "accept": {
+        "9": ["e6", "Nc6"]
+      },
       "summary": "Meet 2.c3 with …d5: the queen recaptures safely, then …Nf6, …Bg4, …e6 and …Nc6 hit d4."
+    },
+    {
+      "id": "sicilian-alapin-nf3",
+      "name": "4.Nf3",
+      "level": 2,
+      "tier": "main",
+      "variation": "Alapin",
+      "moves": ["e4", "c5", "c3", "d5", "exd5", "Qxd5", "Nf3", "Nf6", "d4", "Bg4"],
+      "notes": {
+        "1": "…c5 fights for d4 from the side, keeping the game unbalanced.",
+        "3": "…d5 hits e4 at once, before White can build a big centre with d4.",
+        "5": "…Qxd5 is safe because c3 takes the c3 square from White's knight.",
+        "7": "…Nf6: after d4 this is the main Alapin line.",
+        "9": "…Bg4 pins the knight that defends d4."
+      },
+      "summary": "4.Nf3 changes nothing: …Nf6, and after d4 the pin …Bg4."
+    },
+    {
+      "id": "sicilian-alapin-e5",
+      "name": "3.e5",
+      "level": 2,
+      "tier": "main",
+      "variation": "Alapin",
+      "moves": ["e4", "c5", "c3", "d5", "e5", "Bf5"],
+      "notes": {
+        "1": "…c5 fights for d4 from the side, keeping the game unbalanced.",
+        "3": "…d5 hits e4 at once, before White can build a big centre with d4.",
+        "5": "…Bf5 develops the bishop outside the pawn chain, as in the Caro-Kann Advance."
+      },
+      "summary": "If White pushes e5, develop the bishop to f5 first, then …e6 and …Nc6 against the chain."
     },
     {
       "id": "sicilian-smith-morra",
@@ -153,21 +202,17 @@
       "summary": "Take the gambit pawn, build a …d6/…e6 wall, develop and castle; White's attack fades."
     },
     {
-      "id": "sicilian-smith-morra-deep",
-      "name": "9.Rd1",
+      "id": "sicilian-morra-qxd4",
+      "name": "3.Qxd4",
       "level": 2,
       "tier": "side",
       "variation": "Smith-Morra",
-      "moves": ["e4", "c5", "d4", "cxd4", "c3", "dxc3", "Nxc3", "Nc6", "Nf3", "d6", "Bc4", "e6", "O-O", "Nf6", "Qe2", "Be7", "Rd1", "e5"],
+      "moves": ["e4", "c5", "d4", "cxd4", "Qxd4", "Nc6"],
       "notes": {
         "1": "…c5 fights for d4 from the side, keeping the game unbalanced.",
-        "5": "…dxc3 accepts the pawn; Black must defend carefully but stays a pawn up.",
-        "9": "…d6 and …e6 make a solid wall against the c4 bishop.",
-        "13": "…Nf6 develops; next come …Be7 and castling.",
-        "15": "…Be7 prepares castling; the queen stays on d8 to cover d6.",
-        "17": "…e5 shuts the d-file and blunts White's pressure on d6."
+        "5": "…Nc6 develops with tempo on the centralised queen."
       },
-      "summary": "Close the d-file with …e5, castle, and keep the extra pawn."
+      "summary": "If White takes back with the queen, develop …Nc6 with tempo and keep developing."
     }
   ]
 }
