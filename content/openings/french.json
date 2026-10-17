@@ -45,6 +45,26 @@
       "summary": "After …c4, the queenside is Black's: aim the knight at b3 and keep White's b4 in check."
     },
     {
+      "id": "french-advance-a3-nbd2",
+      "name": "6.a3 c4 7.Nbd2",
+      "level": 2,
+      "tier": "side",
+      "variation": "Advance",
+      "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "a3", "c4", "Nbd2", "Na5", "Be2", "Bd7"],
+      "notes": {
+        "1": "…e6 prepares …d5, with a pawn ready to recapture on d5.",
+        "5": "…c5 strikes at d4, the base of White's pawn chain.",
+        "9": "…Qb6 piles up on d4 and eyes the b2 pawn.",
+        "11": "…c4 clamps the queenside, taking b3 and d3 away from White.",
+        "13": "…Na5 heads for b3 as usual.",
+        "15": "…Bd7: the same position as the 7.Be2 order."
+      },
+      "accept": {
+        "11": ["Bd7"]
+      },
+      "summary": "7.Nbd2 and 7.Be2 lead to the same position: …Na5 and …Bd7 either way."
+    },
+    {
       "id": "french-advance-bd3",
       "name": "Milner-Barry (6.Bd3)",
       "level": 1,

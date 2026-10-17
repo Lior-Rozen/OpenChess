@@ -40,5 +40,9 @@
 )
 6... c4 {…c4 clamps the queenside, taking b3 and d3 away from White.} (6... Bd7 {@alt})
 {@line id=french-advance-main level=1 tier=main name="Advance Variation" summary="Attack the base of the chain: …c5, …Nc6 and …Qb6 all hit d4."}
-7. Be2 Na5 {…Na5 heads for b3, a strong square White can no longer guard with a pawn.} 8. Nbd2 Bd7 {…Bd7 develops and supports …Bb5 or …Nb3 later.}
+7. Be2
+  (7. Nbd2 Na5 {…Na5 heads for b3 as usual.} 8. Be2 Bd7 {…Bd7: the same position as the 7.Be2 order.}
+{@line id=french-advance-a3-nbd2 level=2 tier=side name="6.a3 c4 7.Nbd2" summary="7.Nbd2 and 7.Be2 lead to the same position: …Na5 and …Bd7 either way."}
+)
+7... Na5 {…Na5 heads for b3, a strong square White can no longer guard with a pawn.} 8. Nbd2 Bd7 {…Bd7 develops and supports …Bb5 or …Nb3 later.}
 {@line id=french-advance-a3 level=2 tier=main name="6.a3 c4 7.Be2" summary="After …c4, the queenside is Black's: aim the knight at b3 and keep White's b4 in check."} *
