@@ -1,11 +1,10 @@
-# Chess Openings Trainer — Design
+# OpenChess: Design
 
 ## Context
 A personal Android app (for the author and friends) for drilling chess openings "by the book".
 No engine, no heavy compute: every opening line is stored as data, and the app plays the
-opponent's book moves while the user has to find theirs. Levels unlock more lines, and a
-difficulty mode decides how many variations must be learned. The look is old-school and
-minimal: focused on the drill, not on features.
+opponent's book moves while the user has to find theirs. Levels unlock more lines. The look is
+dark, modern and minimal, with an 8-bit Mastermind: focused on the drill, not on features.
 
 ## 1. Decisions
 | Topic | Decision | Why |
@@ -28,9 +27,11 @@ updates and sync later, but it is never required to train.
 - **Phone → local backend:** run the server bound to `http://0.0.0.0:5080` and allow port 5080
   in Windows Firewall (private network). The app reads `EXPO_PUBLIC_API_URL=http://<PC-LAN-IP>:5080`
   from `app/.env`.
-- **Sharing with friends:** `eas build -p android --profile preview` builds an installable APK
-  in the cloud (free tier). Send the link or file; friends allow "install unknown apps".
-  This is only needed at milestones.
+- **Sharing with friends:** `eas build -p android --profile preview` (in `app/`) builds an
+  installable APK in the cloud (free tier). Send the link or file; friends allow "install unknown
+  apps". This is only needed at milestones. Set up: `app/eas.json` (the `preview` profile builds
+  an APK), Android package `com.liorrozen.openchess`, and the EAS project linked in `app.json`
+  (owner `bearerofagonies`, slug `chess-openings`; keep the slug, it identifies the EAS project).
 
 ## 3. Product design
 
@@ -42,8 +43,11 @@ updates and sync later, but it is never required to train.
 4. A move is checked by comparing it with the expected book move. Board legality comes from chess.js.
    - Correct: the move plays and the line continues.
    - Wrong: the board shakes or flashes red, the move is undone, and the mistake is counted.
-     After 2 wrong tries, the correct move is shown as an arrow and must be played.
-5. The line ends with a "Line complete" card showing mistakes and the short note for that line.
+     In Practice, after 2 wrong tries (configurable in Settings), the correct move is shown as an
+     arrow and must be played.
+5. The line ends with a result card: the outcome, badges (CLEAN, MASTERED, LEVEL N UNLOCKED,
+   ★ EXAM PASSED), the line's takeaway as a tip, and **Next line** (the next line to learn in the
+   same opening; "Next random" after a random drill).
 
 ### Learning modes per line
 - **Watch:** the app plays the whole line with move notes. Used the first time a line is met.
@@ -79,11 +83,11 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 (`Avatar.tsx`, no licensed artwork). Settings has an on/off switch for his talk; off, he still plays, silently.
 
 ### Additions (cheap to maintain)
-- **Review queue (spaced repetition):** mastered lines come back after 1d → 3d → 7d → 21d.
-  A failed review drops the interval. The home screen shows "5 lines to review".
+- **Review queue (spaced repetition, parked):** mastered lines would come back after 1d → 3d →
+  7d → 21d; a failed review drops the interval one step and the line stays mastered.
 - **Move notes:** optional one-line "why" notes on key moves in the JSON.
-- **Stats per opening:** % mastered, accuracy, streak of training days.
-- **Random drill:** a random line from everything unlocked.
+- **Stats per opening (parked):** % mastered, accuracy, streak of training days.
+- **Random drill:** a random line from everything unlocked, in its suggested mode.
 - **Sounds and haptics** on move, mistake and line complete, each with an off switch. The sounds are
   original, soft on purpose (a two-note chime, a muted thud, a wooden tock), synthesised by
   `tools/make_sounds.py` into `app/assets/sounds/`. They mix with other
@@ -94,7 +98,7 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 - No accounts in v1. They come in phase 7, only if sync or friend leaderboards are wanted.
 - No drag-to-move in v1 (tap-to-move is simpler and reliable on phones).
 
-### Visual direction ("old-school, simple")
+### Visual direction (dark, modern, minimal)
 - **Readability first:** the board and pieces must be clear and easy to see for everyone, so no
   pixel art on the board. The 8-bit style belongs to the Mastermind and small accents only.
 - **A board of its own:** not green (that's chess.com's look). The board is violet (`#b9a6d6` /
@@ -102,8 +106,8 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 - **Motion:** the Mastermind's moves, and stepping forward in Watch, slide the piece into place
   (200 ms, ease-out). The user's own moves, stepping back and jumping land at once.
 - **Pieces:** PNG images in `app/assets/pieces/` (`wK.png` … `bP.png`), cut from a public piece
-  sheet the user supplied. They're about 65 px, so slightly soft when scaled up. A higher-resolution
-  or SVG version would be sharper.
+  sheet the user supplied. They're about 65 px, so slightly soft when scaled up; kept as they are
+  (there's no larger copy of the same set).
 - **Palette ("Midnight Arcade", chosen in phase 6):** dark violet-black background (`#130c20`),
   violet cards with a thin border, near-white text. **Magenta** (`#ff40c8`) is the user's colour:
   main buttons (with a soft glow), progress bars, selection. **Cyan** (`#00e5ff`) is the
@@ -125,9 +129,9 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 - **Modern, not wordy:** explanations live behind an ⓘ (a "How it works" sheet), not printed on
   screens; information is shown as badges, pills, progress bars and icons where possible.
 - One font, a muted palette, almost no chrome. The screens:
-  - **Home:** the Mastermind and "Hello, friend.", one big **Continue** button (straight into
-    the next suggested line and mode), **Random drill**, **Openings**, **Free board**, a ⚙ for Settings, and
-    (phase 6) **Review** with the due count.
+  - **Home:** the Mastermind and "Hello, friend.", one big magenta **Continue** button (straight
+    into the next suggested line and mode, with that opening's icon), then **Openings**, **Random
+    drill** and **Free board** as icon rows, and a settings icon.
   - **Openings:** the grid, with % mastered, grouped under AS WHITE and AS BLACK. Filter chips at
     the top (always visible) for side, first move and style tags. Within side and first move,
     several chips mean "any of them"; each tag narrows further (an opening needs all picked tags).
@@ -138,7 +142,9 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
     opening (`ui:folds:v1`). Each line is one compact row with a Watch | Practice | Test strip,
     the suggested mode in magenta. The level exam (its main lines, the Mastermind picks his replies
     at random) is one row at the bottom of the level. Explanations sit behind the header's ⓘ.
-  - **Drill:** the Mastermind's line, board, move list, result card.
+  - **Drill:** a header with the opening's icon and name over the line; the Mastermind's bubble;
+    a mode badge (WATCH / PRACTICE / TEST / EXAM), the status, and in Test one pip per allowed
+    mistake that fills red; the board; the move's note; the move list; the result card.
   - **Free board:** free play for both sides, with Take back (one move at a time, any time,
     checkmate included), Flip board, New game and **Edit position**. The editor starts from the
     current position: drag pieces in from a pool of all 12, drag them around, drag one off the
@@ -218,8 +224,9 @@ The compiled JSON, `content/openings/french.json`:
 - **Bundling:** `app/metro.config.js` lets Metro read `../content`, and every opening file in
   `index.json` must also be imported in `app/src/content/loader.ts` (Metro can't import by a
   computed path). A Jest test fails if one is missing.
-- Starter set (phase 5, ~10–12 openings): as White, Italian, Ruy Lopez, London, Queen's Gambit;
-  as Black, French, Caro-Kann, Sicilian (Najdorf/Dragon basics), Scandinavian, King's Indian, Slav.
+- The set (phase 5, 16 openings): as White, Italian, Ruy Lopez, Vienna, London, Queen's Gambit,
+  Sicilian Alapin, Scotch, English; as Black, French, Caro-Kann, Sicilian Najdorf, Scandinavian,
+  King's Indian, Slav, Nimzo-Indian, Queen's Gambit Declined.
 
 ## 5. Architecture
 ```
@@ -227,23 +234,32 @@ chess-openings/
   app/                 Expo + TS (expo-router, Expo SDK 57: must match the SDK the Play Store Expo Go supports)
     src/app/           screens (expo-router routes; only route files live here)
     src/api/           server calls (always optional: offline must work)
-    src/chess/         board component, chess.js wrapper, move matching
-    src/trainer/       drill state machine (watch/practice/test)
-    src/progress/      mastery, levels, SRS scheduling, storage
-    src/content/       loads bundled content (later: fetch + cache from API)
+    src/chess/         board, pieces, chess.js wrapper, tap-to-move, board editor
+    src/trainer/       drill state machine (watch/practice/test/exam)
+    src/drill/         the drill screens' parts (Watch and Trainer runs, header, result card)
+    src/progress/      mastery, levels, next/random line, storage
+    src/content/       loads bundled content, PGN compiler, validation
+    src/openings/      opening icons, the Openings filter, Opening screen folds
+    src/mastermind/    his lines, avatar, speech bubble
+    src/settings/      settings model and storage
+    src/feedback/      sounds and haptics
+    src/components/    Button, Chip, and shared UI (badges, ⓘ sheet, icons)
+    assets/            pieces, sounds, icons, the Inter font licence
   server/              ASP.NET Core Minimal API (.NET 10)
     ChessOpenings.Api/
     ChessOpenings.Api.Tests/   xUnit
-  content/             opening JSON + index.json + validate.ts
-  docs/                DESIGN.md, ROADMAP.md
+  content/             pgn/ (source), openings/ (compiled JSON), index.json, build.ts, validate.ts
+  tools/               make_sounds.py, make_icons.py (regenerate the app's sounds and icons)
+  docs/                DESIGN.md, ROADMAP.md, prompts/ (session prompts)
   CLAUDE.md
 ```
 - **The trainer is a pure-TS state machine** (no React inside). It takes a line, mode and moves,
   and returns state and events. That makes it unit-testable with Jest; it is the heart of the app.
 - **Progress model** (`app/src/progress/mastery.ts`, saved with AsyncStorage under `progress:v1`):
   `{ [openingId]: { lines: { [lineId]: { cleanRuns, watched, practiced, lastPlayed } }, examsPassed: number[] } }`.
-  Phase 6 adds the SRS fields (`intervalDays`, `due`). Unlocked levels are *derived* from this,
-  never stored.
+  A review queue would add `intervalDays` and `due` (parked). Unlocked levels are *derived* from
+  this, never stored. Other device storage: `settings:v1` (Settings) and `ui:folds:v1` (the
+  Opening screen's folds).
 - **Backend (phase 1):** `GET /api/health` and `GET /api/hello` → `{ "message": "hello friend" }`.
   **Later:** `GET /api/content/index`, `GET /api/content/openings/{id}` (served from the same
   `content/` folder, so the app can pull new openings without an app update), then optional

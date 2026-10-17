@@ -1,4 +1,4 @@
-# Chess Openings Trainer
+# OpenChess (chess openings trainer)
 
 An Android app for drilling chess openings by the book. There is no engine: opening lines are
 JSON data, the app plays the opponent's moves, and the user must find the book replies.

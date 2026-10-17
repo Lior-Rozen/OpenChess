@@ -87,17 +87,21 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
       and the Home Continue button
 - [x] Art, with no credit line needed (CC0/public domain, or made by the user):
   - [x] **Pieces:** cut from the user's public piece sheet into `app/assets/pieces/`; violet
-    board with neon highlights applied. Optional upgrade: a sharper (higher-res or SVG) version.
-    CC0 alternatives if ever needed:
-    - RhosGFX Vector Chess Pieces: https://rhosgfx.itch.io/vector-chess-pieces
-    - Screaming Brain 2D Chess Pack: https://opengameart.org/content/2d-chess-pack
-  - **Mastermind avatar:** the drawn 8-bit figure stays (the user's choice); their own art can replace it any time.
-  - Previously planned, if the user supplies art: **Mastermind avatar and app icon** supplied by the user. Transparent square PNG (pixel art
-    scaled to 512 px without smoothing) or SVG. Optional expressions (neutral, smug, disappointed).
-    Icon: 1024 px, plus a transparent foreground layer for Android.
+    board with neon highlights applied. Kept as they are (no larger copy of the same set; the CC0
+    alternatives were looked at and turned down).
+  - **Mastermind avatar:** the drawn 8-bit figure stays (the user's choice). If the user ever
+    supplies art: a transparent square PNG (pixel art scaled to 512 px without smoothing) or SVG.
 - [x] Board editor on the Free board, kept simple: drag a piece off the board to remove it, drag
       pieces in from a pool of all piece types, then play on from the position
-- [ ] (parked) First `eas build -p android --profile preview` APK shared with a friend
+- [x] Redesign: Inter font (OFL), Ionicons (MIT), badges / pills / progress bars instead of
+      sentences, explanations behind an ⓘ "How it works" sheet, quieter labels, rounder cards
+- [x] Opening screen: foldable levels and variations (remembered per opening), compact line rows
+      with a Watch | Practice | Test strip, a one-row level exam over the main lines only
+- [x] Drill: mode badge, mistake pips in Test, result card with badges and a tip, **Next line**
+- [x] More settings: the Mastermind's speed, board coordinates, when the Practice arrow appears
+- [x] Softer sounds (a two-note chime, a muted thud, a quieter tock)
+- [ ] **Next:** first `eas build -p android --profile preview` APK shared with a friend. Ready:
+      `eas.json`, package `com.liorrozen.openchess`, EAS project linked, `expo-doctor` clean
 - **Done when:** a friend has the APK installed and working.
 
 ## Phase 7: Real backend
@@ -108,6 +112,8 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
 - **Done when:** a new opening added on the server appears in the app without an app update.
 
 ## Ideas (not scheduled, not in v1)
+- **Level 3 lines** (parked): a third, deeper level for the openings. A content task for the
+  chess session (PGN in `content/pgn/`); the app already supports any number of levels.
 - **Kids mode** on the home screen: a simpler, friendlier presentation for children. Needs a
   design pass first: which openings, how simple, whether it has its own progress.
 - **Recharging test energy:** Test runs cost a charge that refills over time, to encourage

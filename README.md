@@ -1,13 +1,14 @@
-# Chess Openings Trainer
+# OpenChess
 
 An Android app for drilling chess openings by the book. See [docs/DESIGN.md](docs/DESIGN.md) and
 [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ```
-app/        Expo (React Native) + TypeScript — the phone app. Screens live in app/src/app/
+app/        Expo (React Native) + TypeScript: the phone app. Screens live in app/src/app/
 server/     ASP.NET Core .NET 10 Minimal API + xUnit tests
-content/    opening JSON (from phase 3)
-docs/       design and roadmap
+content/    openings: PGN sources in pgn/, compiled JSON in openings/
+tools/      scripts that regenerate the app's sounds and icons
+docs/       design, roadmap and session prompts
 ```
 
 ## One-time setup
@@ -26,6 +27,8 @@ docs/       design and roadmap
    ```powershell
    Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
    ```
+   If a terminal still blocks it (some VS Code or work setups reset the policy), call the `.cmd`
+   versions instead: `npx.cmd expo start`, `npm.cmd test`, and so on.
 
 2. **Install Expo Go on the phone** from the Play Store. It's a generic "player" app: it downloads
    your JavaScript from the PC and runs it, so you don't need to build an APK while developing.
@@ -81,8 +84,9 @@ Scan the QR code with Expo Go (Android: open Expo Go → "Scan QR code"). The PC
 be on the **same Wi-Fi**. The app reloads on the phone every time you save a file. Press `r` in the
 terminal to reload manually.
 
-You should see **Hello friend** and **Server says: hello friend**. If the server isn't running you'll
-see **Server offline**, and the app keeps working, because it never depends on the server.
+Home shows the Mastermind and **Hello, friend.** The server's status is in **Settings → About**:
+**Server says: hello friend**, or **Server: offline** if it isn't running. The app works fully
+either way, because it never depends on the server.
 
 If the QR code won't connect (for example on guest Wi-Fi that isolates devices), use
 `npx expo start --tunnel`. The app still loads that way, but the phone can't reach the local server.
@@ -96,10 +100,27 @@ cd server; dotnet test
 
 ## Adding or editing openings
 
-Openings are JSON files in `content/openings/` (format in [docs/DESIGN.md](docs/DESIGN.md) §4),
-listed in `content/index.json`. After editing, run `npm run validate-content` in `app/`. It replays
-every line and tells you exactly which move is illegal. A new opening file must also be imported
-in `app/src/content/loader.ts`.
+Openings are written as PGN in `content/pgn/` (format in [docs/DESIGN.md](docs/DESIGN.md) §4). In
+`app/`, `npm run build-content` compiles them into `content/openings/*.json`, which the app
+bundles; edit the PGN, never the JSON. Then `npm run validate-content` replays every line and
+tells you exactly which move is illegal. A new opening must also be listed in
+`content/index.json` and imported in `app/src/content/loader.ts`, and it shows a pawn icon until
+one is drawn for it in `app/src/openings/icons.ts`.
+
+## Building the APK (to share with friends)
+
+In `app/`, once: `npx eas-cli login` with the Expo account. Then for each build:
+```powershell
+npx eas-cli build -p android --profile preview
+```
+It builds in the cloud (10 to 20 minutes) and ends with a link and a QR code for the `.apk`. Friends
+open the link on their phone and allow "Install unknown apps" when Android asks. For a new version,
+raise `version` in `app/app.json` first; the new APK installs over the old one and keeps progress.
+
+## Repo
+
+The code is on GitHub at https://github.com/Lior-Rozen/OpenChess, pushed with the
+personal account.
 
 Expo Router generates TypeScript types for the routes (the files in `app/src/app/`) while
 `npx expo start` is running. After adding a new screen, run `npx expo start` once before

@@ -22,6 +22,13 @@ The developer is fluent in C# and **new to mobile/front-end**:
 
 ## Current state (all built, tested and committed)
 
+> **Update:** Phase 5 is done (16 openings, PGN sources) and Phase 6 is built except the parked
+> items and the APK, which is next (see ROADMAP.md). The app is now **OpenChess**, with a dark
+> "Midnight Arcade" theme, the Inter font, shared UI pieces in `src/components/ui.tsx`, settings in
+> `src/settings/`, sounds in `src/feedback/`, and about 140 Jest tests. `docs/DESIGN.md` is the
+> source of truth for every screen; the list below is the starting point from when this prompt
+> was written.
+
 - **Phases 1–4b are done:** the drill trainer, levels, saved progress, the Mastermind, Home.
   Phase 5 (chess content) runs in a separate session; don't edit `content/` except to fix a
   clear bug, and tell the user if you do.
