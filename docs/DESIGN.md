@@ -209,7 +209,10 @@ The compiled JSON, `content/openings/french.json`:
 - `variation` (optional) groups lines on the Opening screen; `lineTitle()` shows "Variation: name".
 - `accept` (optional) maps a ply index of a user move to other good moves (SAN). Playing one is
   not a mistake: the book move is shown as an arrow (also in Test) and the run stays clean.
-  Watch adds "Also good: …" to that move's note.
+- `mistakes` (optional) maps a ply index of a user move to known mistakes: SAN to a one-line
+  reason. Playing one still counts as a mistake, but the drill shows the reason ("d4? …Qh4+! …").
+- Watch stays the clean textbook pass (book moves and notes only); the card at its end adds one
+  "Good to know" row listing the line's other good moves and known mistakes.
 - `summary` (optional) is the short takeaway shown on the "Line complete" card.
 - `tags` (optional, opening level) are labels for filtering on the Openings screen, from a fixed
   vocabulary in `app/src/content/types.ts` (`OPENING_TAGS`): `gambit` (gives up material early),

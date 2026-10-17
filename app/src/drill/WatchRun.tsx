@@ -10,7 +10,7 @@ import { useProgress } from '@/progress/ProgressContext';
 import { useSettings } from '@/settings/SettingsContext';
 import { SPEED_FACTOR } from '@/settings/settings';
 import { theme } from '@/theme';
-import { watchFrames } from '@/trainer/watch';
+import { goodToKnow, watchFrames } from '@/trainer/watch';
 
 import { startRandomDrill } from './random';
 import { DrillHeader } from './DrillHeader';
@@ -108,6 +108,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
             title="Watched"
             outcome="Now play it yourself."
             tip={line.summary}
+            note={goodToKnow(line) ?? undefined}
             buttons={[
               { label: 'Again', onPress: () => onRestart('watch') },
               { label: 'Practice', primary: true, onPress: () => onRestart('practice') },
