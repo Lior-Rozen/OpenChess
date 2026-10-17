@@ -108,8 +108,8 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
   Mastermind's: his name, his speech bubble's edge, his eyes, the hint arrow, the blinking cursor
   after "Hello, friend.". The app is dark-only. **Every colour is a named token in
   `app/src/theme.ts`** (the board's too), so the palette changes in one place. Readability first.
-  Fonts are the phone's serif (text) and monospace (8-bit accents); a custom font would need a
-  CC0 licence.
+  The font is **Inter** (`theme.font` / `fontMedium` / `fontSemi` / `fontBold`, loaded in
+  `app/_layout.tsx`, only those 4 weights bundled), with monospace for the 8-bit accents.
 - **Opening icons:** each opening has an original 8-bit icon (16 × 16 pixel art drawn as code in
   `app/src/openings/icons.ts`, colours in `theme.pixel`): French baguette, Caro-Kann shield,
   Sicilian lemon, Scandinavian longship, King's Indian elephant, Slav matryoshka, Italian pizza,
@@ -117,7 +117,12 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
   lemonade, Scotch whisky glass, English teacup, Nimzo-Indian lotus, QGD castle tower. The map
   lives in the app, not the content, so a new opening shows a magenta pawn until it gets one.
   Shown on the Openings cards and the Home Continue button.
-- One serif or retro font, a muted palette, almost no chrome. The screens:
+- **Licences for assets:** CC0/public domain or the user's own art, plus free open licences that
+  need no visible credit: **OFL** fonts (Inter; licence text in `app/assets/fonts/`) and **MIT**
+  icons (Expo's Ionicons). Never the *Mr. Robot* show's art.
+- **Modern, not wordy:** explanations live behind an ⓘ (a "How it works" sheet), not printed on
+  screens; information is shown as badges, pills, progress bars and icons where possible.
+- One font, a muted palette, almost no chrome. The screens:
   - **Home:** the Mastermind and "Hello, friend.", one big **Continue** button (straight into
     the next suggested line and mode), **Random drill**, **Openings**, **Free board**, a ⚙ for Settings, and
     (phase 6) **Review** with the due count.

@@ -217,7 +217,7 @@ function TargetMarker({ capture, squareSize }: { capture: boolean; squareSize: n
 const styles = StyleSheet.create({
   row: { flexDirection: 'row' },
   center: { alignItems: 'center', justifyContent: 'center' },
-  label: { position: 'absolute', fontWeight: '600' },
+  label: { position: 'absolute', fontFamily: theme.fontSemi },
   rankLabel: { top: 1, left: 2 },
   fileLabel: { bottom: 0, right: 3 },
 });

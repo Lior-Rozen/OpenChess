@@ -88,7 +88,8 @@ them in.
 
 ## Rules and constraints
 
-- **Assets:** only CC0/public domain, or art the user made. Never use the *Mr. Robot* show's
+- **Assets:** CC0/public domain, art the user made, or free open licences that need no visible
+  credit (OFL fonts, MIT icons such as Expo's Ionicons). Never use the *Mr. Robot* show's
   official art. This applies to sounds too.
 - **Expo Go compatibility:**
   - The project is on **Expo SDK 57**, because that's what the Play Store Expo Go runs.

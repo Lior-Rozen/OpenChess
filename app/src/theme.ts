@@ -15,7 +15,12 @@ export const theme = {
   onAccent: '#1a0720',
   good: '#00e6aa',
   bad: '#ff4766',
-  font: 'serif',
+  /** Inter (OFL, loaded in app/_layout.tsx). On Android each weight is its own font family. */
+  font: 'Inter_400Regular',
+  fontMedium: 'Inter_500Medium',
+  fontSemi: 'Inter_600SemiBold',
+  fontBold: 'Inter_700Bold',
+  /** The 8-bit accents (the Mastermind's name, small labels). */
   mono: 'monospace',
 
   /** Soft neon glow (React Native's CSS-style boxShadow). */

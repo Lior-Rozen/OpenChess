@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
   segmentSuggested: { backgroundColor: theme.accent },
   segmentPressed: { opacity: 0.7 },
   segmentText: { fontSize: 14, fontFamily: theme.font, color: theme.text },
-  segmentTextSuggested: { color: theme.onAccent, fontWeight: '600' },
+  segmentTextSuggested: { color: theme.onAccent, fontFamily: theme.fontSemi },
   exam: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -61,8 +61,8 @@ export default function Home() {
             </Text>
           </Pressable>
         )}
-        {loaded && <MenuButton label="Random drill" onPress={() => startRandomDrill(progress)} />}
         <MenuButton label="Openings" onPress={() => router.push('/openings')} />
+        {loaded && <MenuButton label="Random drill" onPress={() => startRandomDrill(progress)} />}
         <MenuButton label="Free board" onPress={() => router.push('/free-board')} />
       </View>
     </View>
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   mainPressed: { opacity: 0.8 },
   mainRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10 },
   mainIcon: { backgroundColor: theme.background, borderRadius: 6, padding: 3 },
-  mainLabel: { fontSize: 24, fontFamily: theme.font, fontWeight: '600', color: theme.onAccent, textAlign: 'center' },
+  mainLabel: { fontSize: 24, fontFamily: theme.fontSemi, color: theme.onAccent, textAlign: 'center' },
   mainDetail: { fontSize: 14, fontFamily: theme.font, color: theme.onAccent, opacity: 0.85, textAlign: 'center' },
   menu: {
     backgroundColor: theme.card,

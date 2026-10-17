@@ -35,5 +35,5 @@ const styles = StyleSheet.create({
   primaryPressed: { opacity: 0.8 },
   disabled: { opacity: 0.4 },
   text: { fontSize: 16, fontFamily: theme.font, color: theme.text },
-  primaryText: { color: theme.onAccent, fontWeight: '600' },
+  primaryText: { color: theme.onAccent, fontFamily: theme.fontSemi },
 });
