@@ -89,6 +89,17 @@
       "accept": {
         "12": ["dxe5"]
       },
+      "mistakes": {
+        "6": {
+          "Nf3": "…d5! frees Black's game and keeps the extra pawn."
+        },
+        "8": {
+          "d4": "…Qh4+! forces your king to move."
+        },
+        "12": {
+          "Nxe5": "…Qh4+! and your king has to walk."
+        }
+      },
       "summary": "If Black takes the gambit pawn, kick the knight with e5 and build a big centre with d4."
     },
     {
@@ -104,6 +115,11 @@
         "6": "e5 kicks the knight back to g8, a big gain of time.",
         "8": "Qe2 holds the e5 pawn; the black knight has to go back to g8 anyway.",
         "10": "Nf3 develops; Black's queen and knight are in each other's way."
+      },
+      "mistakes": {
+        "6": {
+          "Nf3": "…d5! frees Black's game and keeps the extra pawn."
+        }
       },
       "summary": "If Black pins the e5 pawn with …Qe7, answer Qe2: the knight must retreat and Black is worse."
     },

@@ -26,13 +26,13 @@
 {@line id=french-tarrasch-open level=1 tier=side name="Open (3…c5)" summary="Meet 3.Nd2 with …c5: active pieces in return for an isolated d-pawn."}
 )
 3... c5 {…c5 strikes at d4, the base of White's pawn chain.} 4. c3 Nc6 5. Nf3 Qb6 {…Qb6 piles up on d4 and eyes the b2 pawn.} 6. a3
-  (6. Bd3 {Bd3 develops and offers the d4 pawn: the Milner-Barry Gambit.} 6... cxd4 7. cxd4 Bd7 {…Bd7 first: taking on d4 now loses the queen to Bb5+.}
+  (6. Bd3 {Bd3 develops and offers the d4 pawn: the Milner-Barry Gambit.} 6... cxd4 7. cxd4 Bd7 {…Bd7 first: taking on d4 now loses the queen to Bb5+.} (7... Nxd4 {@mistake Nxd4 Qxd4 Bb5+ and White wins your queen.})
 {@line id=french-advance-bd3 level=1 tier=main name="Milner-Barry (6.Bd3)" summary="Against 6.Bd3, trade on d4 and play …Bd7 before taking anything: Bb5+ is the trap."}
 8. O-O
     (8. Bc2 Nb4 {…Nb4 hits the c2 bishop and eyes d3.}
 {@line id=french-advance-mb-bc2 level=2 tier=side name="Milner-Barry: 8.Bc2" summary="If White keeps the bishop with Bc2, jump into b4 with the knight."}
 )
-  8... Nxd4 {…Nxd4 takes the offered pawn, now that Bb5+ is covered.} 9. Nxd4 Qxd4 10. Nc3 a6 {…a6 stops Nb5, which would hit the queen and c7.}
+  8... Nxd4 {…Nxd4 takes the offered pawn, now that Bb5+ is covered.} 9. Nxd4 Qxd4 10. Nc3 a6 {…a6 stops Nb5, which would hit the queen and c7.} (10... Qxe5 {@mistake Re1 and Nb5 chase your queen while White develops.})
 {@line id=french-advance-milner-barry level=2 tier=main name="Milner-Barry Gambit" summary="With …Bd7 in, the d4 pawn is safe to take; then …a6 stops Nb5."}
 )
   (6. Be2 cxd4 {…cxd4 opens the c-file and leaves d4 without its c3 support.} 7. cxd4 Nh6 {…Nh6 heads for f5, where the knight attacks d4.} (7... Nge7 {@alt}) 8. O-O Nf5 {…Nf5 adds a third attacker on d4, next to the c6 knight and the b6 queen.}

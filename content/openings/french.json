@@ -78,6 +78,11 @@
         "10": "Bd3 develops and offers the d4 pawn: the Milner-Barry Gambit.",
         "13": "…Bd7 first: taking on d4 now loses the queen to Bb5+."
       },
+      "mistakes": {
+        "13": {
+          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen."
+        }
+      },
       "summary": "Against 6.Bd3, trade on d4 and play …Bd7 before taking anything: Bb5+ is the trap."
     },
     {
@@ -96,6 +101,14 @@
         "15": "…Nxd4 takes the offered pawn, now that Bb5+ is covered.",
         "19": "…a6 stops Nb5, which would hit the queen and c7."
       },
+      "mistakes": {
+        "13": {
+          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen."
+        },
+        "19": {
+          "Qxe5": "Re1 and Nb5 chase your queen while White develops."
+        }
+      },
       "summary": "With …Bd7 in, the d4 pawn is safe to take; then …a6 stops Nb5."
     },
     {
@@ -112,6 +125,11 @@
         "10": "Bd3 develops and offers the d4 pawn: the Milner-Barry Gambit.",
         "13": "…Bd7 first: taking on d4 now loses the queen to Bb5+.",
         "15": "…Nb4 hits the c2 bishop and eyes d3."
+      },
+      "mistakes": {
+        "13": {
+          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen."
+        }
       },
       "summary": "If White keeps the bishop with Bc2, jump into b4 with the knight."
     },

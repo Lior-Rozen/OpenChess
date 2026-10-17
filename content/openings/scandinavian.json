@@ -143,6 +143,11 @@
       "accept": {
         "9": ["Bg4"]
       },
+      "mistakes": {
+        "9": {
+          "Nc6": "Bb5! pins the knight and your queen runs short of squares."
+        }
+      },
       "summary": "Against 5.Bd2, play …c6 at once, because the bishop can now hit your queen through the c3 knight."
     },
     {
@@ -162,6 +167,11 @@
       },
       "accept": {
         "9": ["Bg4"]
+      },
+      "mistakes": {
+        "9": {
+          "Nc6": "Bb5! pins the knight and your queen runs short of squares."
+        }
       },
       "summary": "When the knight jumps to e4, retreat the queen to d8 and take back on f6 with the e-pawn."
     },

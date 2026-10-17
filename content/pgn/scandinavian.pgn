@@ -21,7 +21,7 @@
 {@line id=scandinavian-4nf3 level=1 tier=main name="4.Nf3" summary="4.Nf3 transposes: the set-up …Nf6, …c6, …Bf5, …e6 doesn't change."}
 )
 4... Nf6 5. Nf3
-  (5. Bd2 c6 {…c6 makes room for the queen, because Bd2 now eyes a5 through the c3 knight.} (5... Bg4 {@alt}) 6. Nf3
+  (5. Bd2 c6 {…c6 makes room for the queen, because Bd2 now eyes a5 through the c3 knight.} (5... Bg4 {@alt}) (5... Nc6 {@mistake Bb5! pins the knight and your queen runs short of squares.}) 6. Nf3
     (6. Ne4 {Ne4 uncovers the d2 bishop on the a5 queen and attacks f6.} 6... Qd8 {…Qd8 is the safe retreat; from d8 the queen also defends f6.} 7. Nxf6+ exf6 {…exf6 opens the e-file and the f8 bishop's diagonal.}
 {@line id=scandinavian-6ne4 level=2 tier=side name="5.Bd2 c6 6.Ne4" summary="When the knight jumps to e4, retreat the queen to d8 and take back on f6 with the e-pawn."}
 )

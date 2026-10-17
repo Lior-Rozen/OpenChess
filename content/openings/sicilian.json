@@ -20,6 +20,11 @@
         "13": "…Be7 breaks the pin on the f6 knight.",
         "15": "…Qc7 watches e5 and the c-file."
       },
+      "mistakes": {
+        "11": {
+          "e5": "Nf5! and d5 is too weak while f6 is pinned."
+        }
+      },
       "summary": "Against 6.Bg5, switch to …e6, unpin with …Be7, then …Qc7, …Nbd7 and …b5."
     },
     {
@@ -36,6 +41,11 @@
         "13": "…Be7 breaks the pin on the f6 knight.",
         "15": "…Qc7 watches e5 and the c-file.",
         "17": "…Nbd7 supports the f6 knight; next is …b5 and a queenside attack."
+      },
+      "mistakes": {
+        "11": {
+          "e5": "Nf5! and d5 is too weak while f6 is pinned."
+        }
       },
       "summary": "After White castles long, complete the set-up with …Nbd7 and start …b5."
     },
@@ -119,6 +129,11 @@
         "11": "…e6 blunts the c4 bishop, which aims at f7.",
         "13": "…b5 gains space and threatens …b4 against the c3 knight.",
         "17": "…Qc7 guards e5 and avoids tricks on the a8 rook."
+      },
+      "mistakes": {
+        "17": {
+          "O-O": "e5! dxe5 Nxe6 fxe6 Qxa8 wins the rook."
+        }
       },
       "summary": "Block the c4 bishop with …e6, then expand with …b5; watch out for e5 tricks."
     },

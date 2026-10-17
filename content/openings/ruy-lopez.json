@@ -211,6 +211,11 @@
         "10": "d4 claims the centre and pushes the bishop back.",
         "14": "e5 kicks the f6 knight and grabs space in the centre."
       },
+      "mistakes": {
+        "6": {
+          "Bxc6": "…dxc6 frees Black's game, and Nxe5 then fails to …Qd4."
+        }
+      },
       "summary": "Against …Bc5, c3 and d4 take the centre with tempo; after …exd4 cxd4, push e5."
     }
   ]

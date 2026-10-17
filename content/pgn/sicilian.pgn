@@ -41,10 +41,10 @@
   (6. Be2 e5 {…e5 against the quiet 6.Be2, the same reply as against 6.Be3.} 7. Nb3 Be7 {…Be7 develops and prepares to castle.} (7... Be6 {@alt}) 8. O-O O-O {…O-O: next come …Be6, …Nbd7 and a fight for d5.}
 {@line id=sicilian-najdorf-be2 level=1 tier=main name="6.Be2" summary="Same plan as against 6.Be3: …e5, develop, castle, and fight for d5."}
 )
-  (6. Bc4 e6 {…e6 blunts the c4 bishop, which aims at f7.} 7. Bb3 b5 {…b5 gains space and threatens …b4 against the c3 knight.} 8. O-O Be7 9. Qf3 Qc7 {…Qc7 guards e5 and avoids tricks on the a8 rook.}
+  (6. Bc4 e6 {…e6 blunts the c4 bishop, which aims at f7.} 7. Bb3 b5 {…b5 gains space and threatens …b4 against the c3 knight.} 8. O-O Be7 9. Qf3 Qc7 {…Qc7 guards e5 and avoids tricks on the a8 rook.} (9... O-O {@mistake e5! dxe5 Nxe6 fxe6 Qxa8 wins the rook.})
 {@line id=sicilian-najdorf-bc4 level=2 tier=side name="6.Bc4" summary="Block the c4 bishop with …e6, then expand with …b5; watch out for e5 tricks."}
 )
-6... e6 {…e6 here, not …e5: the pin on f6 makes d5 too weak after …e5.} 7. f4 Be7 {…Be7 breaks the pin on the f6 knight.} 8. Qf3 Qc7 {…Qc7 watches e5 and the c-file.}
+6... e6 {…e6 here, not …e5: the pin on f6 makes d5 too weak after …e5.} (6... e5 {@mistake Nf5! and d5 is too weak while f6 is pinned.}) 7. f4 Be7 {…Be7 breaks the pin on the f6 knight.} 8. Qf3 Qc7 {…Qc7 watches e5 and the c-file.}
 {@line id=sicilian-najdorf-bg5 level=1 tier=main name="6.Bg5" summary="Against 6.Bg5, switch to …e6, unpin with …Be7, then …Qc7, …Nbd7 and …b5."}
 9. O-O-O Nbd7 {…Nbd7 supports the f6 knight; next is …b5 and a queenside attack.}
 {@line id=sicilian-najdorf-bg5-deep level=2 tier=main name="6.Bg5, 9.O-O-O" summary="After White castles long, complete the set-up with …Nbd7 and start …b5."} *

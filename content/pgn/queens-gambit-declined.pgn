@@ -13,7 +13,7 @@
   4... Be7 5. Bg2 O-O 6. O-O dxc4 {…dxc4 takes the pawn now that White has castled; Black plays …a6 and …b5 or …c5 next.}
 {@line id=queens-gambit-declined-catalan level=1 tier=main name="Catalan (4.g3)" summary="Against the Catalan, develop and castle, then take on c4 and hold the pawn or hit back with …c5."}
 )
-  (3. cxd5 {@variation Exchange} 3... exd5 4. Nc3 Nf6 {…Nf6 develops; Bg5 and e3 usually follow.} (4... c6 {@alt})
+  (3. cxd5 {@variation Exchange} 3... exd5 (3... Qxd5 {@mistake Nc3 gains time on your queen.}) 4. Nc3 Nf6 {…Nf6 develops; Bg5 and e3 usually follow.} (4... c6 {@alt})
 {@line id=queens-gambit-declined-3cxd5 level=1 tier=side name="3.cxd5" summary="After an early cxd5, take back with the pawn and develop …Nf6, …Be7 and castle."}
 )
 3... Nf6 4. Bg5 {@variation Orthodox (4.Bg5)}

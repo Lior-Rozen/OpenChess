@@ -23,6 +23,11 @@
       "accept": {
         "11": ["cxd4"]
       },
+      "mistakes": {
+        "11": {
+          "Nc6": "dxc5! wins a pawn, and the e3 bishop guards it."
+        }
+      },
       "summary": "Get the bishop out to f5 first, then …e6, …c5 and …Qb6 to hit d4 and b2."
     },
     {
@@ -209,6 +214,11 @@
         "7": "…Nf6 hits d5 and develops; White aims for an isolated d-pawn position.",
         "9": "…e6 supports d5 and opens the f8 bishop.",
         "13": "…Nxd5 puts the knight on a strong central square in front of White's isolated pawn."
+      },
+      "mistakes": {
+        "9": {
+          "Bf5": "Qb3! hits b7 and d5 at once."
+        }
       },
       "summary": "Against the isolated d-pawn, blockade d5 with a knight and trade pieces."
     },

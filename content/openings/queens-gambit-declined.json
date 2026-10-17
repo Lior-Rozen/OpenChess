@@ -163,6 +163,11 @@
       "accept": {
         "7": ["c6"]
       },
+      "mistakes": {
+        "5": {
+          "Qxd5": "Nc3 gains time on your queen."
+        }
+      },
       "summary": "After an early cxd5, take back with the pawn and develop …Nf6, …Be7 and castle."
     }
   ]

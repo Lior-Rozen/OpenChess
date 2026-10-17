@@ -211,6 +211,11 @@
         "6": "Nxd4 takes the knight instead of the e5 pawn; Black's centre pawn is pulled to d4.",
         "8": "O-O and White is ahead in development, ready for c3 to attack d4."
       },
+      "mistakes": {
+        "6": {
+          "Nxe5": "…Qg5! hits the e5 knight and g2; White loses material."
+        }
+      },
       "summary": "Against 3…Nd4, don't grab e5: take the knight, castle, and use your lead in development."
     }
   ]

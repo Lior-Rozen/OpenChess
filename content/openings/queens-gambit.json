@@ -217,6 +217,11 @@
         "8": "g3 prepares Bg2, aiming the bishop at the queenside.",
         "10": "Bg2 develops and eyes b7; the d4 pawn will need a lot of defending."
       },
+      "mistakes": {
+        "6": {
+          "e3": "…Bb4+ and …dxe3: the Lasker Trap, ending in …fxg1=N+!"
+        }
+      },
       "summary": "Take the Albin pawn, develop with Nf3, g3 and Bg2, and keep the e5 pawn protected."
     }
   ]

@@ -20,6 +20,11 @@
         "8": "Bg2: the bishop hits the d5 knight along the long diagonal.",
         "12": "O-O: a Sicilian Dragon with colours reversed and an extra move for White."
       },
+      "mistakes": {
+        "6": {
+          "Bg2": "…d4! hits the c3 knight and grabs space."
+        }
+      },
       "summary": "Against 1…e5 and …d5, take on d5, fianchetto and castle: a Dragon with an extra tempo."
     },
     {
@@ -36,6 +41,11 @@
         "8": "Bg2: the bishop hits the d5 knight along the long diagonal.",
         "10": "bxc3 strengthens the centre and opens the b-file for a rook."
       },
+      "mistakes": {
+        "6": {
+          "Bg2": "…d4! hits the c3 knight and grabs space."
+        }
+      },
       "summary": "When Black trades on c3, take back towards the centre and use the open b-file."
     },
     {
@@ -51,6 +61,11 @@
         "4": "g3 prepares Bg2, the key piece in the English.",
         "8": "Bg2: the bishop hits the d5 knight along the long diagonal.",
         "10": "Nf3 develops and hits e5."
+      },
+      "mistakes": {
+        "6": {
+          "Bg2": "…d4! hits the c3 knight and grabs space."
+        }
       },
       "summary": "Against …Be6, develop Nf3 and castle; the e5 pawn is a target."
     },

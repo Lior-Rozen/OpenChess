@@ -24,7 +24,7 @@
   7... Nh5 {…Nh5 prepares …f5 and eyes the f4 square.} 8. Qd2 f5 {…f5 strikes at e4, Black's main lever in the King's Indian.}
 {@line id=kings-indian-samisch level=1 tier=main name="Samisch (5.f3)" summary="Against f3 and Be3, play …e5, then …Nh5 and …f5 to break up White's pawn centre."}
 )
-  (5. f4 {@variation Four Pawns Attack} 5... O-O 6. Nf3 c5 {…c5 attacks the overextended centre right away.} 7. d5 e6 {…e6 breaks open the e-file against White's uncastled king.} 8. Be2 exd5 9. cxd5 Re8 {…Re8 hits the e4 pawn and stops White's e5 push.} (9... Bg4 {@alt})
+  (5. f4 {@variation Four Pawns Attack} 5... O-O 6. Nf3 c5 {…c5 attacks the overextended centre right away.} (6... Nbd7 {@mistake e5! kicks the f6 knight and the pawns roll on.}) 7. d5 e6 {…e6 breaks open the e-file against White's uncastled king.} 8. Be2 exd5 9. cxd5 Re8 {…Re8 hits the e4 pawn and stops White's e5 push.} (9... Bg4 {@alt})
 {@line id=kings-indian-four-pawns level=1 tier=main name="Four Pawns Attack (5.f4)" summary="The big pawn centre is a target: hit it with …c5 and …e6, then press e4 with …Re8."}
 )
 5... O-O 6. Be2 e5 {…e5 is Black's central strike; it fixes the centre for the plans to come.} 7. O-O

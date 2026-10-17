@@ -28,7 +28,7 @@
   (3... Bb4 4. Bg2 O-O 5. Nf3 {Nf3 develops; if …e4, the knight goes to d4.} (5. e3 {@alt}) (5. e4 {@alt})
 {@line id=english-e5-bb4 level=1 tier=side name="1…e5 3…Bb4" summary="Against …Bb4, fianchetto and develop Nf3; the c3 knight can be taken but White gets the bishop pair."}
 )
-4. cxd5 Nxd5 5. Bg2 {Bg2: the bishop hits the d5 knight along the long diagonal.} 5... Nb6
+4. cxd5 (4. Bg2 {@mistake …d4! hits the c3 knight and grabs space.}) 4... Nxd5 5. Bg2 {Bg2: the bishop hits the d5 knight along the long diagonal.} 5... Nb6
   (5... Nxc3 6. bxc3 {bxc3 strengthens the centre and opens the b-file for a rook.}
 {@line id=english-e5-nxc3 level=2 tier=main name="Reversed Dragon: 5…Nxc3" summary="When Black trades on c3, take back towards the centre and use the open b-file."}
 )

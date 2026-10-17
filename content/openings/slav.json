@@ -22,6 +22,11 @@
       "accept": {
         "7": ["e6"]
       },
+      "mistakes": {
+        "5": {
+          "Bf5": "Qb3! hits b7, which the bishop no longer guards."
+        }
+      },
       "summary": "Take on c4, develop the bishop to f5 before …e6, then pin with …Bb4."
     },
     {
@@ -43,6 +48,11 @@
       "accept": {
         "7": ["e6"]
       },
+      "mistakes": {
+        "5": {
+          "Bf5": "Qb3! hits b7, which the bishop no longer guards."
+        }
+      },
       "summary": "When White pushes e4, retreat the bishop to g6 and then pin with …Bh5."
     },
     {
@@ -63,6 +73,11 @@
       "accept": {
         "7": ["e6"]
       },
+      "mistakes": {
+        "5": {
+          "Bf5": "Qb3! hits b7, which the bishop no longer guards."
+        }
+      },
       "summary": "Against 6.Ne5, challenge the knight with …Nbd7, then free your game with …Qc7 and …e5."
     },
     {
@@ -80,6 +95,11 @@
       },
       "accept": {
         "7": ["e6"]
+      },
+      "mistakes": {
+        "5": {
+          "Bf5": "Qb3! hits b7, which the bishop no longer guards."
+        }
       },
       "summary": "Meet 5.e4 with …b5 to keep the pawn, then put the knight on d5 when it's kicked."
     },
@@ -101,6 +121,14 @@
       "accept": {
         "7": ["e6"]
       },
+      "mistakes": {
+        "5": {
+          "Bf5": "Qb3! hits b7, which the bishop no longer guards."
+        },
+        "19": {
+          "Be7": "Nxf7! Kxf7 Qf3+ and Qxa8 wins the rook."
+        }
+      },
       "summary": "After 6.e5 Nd5 7.a4 e6, trade on c3, keep the b5 pawn and guard the long diagonal with …Bb7."
     },
     {
@@ -119,6 +147,11 @@
       },
       "accept": {
         "7": ["e6"]
+      },
+      "mistakes": {
+        "5": {
+          "Bf5": "Qb3! hits b7, which the bishop no longer guards."
+        }
       },
       "summary": "When a4 hits the b5 pawn, push …b4 and take the e4 pawn while White's knight sits on a2."
     },
@@ -139,6 +172,11 @@
       "accept": {
         "7": ["e6"]
       },
+      "mistakes": {
+        "5": {
+          "Bf5": "Qb3! hits b7, which the bishop no longer guards."
+        }
+      },
       "summary": "When White plays slowly with 5.e3, hold the pawn with …b5, then kick the knight with …b4."
     },
     {
@@ -155,6 +193,11 @@
       },
       "accept": {
         "7": ["e6"]
+      },
+      "mistakes": {
+        "5": {
+          "Bf5": "Qb3! hits b7, which the bishop no longer guards."
+        }
       },
       "summary": "Against the early pin, develop with …Bf5 and …e6; Bxf6 gives you the two bishops."
     },

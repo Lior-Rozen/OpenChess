@@ -158,6 +158,11 @@
       "accept": {
         "17": ["Bg4"]
       },
+      "mistakes": {
+        "11": {
+          "Nbd7": "e5! kicks the f6 knight and the pawns roll on."
+        }
+      },
       "summary": "The big pawn centre is a target: hit it with …c5 and …e6, then press e4 with …Re8."
     },
     {

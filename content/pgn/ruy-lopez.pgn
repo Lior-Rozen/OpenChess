@@ -20,7 +20,7 @@
   5. c3 {c3 gives the bishop a retreat and prepares d4.} 5... O-O 6. O-O d6 7. h3 {h3 stops …Bg4.}
 {@line id=ruy-lopez-berlin level=1 tier=main name="4.d3" summary="Against the Berlin, keep it simple with d3 and c3, like an Italian with the bishop on b5."}
 )
-  (3... Bc5 {@variation Classical} 4. c3 {c3 prepares d4, which hits the c5 bishop with tempo.} 4... Nf6 5. O-O O-O 6. d4 {d4 claims the centre and pushes the bishop back.} 6... exd4 7. cxd4 Bb6 8. e5 {e5 kicks the f6 knight and grabs space in the centre.}
+  (3... Bc5 {@variation Classical} 4. c3 {c3 prepares d4, which hits the c5 bishop with tempo.} (4. Bxc6 {@mistake …dxc6 frees Black's game, and Nxe5 then fails to …Qd4.}) 4... Nf6 5. O-O O-O 6. d4 {d4 claims the centre and pushes the bishop back.} 6... exd4 7. cxd4 Bb6 8. e5 {e5 kicks the f6 knight and grabs space in the centre.}
 {@line id=ruy-lopez-classical level=1 tier=side name="Classical (3…Bc5)" summary="Against …Bc5, c3 and d4 take the centre with tempo; after …exd4 cxd4, push e5."}
 )
 4. Ba4 {Ba4 keeps the bishop aimed at the c6 knight.} 4... Nf6

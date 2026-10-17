@@ -20,7 +20,7 @@
 {@line id=caro-kann-classical-deep level=2 tier=main name="11.Bd2" summary="Trade light-squared bishops, then develop quietly with …e6, …Ngf6 and …Be7."}
 )
   (3. exd5 cxd5 {…cxd5 gives Black the half-open c-file for the queenside play.} 4. Bd3 {@variation Exchange}
-    (4. c4 {@variation Panov Attack} 4... Nf6 {…Nf6 hits d5 and develops; White aims for an isolated d-pawn position.} 5. Nc3 e6 {…e6 supports d5 and opens the f8 bishop.} 6. Nf3 Be7 7. cxd5 Nxd5 {…Nxd5 puts the knight on a strong central square in front of White's isolated pawn.} 8. Bd3 Nc6 9. O-O O-O
+    (4. c4 {@variation Panov Attack} 4... Nf6 {…Nf6 hits d5 and develops; White aims for an isolated d-pawn position.} 5. Nc3 e6 {…e6 supports d5 and opens the f8 bishop.} (5... Bf5 {@mistake Qb3! hits b7 and d5 at once.}) 6. Nf3 Be7 7. cxd5 Nxd5 {…Nxd5 puts the knight on a strong central square in front of White's isolated pawn.} 8. Bd3 Nc6 9. O-O O-O
 {@line id=caro-kann-panov level=1 tier=side name="Panov Attack (4.c4)" summary="Against the isolated d-pawn, blockade d5 with a knight and trade pieces."}
 )
     (4. Nf3 {@variation Exchange} 4... Nc6 {…Nc6 develops and puts pressure on d4.} (4... Nf6 {@alt})
@@ -47,5 +47,5 @@
 {@line id=caro-kann-advance-oo level=2 tier=side name="Short, 6.O-O" summary="Against 6.O-O, develop with …Nc6 and keep hitting d4."}
 )
 6... Qb6 {…Qb6 hits b2 and adds a second attacker on d4.}
-  (6... cxd4 {@alt})
+  (6... cxd4 {@alt}) (6... Nc6 {@mistake dxc5! wins a pawn, and the e3 bishop guards it.})
 {@line id=caro-kann-advance-main level=1 tier=main name="Short System" summary="Get the bishop out to f5 first, then …e6, …c5 and …Qb6 to hit d4 and b2."} *
