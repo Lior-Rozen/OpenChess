@@ -86,6 +86,21 @@ describe('Trainer with one line', () => {
     expect(trainer.state().position.fen).toBe(before);
   });
 
+  it('practice: the hint threshold is configurable, and 0 means never', () => {
+    const early = new Trainer([advance], 'b', 'practice', { triesBeforeHint: 1 });
+    early.advance();
+    expect(early.tryMove('c7', 'c5')).toEqual([
+      { type: 'wrongMove', from: 'c7', to: 'c5', triesThisMove: 1 },
+      { type: 'hintShown', from: 'e7', to: 'e6' },
+    ]);
+
+    const never = new Trainer([advance], 'b', 'practice', { triesBeforeHint: 0 });
+    never.advance();
+    for (const [from, to] of [['c7', 'c5'], ['d7', 'd5'], ['a7', 'a6']] as const) never.tryMove(from, to);
+    expect(never.state().hint).toBeNull();
+    expect(never.requestHint()).toEqual([{ type: 'hintShown', from: 'e7', to: 'e6' }]);
+  });
+
   it('practice: shows the correct move after 2 wrong tries, and clears it once played', () => {
     const trainer = new Trainer([advance], 'b', 'practice');
     trainer.advance();

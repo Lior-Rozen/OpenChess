@@ -14,6 +14,7 @@ import { MastermindSpeech } from '@/mastermind/Speech';
 import { levelStatuses, nextLineTarget } from '@/progress/mastery';
 import { useProgress } from '@/progress/ProgressContext';
 import { useSettings } from '@/settings/SettingsContext';
+import { SPEED_FACTOR } from '@/settings/settings';
 import { TEST_MISTAKE_LIMIT, Trainer, type TrainerEvent, type TrainerMode, type TrainerState } from '@/trainer/trainer';
 
 import { startRandomDrill } from './random';
@@ -35,9 +36,9 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
   const exam = examLevel !== null;
   const userColor = opening.side === 'white' ? 'w' : 'b';
   const { recordRun, recordExam } = useProgress();
-  const { settings } = useSettings();
   const feedback = useFeedback();
-  const [trainer] = useState(() => new Trainer(lines, userColor, mode));
+  const { settings } = useSettings();
+  const [trainer] = useState(() => new Trainer(lines, userColor, mode, { triesBeforeHint: settings.autoHint }));
   const [state, setState] = useState(() => trainer.state());
   const [speech, setSpeech] = useState(() => greeting(mode, exam));
   const [selection, setSelection] = useState<Selection>(null);
@@ -109,9 +110,9 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
   // The Mastermind plays his book moves after a short pause.
   useEffect(() => {
     if (state.phase !== 'auto') return;
-    const timer = setTimeout(autoMove, 600);
+    const timer = setTimeout(autoMove, 600 * SPEED_FACTOR[settings.speed]);
     return () => clearTimeout(timer);
-  }, [state]);
+  }, [state, settings.speed]);
 
   function showFlash(square: Square, kind: BoardFlash['kind']) {
     const id = Date.now();

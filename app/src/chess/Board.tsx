@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Animated, Easing, Pressable, StyleSheet, Text, View } from 'react-native';
 import Svg, { Line, Polygon } from 'react-native-svg';
 
+import { useSettings } from '@/settings/SettingsContext';
 import { theme } from '@/theme';
 
 import type { BoardPiece, Color, GamePosition, Square } from './game';
@@ -37,6 +38,7 @@ type Props = {
 
 export function Board({ position, orientation, selection, onSquarePress, size, arrow, flash, slide = false }: Props) {
   const squareSize = size / 8;
+  const { coordinates } = useSettings().settings;
   // While sliding, the moved piece is drawn on its own layer above the squares, not in its square.
   const lastMove = position.lastMove;
   const slider = slide && lastMove ? findPiece(position, lastMove.to) : null;
@@ -79,12 +81,12 @@ export function Board({ position, orientation, selection, onSquarePress, size, a
                 {highlight && <View style={[StyleSheet.absoluteFill, { backgroundColor: highlight }]} />}
                 {piece && square !== slider?.square && <Piece type={piece.type} color={piece.color} size={squareSize} />}
                 {/* Coordinates go on top of the pieces so they stay readable on the edge ranks and files. */}
-                {displayCol === 0 && (
+                {coordinates && displayCol === 0 && (
                   <Text style={[styles.label, styles.rankLabel, { color: labelColor, fontSize: squareSize * 0.22 }]}>
                     {8 - row}
                   </Text>
                 )}
-                {displayRow === 7 && (
+                {coordinates && displayRow === 7 && (
                   <Text style={[styles.label, styles.fileLabel, { color: labelColor, fontSize: squareSize * 0.22 }]}>
                     {FILES[col]}
                   </Text>

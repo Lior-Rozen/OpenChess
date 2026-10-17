@@ -50,6 +50,8 @@ export type TrainerState = {
 export type TrainerOptions = {
   /** Random source for picking the opponent's branch; injectable for tests. */
   random?: () => number;
+  /** Practice: wrong tries on one move before the arrow appears; 0 means never. Default TRIES_BEFORE_HINT. */
+  triesBeforeHint?: number;
 };
 
 /** Practice: wrong tries on one move before the answer is shown as an arrow. */
@@ -87,6 +89,7 @@ export class Trainer {
   private hintsUsed = 0;
   private triesThisMove = 0;
   private hint: Arrow | null = null;
+  private readonly triesBeforeHint: number;
   private alternative: { san: string; bookSan: string } | null = null;
   private note: string | null = null;
 
@@ -99,6 +102,7 @@ export class Trainer {
     if (lines.length === 0) throw new Error('Trainer needs at least one line');
     this.candidates = [...lines];
     this.random = options.random ?? Math.random;
+    this.triesBeforeHint = options.triesBeforeHint ?? TRIES_BEFORE_HINT;
   }
 
   /** Read-only board access for tap-to-move. */
@@ -166,7 +170,7 @@ export class Trainer {
         this.failed = true;
         events.push({ type: 'testFailed', mistakes: this.mistakes });
       }
-    } else if (this.triesThisMove >= TRIES_BEFORE_HINT && this.hint === null) {
+    } else if (this.triesBeforeHint > 0 && this.triesThisMove >= this.triesBeforeHint && this.hint === null) {
       this.hint = this.expectedArrow();
       events.push({ type: 'hintShown', ...this.hint });
     }

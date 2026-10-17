@@ -3,9 +3,23 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { Animated, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 
 import { fetchServerMessage } from '@/api/hello';
+import { Chip } from '@/components/Chip';
 import { useProgress } from '@/progress/ProgressContext';
 import { useSettings } from '@/settings/SettingsContext';
+import type { AutoHint, Speed } from '@/settings/settings';
 import { theme } from '@/theme';
+
+const SPEEDS: { value: Speed; label: string }[] = [
+  { value: 'slow', label: 'Slow' },
+  { value: 'normal', label: 'Normal' },
+  { value: 'fast', label: 'Fast' },
+];
+
+const AUTO_HINTS: { value: AutoHint; label: string }[] = [
+  { value: 1, label: 'After 1 try' },
+  { value: 2, label: 'After 2 tries' },
+  { value: 0, label: 'Never' },
+];
 
 /** How long "Reset progress" must be held, in milliseconds. */
 const RESET_HOLD_MS = 2000;
@@ -26,6 +40,25 @@ export default function Settings() {
       <Section label="THE MASTERMIND">
         <Toggle label="He talks" value={settings.talk} onChange={(talk) => update({ talk })} />
         {!settings.talk && <Text style={styles.hint}>He still plays. Silently.</Text>}
+        <Choice label="His speed">
+          {SPEEDS.map((o) => (
+            <Chip key={o.value} label={o.label} selected={settings.speed === o.value} onPress={() => update({ speed: o.value })} />
+          ))}
+        </Choice>
+      </Section>
+
+      <Section label="BOARD & HINTS">
+        <Toggle label="Coordinates" value={settings.coordinates} onChange={(coordinates) => update({ coordinates })} />
+        <Choice label="Practice arrow">
+          {AUTO_HINTS.map((o) => (
+            <Chip
+              key={o.value}
+              label={o.label}
+              selected={settings.autoHint === o.value}
+              onPress={() => update({ autoHint: o.value })}
+            />
+          ))}
+        </Choice>
       </Section>
 
       <Section label="PROGRESS">
@@ -44,6 +77,16 @@ function Section({ label, children }: { label: string; children: ReactNode }) {
     <View style={styles.section}>
       <Text style={styles.label}>{label}</Text>
       <View style={styles.card}>{children}</View>
+    </View>
+  );
+}
+
+/** A labelled row of chips for picking one option. */
+function Choice({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <View style={styles.choice}>
+      <Text style={styles.text}>{label}</Text>
+      <View style={styles.chips}>{children}</View>
     </View>
   );
 }
@@ -134,6 +177,8 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: theme.background },
   content: { padding: 16, gap: 28 },
   section: { gap: 8 },
+  choice: { gap: 8 },
+  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
   card: { backgroundColor: theme.card, borderWidth: 1, borderColor: theme.border, borderRadius: 14, padding: 14, gap: 10 },
   label: { fontSize: 11, fontFamily: theme.fontSemi, color: theme.muted, letterSpacing: 1, marginLeft: 4 },
   text: { fontSize: 16, fontFamily: theme.font, color: theme.text },

@@ -8,6 +8,7 @@ import { GREETING, say } from '@/mastermind/lines';
 import { MastermindSpeech } from '@/mastermind/Speech';
 import { useProgress } from '@/progress/ProgressContext';
 import { useSettings } from '@/settings/SettingsContext';
+import { SPEED_FACTOR } from '@/settings/settings';
 import { theme } from '@/theme';
 import { watchFrames } from '@/trainer/watch';
 
@@ -36,7 +37,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
   const last = frames.length - 1;
   const frame = frames[index];
   // Pause longer after a move with a note, so it can be read.
-  const delay = index === 0 ? 900 : frame.note ? 2400 : 1200;
+  const delay = (index === 0 ? 900 : frame.note ? 2400 : 1200) * SPEED_FACTOR[settings.speed];
 
   function goTo(next: number) {
     const clamped = Math.max(0, Math.min(next, last));
