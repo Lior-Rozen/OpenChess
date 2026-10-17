@@ -82,6 +82,7 @@
         "2": "Nc3 defends e4 and prepares f4, without blocking the f-pawn.",
         "4": "f4 is the Vienna Gambit: it attacks e5 and opens the f-file.",
         "6": "e5 kicks the knight back to g8, a big gain of time.",
+        "8": "Nf3 before d4: it stops …Qh4+, which would force the white king to move after 5.d4?",
         "10": "d4 builds a strong centre and opens the bishop to win back f4.",
         "12": "Qe2 pins the e5 pawn on the e-file, so White wins it back."
       },

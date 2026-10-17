@@ -27,7 +27,7 @@
     (4... Qe7 5. Qe2 {Qe2 holds the e5 pawn; the black knight has to go back to g8 anyway.} 5... Ng8 6. Nf3 {Nf3 develops; Black's queen and knight are in each other's way.}
 {@line id=vienna-gambit-qe7 level=2 tier=side name="3…exf4 4.e5 Qe7" summary="If Black pins the e5 pawn with …Qe7, answer Qe2: the knight must retreat and Black is worse."}
 )
-  5. Nf3 d6 6. d4 {d4 builds a strong centre and opens the bishop to win back f4.} 6... dxe5 7. Qe2 {Qe2 pins the e5 pawn on the e-file, so White wins it back.} (7. dxe5 {@alt})
+  5. Nf3 {Nf3 before d4: it stops …Qh4+, which would force the white king to move after 5.d4?} 5... d6 6. d4 {d4 builds a strong centre and opens the bishop to win back f4.} 6... dxe5 7. Qe2 {Qe2 pins the e5 pawn on the e-file, so White wins it back.} (7. dxe5 {@alt})
 {@line id=vienna-gambit-accepted level=1 tier=main name="3…exf4" summary="If Black takes the gambit pawn, kick the knight with e5 and build a big centre with d4."}
 )
   (3... d6 4. Nf3 {Nf3 develops and adds pressure on e5.} 4... Nc6 5. Bb5 {Bb5 pins the knight that defends e5.}
