@@ -1,4 +1,4 @@
-import { bundledContent, contentIndex, loadLine, loadOpening } from './loader';
+import { bundledContent, contentIndex, lineTitle, loadLine, loadOpening } from './loader';
 import { validateContent, validateOpening } from './validateContent';
 
 describe('bundled content', () => {
@@ -23,6 +23,15 @@ describe('bundled content', () => {
     expect(loadLine('french', 'french-advance-main')?.line.name).toBe('Advance Variation');
     expect(loadLine('french', 'nope')).toBeNull();
     expect(loadOpening('nope')).toBeNull();
+  });
+});
+
+describe('lineTitle', () => {
+  const base = { id: 'x', level: 1, tier: 'main' as const, moves: ['e4'] };
+  it('prefixes the variation unless the name already starts with it', () => {
+    expect(lineTitle({ ...base, name: '6.Be2', variation: 'Advance' })).toBe('Advance: 6.Be2');
+    expect(lineTitle({ ...base, name: 'Advance Variation', variation: 'Advance' })).toBe('Advance Variation');
+    expect(lineTitle({ ...base, name: 'Panov' })).toBe('Panov');
   });
 });
 

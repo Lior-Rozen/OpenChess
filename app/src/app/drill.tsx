@@ -2,7 +2,7 @@ import { Stack, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { Text, View } from 'react-native';
 
-import { loadLine, loadOpening } from '@/content/loader';
+import { lineTitle, loadLine, loadOpening } from '@/content/loader';
 import { drillStyles, type DrillTarget } from '@/drill/shared';
 import { TrainerRun } from '@/drill/TrainerRun';
 import { WatchRun } from '@/drill/WatchRun';
@@ -23,7 +23,7 @@ export default function DrillScreen() {
       target = {
         opening: found.opening,
         lines: [found.line],
-        title: found.line.name,
+        title: lineTitle(found.line),
         examLevel: null,
         random: params.random === '1',
       };

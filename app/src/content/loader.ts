@@ -37,6 +37,11 @@ export function loadOpening(id: string): Opening | null {
   return entry ? ((bundledByFile[entry.file] as Opening | undefined) ?? null) : null;
 }
 
+/** The line's name with its variation, e.g. "Advance: 6.Be2", unless the name already starts with it. */
+export function lineTitle(line: OpeningLine): string {
+  return line.variation && !line.name.startsWith(line.variation) ? `${line.variation}: ${line.name}` : line.name;
+}
+
 export function loadLine(openingId: string, lineId: string): { opening: Opening; line: OpeningLine } | null {
   const opening = loadOpening(openingId);
   const line = opening?.lines.find((l) => l.id === lineId);

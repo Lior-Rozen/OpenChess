@@ -8,9 +8,10 @@
   "lines": [
     {
       "id": "caro-kann-advance-main",
-      "name": "Advance: Short System",
+      "name": "Short System",
       "level": 1,
       "tier": "main",
+      "variation": "Advance",
       "moves": ["e4", "c6", "d4", "d5", "e5", "Bf5", "Nf3", "e6", "Be2", "c5", "O-O", "Nc6"],
       "notes": {
         "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
@@ -21,12 +22,47 @@
       "summary": "Get the bishop out to f5 first, then …e6 and …c5 to attack the base of White's chain."
     },
     {
+      "id": "caro-kann-advance-deep",
+      "name": "Short, 7.c3",
+      "level": 2,
+      "tier": "main",
+      "variation": "Advance",
+      "moves": ["e4", "c6", "d4", "d5", "e5", "Bf5", "Nf3", "e6", "Be2", "c5", "O-O", "Nc6", "c3", "cxd4", "cxd4", "Nge7"],
+      "notes": {
+        "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
+        "5": "…Bf5 develops the bishop outside the chain before …e6 shuts it in.",
+        "9": "…c5 hits d4, the base of White's pawn chain, as in the French.",
+        "11": "…Nc6 adds a second attacker on d4.",
+        "13": "…cxd4 opens the c-file for Black's rook.",
+        "15": "…Nge7 develops the last minor piece and keeps the f-pawn free for a later …f6 break."
+      },
+      "summary": "Open the c-file with …cxd4 and pile up on d4 with your knights."
+    },
+    {
+      "id": "caro-kann-advance-bd3",
+      "name": "4.Bd3",
+      "level": 2,
+      "tier": "main",
+      "variation": "Advance",
+      "moves": ["e4", "c6", "d4", "d5", "e5", "Bf5", "Bd3", "Bxd3", "Qxd3", "e6", "Nf3", "Qb6", "O-O", "c5", "c3", "Nc6"],
+      "notes": {
+        "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
+        "5": "…Bf5 develops the bishop outside the chain before …e6 shuts it in.",
+        "7": "…Bxd3 swaps off Black's problem bishop, the usual worry in French-type structures.",
+        "11": "…Qb6 eyes d4 and b2.",
+        "13": "…c5 strikes at the base of the chain."
+      },
+      "summary": "4.Bd3 lets you trade your bad bishop; then the French plan with …Qb6, …c5 and …Nc6."
+    },
+    {
       "id": "caro-kann-classical-main",
       "name": "Classical (4…Bf5)",
       "level": 1,
       "tier": "main",
+      "variation": "Classical",
       "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Bf5", "Ng3", "Bg6", "h4", "h6", "Nf3", "Nd7", "h5", "Bh7"],
       "notes": {
+        "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
         "7": "…Bf5 develops with tempo on the e4 knight.",
         "11": "…h6 keeps a retreat square for the bishop, so h5 doesn't trap it.",
         "13": "…Nd7 stops Ne5 and prepares …Ngf6 without allowing a pawn-breaking Nxf6+.",
@@ -35,39 +71,18 @@
       "summary": "Bishop to f5, then g6 and h7: answer the h-pawn march with …h6 and keep the bishop."
     },
     {
-      "id": "caro-kann-exchange-main",
-      "name": "Exchange Variation",
-      "level": 1,
-      "tier": "main",
-      "moves": ["e4", "c6", "d4", "d5", "exd5", "cxd5", "Bd3", "Nc6", "c3", "Nf6", "Bf4", "Bg4", "Qb3", "Qd7", "Nd2", "e6"],
-      "notes": {
-        "5": "…cxd5 gives Black the half-open c-file for the queenside play.",
-        "11": "…Bg4 develops the bishop actively before …e6 locks it in.",
-        "13": "…Qd7 defends b7 along the seventh rank.",
-        "15": "…e6 opens the f8 bishop; next come …Bd6 and castling."
-      },
-      "summary": "Develop the bishop to g4 before …e6, guard b7 with …Qd7, then play on the c-file."
-    },
-    {
-      "id": "caro-kann-panov",
-      "name": "Panov Attack (4.c4)",
-      "level": 1,
-      "tier": "side",
-      "moves": ["e4", "c6", "d4", "d5", "exd5", "cxd5", "c4", "Nf6", "Nc3", "e6", "Nf3", "Be7", "cxd5", "Nxd5", "Bd3", "Nc6", "O-O", "O-O"],
-      "notes": {
-        "7": "…Nf6 hits d5 and develops; White aims for an isolated d-pawn position.",
-        "9": "…e6 supports d5 and opens the f8 bishop.",
-        "13": "…Nxd5 puts the knight on a strong central square in front of White's isolated pawn."
-      },
-      "summary": "Against the isolated d-pawn, blockade d5 with a knight and trade pieces."
-    },
-    {
       "id": "caro-kann-classical-deep",
-      "name": "Classical: 11.Bd2",
+      "name": "11.Bd2",
       "level": 2,
       "tier": "main",
+      "variation": "Classical",
       "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Bf5", "Ng3", "Bg6", "h4", "h6", "Nf3", "Nd7", "h5", "Bh7", "Bd3", "Bxd3", "Qxd3", "e6", "Bd2", "Ngf6", "O-O-O", "Be7"],
       "notes": {
+        "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
+        "7": "…Bf5 develops with tempo on the e4 knight.",
+        "11": "…h6 keeps a retreat square for the bishop, so h5 doesn't trap it.",
+        "13": "…Nd7 stops Ne5 and prepares …Ngf6 without allowing a pawn-breaking Nxf6+.",
+        "15": "…Bh7 keeps the bishop alive on its diagonal; White has spent time on h-pawn moves.",
         "17": "…Bxd3 trades the good bishop for White's; Black's position is solid but a little passive.",
         "19": "…e6 opens the f8 bishop; the black king will castle short or stay in the centre.",
         "21": "…Ngf6 develops the last knight, eyeing e4 and g4.",
@@ -76,37 +91,34 @@
       "summary": "Trade light-squared bishops, then develop quietly with …e6, …Ngf6 and …Be7."
     },
     {
-      "id": "caro-kann-advance-deep",
-      "name": "Advance: Short, 7.c3",
-      "level": 2,
+      "id": "caro-kann-exchange-main",
+      "name": "Exchange Variation",
+      "level": 1,
       "tier": "main",
-      "moves": ["e4", "c6", "d4", "d5", "e5", "Bf5", "Nf3", "e6", "Be2", "c5", "O-O", "Nc6", "c3", "cxd4", "cxd4", "Nge7"],
+      "variation": "Exchange",
+      "moves": ["e4", "c6", "d4", "d5", "exd5", "cxd5", "Bd3", "Nc6", "c3", "Nf6", "Bf4", "Bg4", "Qb3", "Qd7", "Nd2", "e6"],
       "notes": {
-        "13": "…cxd4 opens the c-file for Black's rook.",
-        "15": "…Nge7 develops the last minor piece and keeps the f-pawn free for a later …f6 break."
+        "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
+        "5": "…cxd5 gives Black the half-open c-file for the queenside play.",
+        "11": "…Bg4 develops the bishop actively before …e6 locks it in.",
+        "13": "…Qd7 defends b7 along the seventh rank.",
+        "15": "…e6 opens the f8 bishop; next come …Bd6 and castling."
       },
-      "summary": "Open the c-file with …cxd4 and pile up on d4 with your knights."
-    },
-    {
-      "id": "caro-kann-advance-bd3",
-      "name": "Advance: 4.Bd3",
-      "level": 2,
-      "tier": "main",
-      "moves": ["e4", "c6", "d4", "d5", "e5", "Bf5", "Bd3", "Bxd3", "Qxd3", "e6", "Nf3", "Qb6", "O-O", "c5", "c3", "Nc6"],
-      "notes": {
-        "7": "…Bxd3 swaps off Black's problem bishop, the usual worry in French-type structures.",
-        "11": "…Qb6 eyes d4 and b2.",
-        "13": "…c5 strikes at the base of the chain."
-      },
-      "summary": "4.Bd3 lets you trade your bad bishop; then the French plan with …Qb6, …c5 and …Nc6."
+      "summary": "Develop the bishop to g4 before …e6, guard b7 with …Qd7, then play on the c-file."
     },
     {
       "id": "caro-kann-exchange-deep",
-      "name": "Exchange: 9.Ngf3",
+      "name": "9.Ngf3",
       "level": 2,
       "tier": "side",
+      "variation": "Exchange",
       "moves": ["e4", "c6", "d4", "d5", "exd5", "cxd5", "Bd3", "Nc6", "c3", "Nf6", "Bf4", "Bg4", "Qb3", "Qd7", "Nd2", "e6", "Ngf3", "Bd6", "Bxd6", "Qxd6", "O-O", "O-O"],
       "notes": {
+        "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
+        "5": "…cxd5 gives Black the half-open c-file for the queenside play.",
+        "11": "…Bg4 develops the bishop actively before …e6 locks it in.",
+        "13": "…Qd7 defends b7 along the seventh rank.",
+        "15": "…e6 opens the f8 bishop; next come …Bd6 and castling.",
         "17": "…Bd6 challenges White's good bishop on f4.",
         "19": "…Qxd6 recaptures and keeps the queen central.",
         "21": "…O-O: next Black plays on the queenside with …Rab8 and …b5."
@@ -114,12 +126,30 @@
       "summary": "Trade dark-squared bishops, castle, then push …b5-b4 on the queenside (a minority attack)."
     },
     {
+      "id": "caro-kann-panov",
+      "name": "Panov Attack (4.c4)",
+      "level": 1,
+      "tier": "side",
+      "variation": "Panov Attack",
+      "moves": ["e4", "c6", "d4", "d5", "exd5", "cxd5", "c4", "Nf6", "Nc3", "e6", "Nf3", "Be7", "cxd5", "Nxd5", "Bd3", "Nc6", "O-O", "O-O"],
+      "notes": {
+        "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
+        "5": "…cxd5 gives Black the half-open c-file for the queenside play.",
+        "7": "…Nf6 hits d5 and develops; White aims for an isolated d-pawn position.",
+        "9": "…e6 supports d5 and opens the f8 bishop.",
+        "13": "…Nxd5 puts the knight on a strong central square in front of White's isolated pawn."
+      },
+      "summary": "Against the isolated d-pawn, blockade d5 with a knight and trade pieces."
+    },
+    {
       "id": "caro-kann-two-knights",
       "name": "Two Knights (2.Nc3 3.Nf3)",
       "level": 2,
       "tier": "side",
+      "variation": "Two Knights",
       "moves": ["e4", "c6", "Nc3", "d5", "Nf3", "Bg4", "h3", "Bxf3", "Qxf3", "e6", "d3", "Nf6"],
       "notes": {
+        "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
         "5": "…Bg4 pins the f3 knight, which helps White control e5 and d4.",
         "7": "…Bxf3 gives the bishop pair but leaves Black with a very solid pawn structure.",
         "9": "…e6 builds a pawn chain on light squares, where White's bishop can't attack it."

@@ -6,6 +6,7 @@ import { Board, type BoardFlash } from '@/chess/Board';
 import type { Square } from '@/chess/game';
 import { handleTap, type Selection } from '@/chess/tapToMove';
 import { Button } from '@/components/Button';
+import { lineTitle } from '@/content/loader';
 import { useFeedback, type Cue } from '@/feedback/feedback';
 import { GREETING, say, type LineKind } from '@/mastermind/lines';
 import { MastermindSpeech } from '@/mastermind/Speech';
@@ -259,7 +260,7 @@ function RunResultCard({ target, mode, state, result, onRestart }: RunResultCard
 
   return (
     <ResultCard
-      title={exam ? `${line?.name ?? 'Line'} complete` : 'Line complete'}
+      title={exam ? `${line ? lineTitle(line) : 'Line'} complete` : 'Line complete'}
       outcome={outcome}
       tone={state.clean ? 'good' : 'bad'}
       highlights={highlights}

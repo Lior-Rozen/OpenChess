@@ -8,9 +8,10 @@
   "lines": [
     {
       "id": "scandinavian-qa5-main",
-      "name": "Main Line: 3.Nc3 Qa5",
+      "name": "3.Nc3 Qa5",
       "level": 1,
       "tier": "main",
+      "variation": "Main Line",
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Bd2", "e6"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
@@ -21,12 +22,83 @@
       "summary": "Queen to a5, then …Nf6, …c6, …Bf5 and …e6: a Caro-Kann set-up with the queen out."
     },
     {
+      "id": "scandinavian-qa5-deep",
+      "name": "8.Qe2",
+      "level": 2,
+      "tier": "main",
+      "variation": "Main Line",
+      "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Bd2", "e6", "Qe2", "Bb4", "O-O-O", "Nbd7", "a3", "Bxc3", "Bxc3", "Qc7"],
+      "notes": {
+        "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
+        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "9": "…c6 gives the queen a retreat and stops Nb5 or Bb5 tricks.",
+        "11": "…Bf5 develops the bishop outside the pawn chain before …e6.",
+        "15": "…Bb4 pins the c3 knight again and develops.",
+        "17": "…Nbd7 develops and covers e5.",
+        "21": "…Qc7 gets the queen out of the bishop's line and eyes the kingside."
+      },
+      "summary": "Pin with …Bb4, develop with …Nbd7, and trade on c3 when White plays a3."
+    },
+    {
+      "id": "scandinavian-nd5-trap",
+      "name": "8.Nd5 trick",
+      "level": 2,
+      "tier": "side",
+      "variation": "Main Line",
+      "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Bd2", "e6", "Nd5", "Qd8", "Nxf6+", "Qxf6"],
+      "notes": {
+        "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
+        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "9": "…c6 gives the queen a retreat and stops Nb5 or Bb5 tricks.",
+        "11": "…Bf5 develops the bishop outside the pawn chain before …e6.",
+        "14": "Nd5 discovers an attack from the d2 bishop on the a5 queen.",
+        "15": "…Qd8 is the safe retreat; taking with …cxd5 or …exd5 loses to Bxa5.",
+        "17": "…Qxf6 recaptures with an active queen."
+      },
+      "summary": "When Nd5 uncovers Bd2 on your queen, retreat with …Qd8; never capture the knight."
+    },
+    {
+      "id": "scandinavian-ne5",
+      "name": "7.Ne5",
+      "level": 2,
+      "tier": "side",
+      "variation": "Main Line",
+      "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Ne5", "e6", "g4", "Bg6", "h4", "Nbd7"],
+      "notes": {
+        "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
+        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "9": "…c6 gives the queen a retreat and stops Nb5 or Bb5 tricks.",
+        "11": "…Bf5 develops the bishop outside the pawn chain before …e6.",
+        "13": "…e6 makes room for the bishop and opens the f8 bishop.",
+        "15": "…Bg6 keeps the bishop; White attacks it with the h-pawn next.",
+        "17": "…Nbd7 challenges the strong e5 knight so that h5 can be met calmly."
+      },
+      "summary": "Against Ne5 and the g4/h4 pawn storm, challenge the e5 knight with …Nbd7."
+    },
+    {
+      "id": "scandinavian-4nf3",
+      "name": "4.Nf3 move order",
+      "level": 2,
+      "tier": "main",
+      "variation": "Main Line",
+      "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "Nf3", "Nf6", "d4", "c6", "Bc4", "Bf5", "Bd2", "e6"],
+      "notes": {
+        "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
+        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "7": "…Nf6: the usual move, whatever White's order.",
+        "9": "…c6: the position is now the same as the main line."
+      },
+      "summary": "4.Nf3 transposes: the set-up …Nf6, …c6, …Bf5, …e6 doesn't change."
+    },
+    {
       "id": "scandinavian-3d4",
       "name": "3.d4",
       "level": 1,
       "tier": "main",
+      "variation": "Quiet 3.d4 / 3.Nf3",
       "moves": ["e4", "d5", "exd5", "Qxd5", "d4", "Nf6", "Nf3", "Bf5", "Be2", "e6", "O-O", "c6", "c4", "Qd8", "Nc3", "Nbd7"],
       "notes": {
+        "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
         "5": "…Nf6 develops; the queen is safe on d5 for now.",
         "7": "…Bf5 gets the bishop out before …e6.",
         "13": "…Qd8 retreats home when c4 hits the queen; the position is solid."
@@ -38,63 +110,14 @@
       "name": "3.Nf3",
       "level": 1,
       "tier": "side",
+      "variation": "Quiet 3.d4 / 3.Nf3",
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nf3", "Nf6", "d4", "Bf5", "Be2", "e6", "O-O", "c6", "c4", "Qd8", "Nc3", "Nbd7"],
       "notes": {
+        "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
         "5": "…Nf6 develops; after d4 this is the same as the 3.d4 line.",
         "7": "…Bf5: the position is now identical to 3.d4 Nf6 4.Nf3 Bf5."
       },
       "summary": "3.Nf3 and 3.d4 lead to the same position: one plan for both."
-    },
-    {
-      "id": "scandinavian-qa5-deep",
-      "name": "Main Line: 8.Qe2",
-      "level": 2,
-      "tier": "main",
-      "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Bd2", "e6", "Qe2", "Bb4", "O-O-O", "Nbd7", "a3", "Bxc3", "Bxc3", "Qc7"],
-      "notes": {
-        "15": "…Bb4 pins the c3 knight again and develops.",
-        "17": "…Nbd7 develops and covers e5.",
-        "21": "…Qc7 gets the queen out of the bishop's line and eyes the kingside."
-      },
-      "summary": "Pin with …Bb4, develop with …Nbd7, and trade on c3 when White plays a3."
-    },
-    {
-      "id": "scandinavian-4nf3",
-      "name": "Main Line: 4.Nf3 move order",
-      "level": 2,
-      "tier": "main",
-      "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "Nf3", "Nf6", "d4", "c6", "Bc4", "Bf5", "Bd2", "e6"],
-      "notes": {
-        "7": "…Nf6: the usual move, whatever White's order.",
-        "9": "…c6: the position is now the same as the main line."
-      },
-      "summary": "4.Nf3 transposes: the set-up …Nf6, …c6, …Bf5, …e6 doesn't change."
-    },
-    {
-      "id": "scandinavian-nd5-trap",
-      "name": "Main Line: 8.Nd5 trick",
-      "level": 2,
-      "tier": "side",
-      "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Bd2", "e6", "Nd5", "Qd8", "Nxf6+", "Qxf6"],
-      "notes": {
-        "14": "Nd5 discovers an attack from the d2 bishop on the a5 queen.",
-        "15": "…Qd8 is the safe retreat; taking with …cxd5 or …exd5 loses to Bxa5.",
-        "17": "…Qxf6 recaptures with an active queen."
-      },
-      "summary": "When Nd5 uncovers Bd2 on your queen, retreat with …Qd8; never capture the knight."
-    },
-    {
-      "id": "scandinavian-ne5",
-      "name": "Main Line: 7.Ne5",
-      "level": 2,
-      "tier": "side",
-      "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Ne5", "e6", "g4", "Bg6", "h4", "Nbd7"],
-      "notes": {
-        "13": "…e6 makes room for the bishop and opens the f8 bishop.",
-        "15": "…Bg6 keeps the bishop; White attacks it with the h-pawn next.",
-        "17": "…Nbd7 challenges the strong e5 knight so that h5 can be met calmly."
-      },
-      "summary": "Against Ne5 and the g4/h4 pawn storm, challenge the e5 knight with …Nbd7."
     }
   ]
 }

@@ -1,0 +1,36 @@
+[Id "sicilian"]
+[Name "Sicilian Defense: Najdorf"]
+[Side "black"]
+[ECO "B20-B99"]
+[Description "The fighting answer to 1.e4: 1…c5 and the Najdorf's flexible 5…a6."]
+[Tags "aggressive"]
+
+1. e4 c5 {…c5 fights for d4 from the side, keeping the game unbalanced.} 2. Nf3
+  (2. c3 {@variation Alapin} 2... d5 {…d5 hits e4 at once, before White can build a big centre with d4.} 3. exd5 Qxd5 {…Qxd5 is safe because c3 takes the c3 square from White's knight.} 4. d4 Nf6 5. Nf3 Bg4 {…Bg4 develops and pins the knight that defends d4.} 6. Be2 e6 7. O-O Nc6 {…Nc6 piles up on d4; Black is comfortable.}
+{@line id=sicilian-alapin level=1 tier=main name="Alapin (2.c3)" summary="Meet 2.c3 with …d5: the queen recaptures safely, then …Nf6, …Bg4, …e6 and …Nc6 hit d4."}
+)
+  (2. d4 {@variation Smith-Morra} 2... cxd4 3. c3 dxc3 {…dxc3 accepts the pawn; Black must defend carefully but stays a pawn up.} 4. Nxc3 Nc6 5. Nf3 d6 {…d6 and …e6 make a solid wall against the c4 bishop.} 6. Bc4 e6 7. O-O Nf6 {…Nf6 develops; next come …Be7 and castling.}
+{@line id=sicilian-smith-morra level=1 tier=side name="Smith-Morra Gambit" summary="Take the gambit pawn, build a …d6/…e6 wall, develop and castle; White's attack fades."}
+8. Qe2 Be7 {…Be7 prepares castling; the queen stays on d8 to cover d6.} 9. Rd1 e5 {…e5 shuts the d-file and blunts White's pressure on d6.}
+{@line id=sicilian-smith-morra-deep level=2 tier=side name="9.Rd1" summary="Close the d-file with …e5, castle, and keep the extra pawn."}
+)
+2... d6 3. d4
+  (3. Bb5+ {@variation Moscow} 3... Bd7 {…Bd7 blocks the check and offers to trade Black's lesser bishop.} 4. Bxd7+ Qxd7 {…Qxd7 recaptures and keeps the knight free to go to c6.} 5. O-O Nc6 6. c3 Nf6 7. Re1 e6 {…e6 prepares …Be7 and …d5 when White pushes d4.}
+{@line id=sicilian-moscow level=1 tier=side name="Moscow (3.Bb5+)" summary="Block with …Bd7, take back with the queen, and develop calmly; the trade helped Black."}
+)
+3... cxd4 4. Nxd4 Nf6 5. Nc3 a6 {…a6 is the Najdorf: it takes b5 from White's pieces and prepares …e5 or …b5.} {@variation Najdorf} 6. Be3
+  (6. Be2 e5 {…e5 against the quiet 6.Be2, the same reply as against 6.Be3.} 7. Nb3 Be7 {…Be7 develops and prepares to castle.} 8. O-O O-O {…O-O: next come …Be6, …Nbd7 and a fight for d5.}
+{@line id=sicilian-najdorf-be2 level=1 tier=main name="6.Be2" summary="Same plan as against 6.Be3: …e5, develop, castle, and fight for d5."}
+9. Be3 Be6 {…Be6 aims at d5, the key square in every …e5 Najdorf.} 10. Qd2 Nbd7 {…Nbd7 completes development; …Rc8 and …b5 follow.}
+{@line id=sicilian-najdorf-be2-deep level=2 tier=side name="6.Be2, 9.Be3" summary="Quiet White play: develop with …Be6 and …Nbd7, then use the c-file and …b5."}
+)
+  (6. Bg5 e6 {…e6 here, not …e5: the pin on f6 makes d5 too weak after …e5.} 7. f4 Be7 {…Be7 breaks the pin on the f6 knight.} 8. Qf3 Qc7 {…Qc7 watches e5 and the c-file.} 9. O-O-O Nbd7 {…Nbd7 supports the f6 knight; next is …b5 and a queenside attack.}
+{@line id=sicilian-najdorf-bg5 level=2 tier=main name="6.Bg5" summary="Against 6.Bg5, switch to …e6, unpin with …Be7, then …Qc7, …Nbd7 and …b5."}
+)
+  (6. Bc4 e6 {…e6 blunts the c4 bishop, which aims at f7.} 7. Bb3 b5 {…b5 gains space and threatens …b4 against the c3 knight.} 8. O-O Be7 9. Qf3 Qc7 {…Qc7 guards e5 and avoids tricks on the a8 rook.}
+{@line id=sicilian-najdorf-bc4 level=2 tier=side name="6.Bc4" summary="Block the c4 bishop with …e6, then expand with …b5; watch out for e5 tricks."}
+)
+6... e5 {…e5 grabs space and kicks the d4 knight; d5 becomes the key square.} 7. Nb3 Be6 {…Be6 develops and controls d5, the hole White wants to use.}
+{@line id=sicilian-najdorf-english level=1 tier=main name="English Attack (6.Be3)" summary="…a6, then …e5 and …Be6: control d5 and you control the Najdorf."}
+8. f3 Be7 {…Be7 gets ready to castle; White is preparing g4 and O-O-O.} 9. Qd2 O-O 10. O-O-O Nbd7 {…Nbd7 covers c5 and supports …b5.} 11. g4 b5 {…b5 starts Black's own attack on the castled white king; it's a race.}
+{@line id=sicilian-najdorf-english-deep level=2 tier=main name="English Attack, 9.Qd2" summary="Opposite-side castling means a race: White pushes g4-g5, Black answers with …b5-b4."} *

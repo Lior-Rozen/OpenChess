@@ -1,0 +1,34 @@
+[Id "ruy-lopez"]
+[Name "Ruy Lopez"]
+[Side "white"]
+[ECO "C60-C99"]
+[Description "Pressure the knight that defends e5 with 3.Bb5, then build a classic centre with c3 and d4."]
+[Tags "positional"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 {Bb5 attacks the knight that defends e5, a long-term pressure.} 3... a6
+  (3... Nf6 {@variation Berlin} 4. d3 {d3 defends e4 and avoids the drawish Berlin endgame.} 4... Bc5 5. c3 {c3 gives the bishop a retreat and prepares d4.} 5... O-O 6. O-O d6 7. h3 {h3 stops …Bg4.}
+{@line id=ruy-lopez-berlin level=1 tier=main name="4.d3" summary="Against the Berlin, keep it simple with d3 and c3, like an Italian with the bishop on b5."}
+)
+  (3... d6 {@variation Steinitz} 4. d4 {d4 attacks e5 at once; Black's set-up is passive.} 4... Bd7 5. Nc3 {Nc3 develops and adds support to e4.} 5... Nf6 6. O-O Be7 7. Re1 {Re1 defends e4 and keeps the pressure on e5.}
+{@line id=ruy-lopez-steinitz level=1 tier=side name="Steinitz (3…d6)" summary="Against 3…d6, push d4 at once and develop; Black is cramped."}
+)
+  (3... Bc5 {@variation Classical} 4. c3 {c3 prepares d4, which hits the c5 bishop with tempo.} 4... Nf6 5. O-O O-O 6. d4 {d4 claims the centre and pushes the bishop back.} 6... Bb6 7. Bg5 {Bg5 pins the f6 knight, adding pressure on e5.}
+{@line id=ruy-lopez-classical level=2 tier=side name="Classical (3…Bc5)" summary="Against …Bc5, c3 and d4 take the centre with tempo, then pin with Bg5."}
+)
+4. Ba4 {Ba4 keeps the bishop aimed at the c6 knight.} 4... Nf6 5. O-O Be7 {@variation Closed}
+  (5... Nxe4 {@variation Open} 6. d4 {d4 opens the centre while the black king is still uncastled.} 6... b5 7. Bb3 d5 8. dxe5 {dxe5 wins back the pawn and gains space.} 8... Be6 9. c3 {c3 gives the bishop a retreat to c2 and keeps the e5 pawn strong.}
+{@line id=ruy-lopez-open level=2 tier=main name="Open (5…Nxe4)" summary="Let Black take e4, then open the centre with d4 and win the pawn back on e5."}
+)
+  (5... b5 {@variation Moller} 6. Bb3 Bc5 7. c3 {c3 prepares d4 to kick the active c5 bishop.} 7... d6 8. d4 {d4 hits e5 and the bishop; White gains space in the centre.}
+{@line id=ruy-lopez-moller level=2 tier=side name="Moller / Arkhangelsk (6…Bc5)" summary="When the bishop goes to c5, play c3 and d4 to push it back."}
+)
+6. Re1 b5 7. Bb3 {Bb3 retreats to a great diagonal aiming at f7.} 7... d6
+  (7... O-O {…O-O prepares the Marshall Attack, a famous pawn sacrifice after 8.c3 d5.} 8. h3 {h3 avoids the Marshall; after …d6, c3 brings us back to the main line.}
+{@line id=ruy-lopez-anti-marshall level=1 tier=side name="Anti-Marshall (8.h3)" summary="When Black castles before …d6, play h3 to dodge the Marshall Attack."}
+8... d6 9. c3 {c3: this is now the Closed Ruy Lopez main line.} 9... Na5 10. Bc2 c5 11. d4 {d4 builds the centre, just as in the Chigorin.}
+{@line id=ruy-lopez-anti-marshall-deep level=2 tier=side name="Anti-Marshall into the Chigorin" summary="The Anti-Marshall order joins the main line: same plan, same position."}
+)
+8. c3 {c3 prepares d4 and gives the bishop a retreat to c2.}
+{@line id=ruy-lopez-closed level=1 tier=main name="Closed (5…Be7)" summary="Bb5, Ba4, O-O, Re1, Bb3 and c3: the classic slow build-up before d4."}
+8... O-O 9. h3 {h3 stops …Bg4, which would pin the knight that supports d4.} 9... Na5 10. Bc2 {Bc2 keeps the bishop on its diagonal towards Black's king.} 10... c5 11. d4 {d4 finally builds the big centre that the whole set-up was preparing.} 11... Qc7 12. Nbd2 {Nbd2 starts the Nf1-g3 knight tour.}
+{@line id=ruy-lopez-chigorin level=2 tier=main name="Chigorin (9…Na5)" summary="h3, Bc2 and d4, then Nbd2-f1-g3: the classical Ruy Lopez plan."} *
