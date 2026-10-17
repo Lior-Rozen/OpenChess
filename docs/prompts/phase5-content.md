@@ -85,6 +85,10 @@ compile it into `content/openings/<id>.json`, which the app bundles. Never edit 
 - **Accepted alternatives:** where the user has another good move, add it as a one-move variation
   marked `{@alt}`. The app doesn't count it as a mistake, and the line goes on with the book
   move. Use this freely for sound alternatives, so the user isn't punished for a good move.
+- **Known mistakes:** where club players often go wrong at the user's move, add the bad move as a
+  one-move variation `(5. d4 {@mistake …Qh4+! forces your king to move.})`. It still counts as a
+  mistake, but the drill shows the reason. Keep it to 1–3 per opening, only moves that are both
+  common (club data) and clearly worse (engine), with a reason of about 10 words.
 - **Variations:** `{@variation Name}` on a move names every line through it, and the Opening
   screen groups lines under it. Keep line names short within it, e.g. "6.Be2" under "Advance".
 - **Ids:** kebab-case. The opening `[Id]` matches the file name. Line ids are unique across all
