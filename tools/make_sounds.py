@@ -1,6 +1,7 @@
 """Synthesises the app's sound effects (original, no licence needed) as small mono WAVs.
 
-Usage (from the repo root): python tools/make_sounds.py app/assets/sounds
+Soft on purpose: rounded tones, low notes, gentle attacks and modest volume, for a calm study
+mood. Usage (from the repo root): python tools/make_sounds.py app/assets/sounds
 """
 import math
 import random
@@ -13,60 +14,67 @@ OUT = sys.argv[1]
 random.seed(7)
 
 
-def write(name, samples):
+def write(name, samples, level):
+    """Writes samples normalised so the loudest point is `level` of full scale."""
     peak = max(abs(s) for s in samples) or 1
     with wave.open(f"{OUT}/{name}.wav", "wb") as w:
         w.setnchannels(1)
         w.setsampwidth(2)
         w.setframerate(RATE)
-        w.writeframes(b"".join(struct.pack("<h", int(s / peak * 0.85 * 32767)) for s in samples))
+        w.writeframes(b"".join(struct.pack("<h", int(s / peak * level * 32767)) for s in samples))
 
 
 def env(t, attack, decay):
-    return min(1.0, t / attack) * math.exp(-t / decay) if attack > 0 else math.exp(-t / decay)
+    return min(1.0, t / attack) * math.exp(-t / decay)
 
 
-def square(phase):
-    # A soft square: a few odd harmonics, less harsh than a true square wave.
-    return sum(math.sin(phase * k) / k for k in (1, 3, 5))
+def tone(freq, length, attack, decay, partials=((1, 1.0),)):
+    out = []
+    for i in range(int(RATE * length)):
+        t = i / RATE
+        out.append(sum(a * math.sin(2 * math.pi * freq * k * t) for k, a in partials) * env(t, attack, decay))
+    return out
+
+
+def mix(*parts):
+    """parts: (start in seconds, samples)."""
+    n = max(int(RATE * s) + len(p) for s, p in parts)
+    out = [0.0] * n
+    for s, p in parts:
+        o = int(RATE * s)
+        for i, v in enumerate(p):
+            out[o + i] += v
+    return out
 
 
 def move():
-    """A short wooden 'tock': a damped low sine plus a click of filtered noise."""
+    """A short wooden 'tock': a damped low sine plus a soft click of filtered noise."""
     out, lp = [], 0.0
     for i in range(int(RATE * 0.09)):
         t = i / RATE
-        lp += 0.25 * (random.uniform(-1, 1) - lp)
-        out.append(math.sin(2 * math.pi * 520 * t * (1 - 0.6 * t)) * env(t, 0.001, 0.018) + 0.5 * lp * env(t, 0, 0.006))
+        lp += 0.2 * (random.uniform(-1, 1) - lp)
+        out.append(math.sin(2 * math.pi * 430 * t * (1 - 0.6 * t)) * env(t, 0.001, 0.02) + 0.35 * lp * env(t, 0.0005, 0.005))
     return out
 
 
 def mistake():
-    """Two low descending blips, retro but soft."""
-    out = []
-    for freq, start in ((220, 0.0), (165, 0.11)):
-        for i in range(int(RATE * 0.1)):
-            t = i / RATE
-            out.append(0.6 * square(2 * math.pi * freq * t) * env(t, 0.004, 0.05))
-        if start == 0.0:
-            out += [0.0] * int(RATE * 0.01)
+    """One low, muted thud that sags in pitch."""
+    out, phase = [], 0.0
+    for i in range(int(RATE * 0.35)):
+        t = i / RATE
+        freq = 200 - 45 * min(1.0, t / 0.2)
+        phase += 2 * math.pi * freq / RATE
+        out.append((math.sin(phase) + 0.15 * math.sin(2 * phase)) * env(t, 0.008, 0.09))
     return out
 
 
 def complete():
-    """A rising arpeggio (C, E, G, C) with a little shimmer on the last note."""
-    out = []
-    notes = (523.25, 659.25, 783.99, 1046.5)
-    for n, freq in enumerate(notes):
-        length = 0.32 if n == len(notes) - 1 else 0.085
-        for i in range(int(RATE * length)):
-            t = i / RATE
-            tone = square(2 * math.pi * freq * t) + 0.3 * math.sin(2 * math.pi * freq * 2.01 * t)
-            out.append(0.5 * tone * env(t, 0.003, 0.12 if n == len(notes) - 1 else 0.06))
-    return out
+    """A soft two-note chime, up a fourth (G4 to C5)."""
+    chime = ((1, 1.0), (2, 0.12))
+    return mix((0, tone(392.0, 0.7, 0.015, 0.25, chime)), (0.16, tone(523.25, 1.0, 0.015, 0.4, chime)))
 
 
-write("move", move())
-write("mistake", mistake())
-write("complete", complete())
+write("move", move(), 0.55)
+write("mistake", mistake(), 0.42)
+write("complete", complete(), 0.45)
 print("ok")

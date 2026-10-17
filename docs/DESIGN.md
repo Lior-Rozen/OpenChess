@@ -85,7 +85,8 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 - **Stats per opening:** % mastered, accuracy, streak of training days.
 - **Random drill:** a random line from everything unlocked.
 - **Sounds and haptics** on move, mistake and line complete, each with an off switch. The sounds are
-  original, synthesised by `tools/make_sounds.py` into `app/assets/sounds/`. They mix with other
+  original, soft on purpose (a two-note chime, a muted thud, a wooden tock), synthesised by
+  `tools/make_sounds.py` into `app/assets/sounds/`. They mix with other
   audio and stay quiet when the phone is on silent.
 
 ### Out of scope / deferred
