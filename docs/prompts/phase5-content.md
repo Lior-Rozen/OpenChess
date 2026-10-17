@@ -49,54 +49,55 @@ Start with the **French review**:
   - Where lines split on the **opponent's** move, the Mastermind picks a branch at random.
     Design these forks deliberately: they are how the user learns to meet different replies.
   - Where lines split on the **user's** move, any of the book replies is accepted.
-- **Keep the user's repertoire consistent.** In a given position, the user's move should be the
-  same in every line of the opening, so they learn one answer per position. Only offer two user
-  moves for the same position if the user explicitly asks for it.
+- **Keep the user's repertoire consistent.** In a given position, the user has one book move in
+  every line of the opening, so they learn one answer per position (the compiler enforces it).
+  Other good moves there go in as accepted alternatives (`{@alt}`), not as a second book move.
 - **End every line on the user's move**, so the user plays the final move.
 - The user meets each line as Watch (notes shown) → Practice (hints allowed) → Test (no help,
   fails at 2 mistakes). One clean Test masters a line.
 
 ## Content format
 
-One file per opening in `content/openings/<id>.json`. The format is in DESIGN.md §4:
+Write each opening as **PGN**: `content/pgn/<id>.pgn`. Run `npm run build-content` in `app/` to
+compile it into `content/openings/<id>.json`, which the app bundles. Never edit the JSON by hand:
+`validate-content` fails if it's out of date. The format is in DESIGN.md §4 and
+`app/src/content/pgn.ts`; `content/pgn/french.pgn` is a full example.
 
-```json
-{
-  "id": "caro-kann",
-  "name": "Caro-Kann Defense",
-  "side": "black",
-  "eco": "B10-B19",
-  "description": "One sentence, shown on the Opening screen.",
-  "tags": ["solid", "beginner-friendly"],
-  "lines": [
-    {
-      "id": "caro-kann-advance-main",
-      "name": "Advance Variation",
-      "level": 1,
-      "tier": "main",
-      "moves": ["e4", "c6", "d4", "d5", "e5", "Bf5"],
-      "notes": { "5": "…Bf5 develops the light-squared bishop outside the pawn chain." },
-      "summary": "One-sentence takeaway shown on the 'Line complete' card."
-    }
-  ]
-}
+```
+[Id "caro-kann"]
+[Name "Caro-Kann Defense"]
+[Side "black"]
+[ECO "B10-B19"]
+[Description "One sentence, shown on the Opening screen."]
+[Tags "solid, beginner-friendly"]
+
+1. e4 c6 2. d4 d5 3. e5 {@variation Advance} 3... Bf5 {…Bf5 develops the bishop outside the chain.}
+  (3... c5 {@alt})
+4. Nf3 e6
+{@line id=caro-kann-advance-main level=1 tier=main name="Short System" summary="One-sentence takeaway."} *
 ```
 
-- **Ids:** kebab-case. The opening `id` matches the file name. Line ids are unique across all
-  files, e.g. `<opening>-<variation>-<detail>`.
-- **`moves`:** standard SAN from the starting position, both sides:
-  - Use `+` for check and `#` for mate.
-  - Disambiguate when required (`Ngf3`, `Nbd7`).
-  - Castling is `O-O` / `O-O-O`.
-- **`notes`:** keyed by **0-based ply index** (ply 0 is White's first move, ply 1 is Black's
-  first move). Follow these rules:
+- **Lines:** a line is every move from the start to a `{@line …}` comment, which must follow one
+  of the user's moves. Deeper lines continue past a shallower line's `@line`. Every branch must
+  end in a `@line` (the compiler checks).
+- **Opponent branches** are ordinary `( … )` variations. They're how the user meets different
+  replies, so give the common replies their own branches instead of picking just one.
+- **Accepted alternatives:** where the user has another good move, add it as a one-move variation
+  marked `{@alt}`. The app doesn't count it as a mistake, and the line goes on with the book
+  move. Use this freely for sound alternatives, so the user isn't punished for a good move.
+- **Variations:** `{@variation Name}` on a move names every line through it, and the Opening
+  screen groups lines under it. Keep line names short within it, e.g. "6.Be2" under "Advance".
+- **Ids:** kebab-case. The opening `[Id]` matches the file name. Line ids are unique across all
+  files, e.g. `<opening>-<variation>-<detail>`. Never rename an existing line id: progress is
+  saved by id.
+- **Moves:** standard SAN (`+` for check, `#` for mate, `Ngf3` when needed, `O-O`).
+- **Notes:** a plain `{comment}` after a move is its note. Follow these rules:
   - Write one sentence on *why* the move is played.
-  - Add 2–4 notes per line, on the key moves only, and none on obvious moves.
+  - A note is shared by every line through its move. Put notes on key moves only (about 2–4
+    new ones per line), and none on obvious moves.
   - Write Black moves as `…c5` and White moves as `Nf3`.
   - The audience is club players: plain words, no engine numbers.
-- **`summary`:** give every line one, a single sentence with the plan or idea to remember.
-  (It's optional in the schema, but treat it as required.)
-- **`name`:** short and recognisable, e.g. "Advance Variation", "Tarrasch: Open (3…c5)".
+- **`summary=`:** every line needs one: a single sentence with the plan or idea to remember.
 - **`tags`** (opening level): labels the Openings screen filters by. Give every opening 1–3 from
   the fixed list in `app/src/content/types.ts`:
   - `gambit`: gives up material early for initiative
@@ -118,15 +119,19 @@ One file per opening in `content/openings/<id>.json`. The format is in DESIGN.md
   user asks otherwise.
 - If you have tools to check an opening explorer or database, use them. **If you're unsure of a
   move, say so and ask. Never invent theory.** At the end of each opening, flag any line you're
-  less than confident about.
+  less than confident about. Where two sound moves are both common, use an `{@alt}` (for the
+  user) or a second branch (for the opponent) rather than flagging it. When you do flag lines,
+  give each one in full from move 1, numbered, with the move to check from, so the user can
+  paste it into an opening explorer.
 - The validator proves moves are **legal**, not that they're **good**. The chess review is on you
   and the user.
 
 ## Registering a new opening (the only code you touch)
 
-1. Add it to `content/index.json`:
+1. Write `content/pgn/<id>.pgn` and run `npm run build-content`.
+2. Add it to `content/index.json`:
    `{ "id": "...", "name": "...", "side": "white|black", "file": "openings/<id>.json" }`.
-2. Import it in `app/src/content/loader.ts` and add it to the `bundledByFile` map. Metro can't
+3. Import it in `app/src/content/loader.ts` and add it to the `bundledByFile` map. Metro can't
    import by a computed path, and a Jest test fails if an index entry isn't bundled.
 
 If you think the content format or the app needs a change (e.g. a third tier), **propose it to

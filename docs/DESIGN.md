@@ -138,7 +138,32 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
     device under `settings:v1`.
 
 ## 4. Content format
-`content/openings/french.json`:
+**Source: PGN.** Each opening is written as `content/pgn/<id>.pgn`, a normal PGN tree (open it in
+a Lichess study or any PGN editor), and `npm run build-content` in `app/` compiles it into
+`content/openings/<id>.json`, which the app bundles. Edit the PGN, never the JSON:
+`validate-content` fails if the JSON is out of date. The rules live in `app/src/content/pgn.ts`.
+
+```
+[Id "french"] [Name "French Defense"] [Side "black"] [ECO "C00-C19"]
+[Description "Solid defence: …"] [Tags "solid, positional"]
+
+1. e4 e6 {…e6 prepares …d5.} 2. d4 d5 3. e5 {@variation Advance}
+  (3. Nc3 {@variation Winawer} 3... Bb4 {@line id=french-winawer-main level=1 tier=main name="Winawer Variation" summary="…"})
+3... c5 4. c3 Nc6 5. Nf3 Qb6 6. a3 c4 (6... Bd7 {@alt})
+{@line id=french-advance-main level=1 tier=main name="Advance Variation" summary="…"} *
+```
+- A plain `{comment}` is the note on the move before it (one sentence, *why* the move is played).
+- `{@variation Name}` names the variation of every line through that move; the Opening screen
+  groups lines under it, so line names can be short ("6.Be2" under "Advance").
+- `{@line id=… level=… tier=main|side name="…" summary="…"}` ends a line at that move (it must
+  be the user's move). A line is every move from the start to its `@line`; deeper lines simply
+  continue past a shallower line's `@line`.
+- Opponent alternatives are ordinary `( … )` variations, and each must end in a `@line`.
+- `( … {@alt})`: a one-move variation on the user's move is an **accepted alternative**: also a
+  good move, not a mistake. The app says so and shows the book move, and the line goes on with it.
+- The compiler enforces **one book move per position for the user**, also across transpositions.
+
+The compiled JSON, `content/openings/french.json`:
 ```json
 {
   "id": "french",
@@ -160,6 +185,10 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 }
 ```
 - `moves` uses SAN from the starting position. `notes` keys are ply indices (0-based).
+- `variation` (optional) groups lines on the Opening screen; `lineTitle()` shows "Variation: name".
+- `accept` (optional) maps a ply index of a user move to other good moves (SAN). Playing one is
+  not a mistake: the book move is shown as an arrow (also in Test) and the run stays clean.
+  Watch adds "Also good: …" to that move's note.
 - `summary` (optional) is the short takeaway shown on the "Line complete" card.
 - `tags` (optional, opening level) are labels for filtering on the Openings screen, from a fixed
   vocabulary in `app/src/content/types.ts` (`OPENING_TAGS`): `gambit` (gives up material early),
