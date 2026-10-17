@@ -30,7 +30,7 @@ export default function Home() {
           {GREETING}
           <BlinkingCursor />
         </Text>
-        <Text style={styles.title}>Chess Openings</Text>
+        <Text style={styles.title}>OpenChess</Text>
       </View>
 
       <View style={styles.actions}>

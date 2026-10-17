@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Chess Openings",
+    "name": "OpenChess",
     "slug": "chess-openings",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "chessopenings",
+    "scheme": "openchess",
     "userInterfaceStyle": "dark",
     "android": {
       "adaptiveIcon": {
@@ -14,7 +14,11 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "package": "com.liorrozen.openchess",
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ]
     },
     "web": {
       "output": "server",
@@ -43,6 +47,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "39e0e7e3-d883-470d-bc00-f92748ce08a4"
+      }
+    },
+    "owner": "bearerofagonies"
   }
 }
