@@ -1,0 +1,39 @@
+[Id "nimzo-indian"]
+[Name "Nimzo-Indian Defense"]
+[Side "black"]
+[ECO "E11, E20-E59"]
+[Description "Pin the c3 knight with …Bb4 and fight for e4: flexible and very sound."]
+[Tags "solid, positional"]
+
+1. d4 Nf6 2. c4 e6 {…e6 frees the f8 bishop and prepares …Bb4 or …d5.} 3. Nc3
+  (3. Nf3 {@variation Bogo-Indian (3.Nf3)} 3... Bb4+ {…Bb4+: the same bishop check idea, even without a knight on c3.} 4. Bd2 Bxd2+ {…Bxd2+ trades the bishop for White's good bishop and simplifies.} (4... Qe7 {@alt}) (4... Be7 {@alt})
+{@line id=nimzo-indian-bogo level=2 tier=main name="3.Nf3 Bb4+" summary="When White avoids Nc3, give the check anyway and trade bishops on d2."}
+)
+3... Bb4 {…Bb4 pins the c3 knight, so White can't easily play e4.} {@variation Nimzo-Indian}
+4. Qc2 {Qc2 avoids doubled pawns after …Bxc3, taking back with the queen.}
+  (4. Nf3 O-O {…O-O: castle first and keep all options: …d5, …c5 or …b6.} (4... b6 {@alt}) (4... d5 {@alt})
+{@line id=nimzo-indian-nf3 level=1 tier=main name="4.Nf3" summary="Against the quiet 4.Nf3, castle first and decide later between …d5, …c5 and …b6."}
+)
+  (4. Bg5 h6 {…h6 asks the bishop at once.} 5. Bh4 c5 {…c5 hits d4; the pin on c3 makes it hard for White to keep the centre.}
+{@line id=nimzo-indian-bg5 level=1 tier=main name="4.Bg5 (Leningrad)" summary="Against 4.Bg5, kick the bishop with …h6 and hit d4 with …c5."}
+)
+  (4. e3 O-O 5. Bd3 d5 {…d5 claims the centre; …c5 and …Nc6 come next.}
+{@line id=nimzo-indian-e3 level=1 tier=main name="4.e3 (Rubinstein)" summary="Against 4.e3, castle and take the centre with …d5, then …c5 and …Nc6."}
+6. Nf3 c5 {…c5 adds pressure on d4; the pin on c3 is still annoying for White.}
+{@line id=nimzo-indian-e3-deep level=2 tier=main name="4.e3 O-O 5.Bd3 d5 6.Nf3" summary="The Rubinstein main line: …d5, …c5 and …Nc6, with pressure on d4 and c4."}
+)
+  (4. Bd2 O-O {…O-O: the bishop on d2 is passive, so Black simply castles.} (4... c5 {@alt})
+{@line id=nimzo-indian-bd2 level=1 tier=side name="4.Bd2" summary="Against the modest 4.Bd2, castle and play …d5 or …c5."}
+)
+  (4. a3 Bxc3+ {…Bxc3+ doubles White's c-pawns; that's the point of the pin.} 5. bxc3 c5 {…c5 fixes the doubled pawns and pressures d4.} (5... O-O {@alt}) (5... b6 {@alt})
+{@line id=nimzo-indian-a3 level=1 tier=side name="4.a3 (Samisch)" summary="When a3 asks the bishop, take on c3 and aim at the doubled c-pawns with …c5."}
+)
+4... O-O 5. a3
+  (5. e4 d5 {…d5 hits e4 at once, before White's centre gets going.}
+{@line id=nimzo-indian-qc2-e4 level=2 tier=main name="4.Qc2 O-O 5.e4" summary="If White grabs the centre with e4, strike back at once with …d5."}
+)
+  (5. Nf3 d5 {…d5 claims the centre; …c5 can follow.}
+{@line id=nimzo-indian-qc2-nf3 level=2 tier=side name="4.Qc2 O-O 5.Nf3" summary="Against 5.Nf3, take the centre with …d5."}
+)
+5... Bxc3+ 6. Qxc3 b6 {…b6 prepares …Bb7 to control e4 and the long diagonal.} (6... d5 {@alt})
+{@line id=nimzo-indian-qc2 level=1 tier=main name="4.Qc2 (Classical)" summary="Against Qc2, castle; after a3 give the bishop on c3 and fight for e4 with …b6 and …Bb7."} *

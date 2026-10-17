@@ -1,0 +1,171 @@
+{
+  "id": "nimzo-indian",
+  "name": "Nimzo-Indian Defense",
+  "side": "black",
+  "eco": "E11, E20-E59",
+  "description": "Pin the c3 knight with …Bb4 and fight for e4: flexible and very sound.",
+  "tags": ["solid", "positional"],
+  "lines": [
+    {
+      "id": "nimzo-indian-qc2",
+      "name": "4.Qc2 (Classical)",
+      "level": 1,
+      "tier": "main",
+      "variation": "Nimzo-Indian",
+      "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "Qc2", "O-O", "a3", "Bxc3+", "Qxc3", "b6"],
+      "notes": {
+        "3": "…e6 frees the f8 bishop and prepares …Bb4 or …d5.",
+        "5": "…Bb4 pins the c3 knight, so White can't easily play e4.",
+        "6": "Qc2 avoids doubled pawns after …Bxc3, taking back with the queen.",
+        "11": "…b6 prepares …Bb7 to control e4 and the long diagonal."
+      },
+      "accept": {
+        "11": ["d5"]
+      },
+      "summary": "Against Qc2, castle; after a3 give the bishop on c3 and fight for e4 with …b6 and …Bb7."
+    },
+    {
+      "id": "nimzo-indian-qc2-e4",
+      "name": "4.Qc2 O-O 5.e4",
+      "level": 2,
+      "tier": "main",
+      "variation": "Nimzo-Indian",
+      "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "Qc2", "O-O", "e4", "d5"],
+      "notes": {
+        "3": "…e6 frees the f8 bishop and prepares …Bb4 or …d5.",
+        "5": "…Bb4 pins the c3 knight, so White can't easily play e4.",
+        "6": "Qc2 avoids doubled pawns after …Bxc3, taking back with the queen.",
+        "9": "…d5 hits e4 at once, before White's centre gets going."
+      },
+      "summary": "If White grabs the centre with e4, strike back at once with …d5."
+    },
+    {
+      "id": "nimzo-indian-qc2-nf3",
+      "name": "4.Qc2 O-O 5.Nf3",
+      "level": 2,
+      "tier": "side",
+      "variation": "Nimzo-Indian",
+      "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "Qc2", "O-O", "Nf3", "d5"],
+      "notes": {
+        "3": "…e6 frees the f8 bishop and prepares …Bb4 or …d5.",
+        "5": "…Bb4 pins the c3 knight, so White can't easily play e4.",
+        "6": "Qc2 avoids doubled pawns after …Bxc3, taking back with the queen.",
+        "9": "…d5 claims the centre; …c5 can follow."
+      },
+      "summary": "Against 5.Nf3, take the centre with …d5."
+    },
+    {
+      "id": "nimzo-indian-nf3",
+      "name": "4.Nf3",
+      "level": 1,
+      "tier": "main",
+      "variation": "Nimzo-Indian",
+      "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "Nf3", "O-O"],
+      "notes": {
+        "3": "…e6 frees the f8 bishop and prepares …Bb4 or …d5.",
+        "5": "…Bb4 pins the c3 knight, so White can't easily play e4.",
+        "7": "…O-O: castle first and keep all options: …d5, …c5 or …b6."
+      },
+      "accept": {
+        "7": ["b6", "d5"]
+      },
+      "summary": "Against the quiet 4.Nf3, castle first and decide later between …d5, …c5 and …b6."
+    },
+    {
+      "id": "nimzo-indian-bg5",
+      "name": "4.Bg5 (Leningrad)",
+      "level": 1,
+      "tier": "main",
+      "variation": "Nimzo-Indian",
+      "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "Bg5", "h6", "Bh4", "c5"],
+      "notes": {
+        "3": "…e6 frees the f8 bishop and prepares …Bb4 or …d5.",
+        "5": "…Bb4 pins the c3 knight, so White can't easily play e4.",
+        "7": "…h6 asks the bishop at once.",
+        "9": "…c5 hits d4; the pin on c3 makes it hard for White to keep the centre."
+      },
+      "summary": "Against 4.Bg5, kick the bishop with …h6 and hit d4 with …c5."
+    },
+    {
+      "id": "nimzo-indian-e3",
+      "name": "4.e3 (Rubinstein)",
+      "level": 1,
+      "tier": "main",
+      "variation": "Nimzo-Indian",
+      "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "e3", "O-O", "Bd3", "d5"],
+      "notes": {
+        "3": "…e6 frees the f8 bishop and prepares …Bb4 or …d5.",
+        "5": "…Bb4 pins the c3 knight, so White can't easily play e4.",
+        "9": "…d5 claims the centre; …c5 and …Nc6 come next."
+      },
+      "summary": "Against 4.e3, castle and take the centre with …d5, then …c5 and …Nc6."
+    },
+    {
+      "id": "nimzo-indian-e3-deep",
+      "name": "4.e3 O-O 5.Bd3 d5 6.Nf3",
+      "level": 2,
+      "tier": "main",
+      "variation": "Nimzo-Indian",
+      "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "e3", "O-O", "Bd3", "d5", "Nf3", "c5"],
+      "notes": {
+        "3": "…e6 frees the f8 bishop and prepares …Bb4 or …d5.",
+        "5": "…Bb4 pins the c3 knight, so White can't easily play e4.",
+        "9": "…d5 claims the centre; …c5 and …Nc6 come next.",
+        "11": "…c5 adds pressure on d4; the pin on c3 is still annoying for White."
+      },
+      "summary": "The Rubinstein main line: …d5, …c5 and …Nc6, with pressure on d4 and c4."
+    },
+    {
+      "id": "nimzo-indian-bd2",
+      "name": "4.Bd2",
+      "level": 1,
+      "tier": "side",
+      "variation": "Nimzo-Indian",
+      "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "Bd2", "O-O"],
+      "notes": {
+        "3": "…e6 frees the f8 bishop and prepares …Bb4 or …d5.",
+        "5": "…Bb4 pins the c3 knight, so White can't easily play e4.",
+        "7": "…O-O: the bishop on d2 is passive, so Black simply castles."
+      },
+      "accept": {
+        "7": ["c5"]
+      },
+      "summary": "Against the modest 4.Bd2, castle and play …d5 or …c5."
+    },
+    {
+      "id": "nimzo-indian-a3",
+      "name": "4.a3 (Samisch)",
+      "level": 1,
+      "tier": "side",
+      "variation": "Nimzo-Indian",
+      "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "a3", "Bxc3+", "bxc3", "c5"],
+      "notes": {
+        "3": "…e6 frees the f8 bishop and prepares …Bb4 or …d5.",
+        "5": "…Bb4 pins the c3 knight, so White can't easily play e4.",
+        "7": "…Bxc3+ doubles White's c-pawns; that's the point of the pin.",
+        "9": "…c5 fixes the doubled pawns and pressures d4."
+      },
+      "accept": {
+        "9": ["O-O", "b6"]
+      },
+      "summary": "When a3 asks the bishop, take on c3 and aim at the doubled c-pawns with …c5."
+    },
+    {
+      "id": "nimzo-indian-bogo",
+      "name": "3.Nf3 Bb4+",
+      "level": 2,
+      "tier": "main",
+      "variation": "Bogo-Indian (3.Nf3)",
+      "moves": ["d4", "Nf6", "c4", "e6", "Nf3", "Bb4+", "Bd2", "Bxd2+"],
+      "notes": {
+        "3": "…e6 frees the f8 bishop and prepares …Bb4 or …d5.",
+        "5": "…Bb4+: the same bishop check idea, even without a knight on c3.",
+        "7": "…Bxd2+ trades the bishop for White's good bishop and simplifies."
+      },
+      "accept": {
+        "7": ["Qe7", "Be7"]
+      },
+      "summary": "When White avoids Nc3, give the check anyway and trade bishops on d2."
+    }
+  ]
+}
