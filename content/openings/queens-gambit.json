@@ -116,6 +116,9 @@
         "8": "Bf4 develops actively before e3.",
         "14": "Bb5 pins the c6 knight, adding pressure on Black's centre."
       },
+      "accept": {
+        "14": ["Qb3"]
+      },
       "summary": "Against the Slav, trade on d5, develop fast and use the extra move: Bf4, e3, Nf3, Bb5."
     },
     {

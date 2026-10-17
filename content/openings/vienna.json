@@ -68,6 +68,9 @@
         "10": "d4 builds a strong centre and opens the bishop to win back f4.",
         "12": "Qe2 pins the e5 pawn on the e-file, so White wins it back."
       },
+      "accept": {
+        "12": ["dxe5"]
+      },
       "summary": "If Black takes the gambit pawn, kick the knight with e5 and build a big centre with d4."
     },
     {

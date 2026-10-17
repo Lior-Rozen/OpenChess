@@ -19,7 +19,7 @@
   (5... Nxe4 {@variation Open} 6. d4 {d4 opens the centre while the black king is still uncastled.} 6... b5 7. Bb3 d5 8. dxe5 {dxe5 wins back the pawn and gains space.} 8... Be6 9. c3 {c3 gives the bishop a retreat to c2 and keeps the e5 pawn strong.}
 {@line id=ruy-lopez-open level=2 tier=main name="Open (5…Nxe4)" summary="Let Black take e4, then open the centre with d4 and win the pawn back on e5."}
 )
-  (5... b5 {@variation Moller} 6. Bb3 Bc5 7. c3 {c3 prepares d4 to kick the active c5 bishop.} 7... d6 8. d4 {d4 hits e5 and the bishop; White gains space in the centre.}
+  (5... b5 {@variation Moller} 6. Bb3 Bc5 7. c3 {c3 prepares d4 to kick the active c5 bishop.} (7. a4 {@alt}) 7... d6 8. d4 {d4 hits e5 and the bishop; White gains space in the centre.}
 {@line id=ruy-lopez-moller level=2 tier=side name="Moller / Arkhangelsk (6…Bc5)" summary="When the bishop goes to c5, play c3 and d4 to push it back."}
 )
 6. Re1 b5 7. Bb3 {Bb3 retreats to a great diagonal aiming at f7.} 7... d6

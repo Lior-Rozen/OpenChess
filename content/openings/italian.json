@@ -37,6 +37,9 @@
         "18": "Nbd2 starts the classic knight tour d2-f1-g3.",
         "20": "Nf1 heads for g3, where the knight eyes f5 and supports the kingside."
       },
+      "accept": {
+        "16": ["Nbd2"]
+      },
       "summary": "The Italian knight tour: Nbd2, Nf1, Ng3, slowly building up before d4 or a kingside push."
     },
     {

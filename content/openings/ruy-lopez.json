@@ -103,6 +103,9 @@
         "12": "c3 prepares d4 to kick the active c5 bishop.",
         "14": "d4 hits e5 and the bishop; White gains space in the centre."
       },
+      "accept": {
+        "12": ["a4"]
+      },
       "summary": "When the bishop goes to c5, play c3 and d4 to push it back."
     },
     {

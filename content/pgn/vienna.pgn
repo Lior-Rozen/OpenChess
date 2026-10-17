@@ -19,7 +19,7 @@
 {@line id=vienna-bc5 level=1 tier=side name="vs 2…Bc5 (3.Bc4)" summary="2…Bc5 reaches the same position as 2…Nc6: Bc4, d3, f4 and Nf3."}
 )
 3. f4 {f4 is the Vienna Gambit: it attacks e5 and opens the f-file.} {@variation Vienna Gambit} 3... d5
-  (3... exf4 4. e5 {e5 kicks the knight back to g8, a big gain of time.} 4... Ng8 5. Nf3 d6 6. d4 {d4 builds a strong centre and opens the bishop to win back f4.} 6... dxe5 7. Qe2 {Qe2 pins the e5 pawn on the e-file, so White wins it back.}
+  (3... exf4 4. e5 {e5 kicks the knight back to g8, a big gain of time.} 4... Ng8 5. Nf3 d6 6. d4 {d4 builds a strong centre and opens the bishop to win back f4.} 6... dxe5 7. Qe2 {Qe2 pins the e5 pawn on the e-file, so White wins it back.} (7. dxe5 {@alt})
 {@line id=vienna-gambit-accepted level=1 tier=main name="3…exf4" summary="If Black takes the gambit pawn, kick the knight with e5 and build a big centre with d4."}
 )
 4. fxe5 {fxe5 gains space and pushes the f6 knight away.} 4... Nxe4 5. Nf3 Be7

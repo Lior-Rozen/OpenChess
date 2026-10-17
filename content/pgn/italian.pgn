@@ -27,5 +27,5 @@
 )
 6. O-O O-O 7. Re1 a6 8. Bb3 {Bb3 keeps the bishop safe from …b5 and …Na5.}
 {@line id=italian-giuoco level=1 tier=main name="Giuoco Pianissimo (3…Bc5)" summary="c3, d3, castle, Re1 and Bb3: a solid set-up, then slowly improve before breaking with d4."}
-8... Ba7 9. h3 {h3 stops …Bg4 and …Ng4.} 9... h6 10. Nbd2 {Nbd2 starts the classic knight tour d2-f1-g3.} 10... Re8 11. Nf1 {Nf1 heads for g3, where the knight eyes f5 and supports the kingside.}
+8... Ba7 9. h3 {h3 stops …Bg4 and …Ng4.} (9. Nbd2 {@alt}) 9... h6 10. Nbd2 {Nbd2 starts the classic knight tour d2-f1-g3.} 10... Re8 11. Nf1 {Nf1 heads for g3, where the knight eyes f5 and supports the kingside.}
 {@line id=italian-giuoco-deep level=2 tier=main name="Knight tour Nbd2-f1" summary="The Italian knight tour: Nbd2, Nf1, Ng3, slowly building up before d4 or a kingside push."} *

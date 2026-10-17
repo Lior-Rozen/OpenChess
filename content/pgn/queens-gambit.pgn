@@ -11,7 +11,7 @@
 7... Nc6 8. Qe2 {Qe2 connects the rooks and supports a later d5 push.} 8... cxd4 9. Rd1 {Rd1 puts the rook opposite the d4 pawn before taking it back.} 9... Be7 10. exd4 {exd4 leaves White an isolated d-pawn, but with active pieces and d5 ideas.}
 {@line id=queens-gambit-accepted-deep level=2 tier=main name="7.a4 Nc6" summary="White gets an isolated d-pawn with active pieces: aim for the d5 push."}
 )
-  (2... c6 {@variation Slav} 3. cxd5 {cxd5 makes a symmetrical structure where White keeps the extra move.} 3... cxd5 4. Nc3 Nf6 5. Bf4 {Bf4 develops actively before e3.} 5... Nc6 6. e3 Bf5 7. Nf3 e6 8. Bb5 {Bb5 pins the c6 knight, adding pressure on Black's centre.}
+  (2... c6 {@variation Slav} 3. cxd5 {cxd5 makes a symmetrical structure where White keeps the extra move.} 3... cxd5 4. Nc3 Nf6 5. Bf4 {Bf4 develops actively before e3.} 5... Nc6 6. e3 Bf5 7. Nf3 e6 8. Bb5 {Bb5 pins the c6 knight, adding pressure on Black's centre.} (8. Qb3 {@alt})
 {@line id=queens-gambit-slav-exchange level=1 tier=main name="Exchange (3.cxd5)" summary="Against the Slav, trade on d5, develop fast and use the extra move: Bf4, e3, Nf3, Bb5."}
 )
   (2... e5 {@variation Albin Countergambit} 3. dxe5 {dxe5 takes the pawn; the d4 pawn will be a target later.} 3... d4 4. Nf3 {Nf3 defends e5 and avoids the trap after 4.e3? Bb4+.} 4... Nc6 5. g3 {g3 prepares Bg2, aiming the bishop at the queenside.} 5... Be6 6. Nbd2 Qd7 7. Bg2
