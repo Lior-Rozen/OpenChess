@@ -4,7 +4,14 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Button } from '@/components/Button';
 import { loadOpening } from '@/content/loader';
 import type { Opening } from '@/content/types';
-import { levelStatuses, suggestedMode, type LevelStatus, type LineStatus, type RunMode } from '@/progress/mastery';
+import {
+  groupByVariation,
+  levelStatuses,
+  suggestedMode,
+  type LevelStatus,
+  type LineStatus,
+  type RunMode,
+} from '@/progress/mastery';
 import { useProgress } from '@/progress/ProgressContext';
 import { theme } from '@/theme';
 
@@ -68,13 +75,9 @@ function LevelCard({ opening, level }: { opening: Opening; level: LevelStatus })
 
       {level.unlocked && (
         <>
-          {level.mainLines.map((line) => (
-            <LineRow key={line.line.id} opening={opening} status={line} />
-          ))}
+          <LineGroups opening={opening} lines={level.mainLines} />
           {level.bonusLines.length > 0 && <Text style={styles.sectionLabel}>Bonus lines</Text>}
-          {level.bonusLines.map((line) => (
-            <LineRow key={line.line.id} opening={opening} status={line} />
-          ))}
+          <LineGroups opening={opening} lines={level.bonusLines} />
           <View style={styles.exam}>
             <Text style={styles.examText}>
               {level.examPassed
@@ -92,6 +95,19 @@ function LevelCard({ opening, level }: { opening: Opening; level: LevelStatus })
       )}
     </View>
   );
+}
+
+/** Lines grouped by variation, in the order the variations first appear. */
+function LineGroups({ opening, lines }: { opening: Opening; lines: LineStatus[] }) {
+  const groups = groupByVariation(lines);
+  return groups.map(({ variation, lines: grouped }) => (
+    <View key={variation ?? '-'} style={styles.group}>
+      {variation && <Text style={styles.variation}>{variation}</Text>}
+      {grouped.map((line) => (
+        <LineRow key={line.line.id} opening={opening} status={line} />
+      ))}
+    </View>
+  ));
 }
 
 function LineRow({ opening, status }: { opening: Opening; status: LineStatus }) {
@@ -131,6 +147,8 @@ const styles = StyleSheet.create({
   levelStatus: { fontSize: 14, fontFamily: theme.font, color: theme.muted, flexShrink: 1, textAlign: 'right' },
   good: { color: theme.good },
   sectionLabel: { fontSize: 13, fontFamily: theme.mono, color: theme.accent2, letterSpacing: 1, marginTop: 4 },
+  group: { gap: 12 },
+  variation: { fontSize: 15, fontFamily: theme.font, color: theme.accent2, marginTop: 4 },
   line: { gap: 4, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: theme.border, paddingTop: 10 },
   lineHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   lineName: { fontSize: 18, fontFamily: theme.font, color: theme.text, flexShrink: 1 },

@@ -173,6 +173,57 @@ describe('Trainer with one line', () => {
   });
 });
 
+describe('Trainer with accepted alternatives', () => {
+  // 3…c5 is the book move; 3…Nc6 is also accepted.
+  const withAlt: OpeningLine = { ...advance, accept: { '5': ['Nc6'] } };
+
+  /** Plays the line up to the user's 3rd move. */
+  function atMoveThree(mode: 'practice' | 'test'): Trainer {
+    const trainer = new Trainer([withAlt], 'b', mode);
+    while (trainer.state().ply < 5) {
+      if (trainer.phase === 'auto') trainer.advance();
+      else {
+        const { moves, ply } = trainer.state();
+        trainer.tryMove(...(Object.values(squaresOf(moves, advance.moves[ply])) as [Square, Square]));
+      }
+    }
+    return trainer;
+  }
+
+  it('takes an alternative without a mistake and shows the book move', () => {
+    const trainer = atMoveThree('test');
+    const before = trainer.state().position.fen;
+
+    expect(trainer.tryMove('b8', 'c6')).toEqual([
+      { type: 'alternativeMove', from: 'b8', to: 'c6', san: 'Nc6', bookSan: 'c5' },
+    ]);
+    expect(trainer.state()).toMatchObject({
+      phase: 'user',
+      ply: 5,
+      mistakes: 0,
+      hintsUsed: 0,
+      clean: true,
+      hint: { from: 'c7', to: 'c5' },
+      alternative: { san: 'Nc6', bookSan: 'c5' },
+    });
+    expect(trainer.state().position.fen).toBe(before);
+  });
+
+  it('goes on with the book move and stays clean', () => {
+    const trainer = atMoveThree('test');
+    trainer.tryMove('b8', 'c6');
+    const events = trainer.tryMove('c7', 'c5');
+
+    expect(events[events.length - 1]).toMatchObject({ type: 'lineComplete', clean: true });
+    expect(trainer.state()).toMatchObject({ hint: null, alternative: null });
+  });
+
+  it('still counts a move that is neither book nor accepted as a mistake', () => {
+    const trainer = atMoveThree('practice');
+    expect(trainer.tryMove('a7', 'a6')).toEqual([{ type: 'wrongMove', from: 'a7', to: 'a6', triesThisMove: 1 }]);
+  });
+});
+
 describe('Trainer with several lines (level exam)', () => {
   const lines = [advance, exchange, winawer, classical];
 

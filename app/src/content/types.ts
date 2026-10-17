@@ -10,10 +10,17 @@ export type OpeningLine = {
   name: string;
   level: number;
   tier: Tier;
+  /** The variation the line belongs to, e.g. "Advance". The Opening screen groups lines by it. */
+  variation?: string;
   /** SAN moves from the starting position, both sides. */
   moves: string[];
   /** One-line "why" notes, keyed by 0-based ply index. */
   notes?: Record<string, string>;
+  /**
+   * Other good moves for the user, keyed by 0-based ply index. They aren't mistakes: the app says
+   * so, shows the book move as an arrow, and the line goes on with the book move.
+   */
+  accept?: Record<string, string[]>;
   /** Short takeaway shown on the "Line complete" card. */
   summary?: string;
 };

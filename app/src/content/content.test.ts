@@ -64,6 +64,24 @@ describe('validateOpening', () => {
     ]);
   });
 
+  it('checks variation and accepted alternatives', () => {
+    const line = { ...validLine, moves: ['e4', 'e6', 'd4', 'd5'], variation: 'Main' };
+    expect(validateOpening(opening([{ ...line, accept: { '1': ['c6', 'Nf6'] } }]), 'test.json')).toEqual([]);
+    expect(
+      validateOpening(
+        opening([{ ...line, variation: '', accept: { '0': ['d4'], '3': ['e6', 'Qd2', 'd5'], '9': ['a6'] } }]),
+        'test.json',
+      ),
+    ).toEqual([
+      'test.json "l1": variation must be a non-empty string',
+      'test.json "l1": accept key "0" is not a ply index of a black move in this line',
+      'test.json "l1": accept "3": "e6" is illegal or not valid SAN',
+      'test.json "l1": accept "3": "Qd2" is illegal or not valid SAN',
+      'test.json "l1": accept "3": "d5" is the book move itself',
+      'test.json "l1": accept key "9" is not a ply index of a black move in this line',
+    ]);
+  });
+
   it('reports a level with only sidelines', () => {
     const errors = validateOpening(opening([validLine, { ...validLine, id: 'l2', level: 2, tier: 'side' }]), 'test.json');
     expect(errors).toContain('test.json: level 2 needs at least one main line (main lines unlock the next level)');

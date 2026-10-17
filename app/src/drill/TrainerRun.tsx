@@ -66,6 +66,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
     for (const event of events) {
       if (event.type === 'wrongMove') talk('mistake');
       if (event.type === 'hintShown') talk('hint');
+      if (event.type === 'alternativeMove') talk('alternative');
       if (event.type === 'testFailed') talk('failed');
       if (event.type !== 'lineComplete') continue;
 
@@ -180,7 +181,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
           <RunResultCard target={target} mode={mode} state={state} result={result} onRestart={onRestart} />
         ) : (
           <View style={drillStyles.below}>
-            <Text style={drillStyles.note}>{state.note ?? ' '}</Text>
+            <Text style={drillStyles.note}>{alternativeText(state) ?? state.note ?? ' '}</Text>
             {mode === 'practice' && (
               <Button label="Hint" onPress={onHint} disabled={state.phase !== 'user' || state.hint !== null} />
             )}
@@ -191,6 +192,13 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
       </ScrollView>
     </View>
   );
+}
+
+/** "…Nc6 is also good, but this line plays …c5." while an accepted alternative waits for the book move. */
+function alternativeText(state: TrainerState): string | null {
+  if (!state.alternative) return null;
+  const prefix = state.userColor === 'b' ? '…' : '';
+  return `${prefix}${state.alternative.san} is also good, but this line plays ${prefix}${state.alternative.bookSan}.`;
 }
 
 function statusText(state: TrainerState): string {

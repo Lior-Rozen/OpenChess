@@ -26,6 +26,12 @@ describe('watchFrames', () => {
     expect(frames[6].moves).toEqual(['e4', 'e6', 'd4', 'd5', 'e5', 'c5']);
   });
 
+  it('adds accepted alternatives to the note', () => {
+    const withAlt = watchFrames({ ...line, accept: { '5': ['Nc6'], '3': ['c5', 'Nf6'] } });
+    expect(withAlt[6].note).toBe('…c5 strikes at d4. Also good: …Nc6.');
+    expect(withAlt[4].note).toBe('Also good: …c5 or …Nf6.');
+  });
+
   it('rejects an illegal line', () => {
     expect(() => watchFrames({ ...line, moves: ['e4', 'e5', 'e5'] })).toThrow('ply 2 "e5" is illegal');
   });

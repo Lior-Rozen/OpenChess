@@ -113,6 +113,9 @@ export function validateOpening(opening: unknown, file: string, lineIds = new Se
     if (line.summary !== undefined && !isNonEmptyString(line.summary)) {
       errors.push(`${where}: summary must be a non-empty string`);
     }
+    if (line.variation !== undefined && !isNonEmptyString(line.variation)) {
+      errors.push(`${where}: variation must be a non-empty string`);
+    }
 
     if (!Array.isArray(line.moves) || line.moves.length === 0) {
       errors.push(`${where}: moves must be a non-empty array`);
@@ -122,11 +125,39 @@ export function validateOpening(opening: unknown, file: string, lineIds = new Se
       errors.push(`${where}: has no moves for ${opening.side}`);
     }
 
+    // The position before each ply, for checking accepted alternatives.
+    const fens: string[] = [];
     const game = new ChessGame();
     for (const [ply, san] of line.moves.entries()) {
+      fens.push(game.position().fen);
       if (typeof san !== 'string' || game.playSan(san) === null) {
         errors.push(`${where}: move ${ply + 1} (ply ${ply}) "${String(san)}" is illegal or not valid SAN`);
         break;
+      }
+    }
+
+    if (line.accept !== undefined) {
+      if (!isObject(line.accept)) errors.push(`${where}: accept must be an object`);
+      else {
+        for (const [key, alternatives] of Object.entries(line.accept)) {
+          const ply = Number(key);
+          if (!Number.isInteger(ply) || ply < 0 || ply >= fens.length || ply % 2 !== userParity) {
+            errors.push(`${where}: accept key "${key}" is not a ply index of a ${opening.side} move in this line`);
+            continue;
+          }
+          if (!Array.isArray(alternatives) || alternatives.length === 0) {
+            errors.push(`${where}: accept "${key}" must be a non-empty array of moves`);
+            continue;
+          }
+          const book = new ChessGame(fens[ply]).resolveSan(line.moves[ply] as string);
+          for (const san of alternatives) {
+            const move = typeof san === 'string' ? new ChessGame(fens[ply]).resolveSan(san) : null;
+            if (!move) errors.push(`${where}: accept "${key}": "${String(san)}" is illegal or not valid SAN`);
+            else if (book && move.from === book.from && move.to === book.to) {
+              errors.push(`${where}: accept "${key}": "${san}" is the book move itself`);
+            }
+          }
+        }
       }
     }
 

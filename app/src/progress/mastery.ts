@@ -75,6 +75,18 @@ export function levelStatuses(opening: Opening, progress: Progress): LevelStatus
   return levels;
 }
 
+/** Lines grouped by `variation`, in the order each variation first appears; null for lines without one. */
+export function groupByVariation<T extends { line: OpeningLine }>(lines: T[]): { variation: string | null; lines: T[] }[] {
+  const groups: { variation: string | null; lines: T[] }[] = [];
+  for (const item of lines) {
+    const variation = item.line.variation ?? null;
+    const group = groups.find((g) => g.variation === variation);
+    if (group) group.lines.push(item);
+    else groups.push({ variation, lines: [item] });
+  }
+  return groups;
+}
+
 /** Share of main lines mastered, 0…1. */
 export function masteredShare(opening: Opening, progress: Progress): number {
   const lines = levelStatuses(opening, progress).flatMap((l) => l.mainLines);

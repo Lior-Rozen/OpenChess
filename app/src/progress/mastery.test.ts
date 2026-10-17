@@ -1,6 +1,7 @@
 import type { ContentIndex, Opening, OpeningLine } from '../content/types';
 import {
   continueTarget,
+  groupByVariation,
   levelStatuses,
   masteredShare,
   randomTarget,
@@ -161,5 +162,17 @@ describe('randomTarget', () => {
     const onlyCaro = (id: string) => (id === 'caro' ? caro : null);
     expect(randomTarget(index, onlyCaro, {}, () => 0, 'k1')?.lineId).toBe('k1');
     expect(randomTarget(index, () => null, {})).toBeNull();
+  });
+});
+
+describe('groupByVariation', () => {
+  it('groups lines by variation in order of first appearance', () => {
+    const item = (id: string, variation?: string) => ({ line: { ...line(id, 1, 'main'), variation } });
+    const groups = groupByVariation([item('a', 'Advance'), item('b', 'Winawer'), item('c', 'Advance'), item('d')]);
+    expect(groups.map((g) => [g.variation, g.lines.map((l) => l.line.id)])).toEqual([
+      ['Advance', ['a', 'c']],
+      ['Winawer', ['b']],
+      [null, ['d']],
+    ]);
   });
 });

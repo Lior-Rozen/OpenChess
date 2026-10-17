@@ -16,6 +16,8 @@ export type TrainerEvent =
   | { type: 'moved'; by: 'auto' | 'user'; ply: number; san: string; from: Square; to: Square; note: string | null }
   | { type: 'wrongMove'; from: Square; to: Square; triesThisMove: number }
   | { type: 'hintShown'; from: Square; to: Square }
+  /** The user played an accepted alternative: not a mistake. The book move is shown as an arrow. */
+  | { type: 'alternativeMove'; from: Square; to: Square; san: string; bookSan: string }
   | { type: 'lineComplete'; lineId: string; mistakes: number; hintsUsed: number; clean: boolean }
   | { type: 'testFailed'; mistakes: number };
 
@@ -33,8 +35,10 @@ export type TrainerState = {
   mistakes: number;
   hintsUsed: number;
   triesThisMove: number;
-  /** The correct move, shown as an arrow, after a hint or 2 wrong tries. */
+  /** The correct move, shown as an arrow, after a hint, 2 wrong tries or an accepted alternative. */
   hint: Arrow | null;
+  /** The accepted alternative the user just played, until they play the book move. */
+  alternative: { san: string; bookSan: string } | null;
   /** The note of the most recently played move, if it has one. */
   note: string | null;
   /** The line played to the end (phase 'complete'), or the only line still possible. */
@@ -61,6 +65,9 @@ export const TEST_MISTAKE_LIMIT = 2;
  * move, the app picks a branch at random, and on the user's move any book reply is accepted.
  * The run ends when one of the lines has been played to the end.
  *
+ * A line can list other good moves for the user (`accept`). Playing one isn't a mistake: the
+ * move is taken back, the book move is shown as an arrow (even in Test), and the run stays clean.
+ *
  * Wrong moves are rejected and counted. In Practice the correct move is shown after
  * TRIES_BEFORE_HINT wrong tries (or on request); a Test run fails at TEST_MISTAKE_LIMIT
  * mistakes. A run is clean with no mistakes and no hints.
@@ -80,6 +87,7 @@ export class Trainer {
   private hintsUsed = 0;
   private triesThisMove = 0;
   private hint: Arrow | null = null;
+  private alternative: { san: string; bookSan: string } | null = null;
   private note: string | null = null;
 
   constructor(
@@ -118,6 +126,7 @@ export class Trainer {
       hintsUsed: this.hintsUsed,
       triesThisMove: this.triesThisMove,
       hint: this.hint,
+      alternative: this.alternative,
       note: this.note,
       lineId: line?.id ?? null,
       clean: this.mistakes === 0 && this.hintsUsed === 0,
@@ -136,8 +145,17 @@ export class Trainer {
   tryMove(from: Square, to: Square): TrainerEvent[] {
     if (this.phase !== 'user') return [];
 
-    const match = this.nextMoves().find((m) => m.move.from === from && m.move.to === to);
+    const options = this.nextMoves();
+    const match = options.find((m) => m.move.from === from && m.move.to === to);
     if (match) return this.play(match, 'user');
+
+    const alternative = this.acceptedAlternative(from, to);
+    if (alternative) {
+      const book = options[0].move;
+      this.alternative = { san: alternative.san, bookSan: book.san };
+      this.hint = { from: book.from, to: book.to };
+      return [{ type: 'alternativeMove', from, to, san: alternative.san, bookSan: book.san }];
+    }
 
     this.mistakes++;
     this.triesThisMove++;
@@ -168,6 +186,17 @@ export class Trainer {
     return { from, to };
   }
 
+  /** The move, if it's one of the candidate lines' accepted alternatives at this ply. */
+  private acceptedAlternative(from: Square, to: Square): ResolvedMove | null {
+    for (const line of this.candidates) {
+      for (const san of line.accept?.[String(this.ply)] ?? []) {
+        const move = this.game.resolveSan(san);
+        if (move && move.from === from && move.to === to) return move;
+      }
+    }
+    return null;
+  }
+
   /** The distinct book moves from here, each with the candidate lines that continue with it. */
   private nextMoves(): { move: ResolvedMove; lines: OpeningLine[] }[] {
     const options: { move: ResolvedMove; lines: OpeningLine[] }[] = [];
@@ -191,6 +220,7 @@ export class Trainer {
     this.moves.push(move.san);
     this.triesThisMove = 0;
     this.hint = null;
+    this.alternative = null;
     this.note = this.candidates.map((l) => l.notes?.[String(ply)]).find((n) => n !== undefined) ?? null;
 
     const events: TrainerEvent[] = [{ type: 'moved', by, ply, san: move.san, from: move.from, to: move.to, note: this.note }];

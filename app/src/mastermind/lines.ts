@@ -15,6 +15,7 @@ export const LINES = {
     "That's not in the book.",
   ],
   hint: ['Here. Follow the arrow.', "I'll show you. Just this once.", 'This one. Remember it.'],
+  alternative: ["That works too. But we're playing this line.", 'Not wrong. Just not the book. Follow the arrow.'],
   watchDone: ["That's the line. Your turn next.", 'Now you know how it goes. Prove it.'],
   clean: ['Clean. Nobody saw a thing.', "Flawless. I'm almost impressed.", "No mistakes. You're learning."],
   unclean: ['Done. But not clean. Run it again.', 'You got there. The mistakes matter, though.'],
