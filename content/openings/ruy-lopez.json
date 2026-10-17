@@ -44,7 +44,7 @@
       "id": "ruy-lopez-anti-marshall",
       "name": "Anti-Marshall (8.h3)",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "Closed",
       "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "a6", "Ba4", "Nf6", "O-O", "Be7", "Re1", "b5", "Bb3", "O-O", "h3"],
       "notes": {
@@ -60,7 +60,7 @@
       "id": "ruy-lopez-anti-marshall-deep",
       "name": "Anti-Marshall into the Chigorin",
       "level": 2,
-      "tier": "side",
+      "tier": "main",
       "variation": "Closed",
       "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "a6", "Ba4", "Nf6", "O-O", "Be7", "Re1", "b5", "Bb3", "O-O", "h3", "d6", "c3", "Na5", "Bc2", "c5", "d4"],
       "notes": {
@@ -75,26 +75,24 @@
       "summary": "The Anti-Marshall order joins the main line: same plan, same position."
     },
     {
-      "id": "ruy-lopez-open",
-      "name": "Open (5…Nxe4)",
-      "level": 2,
-      "tier": "main",
-      "variation": "Open",
-      "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "a6", "Ba4", "Nf6", "O-O", "Nxe4", "d4", "b5", "Bb3", "d5", "dxe5", "Be6", "c3"],
+      "id": "ruy-lopez-5b5",
+      "name": "5…b5",
+      "level": 1,
+      "tier": "side",
+      "variation": "Closed",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "a6", "Ba4", "Nf6", "O-O", "b5", "Bb3", "Be7", "Re1"],
       "notes": {
         "4": "Bb5 attacks the knight that defends e5, a long-term pressure.",
         "6": "Ba4 keeps the bishop aimed at the c6 knight.",
-        "10": "d4 opens the centre while the black king is still uncastled.",
-        "14": "dxe5 wins back the pawn and gains space.",
-        "16": "c3 gives the bishop a retreat to c2 and keeps the e5 pawn strong."
+        "12": "Re1: this is the same position as the main Closed line."
       },
-      "summary": "Let Black take e4, then open the centre with d4 and win the pawn back on e5."
+      "summary": "5…b5 6.Bb3 Be7 7.Re1 reaches the main Closed line by another move order."
     },
     {
       "id": "ruy-lopez-moller",
       "name": "Moller / Arkhangelsk (6…Bc5)",
       "level": 2,
-      "tier": "side",
+      "tier": "main",
       "variation": "Moller",
       "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "a6", "Ba4", "Nf6", "O-O", "b5", "Bb3", "Bc5", "c3", "d6", "d4"],
       "notes": {
@@ -107,6 +105,68 @@
         "12": ["a4"]
       },
       "summary": "When the bishop goes to c5, play c3 and d4 to push it back."
+    },
+    {
+      "id": "ruy-lopez-open",
+      "name": "Open (5…Nxe4)",
+      "level": 2,
+      "tier": "side",
+      "variation": "Open",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "a6", "Ba4", "Nf6", "O-O", "Nxe4", "d4", "b5", "Bb3", "d5", "dxe5", "Be6", "c3"],
+      "notes": {
+        "4": "Bb5 attacks the knight that defends e5, a long-term pressure.",
+        "6": "Ba4 keeps the bishop aimed at the c6 knight.",
+        "10": "d4 opens the centre while the black king is still uncastled.",
+        "14": "dxe5 wins back the pawn and gains space.",
+        "16": "c3 gives the bishop a retreat to c2 and keeps the e5 pawn strong."
+      },
+      "summary": "Let Black take e4, then open the centre with d4 and win the pawn back on e5."
+    },
+    {
+      "id": "ruy-lopez-4b5",
+      "name": "4…b5",
+      "level": 2,
+      "tier": "side",
+      "variation": "Closed",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "a6", "Ba4", "b5", "Bb3", "Nf6", "O-O"],
+      "notes": {
+        "4": "Bb5 attacks the knight that defends e5, a long-term pressure.",
+        "6": "Ba4 keeps the bishop aimed at the c6 knight.",
+        "8": "Bb3 keeps the bishop on the diagonal aiming at f7.",
+        "10": "O-O: after …Be7 or …Bc5 we're back in the main lines."
+      },
+      "summary": "An early …b5 changes little: Bb3, castle, and continue as in the main lines."
+    },
+    {
+      "id": "ruy-lopez-steinitz",
+      "name": "Steinitz (3…d6)",
+      "level": 1,
+      "tier": "main",
+      "variation": "Steinitz",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "d6", "d4", "exd4", "Nxd4", "Bd7", "Nc3", "Nxd4", "Bxd7+", "Qxd7", "Qxd4"],
+      "notes": {
+        "4": "Bb5 attacks the knight that defends e5, a long-term pressure.",
+        "6": "d4 attacks e5 at once; Black's set-up is passive.",
+        "8": "Nxd4 recaptures with a strong central knight.",
+        "10": "Nc3 develops and keeps the d4 knight protected by the queen.",
+        "14": "Qxd4: White has a strong centralised queen and more space."
+      },
+      "summary": "Against 3…d6, push d4 at once; after …exd4, recapture and develop with a big space advantage."
+    },
+    {
+      "id": "ruy-lopez-steinitz-bd7",
+      "name": "4…Bd7",
+      "level": 2,
+      "tier": "side",
+      "variation": "Steinitz",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "d6", "d4", "Bd7", "Nc3", "Nf6", "O-O", "Be7", "Re1"],
+      "notes": {
+        "4": "Bb5 attacks the knight that defends e5, a long-term pressure.",
+        "6": "d4 attacks e5 at once; Black's set-up is passive.",
+        "8": "Nc3 develops and adds support to e4.",
+        "12": "Re1 defends e4 and keeps the pressure on e5."
+      },
+      "summary": "If Black holds e5 with …Bd7, develop with Nc3, O-O and Re1; Black stays cramped."
     },
     {
       "id": "ruy-lopez-berlin",
@@ -124,34 +184,34 @@
       "summary": "Against the Berlin, keep it simple with d3 and c3, like an Italian with the bishop on b5."
     },
     {
-      "id": "ruy-lopez-steinitz",
-      "name": "Steinitz (3…d6)",
-      "level": 1,
-      "tier": "side",
-      "variation": "Steinitz",
-      "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "d6", "d4", "Bd7", "Nc3", "Nf6", "O-O", "Be7", "Re1"],
+      "id": "ruy-lopez-berlin-d6",
+      "name": "4.d3 d6",
+      "level": 2,
+      "tier": "main",
+      "variation": "Berlin",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "Nf6", "d3", "d6", "c3", "Be7", "O-O"],
       "notes": {
         "4": "Bb5 attacks the knight that defends e5, a long-term pressure.",
-        "6": "d4 attacks e5 at once; Black's set-up is passive.",
-        "8": "Nc3 develops and adds support to e4.",
-        "12": "Re1 defends e4 and keeps the pressure on e5."
+        "6": "d3 defends e4 and avoids the drawish Berlin endgame.",
+        "8": "c3 prepares d4 and gives the bishop a retreat.",
+        "10": "O-O: White is ready for Re1 and a later d4."
       },
-      "summary": "Against 3…d6, push d4 at once and develop; Black is cramped."
+      "summary": "Against …d6 and …Be7, keep the same plan: c3, castle, then Re1 and d4."
     },
     {
       "id": "ruy-lopez-classical",
       "name": "Classical (3…Bc5)",
-      "level": 2,
+      "level": 1,
       "tier": "side",
       "variation": "Classical",
-      "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "Bc5", "c3", "Nf6", "O-O", "O-O", "d4", "Bb6", "Bg5"],
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bb5", "Bc5", "c3", "Nf6", "O-O", "O-O", "d4", "exd4", "cxd4", "Bb6", "e5"],
       "notes": {
         "4": "Bb5 attacks the knight that defends e5, a long-term pressure.",
         "6": "c3 prepares d4, which hits the c5 bishop with tempo.",
         "10": "d4 claims the centre and pushes the bishop back.",
-        "12": "Bg5 pins the f6 knight, adding pressure on e5."
+        "14": "e5 kicks the f6 knight and grabs space in the centre."
       },
-      "summary": "Against …Bc5, c3 and d4 take the centre with tempo, then pin with Bg5."
+      "summary": "Against …Bc5, c3 and d4 take the centre with tempo; after …exd4 cxd4, push e5."
     }
   ]
 }
