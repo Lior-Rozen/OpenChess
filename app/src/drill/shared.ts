@@ -38,6 +38,6 @@ export const drillStyles = StyleSheet.create({
   good: { color: theme.good },
   bad: { color: theme.bad },
   below: { alignSelf: 'stretch', alignItems: 'center', gap: 10, paddingHorizontal: 8 },
-  note: { fontSize: 16, fontFamily: theme.font, fontStyle: 'italic', color: theme.muted, textAlign: 'center' },
+  note: { fontSize: 16, fontFamily: theme.font, color: theme.muted, textAlign: 'center' },
   moveList: { fontSize: 15, fontFamily: theme.mono, color: theme.muted, alignSelf: 'stretch', paddingHorizontal: 8 },
 });

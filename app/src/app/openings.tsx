@@ -74,7 +74,7 @@ export default function Openings() {
 
       {shown.length === 0 ? (
         <View style={styles.empty}>
-          <Text style={styles.emptyText}>Nothing matches all of these.</Text>
+          <Text style={styles.emptyText}>No matches.</Text>
           <Chip label="Clear filters" dashed onPress={() => setFilter(NO_FILTER)} />
         </View>
       ) : (
@@ -158,5 +158,5 @@ const styles = StyleSheet.create({
   bar: { height: 6, borderRadius: 3, backgroundColor: theme.pressed, overflow: 'hidden', marginTop: 2 },
   barFill: { height: 6, backgroundColor: theme.accent, boxShadow: theme.glow },
   empty: { alignItems: 'center', gap: 14, paddingVertical: 40 },
-  emptyText: { fontSize: 16, fontFamily: theme.font, fontStyle: 'italic', color: theme.muted },
+  emptyText: { fontSize: 16, fontFamily: theme.font, color: theme.muted },
 });

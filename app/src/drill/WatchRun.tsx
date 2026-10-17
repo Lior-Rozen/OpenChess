@@ -104,7 +104,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
         {index === last && watched ? (
           <ResultCard
             title="Line complete"
-            outcome="You watched the whole line."
+            outcome="Watched to the end."
             tone={null}
             notes={line.summary ? [line.summary] : []}
             buttons={[

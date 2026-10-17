@@ -95,13 +95,13 @@ function describe({ status, turn }: GamePosition): string {
   const other = turn === 'w' ? 'Black' : 'White';
   switch (status) {
     case 'checkmate':
-      return `Checkmate — ${other} wins`;
+      return `Checkmate. ${other} wins.`;
     case 'stalemate':
-      return 'Stalemate — draw';
+      return 'Stalemate. Draw.';
     case 'draw':
       return 'Draw';
     case 'check':
-      return `${side} to move — check!`;
+      return `Check! ${side} to move.`;
     default:
       return `${side} to move`;
   }

@@ -162,7 +162,7 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
           size={size}
         />
       </View>
-      <Text style={styles.hint}>Drag pieces in from below. Drag one off the board to remove it.</Text>
+      <Text style={styles.hint}>Drag off the board to remove.</Text>
 
       <View ref={poolRef} onLayout={() => measure('pool', poolRef)} style={[styles.pool, { width: size + 2 }]}>
         {POOL.map((code) => (
@@ -202,7 +202,7 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
 
 const styles = StyleSheet.create({
   root: { alignItems: 'center', gap: 10 },
-  hint: { fontSize: 13, fontFamily: theme.font, fontStyle: 'italic', color: theme.muted, textAlign: 'center' },
+  hint: { fontSize: 13, fontFamily: theme.font, color: theme.muted, textAlign: 'center' },
   pool: {
     flexDirection: 'row',
     flexWrap: 'wrap',

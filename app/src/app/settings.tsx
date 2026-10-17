@@ -20,14 +20,12 @@ export default function Settings() {
       <Section label="SOUND & FEEL">
         <Toggle label="Sounds" value={settings.sound} onChange={(sound) => update({ sound })} />
         <Toggle label="Vibration" value={settings.haptics} onChange={(haptics) => update({ haptics })} />
-        <Text style={styles.hint}>On moves, mistakes and finished lines. Sounds stay quiet when the phone is on silent.</Text>
+        <Text style={styles.hint}>Muted when the phone is on silent.</Text>
       </Section>
 
       <Section label="THE MASTERMIND">
         <Toggle label="He talks" value={settings.talk} onChange={(talk) => update({ talk })} />
-        <Text style={styles.hint}>
-          {settings.talk ? 'He speaks at key moments: the start, mistakes, hints, results.' : 'He still plays, just silently.'}
-        </Text>
+        {!settings.talk && <Text style={styles.hint}>He still plays. Silently.</Text>}
       </Section>
 
       <Section label="PROGRESS">
@@ -102,7 +100,7 @@ function HoldToReset() {
         <Text style={styles.resetText}>Hold to reset progress</Text>
       </Pressable>
       <Text style={styles.hint}>
-        {done ? 'Progress reset. Every line starts fresh.' : 'Erases every mastered line and exam star. Hold for 2 seconds.'}
+        {done ? 'Progress reset.' : 'Erases all progress.'}
       </Text>
     </View>
   );
@@ -127,7 +125,7 @@ function ServerStatus() {
     serverMessage === undefined
       ? 'Server says: …'
       : serverMessage === null
-        ? 'Server offline (not needed to train)'
+        ? 'Server: offline'
         : `Server says: ${serverMessage}`;
   return <Text style={styles.text}>{status}</Text>;
 }
@@ -138,7 +136,7 @@ const styles = StyleSheet.create({
   section: { gap: 10 },
   label: { fontSize: 12, fontFamily: theme.mono, color: theme.accent2, letterSpacing: 1 },
   text: { fontSize: 16, fontFamily: theme.font, color: theme.text },
-  hint: { fontSize: 14, fontFamily: theme.font, fontStyle: 'italic', color: theme.muted },
+  hint: { fontSize: 14, fontFamily: theme.font, color: theme.muted },
   toggle: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   resetBlock: { gap: 8 },
   reset: {

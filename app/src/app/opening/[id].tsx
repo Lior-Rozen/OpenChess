@@ -47,8 +47,7 @@ function OpeningDetails({ opening }: { opening: Opening }) {
         {opening.description} You play {opening.side === 'white' ? 'White' : 'Black'}.
       </Text>
       <Text style={styles.hint}>
-        Master every main line with one clean Test to unlock the next level. Bonus lines and the level exam are
-        optional.
+        One clean Test masters a line. Master the main lines to unlock the next level.
       </Text>
       {loaded && levels.map((level) => <LevelCard key={level.level} opening={opening} level={level} />)}
     </ScrollView>
@@ -81,8 +80,8 @@ function LevelCard({ opening, level }: { opening: Opening; level: LevelStatus })
           <View style={styles.exam}>
             <Text style={styles.examText}>
               {level.examPassed
-                ? '★ Exam passed. Every branch, clean.'
-                : 'Exam: every line of this level, branches picked at random, no help. Optional, earns a ★.'}
+                ? '★ Passed.'
+                : 'Every line, random branches, no help. Earns a ★.'}
             </Text>
             <Button
               label={level.examPassed ? 'Retake exam' : 'Take the exam'}
@@ -139,7 +138,7 @@ const styles = StyleSheet.create({
   scroll: { backgroundColor: theme.background },
   container: { padding: 16, gap: 12, backgroundColor: theme.background, flexGrow: 1 },
   description: { fontSize: 16, fontFamily: theme.font, color: theme.muted },
-  hint: { fontSize: 14, fontFamily: theme.font, color: theme.muted, fontStyle: 'italic' },
+  hint: { fontSize: 14, fontFamily: theme.font, color: theme.muted },
   card: { backgroundColor: theme.card, borderWidth: 1, borderColor: theme.border, borderRadius: 8, padding: 14, gap: 12 },
   locked: { opacity: 0.55 },
   levelHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },

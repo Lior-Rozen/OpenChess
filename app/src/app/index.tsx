@@ -57,7 +57,7 @@ export default function Home() {
             <Text style={styles.mainDetail}>
               {nextLine && next
                 ? `${nextLine.opening.name} · ${nextLine.line.name} · ${MODE_LABELS[next.mode]}`
-                : 'Every line is yours. Pick an opening to revisit.'}
+                : 'Every line is yours.'}
             </Text>
           </Pressable>
         )}
