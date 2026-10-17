@@ -125,7 +125,12 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
     the top (always visible) for side, first move and style tags. Within side and first move,
     several chips mean "any of them"; each tag narrows further (an opening needs all picked tags).
     Each card shows its first move and tags. The logic is `app/src/openings/filter.ts`.
-  - **Opening:** levels, main and bonus lines, exam.
+  - **Opening:** Level → Variation → Line. Levels and variations fold: the level being worked
+    on starts open, finished and locked ones start closed, variations start open and fold by name
+    across the opening (a folded one shows "3 lines · 1 mastered"). Choices are remembered per
+    opening (`ui:folds:v1`). Each line is one compact row with a Watch | Practice | Test strip,
+    the suggested mode in magenta. The level exam (every line of the level, the Mastermind picks
+    his replies at random) is one row at the bottom of the level.
   - **Drill:** the Mastermind's line, board, move list, result card.
   - **Free board:** free play for both sides, with Take back (one move at a time, any time,
     checkmate included), Flip board, New game and **Edit position**. The editor starts from the

@@ -1,9 +1,10 @@
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { Button } from '@/components/Button';
 import { loadOpening } from '@/content/loader';
 import type { Opening } from '@/content/types';
+import { isLevelOpen, isVariationOpen, toggleLevel, toggleVariation, type Folds } from '@/openings/folds';
+import { useFolds } from '@/openings/useFolds';
 import {
   groupByVariation,
   levelStatuses,
@@ -21,6 +22,8 @@ const MODES: { mode: RunMode; label: string }[] = [
   { mode: 'test', label: 'Test' },
 ];
 
+const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
+
 export default function OpeningScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const opening = loadOpening(id);
@@ -36,8 +39,11 @@ export default function OpeningScreen() {
   return <OpeningDetails opening={opening} />;
 }
 
+type FoldProps = { folds: Folds; onFold: (change: (current: Folds) => Folds) => void };
+
 function OpeningDetails({ opening }: { opening: Opening }) {
   const { progress, loaded } = useProgress();
+  const [folds, setFolds] = useFolds(opening.id);
   const levels = levelStatuses(opening, progress);
 
   return (
@@ -46,16 +52,28 @@ function OpeningDetails({ opening }: { opening: Opening }) {
       <Text style={styles.description}>
         {opening.description} You play {opening.side === 'white' ? 'White' : 'Black'}.
       </Text>
-      <Text style={styles.hint}>
-        One clean Test masters a line. Master the main lines to unlock the next level.
-      </Text>
-      {loaded && levels.map((level) => <LevelCard key={level.level} opening={opening} level={level} />)}
+      <Text style={styles.hint}>One clean Test masters a line. Master the main lines to unlock the next level.</Text>
+      {loaded &&
+        levels.map((level) => (
+          <LevelCard
+            key={level.level}
+            opening={opening}
+            level={level}
+            open={isLevelOpen(folds, level.level, levels)}
+            onToggle={() => setFolds((f) => toggleLevel(f, level.level, levels))}
+            folds={folds}
+            onFold={setFolds}
+          />
+        ))}
     </ScrollView>
   );
 }
 
-function LevelCard({ opening, level }: { opening: Opening; level: LevelStatus }) {
+type LevelCardProps = FoldProps & { opening: Opening; level: LevelStatus; open: boolean; onToggle: () => void };
+
+function LevelCard({ opening, level, open, onToggle, folds, onFold }: LevelCardProps) {
   const mastered = level.mainLines.filter((l) => l.mastered).length;
+  const lineCount = level.mainLines.length + level.bonusLines.length;
   const status = !level.unlocked
     ? `Locked: complete level ${level.level - 1}`
     : level.complete
@@ -64,27 +82,29 @@ function LevelCard({ opening, level }: { opening: Opening; level: LevelStatus })
 
   return (
     <View style={[styles.card, !level.unlocked && styles.locked]}>
-      <View style={styles.levelHeader}>
+      <Pressable onPress={onToggle} disabled={!level.unlocked} style={styles.levelHeader} hitSlop={8}>
         <Text style={styles.levelTitle}>
+          <Text style={styles.chevron}>{open ? '▾ ' : '▸ '}</Text>
           Level {level.level}
           {level.examPassed ? ' ★' : ''}
         </Text>
         <Text style={[styles.levelStatus, level.complete && level.unlocked && styles.good]}>{status}</Text>
-      </View>
+      </Pressable>
 
-      {level.unlocked && (
+      {open && (
         <>
-          <LineGroups opening={opening} lines={level.mainLines} />
-          {level.bonusLines.length > 0 && <Text style={styles.sectionLabel}>Bonus lines</Text>}
-          <LineGroups opening={opening} lines={level.bonusLines} />
+          <LineGroups opening={opening} lines={level.mainLines} folds={folds} onFold={onFold} />
+          {level.bonusLines.length > 0 && <Text style={styles.sectionLabel}>BONUS LINES</Text>}
+          <LineGroups opening={opening} lines={level.bonusLines} folds={folds} onFold={onFold} />
           <View style={styles.exam}>
             <Text style={styles.examText}>
+              <Text style={styles.examTitle}>Level {level.level} exam: </Text>
               {level.examPassed
-                ? '★ Passed.'
-                : 'Every line, random branches, no help. Earns a ★.'}
+                ? '★ passed.'
+                : `all ${plural(lineCount, 'line')}, he picks his replies at random. Earns a ★.`}
             </Text>
-            <Button
-              label={level.examPassed ? 'Retake exam' : 'Take the exam'}
+            <SmallButton
+              label={level.examPassed ? 'Retake' : 'Take exam'}
               onPress={() =>
                 router.push({ pathname: '/drill', params: { opening: opening.id, level: String(level.level) } })
               }
@@ -96,17 +116,31 @@ function LevelCard({ opening, level }: { opening: Opening; level: LevelStatus })
   );
 }
 
-/** Lines grouped by variation, in the order the variations first appear. */
-function LineGroups({ opening, lines }: { opening: Opening; lines: LineStatus[] }) {
+/** Lines grouped by variation, in the order the variations first appear. A variation folds by tapping its name. */
+function LineGroups({ opening, lines, folds, onFold }: FoldProps & { opening: Opening; lines: LineStatus[] }) {
   const groups = groupByVariation(lines);
-  return groups.map(({ variation, lines: grouped }) => (
-    <View key={variation ?? '-'} style={styles.group}>
-      {variation && <Text style={styles.variation}>{variation}</Text>}
-      {grouped.map((line) => (
-        <LineRow key={line.line.id} opening={opening} status={line} />
-      ))}
-    </View>
-  ));
+  return groups.map(({ variation, lines: grouped }) => {
+    const open = variation === null || isVariationOpen(folds, variation);
+    const mastered = grouped.filter((l) => l.mastered).length;
+    return (
+      <View key={variation ?? '-'}>
+        {variation && (
+          <Pressable onPress={() => onFold((f) => toggleVariation(f, variation))} style={styles.variationRow} hitSlop={6}>
+            <Text style={styles.variation}>
+              {open ? '▾ ' : '▸ '}
+              {variation}
+            </Text>
+            {!open && (
+              <Text style={styles.variationSummary}>
+                {plural(grouped.length, 'line')} · {mastered} mastered
+              </Text>
+            )}
+          </Pressable>
+        )}
+        {open && grouped.map((line) => <LineRow key={line.line.id} opening={opening} status={line} />)}
+      </View>
+    );
+  });
 }
 
 function LineRow({ opening, status }: { opening: Opening; status: LineStatus }) {
@@ -115,22 +149,38 @@ function LineRow({ opening, status }: { opening: Opening; status: LineStatus }) 
 
   return (
     <View style={styles.line}>
-      <View style={styles.lineHeader}>
-        <Text style={styles.lineName}>{line.name}</Text>
-        <Text style={[styles.badge, mastered && styles.good]}>{mastered ? '● Mastered' : '○'}</Text>
+      <View style={styles.lineTop}>
+        <Text style={[styles.dot, mastered && styles.good]}>{mastered ? '●' : '○'}</Text>
+        <Text style={styles.lineName} numberOfLines={1}>
+          {line.name}
+        </Text>
+        <Text style={styles.lineMeta}>{plural(Math.ceil(line.moves.length / 2), 'move')}</Text>
       </View>
-      <Text style={styles.lineMeta}>{Math.ceil(line.moves.length / 2)} moves</Text>
-      <View style={styles.buttons}>
-        {MODES.map(({ mode, label }) => (
-          <Button
+      <View style={styles.strip}>
+        {MODES.map(({ mode, label }, i) => (
+          <Pressable
             key={mode}
-            label={label}
-            primary={mode === suggested}
             onPress={() => router.push({ pathname: '/drill', params: { opening: opening.id, line: line.id, mode } })}
-          />
+            style={({ pressed }) => [
+              styles.segment,
+              i > 0 && styles.segmentDivider,
+              mode === suggested && styles.segmentSuggested,
+              pressed && styles.segmentPressed,
+            ]}
+          >
+            <Text style={[styles.segmentText, mode === suggested && styles.segmentTextSuggested]}>{label}</Text>
+          </Pressable>
         ))}
       </View>
     </View>
+  );
+}
+
+function SmallButton({ label, onPress }: { label: string; onPress: () => void }) {
+  return (
+    <Pressable onPress={onPress} style={({ pressed }) => [styles.smallButton, pressed && styles.segmentPressed]}>
+      <Text style={styles.segmentText}>{label}</Text>
+    </Pressable>
   );
 }
 
@@ -139,27 +189,55 @@ const styles = StyleSheet.create({
   container: { padding: 16, gap: 12, backgroundColor: theme.background, flexGrow: 1 },
   description: { fontSize: 16, fontFamily: theme.font, color: theme.muted },
   hint: { fontSize: 14, fontFamily: theme.font, color: theme.muted },
-  card: { backgroundColor: theme.card, borderWidth: 1, borderColor: theme.border, borderRadius: 8, padding: 14, gap: 12 },
+  card: { backgroundColor: theme.card, borderWidth: 1, borderColor: theme.border, borderRadius: 8, padding: 14, gap: 8 },
   locked: { opacity: 0.55 },
   levelHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
   levelTitle: { fontSize: 21, fontFamily: theme.font, color: theme.text },
+  chevron: { fontSize: 15, color: theme.muted },
   levelStatus: { fontSize: 14, fontFamily: theme.font, color: theme.muted, flexShrink: 1, textAlign: 'right' },
   good: { color: theme.good },
-  sectionLabel: { fontSize: 13, fontFamily: theme.mono, color: theme.accent2, letterSpacing: 1, marginTop: 4 },
-  group: { gap: 12 },
-  variation: { fontSize: 15, fontFamily: theme.font, color: theme.accent2, marginTop: 4 },
-  line: { gap: 4, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: theme.border, paddingTop: 10 },
-  lineHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  lineName: { fontSize: 18, fontFamily: theme.font, color: theme.text, flexShrink: 1 },
-  badge: { fontSize: 14, fontFamily: theme.font, color: theme.muted },
-  lineMeta: { fontSize: 14, fontFamily: theme.font, color: theme.muted },
-  buttons: { flexDirection: 'row', gap: 8, marginTop: 6 },
+  sectionLabel: { fontSize: 12, fontFamily: theme.mono, color: theme.accent2, letterSpacing: 1, marginTop: 10 },
+  variationRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginTop: 8 },
+  variation: { fontSize: 15, fontFamily: theme.font, color: theme.accent2 },
+  variationSummary: { fontSize: 13, fontFamily: theme.font, color: theme.muted },
+  line: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: theme.border, paddingVertical: 8, marginTop: 6 },
+  lineTop: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  dot: { fontSize: 13, color: theme.muted, width: 14, textAlign: 'center' },
+  lineName: { flex: 1, fontSize: 17, fontFamily: theme.font, color: theme.text },
+  lineMeta: { fontSize: 13, fontFamily: theme.font, color: theme.muted },
+  strip: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    marginTop: 7,
+    marginLeft: 22,
+    borderWidth: 1,
+    borderColor: theme.border,
+    borderRadius: 6,
+    overflow: 'hidden',
+  },
+  segment: { paddingVertical: 7, paddingHorizontal: 14, backgroundColor: theme.background },
+  segmentDivider: { borderLeftWidth: 1, borderLeftColor: theme.border },
+  segmentSuggested: { backgroundColor: theme.accent },
+  segmentPressed: { opacity: 0.7 },
+  segmentText: { fontSize: 14, fontFamily: theme.font, color: theme.text },
+  segmentTextSuggested: { color: theme.onAccent, fontWeight: '600' },
   exam: {
-    gap: 8,
-    alignItems: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: theme.border,
     paddingTop: 10,
+    marginTop: 8,
   },
-  examText: { fontSize: 14, fontFamily: theme.font, color: theme.muted },
+  examText: { flex: 1, fontSize: 13, fontFamily: theme.font, color: theme.muted },
+  examTitle: { color: theme.text },
+  smallButton: {
+    paddingVertical: 7,
+    paddingHorizontal: 12,
+    borderWidth: 1,
+    borderColor: theme.border,
+    borderRadius: 6,
+    backgroundColor: theme.background,
+  },
 });
