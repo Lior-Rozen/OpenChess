@@ -7,23 +7,56 @@
   "tags": ["aggressive", "gambit"],
   "lines": [
     {
-      "id": "vienna-gambit-d5",
-      "name": "3…d5",
+      "id": "vienna-gambit-bg4",
+      "name": "3…d5 5…Bg4",
       "level": 1,
       "tier": "main",
       "variation": "Vienna Gambit",
-      "moves": ["e4", "e5", "Nc3", "Nf6", "f4", "d5", "fxe5", "Nxe4", "Nf3", "Be7", "d4", "O-O", "Bd3"],
+      "moves": ["e4", "e5", "Nc3", "Nf6", "f4", "d5", "fxe5", "Nxe4", "Nf3", "Bg4", "Qe2"],
       "notes": {
         "2": "Nc3 defends e4 and prepares f4, without blocking the f-pawn.",
         "4": "f4 is the Vienna Gambit: it attacks e5 and opens the f-file.",
         "6": "fxe5 gains space and pushes the f6 knight away.",
-        "12": "Bd3 challenges the strong e4 knight."
+        "10": "Qe2 attacks the e4 knight a third time and frees White's game."
       },
-      "summary": "After 3…d5, take on e5, develop with Nf3, d4 and Bd3, and attack the e4 knight."
+      "summary": "When Black pins with …Bg4, hit the e4 knight with Qe2."
+    },
+    {
+      "id": "vienna-gambit-nxc3",
+      "name": "5…Nxc3",
+      "level": 1,
+      "tier": "side",
+      "variation": "Vienna Gambit",
+      "moves": ["e4", "e5", "Nc3", "Nf6", "f4", "d5", "fxe5", "Nxe4", "Nf3", "Nxc3", "bxc3"],
+      "notes": {
+        "2": "Nc3 defends e4 and prepares f4, without blocking the f-pawn.",
+        "4": "f4 is the Vienna Gambit: it attacks e5 and opens the f-file.",
+        "6": "fxe5 gains space and pushes the f6 knight away.",
+        "10": "bxc3 strengthens the centre; d4 comes next."
+      },
+      "accept": {
+        "10": ["dxc3"]
+      },
+      "summary": "When Black swaps on c3, take back with the b-pawn and build the centre with d4."
+    },
+    {
+      "id": "vienna-gambit-bc5",
+      "name": "5…Bc5",
+      "level": 2,
+      "tier": "main",
+      "variation": "Vienna Gambit",
+      "moves": ["e4", "e5", "Nc3", "Nf6", "f4", "d5", "fxe5", "Nxe4", "Nf3", "Bc5", "d4"],
+      "notes": {
+        "2": "Nc3 defends e4 and prepares f4, without blocking the f-pawn.",
+        "4": "f4 is the Vienna Gambit: it attacks e5 and opens the f-file.",
+        "6": "fxe5 gains space and pushes the f6 knight away.",
+        "10": "d4 kicks the bishop and builds a big centre."
+      },
+      "summary": "Against …Bc5, push d4 at once: the centre comes with tempo."
     },
     {
       "id": "vienna-gambit-d5-deep",
-      "name": "7…f5",
+      "name": "5…Be7",
       "level": 2,
       "tier": "main",
       "variation": "Vienna Gambit",
@@ -36,23 +69,7 @@
         "14": "exf6 takes en passant, opening the f-file for White's rook.",
         "16": "O-O puts the rook on the open f-file, aimed at f7."
       },
-      "summary": "If Black props up the knight with …f5, take en passant and castle onto the open f-file."
-    },
-    {
-      "id": "vienna-gambit-bg4",
-      "name": "5…Bg4",
-      "level": 1,
-      "tier": "side",
-      "variation": "Vienna Gambit",
-      "moves": ["e4", "e5", "Nc3", "Nf6", "f4", "d5", "fxe5", "Nxe4", "Nf3", "Bg4", "Qe2"],
-      "notes": {
-        "2": "Nc3 defends e4 and prepares f4, without blocking the f-pawn.",
-        "4": "f4 is the Vienna Gambit: it attacks e5 and opens the f-file.",
-        "6": "fxe5 gains space and pushes the f6 knight away.",
-        "9": "…Bg4 pins the knight and hopes to win time.",
-        "10": "Qe2 attacks the e4 knight a third time and frees White's game."
-      },
-      "summary": "When Black pins with …Bg4, hit the e4 knight with Qe2."
+      "summary": "Against …Be7, develop with d4 and Bd3; if …f5, take en passant and castle onto the f-file."
     },
     {
       "id": "vienna-gambit-accepted",
@@ -74,6 +91,37 @@
       "summary": "If Black takes the gambit pawn, kick the knight with e5 and build a big centre with d4."
     },
     {
+      "id": "vienna-gambit-qe7",
+      "name": "3…exf4 4.e5 Qe7",
+      "level": 2,
+      "tier": "side",
+      "variation": "Vienna Gambit",
+      "moves": ["e4", "e5", "Nc3", "Nf6", "f4", "exf4", "e5", "Qe7", "Qe2", "Ng8", "Nf3"],
+      "notes": {
+        "2": "Nc3 defends e4 and prepares f4, without blocking the f-pawn.",
+        "4": "f4 is the Vienna Gambit: it attacks e5 and opens the f-file.",
+        "6": "e5 kicks the knight back to g8, a big gain of time.",
+        "8": "Qe2 holds the e5 pawn; the black knight has to go back to g8 anyway.",
+        "10": "Nf3 develops; Black's queen and knight are in each other's way."
+      },
+      "summary": "If Black pins the e5 pawn with …Qe7, answer Qe2: the knight must retreat and Black is worse."
+    },
+    {
+      "id": "vienna-gambit-d6",
+      "name": "3…d6",
+      "level": 1,
+      "tier": "main",
+      "variation": "Vienna Gambit",
+      "moves": ["e4", "e5", "Nc3", "Nf6", "f4", "d6", "Nf3", "Nc6", "Bb5"],
+      "notes": {
+        "2": "Nc3 defends e4 and prepares f4, without blocking the f-pawn.",
+        "4": "f4 is the Vienna Gambit: it attacks e5 and opens the f-file.",
+        "6": "Nf3 develops and adds pressure on e5.",
+        "8": "Bb5 pins the knight that defends e5."
+      },
+      "summary": "Against the solid 3…d6, develop with Nf3 and pin the e5 defender with Bb5."
+    },
+    {
       "id": "vienna-nc6",
       "name": "vs 2…Nc6 (3.Bc4)",
       "level": 1,
@@ -89,10 +137,26 @@
       "summary": "Against 2…Nc6, play Bc4 and d3 first, then the f4 push with Nf3 and castling."
     },
     {
+      "id": "vienna-nc6-bg4",
+      "name": "6…Bg4",
+      "level": 2,
+      "tier": "main",
+      "variation": "vs 2…Nc6",
+      "moves": ["e4", "e5", "Nc3", "Nc6", "Bc4", "Nf6", "d3", "Bc5", "f4", "d6", "Nf3", "Bg4", "Na4"],
+      "notes": {
+        "2": "Nc3 defends e4 and prepares f4, without blocking the f-pawn.",
+        "4": "Bc4 aims at f7; against 2…Nc6 it is safer than an early f4.",
+        "6": "d3 protects e4 so that f4 can come next.",
+        "8": "f4 attacks e5 and opens the f-file once White castles.",
+        "12": "Na4 trades off the c5 bishop before it can stop White castling."
+      },
+      "summary": "Against the pin, Na4 first: without the c5 bishop, White can castle and break the pin later."
+    },
+    {
       "id": "vienna-nc6-deep",
       "name": "Na4 trades the bishop",
       "level": 2,
-      "tier": "main",
+      "tier": "side",
       "variation": "vs 2…Nc6",
       "moves": ["e4", "e5", "Nc3", "Nc6", "Bc4", "Nf6", "d3", "Bc5", "f4", "d6", "Nf3", "O-O", "Na4", "Bb6", "Nxb6", "axb6", "O-O"],
       "notes": {
@@ -106,20 +170,21 @@
       "summary": "Trade off the dangerous c5 bishop with Na4, then castle and use the f-file."
     },
     {
-      "id": "vienna-nc6-na5",
-      "name": "4…Na5",
+      "id": "vienna-nc6-bc5",
+      "name": "3…Bc5",
       "level": 2,
-      "tier": "side",
+      "tier": "main",
       "variation": "vs 2…Nc6",
-      "moves": ["e4", "e5", "Nc3", "Nc6", "Bc4", "Nf6", "d3", "Na5", "Nge2", "Nxc4", "dxc4"],
+      "moves": ["e4", "e5", "Nc3", "Nc6", "Bc4", "Bc5", "d3"],
       "notes": {
         "2": "Nc3 defends e4 and prepares f4, without blocking the f-pawn.",
         "4": "Bc4 aims at f7; against 2…Nc6 it is safer than an early f4.",
-        "6": "d3 protects e4 so that f4 can come next.",
-        "8": "Nge2 keeps the f-pawn free and lets Black take the bishop.",
-        "10": "dxc4 recaptures towards the centre; White's pawns control d5."
+        "6": "d3: the same set-up as against 3…Nf6, with f4 to come."
       },
-      "summary": "If …Na5 chases the bishop, let it be taken and recapture with the d-pawn."
+      "accept": {
+        "6": ["Qg4"]
+      },
+      "summary": "Against 3…Bc5, stick to d3 and f4; the aggressive Qg4 hitting g7 is also good."
     },
     {
       "id": "vienna-bc5",

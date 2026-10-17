@@ -6,27 +6,42 @@
 [Tags "aggressive, gambit"]
 
 1. e4 e5 2. Nc3 {Nc3 defends e4 and prepares f4, without blocking the f-pawn.} 2... Nf6
-  (2... Nc6 {@variation vs 2…Nc6} 3. Bc4 {Bc4 aims at f7; against 2…Nc6 it is safer than an early f4.} 3... Nf6 4. d3 {d3 protects e4 so that f4 can come next.} 4... Bc5
-    (4... Na5 5. Nge2 {Nge2 keeps the f-pawn free and lets Black take the bishop.} 5... Nxc4 6. dxc4 {dxc4 recaptures towards the centre; White's pawns control d5.}
-{@line id=vienna-nc6-na5 level=2 tier=side name="4…Na5" summary="If …Na5 chases the bishop, let it be taken and recapture with the d-pawn."}
+  (2... Nc6 {@variation vs 2…Nc6} 3. Bc4 {Bc4 aims at f7; against 2…Nc6 it is safer than an early f4.} 3... Nf6
+    (3... Bc5 4. d3 {d3: the same set-up as against 3…Nf6, with f4 to come.} (4. Qg4 {@alt})
+{@line id=vienna-nc6-bc5 level=2 tier=main name="3…Bc5" summary="Against 3…Bc5, stick to d3 and f4; the aggressive Qg4 hitting g7 is also good."}
 )
-5. f4 {f4 attacks e5 and opens the f-file once White castles.} 5... d6 6. Nf3
+  4. d3 {d3 protects e4 so that f4 can come next.} 4... Bc5 5. f4 {f4 attacks e5 and opens the f-file once White castles.} 5... d6 6. Nf3
 {@line id=vienna-nc6 level=1 tier=main name="vs 2…Nc6 (3.Bc4)" summary="Against 2…Nc6, play Bc4 and d3 first, then the f4 push with Nf3 and castling."}
-6... O-O 7. Na4 {Na4 trades off the c5 bishop, which stops White from castling safely.} 7... Bb6 8. Nxb6 axb6 9. O-O {O-O and the f-file is ready for White's rook.}
-{@line id=vienna-nc6-deep level=2 tier=main name="Na4 trades the bishop" summary="Trade off the dangerous c5 bishop with Na4, then castle and use the f-file."}
+6... Bg4
+      (6... O-O 7. Na4 {Na4 trades off the c5 bishop, which stops White from castling safely.} 7... Bb6 8. Nxb6 axb6 9. O-O {O-O and the f-file is ready for White's rook.}
+{@line id=vienna-nc6-deep level=2 tier=side name="Na4 trades the bishop" summary="Trade off the dangerous c5 bishop with Na4, then castle and use the f-file."}
+)
+  7. Na4 {Na4 trades off the c5 bishop before it can stop White castling.}
+{@line id=vienna-nc6-bg4 level=2 tier=main name="6…Bg4" summary="Against the pin, Na4 first: without the c5 bishop, White can castle and break the pin later."}
 )
   (2... Bc5 {@variation vs 2…Bc5} 3. Bc4 {Bc4 mirrors Black's bishop and keeps the plan simple.} 3... Nf6 4. d3 Nc6 5. f4 d6 6. Nf3 {Nf3: this is the same position as the 2…Nc6 line.}
 {@line id=vienna-bc5 level=1 tier=side name="vs 2…Bc5 (3.Bc4)" summary="2…Bc5 reaches the same position as 2…Nc6: Bc4, d3, f4 and Nf3."}
 )
 3. f4 {f4 is the Vienna Gambit: it attacks e5 and opens the f-file.} {@variation Vienna Gambit} 3... d5
-  (3... exf4 4. e5 {e5 kicks the knight back to g8, a big gain of time.} 4... Ng8 5. Nf3 d6 6. d4 {d4 builds a strong centre and opens the bishop to win back f4.} 6... dxe5 7. Qe2 {Qe2 pins the e5 pawn on the e-file, so White wins it back.} (7. dxe5 {@alt})
+  (3... exf4 4. e5 {e5 kicks the knight back to g8, a big gain of time.} 4... Ng8
+    (4... Qe7 5. Qe2 {Qe2 holds the e5 pawn; the black knight has to go back to g8 anyway.} 5... Ng8 6. Nf3 {Nf3 develops; Black's queen and knight are in each other's way.}
+{@line id=vienna-gambit-qe7 level=2 tier=side name="3…exf4 4.e5 Qe7" summary="If Black pins the e5 pawn with …Qe7, answer Qe2: the knight must retreat and Black is worse."}
+)
+  5. Nf3 d6 6. d4 {d4 builds a strong centre and opens the bishop to win back f4.} 6... dxe5 7. Qe2 {Qe2 pins the e5 pawn on the e-file, so White wins it back.} (7. dxe5 {@alt})
 {@line id=vienna-gambit-accepted level=1 tier=main name="3…exf4" summary="If Black takes the gambit pawn, kick the knight with e5 and build a big centre with d4."}
 )
-4. fxe5 {fxe5 gains space and pushes the f6 knight away.} 4... Nxe4 5. Nf3 Be7
-  (5... Bg4 {…Bg4 pins the knight and hopes to win time.} 6. Qe2 {Qe2 attacks the e4 knight a third time and frees White's game.}
-{@line id=vienna-gambit-bg4 level=1 tier=side name="5…Bg4" summary="When Black pins with …Bg4, hit the e4 knight with Qe2."}
+  (3... d6 4. Nf3 {Nf3 develops and adds pressure on e5.} 4... Nc6 5. Bb5 {Bb5 pins the knight that defends e5.}
+{@line id=vienna-gambit-d6 level=1 tier=main name="3…d6" summary="Against the solid 3…d6, develop with Nf3 and pin the e5 defender with Bb5."}
 )
-6. d4 O-O 7. Bd3 {Bd3 challenges the strong e4 knight.}
-{@line id=vienna-gambit-d5 level=1 tier=main name="3…d5" summary="After 3…d5, take on e5, develop with Nf3, d4 and Bd3, and attack the e4 knight."}
-7... f5 8. exf6 {exf6 takes en passant, opening the f-file for White's rook.} 8... Bxf6 9. O-O {O-O puts the rook on the open f-file, aimed at f7.}
-{@line id=vienna-gambit-d5-deep level=2 tier=main name="7…f5" summary="If Black props up the knight with …f5, take en passant and castle onto the open f-file."} *
+4. fxe5 {fxe5 gains space and pushes the f6 knight away.} 4... Nxe4 5. Nf3 Bg4
+  (5... Nxc3 6. bxc3 {bxc3 strengthens the centre; d4 comes next.} (6. dxc3 {@alt})
+{@line id=vienna-gambit-nxc3 level=1 tier=side name="5…Nxc3" summary="When Black swaps on c3, take back with the b-pawn and build the centre with d4."}
+)
+  (5... Bc5 6. d4 {d4 kicks the bishop and builds a big centre.}
+{@line id=vienna-gambit-bc5 level=2 tier=main name="5…Bc5" summary="Against …Bc5, push d4 at once: the centre comes with tempo."}
+)
+  (5... Be7 6. d4 O-O 7. Bd3 {Bd3 challenges the strong e4 knight.} 7... f5 8. exf6 {exf6 takes en passant, opening the f-file for White's rook.} 8... Bxf6 9. O-O {O-O puts the rook on the open f-file, aimed at f7.}
+{@line id=vienna-gambit-d5-deep level=2 tier=main name="5…Be7" summary="Against …Be7, develop with d4 and Bd3; if …f5, take en passant and castle onto the f-file."}
+)
+6. Qe2 {Qe2 attacks the e4 knight a third time and frees White's game.}
+{@line id=vienna-gambit-bg4 level=1 tier=main name="3…d5 5…Bg4" summary="When Black pins with …Bg4, hit the e4 knight with Qe2."} *
