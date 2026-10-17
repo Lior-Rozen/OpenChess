@@ -1,0 +1,39 @@
+[Id "english"]
+[Name "English Opening"]
+[Side "white"]
+[ECO "A10-A39"]
+[Description "1.c4, Nc3, g3 and Bg2: a flexible, positional set-up that works against almost everything."]
+[Tags "positional"]
+
+1. c4 {c4 controls d5 from the side; White builds slowly and keeps options open.} 1... e5 {@variation 1…e5}
+  (1... Nf6 {@variation 1…Nf6} 2. Nc3 g6 3. g3 Bg7 4. Bg2 {Bg2: the fianchetto bishop presses on d5 and the long diagonal.} 4... O-O 5. Nf3 d6 6. O-O {O-O: a calm set-up; d4 or d3 and e4 come later.} (6. d4 {@alt})
+{@line id=english-nf6-g6 level=1 tier=main name="1…Nf6 2…g6" summary="Against the King's Indian set-up, fianchetto too: g3, Bg2, Nf3 and castle."}
+)
+  (1... c5 {@variation 1…c5} 2. Nc3 Nc6 3. g3 g6 4. Bg2 Bg7 5. Nf3 {Nf3 develops; O-O, d3 or a3 and b4 follow.} (5. e3 {@alt})
+{@line id=english-c5 level=1 tier=main name="Symmetrical (1…c5)" summary="In the symmetrical English, fianchetto, castle, and play on the queenside with a3, Rb1 and b4."}
+)
+  (1... e6 {@variation 1…e6} 2. Nc3 d5 3. d4 {d4: the game becomes a Queen's Gambit Declined.}
+{@line id=english-e6 level=1 tier=side name="1…e6" summary="Against 1…e6 and …d5, d4 turns it into a Queen's Gambit Declined."}
+)
+2. Nc3 {Nc3 covers d5 and e4.} 2... Nf6
+  (2... Nc6 3. g3 Nf6 4. Bg2 {Bg2: the same fianchetto set-up against 2…Nc6.}
+{@line id=english-e5-nc6 level=1 tier=main name="1…e5 2…Nc6" summary="Against 2…Nc6, the plan doesn't change: g3, Bg2, then Nf3 or e3."}
+4... Bc5 5. Nf3 {Nf3 develops and hits e5.} (5. e3 {@alt})
+{@line id=english-e5-nc6-bc5 level=2 tier=main name="1…e5 2…Nc6 4…Bc5" summary="Against …Bc5, develop with Nf3 (or e3 to blunt the bishop) and castle."}
+)
+3. g3 {g3 prepares Bg2, the key piece in the English.} 3... d5
+  (3... Bc5 4. Bg2 O-O 5. Nf3 {Nf3 develops and hits e5.} (5. e3 {@alt})
+{@line id=english-e5-bc5 level=2 tier=main name="1…e5 3…Bc5" summary="Against …Bc5, fianchetto, then Nf3 or e3 and castle."}
+)
+  (3... Bb4 4. Bg2 O-O 5. Nf3 {Nf3 develops; if …e4, the knight goes to d4.} (5. e3 {@alt}) (5. e4 {@alt})
+{@line id=english-e5-bb4 level=1 tier=side name="1…e5 3…Bb4" summary="Against …Bb4, fianchetto and develop Nf3; the c3 knight can be taken but White gets the bishop pair."}
+)
+4. cxd5 Nxd5 5. Bg2 {Bg2: the bishop hits the d5 knight along the long diagonal.} 5... Nb6
+  (5... Nxc3 6. bxc3 {bxc3 strengthens the centre and opens the b-file for a rook.}
+{@line id=english-e5-nxc3 level=2 tier=main name="Reversed Dragon: 5…Nxc3" summary="When Black trades on c3, take back towards the centre and use the open b-file."}
+)
+  (5... Be6 6. Nf3 {Nf3 develops and hits e5.}
+{@line id=english-e5-be6 level=2 tier=side name="Reversed Dragon: 5…Be6" summary="Against …Be6, develop Nf3 and castle; the e5 pawn is a target."}
+)
+6. Nf3 Nc6 7. O-O {O-O: a Sicilian Dragon with colours reversed and an extra move for White.}
+{@line id=english-e5-nf6 level=1 tier=main name="Reversed Dragon (3…d5)" summary="Against 1…e5 and …d5, take on d5, fianchetto and castle: a Dragon with an extra tempo."} *

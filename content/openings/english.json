@@ -1,0 +1,172 @@
+{
+  "id": "english",
+  "name": "English Opening",
+  "side": "white",
+  "eco": "A10-A39",
+  "description": "1.c4, Nc3, g3 and Bg2: a flexible, positional set-up that works against almost everything.",
+  "tags": ["positional"],
+  "lines": [
+    {
+      "id": "english-e5-nf6",
+      "name": "Reversed Dragon (3…d5)",
+      "level": 1,
+      "tier": "main",
+      "variation": "1…e5",
+      "moves": ["c4", "e5", "Nc3", "Nf6", "g3", "d5", "cxd5", "Nxd5", "Bg2", "Nb6", "Nf3", "Nc6", "O-O"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "2": "Nc3 covers d5 and e4.",
+        "4": "g3 prepares Bg2, the key piece in the English.",
+        "8": "Bg2: the bishop hits the d5 knight along the long diagonal.",
+        "12": "O-O: a Sicilian Dragon with colours reversed and an extra move for White."
+      },
+      "summary": "Against 1…e5 and …d5, take on d5, fianchetto and castle: a Dragon with an extra tempo."
+    },
+    {
+      "id": "english-e5-nxc3",
+      "name": "Reversed Dragon: 5…Nxc3",
+      "level": 2,
+      "tier": "main",
+      "variation": "1…e5",
+      "moves": ["c4", "e5", "Nc3", "Nf6", "g3", "d5", "cxd5", "Nxd5", "Bg2", "Nxc3", "bxc3"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "2": "Nc3 covers d5 and e4.",
+        "4": "g3 prepares Bg2, the key piece in the English.",
+        "8": "Bg2: the bishop hits the d5 knight along the long diagonal.",
+        "10": "bxc3 strengthens the centre and opens the b-file for a rook."
+      },
+      "summary": "When Black trades on c3, take back towards the centre and use the open b-file."
+    },
+    {
+      "id": "english-e5-be6",
+      "name": "Reversed Dragon: 5…Be6",
+      "level": 2,
+      "tier": "side",
+      "variation": "1…e5",
+      "moves": ["c4", "e5", "Nc3", "Nf6", "g3", "d5", "cxd5", "Nxd5", "Bg2", "Be6", "Nf3"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "2": "Nc3 covers d5 and e4.",
+        "4": "g3 prepares Bg2, the key piece in the English.",
+        "8": "Bg2: the bishop hits the d5 knight along the long diagonal.",
+        "10": "Nf3 develops and hits e5."
+      },
+      "summary": "Against …Be6, develop Nf3 and castle; the e5 pawn is a target."
+    },
+    {
+      "id": "english-e5-bc5",
+      "name": "1…e5 3…Bc5",
+      "level": 2,
+      "tier": "main",
+      "variation": "1…e5",
+      "moves": ["c4", "e5", "Nc3", "Nf6", "g3", "Bc5", "Bg2", "O-O", "Nf3"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "2": "Nc3 covers d5 and e4.",
+        "4": "g3 prepares Bg2, the key piece in the English.",
+        "8": "Nf3 develops and hits e5."
+      },
+      "accept": {
+        "8": ["e3"]
+      },
+      "summary": "Against …Bc5, fianchetto, then Nf3 or e3 and castle."
+    },
+    {
+      "id": "english-e5-bb4",
+      "name": "1…e5 3…Bb4",
+      "level": 1,
+      "tier": "side",
+      "variation": "1…e5",
+      "moves": ["c4", "e5", "Nc3", "Nf6", "g3", "Bb4", "Bg2", "O-O", "Nf3"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "2": "Nc3 covers d5 and e4.",
+        "4": "g3 prepares Bg2, the key piece in the English.",
+        "8": "Nf3 develops; if …e4, the knight goes to d4."
+      },
+      "accept": {
+        "8": ["e3", "e4"]
+      },
+      "summary": "Against …Bb4, fianchetto and develop Nf3; the c3 knight can be taken but White gets the bishop pair."
+    },
+    {
+      "id": "english-e5-nc6",
+      "name": "1…e5 2…Nc6",
+      "level": 1,
+      "tier": "main",
+      "variation": "1…e5",
+      "moves": ["c4", "e5", "Nc3", "Nc6", "g3", "Nf6", "Bg2"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "2": "Nc3 covers d5 and e4.",
+        "6": "Bg2: the same fianchetto set-up against 2…Nc6."
+      },
+      "summary": "Against 2…Nc6, the plan doesn't change: g3, Bg2, then Nf3 or e3."
+    },
+    {
+      "id": "english-e5-nc6-bc5",
+      "name": "1…e5 2…Nc6 4…Bc5",
+      "level": 2,
+      "tier": "main",
+      "variation": "1…e5",
+      "moves": ["c4", "e5", "Nc3", "Nc6", "g3", "Nf6", "Bg2", "Bc5", "Nf3"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "2": "Nc3 covers d5 and e4.",
+        "6": "Bg2: the same fianchetto set-up against 2…Nc6.",
+        "8": "Nf3 develops and hits e5."
+      },
+      "accept": {
+        "8": ["e3"]
+      },
+      "summary": "Against …Bc5, develop with Nf3 (or e3 to blunt the bishop) and castle."
+    },
+    {
+      "id": "english-nf6-g6",
+      "name": "1…Nf6 2…g6",
+      "level": 1,
+      "tier": "main",
+      "variation": "1…Nf6",
+      "moves": ["c4", "Nf6", "Nc3", "g6", "g3", "Bg7", "Bg2", "O-O", "Nf3", "d6", "O-O"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "6": "Bg2: the fianchetto bishop presses on d5 and the long diagonal.",
+        "10": "O-O: a calm set-up; d4 or d3 and e4 come later."
+      },
+      "accept": {
+        "10": ["d4"]
+      },
+      "summary": "Against the King's Indian set-up, fianchetto too: g3, Bg2, Nf3 and castle."
+    },
+    {
+      "id": "english-c5",
+      "name": "Symmetrical (1…c5)",
+      "level": 1,
+      "tier": "main",
+      "variation": "1…c5",
+      "moves": ["c4", "c5", "Nc3", "Nc6", "g3", "g6", "Bg2", "Bg7", "Nf3"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "8": "Nf3 develops; O-O, d3 or a3 and b4 follow."
+      },
+      "accept": {
+        "8": ["e3"]
+      },
+      "summary": "In the symmetrical English, fianchetto, castle, and play on the queenside with a3, Rb1 and b4."
+    },
+    {
+      "id": "english-e6",
+      "name": "1…e6",
+      "level": 1,
+      "tier": "side",
+      "variation": "1…e6",
+      "moves": ["c4", "e6", "Nc3", "d5", "d4"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "4": "d4: the game becomes a Queen's Gambit Declined."
+      },
+      "summary": "Against 1…e6 and …d5, d4 turns it into a Queen's Gambit Declined."
+    }
+  ]
+}

@@ -13,6 +13,7 @@
     { "id": "london", "name": "London System", "side": "white", "file": "openings/london.json" },
     { "id": "queens-gambit", "name": "Queen's Gambit", "side": "white", "file": "openings/queens-gambit.json" },
     { "id": "alapin", "name": "Sicilian: Alapin (2.c3)", "side": "white", "file": "openings/alapin.json" },
-    { "id": "scotch", "name": "Scotch Game", "side": "white", "file": "openings/scotch.json" }
+    { "id": "scotch", "name": "Scotch Game", "side": "white", "file": "openings/scotch.json" },
+    { "id": "english", "name": "English Opening", "side": "white", "file": "openings/english.json" }
   ]
 }

@@ -12,6 +12,7 @@ import london from '../../../content/openings/london.json';
 import queensGambit from '../../../content/openings/queens-gambit.json';
 import alapin from '../../../content/openings/alapin.json';
 import scotch from '../../../content/openings/scotch.json';
+import english from '../../../content/openings/english.json';
 
 import type { ContentIndex, Opening, OpeningLine } from './types';
 
@@ -31,6 +32,7 @@ const bundledByFile: Record<string, unknown> = {
   'openings/queens-gambit.json': queensGambit,
   'openings/alapin.json': alapin,
   'openings/scotch.json': scotch,
+  'openings/english.json': english,
 };
 
 export const contentIndex = index as ContentIndex;
