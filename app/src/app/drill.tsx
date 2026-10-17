@@ -31,7 +31,8 @@ export default function DrillScreen() {
   } else if (params.level) {
     const opening = loadOpening(params.opening);
     const level = Number(params.level);
-    const lines = opening?.lines.filter((l) => l.level === level) ?? [];
+    // The exam covers the level's main lines; bonus lines stay optional.
+    const lines = opening?.lines.filter((l) => l.level === level && l.tier === 'main') ?? [];
     if (opening && lines.length > 0) target = { opening, lines, title: `Level ${level} exam`, examLevel: level };
   }
 

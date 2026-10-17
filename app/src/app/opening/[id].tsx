@@ -6,7 +6,7 @@ import { Badge, Icon, IconButton, InfoSheet, ProgressBar, type InfoStep } from '
 import { loadOpening } from '@/content/loader';
 import type { Opening } from '@/content/types';
 import { firstMoves } from '@/openings/filter';
-import { isLevelOpen, isVariationOpen, toggleLevel, toggleVariation, type Folds } from '@/openings/folds';
+import { isLevelOpen, isVariationOpen, toggleLevel, toggleVariation, variationKey, type Folds } from '@/openings/folds';
 import { useFolds } from '@/openings/useFolds';
 import {
   groupByVariation,
@@ -33,7 +33,7 @@ const HOW_IT_WORKS: InfoStep[] = [
   {
     icon: 'star',
     title: 'Unlock and exam',
-    text: 'Master the main lines to open the next level. The exam mixes them all for a ★.',
+    text: 'Master the main lines to open the next level. The exam mixes them for a ★. Bonus lines are extra.',
     color: theme.gold,
   },
 ];
@@ -115,7 +115,6 @@ type LevelCardProps = FoldProps & { opening: Opening; level: LevelStatus; open: 
 function LevelCard({ opening, level, open, onToggle, folds, onFold }: LevelCardProps) {
   const mastered = level.mainLines.filter((l) => l.mastered).length;
   const total = level.mainLines.length;
-  const lineCount = total + level.bonusLines.length;
 
   return (
     <View style={[styles.card, !level.unlocked && styles.locked]}>
@@ -141,20 +140,20 @@ function LevelCard({ opening, level, open, onToggle, folds, onFold }: LevelCardP
 
       {open && (
         <>
-          <LineGroups opening={opening} lines={level.mainLines} folds={folds} onFold={onFold} />
+          <LineGroups opening={opening} level={level.level} bonus={false} lines={level.mainLines} folds={folds} onFold={onFold} />
           {level.bonusLines.length > 0 && (
             <View style={styles.divider}>
               <Text style={styles.dividerText}>BONUS</Text>
               <View style={styles.dividerLine} />
             </View>
           )}
-          <LineGroups opening={opening} lines={level.bonusLines} folds={folds} onFold={onFold} />
+          <LineGroups opening={opening} level={level.level} bonus lines={level.bonusLines} folds={folds} onFold={onFold} />
           <View style={styles.exam}>
             <Icon name="star" size={16} color={theme.gold} />
             <View style={styles.examText}>
               <Text style={styles.examTitle}>Level exam</Text>
               <Text style={styles.examSub}>
-                {level.examPassed ? 'Passed' : `All ${plural(lineCount, 'line')}, random replies`}
+                {level.examPassed ? 'Passed' : `All ${plural(total, 'main line')}, random replies`}
               </Text>
             </View>
             <SmallButton
@@ -171,15 +170,18 @@ function LevelCard({ opening, level, open, onToggle, folds, onFold }: LevelCardP
 }
 
 /** Lines grouped by variation, in the order the variations first appear. A variation folds by tapping its name. */
-function LineGroups({ opening, lines, folds, onFold }: FoldProps & { opening: Opening; lines: LineStatus[] }) {
+type LineGroupsProps = FoldProps & { opening: Opening; level: number; bonus: boolean; lines: LineStatus[] };
+
+function LineGroups({ opening, level, bonus, lines, folds, onFold }: LineGroupsProps) {
   const groups = groupByVariation(lines);
   return groups.map(({ variation, lines: grouped }) => {
-    const open = variation === null || isVariationOpen(folds, variation);
+    const key = variation === null ? null : variationKey(level, bonus, variation);
+    const open = key === null || isVariationOpen(folds, key);
     const mastered = grouped.filter((l) => l.mastered).length;
     return (
       <View key={variation ?? '-'}>
-        {variation && (
-          <Pressable onPress={() => onFold((f) => toggleVariation(f, variation))} style={styles.variationRow} hitSlop={6}>
+        {variation && key && (
+          <Pressable onPress={() => onFold((f) => toggleVariation(f, key))} style={styles.variationRow} hitSlop={6}>
             <Icon name={open ? 'chevron-down' : 'chevron-forward'} size={12} />
             <Text style={styles.variation} numberOfLines={1}>
               {variation}

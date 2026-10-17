@@ -7,7 +7,7 @@ import type { LevelStatus } from '@/progress/mastery';
 export type Folds = {
   /** Level number → open. */
   levels: Record<number, boolean>;
-  /** Variation name → open. Applies to that variation in every level. */
+  /** Variation key (see variationKey) → open. Each heading folds on its own. */
   variations: Record<string, boolean>;
 };
 
@@ -22,6 +22,11 @@ export function isLevelOpen(folds: Folds, level: number, levels: LevelStatus[]):
   const status = levels.find((l) => l.level === level);
   if (!status?.unlocked) return false;
   return folds.levels[level] ?? levelOpenByDefault(level, levels);
+}
+
+/** One heading's key: the same variation in another level, or among the bonus lines, folds separately. */
+export function variationKey(level: number, bonus: boolean, variation: string): string {
+  return `${level}:${bonus ? 'bonus' : 'main'}:${variation}`;
 }
 
 export function isVariationOpen(folds: Folds, variation: string): boolean {

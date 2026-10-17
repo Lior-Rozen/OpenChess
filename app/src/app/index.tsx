@@ -50,7 +50,7 @@ export default function Home() {
             <View style={styles.mainRow}>
               {next && (
                 <View style={styles.mainIcon}>
-                  <OpeningIcon openingId={next.openingId} size={28} />
+                  <OpeningIcon openingId={next.openingId} size={24} />
                 </View>
               )}
               <Text style={styles.mainLabel}>{next ? 'Continue' : 'All mastered'}</Text>
@@ -107,16 +107,16 @@ const styles = StyleSheet.create({
   main: {
     backgroundColor: theme.accent,
     borderRadius: 14,
-    paddingVertical: 18,
-    paddingHorizontal: 20,
-    gap: 4,
+    paddingVertical: 14,
+    paddingHorizontal: 18,
+    gap: 3,
     boxShadow: theme.glow,
   },
   mainPressed: { opacity: 0.8 },
   mainRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10 },
   mainIcon: { backgroundColor: theme.background, borderRadius: 6, padding: 3 },
-  mainLabel: { fontSize: 22, fontFamily: theme.fontSemi, color: theme.onAccent, textAlign: 'center' },
-  mainDetail: { fontSize: 14, fontFamily: theme.font, color: theme.onAccent, opacity: 0.85, textAlign: 'center' },
+  mainLabel: { fontSize: 19, fontFamily: theme.fontSemi, color: theme.onAccent, textAlign: 'center' },
+  mainDetail: { fontSize: 13, fontFamily: theme.font, color: theme.onAccent, opacity: 0.85, textAlign: 'center' },
   menu: {
     flexDirection: 'row',
     alignItems: 'center',

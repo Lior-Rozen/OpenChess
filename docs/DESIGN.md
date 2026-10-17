@@ -63,7 +63,8 @@ updates and sync later, but it is never required to train.
 - **Main lines are required:** a level is **complete** when all its main lines are mastered,
   and that unlocks the next level. **Sidelines are optional bonus lines.** Every level needs at
   least one main line (the validator checks this).
-- **Level exam (optional, earns a ★):** a Test over every line of the level, main and bonus.
+- **Level exam (optional, earns a ★):** a Test over the level's main lines (bonus lines stay
+  optional everywhere).
   The Mastermind picks his moves at random wherever the lines split, so every reply must be known.
   Any book reply is accepted where lines split on the user's move. A clean exam also masters the
   line it ended in.
@@ -131,11 +132,11 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
     several chips mean "any of them"; each tag narrows further (an opening needs all picked tags).
     Each card shows its first move and tags. The logic is `app/src/openings/filter.ts`.
   - **Opening:** Level → Variation → Line. Levels and variations fold: the level being worked
-    on starts open, finished and locked ones start closed, variations start open and fold by name
-    across the opening (a folded one shows "3 lines · 1 mastered"). Choices are remembered per
+    on starts open, finished and locked ones start closed, variations start open and each heading
+    folds on its own (main and bonus, per level; a folded one shows a "1/3" count). Choices are remembered per
     opening (`ui:folds:v1`). Each line is one compact row with a Watch | Practice | Test strip,
-    the suggested mode in magenta. The level exam (every line of the level, the Mastermind picks
-    his replies at random) is one row at the bottom of the level.
+    the suggested mode in magenta. The level exam (its main lines, the Mastermind picks his replies
+    at random) is one row at the bottom of the level. Explanations sit behind the header's ⓘ.
   - **Drill:** the Mastermind's line, board, move list, result card.
   - **Free board:** free play for both sides, with Take back (one move at a time, any time,
     checkmate included), Flip board, New game and **Edit position**. The editor starts from the

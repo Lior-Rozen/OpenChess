@@ -1,6 +1,6 @@
 import type { LevelStatus } from '@/progress/mastery';
 
-import { isLevelOpen, isVariationOpen, NO_FOLDS, parseFolds, toggleLevel, toggleVariation } from './folds';
+import { isLevelOpen, isVariationOpen, NO_FOLDS, parseFolds, toggleLevel, toggleVariation, variationKey } from './folds';
 
 const level = (n: number, unlocked: boolean, complete: boolean): LevelStatus => ({
   level: n,
@@ -30,12 +30,16 @@ describe('opening screen folds', () => {
     expect(isLevelOpen(toggleLevel(NO_FOLDS, 3, levels), 3, levels)).toBe(false);
   });
 
-  it('keeps variations open until folded, by name', () => {
-    expect(isVariationOpen(NO_FOLDS, 'vs 2…Nc6')).toBe(true);
-    const folds = toggleVariation(NO_FOLDS, 'vs 2…Nc6');
-    expect(isVariationOpen(folds, 'vs 2…Nc6')).toBe(false);
-    expect(isVariationOpen(folds, 'Vienna Gambit')).toBe(true);
-    expect(isVariationOpen(toggleVariation(folds, 'vs 2…Nc6'), 'vs 2…Nc6')).toBe(true);
+  it('keeps variations open until folded, each heading on its own', () => {
+    const main = variationKey(1, false, 'Vienna Gambit');
+    const bonus = variationKey(1, true, 'Vienna Gambit');
+    const level2 = variationKey(2, false, 'Vienna Gambit');
+    expect(isVariationOpen(NO_FOLDS, main)).toBe(true);
+    const folds = toggleVariation(NO_FOLDS, main);
+    expect(isVariationOpen(folds, main)).toBe(false);
+    expect(isVariationOpen(folds, bonus)).toBe(true);
+    expect(isVariationOpen(folds, level2)).toBe(true);
+    expect(isVariationOpen(toggleVariation(folds, main), main)).toBe(true);
   });
 
   it('reads saved folds and drops anything malformed', () => {
