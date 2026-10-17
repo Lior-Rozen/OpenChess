@@ -47,6 +47,8 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
   const [turn, setTurn] = useState<Color>(initialTurn);
   const [problem, setProblem] = useState<string | null>(null);
   const [drag, setDrag] = useState<Drag | null>(null);
+  // The square the dragged piece would land on, lit up while dragging.
+  const [hover, setHover] = useState<Square | null>(null);
   const [ghost] = useState(() => new Animated.ValueXY());
   // Where the root, board and pool are on screen, for working out what a finger is over.
   const [rects, setRects] = useState<{ root?: Rect; board?: Rect; pool?: Rect }>({});
@@ -56,11 +58,27 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
 
   const squareSize = size / 8;
   const tileSize = size / POOL_COLUMNS;
-  // The dragged piece floats a little above the finger, so it stays visible.
-  const lift = squareSize * 0.6;
+  // The dragged piece is drawn larger than a square and centred on the finger, so it shows around it.
+  const ghostSize = squareSize * 1.5;
 
+  // measure() reports page coordinates, the same space as a touch's pageX/pageY. (measureInWindow
+  // leaves out the status bar on Android, which put every touch about a square too low.)
   function measure(name: 'root' | 'board' | 'pool', ref: RefObject<View | null>) {
-    ref.current?.measureInWindow((x, y, width, height) => setRects((r) => ({ ...r, [name]: { x, y, width, height } })));
+    ref.current?.measure((_x, _y, width, height, pageX, pageY) =>
+      setRects((r) => ({ ...r, [name]: { x: pageX, y: pageY, width, height } })),
+    );
+  }
+
+  function measureAll() {
+    measure('root', rootRef);
+    measure('board', boardRef);
+    measure('pool', poolRef);
+  }
+
+  /** The board square under a finger, or null if it's off the board. */
+  function squareUnder(pageX: number, pageY: number): Square | null {
+    const b = rects.board;
+    return b ? squareAt(pageX - b.x, pageY - b.y, b.width, orientation) : null;
   }
 
   function change(next: EditorBoard) {
@@ -70,11 +88,9 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
 
   /** What is under a finger: a piece on the board or in the pool. */
   function pick(pageX: number, pageY: number): Drag | null {
-    const { board: b, pool: p } = rects;
-    if (b) {
-      const square = squareAt(pageX - b.x, pageY - b.y, b.width, orientation);
-      if (square) return board[square] ? { code: board[square], from: square } : null;
-    }
+    const square = squareUnder(pageX, pageY);
+    if (square) return board[square] ? { code: board[square], from: square } : null;
+    const p = rects.pool;
     if (p) {
       const code = poolPieceAt(pageX - p.x, pageY - p.y, p.width);
       if (code) return { code, from: null };
@@ -83,11 +99,11 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
   }
 
   function moveGhost(e: GestureResponderEvent) {
+    const { pageX, pageY } = e.nativeEvent;
     const root = rects.root ?? { x: 0, y: 0 };
-    ghost.setValue({
-      x: e.nativeEvent.pageX - root.x - squareSize / 2,
-      y: e.nativeEvent.pageY - root.y - squareSize / 2 - lift,
-    });
+    ghost.setValue({ x: pageX - root.x - ghostSize / 2, y: pageY - root.y - ghostSize / 2 });
+    const square = squareUnder(pageX, pageY);
+    if (square !== hover) setHover(square);
   }
 
   function onGrant(e: GestureResponderEvent) {
@@ -98,15 +114,21 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
   }
 
   function onRelease(e: GestureResponderEvent) {
+    endDrag();
     if (!drag) return;
-    const b = rects.board;
-    const target = b ? squareAt(e.nativeEvent.pageX - b.x, e.nativeEvent.pageY - lift - b.y, b.width, orientation) : null;
+    const target = squareUnder(e.nativeEvent.pageX, e.nativeEvent.pageY);
     const next = { ...board };
     if (drag.from) delete next[drag.from];
     if (target) next[target] = drag.code;
     // Dropping a pool piece off the board changes nothing.
     if (target || drag.from) change(next);
+  }
+
+  function endDrag() {
     setDrag(null);
+    setHover(null);
+    // Re-measure in case anything moved on screen since the last layout.
+    measureAll();
   }
 
   function play() {
@@ -129,13 +151,13 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
       onResponderMove={moveGhost}
       onResponderRelease={onRelease}
       onResponderTerminationRequest={() => !drag}
-      onResponderTerminate={() => setDrag(null)}
+      onResponderTerminate={endDrag}
     >
       <View ref={boardRef} onLayout={() => measure('board', boardRef)}>
         <Board
           position={editorPosition(shown, turn)}
           orientation={orientation}
-          selection={null}
+          selection={hover ? { from: hover, targets: [] } : null}
           onSquarePress={() => {}}
           size={size}
         />
@@ -169,9 +191,9 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
       {drag && (
         <Animated.View
           pointerEvents="none"
-          style={[styles.ghost, { width: squareSize, height: squareSize, transform: ghost.getTranslateTransform() }]}
+          style={[styles.ghost, { width: ghostSize, height: ghostSize, transform: ghost.getTranslateTransform() }]}
         >
-          <Piece {...pieceOf(drag.code)} size={squareSize} />
+          <Piece {...pieceOf(drag.code)} size={ghostSize} />
         </Animated.View>
       )}
     </View>
