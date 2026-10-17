@@ -43,7 +43,7 @@ function Section({ label, children }: { label: string; children: ReactNode }) {
   return (
     <View style={styles.section}>
       <Text style={styles.label}>{label}</Text>
-      {children}
+      <View style={styles.card}>{children}</View>
     </View>
   );
 }
@@ -133,10 +133,11 @@ function ServerStatus() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: theme.background },
   content: { padding: 16, gap: 28 },
-  section: { gap: 10 },
-  label: { fontSize: 12, fontFamily: theme.mono, color: theme.accent2, letterSpacing: 1 },
+  section: { gap: 8 },
+  card: { backgroundColor: theme.card, borderWidth: 1, borderColor: theme.border, borderRadius: 14, padding: 14, gap: 10 },
+  label: { fontSize: 11, fontFamily: theme.fontSemi, color: theme.muted, letterSpacing: 1, marginLeft: 4 },
   text: { fontSize: 16, fontFamily: theme.font, color: theme.text },
-  hint: { fontSize: 14, fontFamily: theme.font, color: theme.muted },
+  hint: { fontSize: 13, fontFamily: theme.font, color: theme.muted },
   toggle: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   resetBlock: { gap: 8 },
   reset: {
@@ -148,5 +149,5 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   resetFill: { position: 'absolute', left: 0, top: 0, bottom: 0, backgroundColor: theme.bad, opacity: 0.45 },
-  resetText: { fontSize: 16, fontFamily: theme.font, color: theme.bad },
+  resetText: { fontSize: 15, fontFamily: theme.fontSemi, color: theme.bad },
 });

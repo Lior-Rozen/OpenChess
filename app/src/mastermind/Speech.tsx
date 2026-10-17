@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   bubble: {
     flex: 1,
     backgroundColor: theme.card,
-    borderRadius: 8,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: theme.border,
     borderLeftWidth: 3,
@@ -31,6 +31,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   name: { fontSize: 12, fontFamily: theme.mono, color: theme.accent2, letterSpacing: 1 },
-  text: { fontSize: 16, fontFamily: theme.font, color: theme.text },
+  text: { fontSize: 15, lineHeight: 21, fontFamily: theme.font, color: theme.text },
   silent: { color: theme.muted },
 });

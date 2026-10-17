@@ -117,8 +117,8 @@ const styles = StyleSheet.create({
   },
   editing: { justifyContent: 'flex-start', paddingTop: 12 },
   status: {
-    fontSize: 20,
-    fontFamily: theme.font,
+    fontSize: 18,
+    fontFamily: theme.fontSemi,
     color: theme.text,
     marginBottom: 12,
   },

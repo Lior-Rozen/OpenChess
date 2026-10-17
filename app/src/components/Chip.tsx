@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   pressed: { backgroundColor: theme.pressed },
   selected: { backgroundColor: theme.accent, borderColor: theme.accent, boxShadow: theme.glow },
   dashed: { borderStyle: 'dashed', backgroundColor: 'transparent' },
-  text: { fontSize: 14, fontFamily: theme.font, color: theme.text },
+  text: { fontSize: 14, fontFamily: theme.fontMedium, color: theme.text },
   selectedText: { color: theme.onAccent },
   dashedText: { color: theme.muted },
 });

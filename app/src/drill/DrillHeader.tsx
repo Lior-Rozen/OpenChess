@@ -30,6 +30,6 @@ function Title({ target }: { target: DrillTarget }) {
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 10, flexShrink: 1 },
   text: { flexShrink: 1 },
-  opening: { fontSize: 13, fontFamily: theme.mono, color: theme.muted },
-  line: { fontSize: 18, fontFamily: theme.font, color: theme.text },
+  opening: { fontSize: 12, fontFamily: theme.fontMedium, color: theme.muted },
+  line: { fontSize: 17, fontFamily: theme.fontSemi, color: theme.text },
 });

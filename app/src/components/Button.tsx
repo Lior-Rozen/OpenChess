@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   button: {
     paddingVertical: 10,
     paddingHorizontal: 18,
-    borderRadius: 6,
+    borderRadius: 9,
     borderWidth: 1,
     borderColor: theme.border,
     backgroundColor: theme.card,
@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
   primary: { backgroundColor: theme.accent, borderColor: theme.accent, boxShadow: theme.glow },
   primaryPressed: { opacity: 0.8 },
   disabled: { opacity: 0.4 },
-  text: { fontSize: 16, fontFamily: theme.font, color: theme.text },
+  text: { fontSize: 15, fontFamily: theme.fontMedium, color: theme.text },
   primaryText: { color: theme.onAccent, fontFamily: theme.fontSemi },
 });
