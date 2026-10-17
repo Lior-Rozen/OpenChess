@@ -194,7 +194,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
           <RunResultCard target={target} mode={mode} state={state} result={result} onRestart={onRestart} />
         ) : (
           <View style={drillStyles.below}>
-            <Text style={drillStyles.note}>{alternativeText(state) ?? state.note ?? ' '}</Text>
+            <Text style={drillStyles.note}>{alternativeText(state) ?? mistakeText(state) ?? state.note ?? ' '}</Text>
             {mode === 'practice' && (
               <Button label="Hint" onPress={onHint} disabled={state.phase !== 'user' || state.hint !== null} />
             )}
@@ -208,6 +208,12 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
 }
 
 /** "…Nc6 is also good, but this line plays …c5." while an accepted alternative waits for the book move. */
+/** "…Nxd4? Bb5+ wins the queen." after a known mistake, until the next try. */
+function mistakeText(state: TrainerState): string | null {
+  if (!state.mistake) return null;
+  return `${state.userColor === 'b' ? '…' : ''}${state.mistake.san}? ${state.mistake.reason}`;
+}
+
 function alternativeText(state: TrainerState): string | null {
   if (!state.alternative) return null;
   const prefix = state.userColor === 'b' ? '…' : '';

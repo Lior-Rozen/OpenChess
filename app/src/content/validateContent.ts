@@ -161,6 +161,35 @@ export function validateOpening(opening: unknown, file: string, lineIds = new Se
       }
     }
 
+    if (line.mistakes !== undefined) {
+      if (!isObject(line.mistakes)) errors.push(`${where}: mistakes must be an object`);
+      else {
+        for (const [key, byMove] of Object.entries(line.mistakes)) {
+          const ply = Number(key);
+          if (!Number.isInteger(ply) || ply < 0 || ply >= fens.length || ply % 2 !== userParity) {
+            errors.push(`${where}: mistakes key "${key}" is not a ply index of a ${opening.side} move in this line`);
+            continue;
+          }
+          if (!isObject(byMove) || Object.keys(byMove).length === 0) {
+            errors.push(`${where}: mistakes "${key}" must map moves to reasons`);
+            continue;
+          }
+          const book = new ChessGame(fens[ply]).resolveSan(line.moves[ply] as string);
+          const accepted = isObject(line.accept) && Array.isArray(line.accept[key]) ? (line.accept[key] as unknown[]) : [];
+          for (const [san, reason] of Object.entries(byMove)) {
+            const move = new ChessGame(fens[ply]).resolveSan(san);
+            if (!move) errors.push(`${where}: mistakes "${key}": "${san}" is illegal or not valid SAN`);
+            else if (book && move.from === book.from && move.to === book.to) {
+              errors.push(`${where}: mistakes "${key}": "${san}" is the book move itself`);
+            } else if (accepted.includes(san)) {
+              errors.push(`${where}: mistakes "${key}": "${san}" is also an accepted alternative`);
+            }
+            if (!isNonEmptyString(reason)) errors.push(`${where}: mistakes "${key}": "${san}" needs a reason`);
+          }
+        }
+      }
+    }
+
     if (line.notes !== undefined) {
       if (!isObject(line.notes)) errors.push(`${where}: notes must be an object`);
       else {

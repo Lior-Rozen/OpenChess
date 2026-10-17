@@ -91,6 +91,25 @@ describe('validateOpening', () => {
     ]);
   });
 
+  it('checks known mistakes', () => {
+    const line = { ...validLine, moves: ['e4', 'e6', 'd4', 'd5'], accept: { '3': ['c5'] } };
+    expect(validateOpening(opening([{ ...line, mistakes: { '3': { f5: 'Loses a pawn.' } } }]), 'test.json')).toEqual(
+      [],
+    );
+    expect(
+      validateOpening(
+        opening([{ ...line, mistakes: { '2': { c4: 'x' }, '3': { d5: 'x', c5: 'x', Qd2: 'x', f5: '' } } }]),
+        'test.json',
+      ),
+    ).toEqual([
+      'test.json "l1": mistakes key "2" is not a ply index of a black move in this line',
+      'test.json "l1": mistakes "3": "d5" is the book move itself',
+      'test.json "l1": mistakes "3": "c5" is also an accepted alternative',
+      'test.json "l1": mistakes "3": "Qd2" is illegal or not valid SAN',
+      'test.json "l1": mistakes "3": "f5" needs a reason',
+    ]);
+  });
+
   it('reports a level with only sidelines', () => {
     const errors = validateOpening(opening([validLine, { ...validLine, id: 'l2', level: 2, tier: 'side' }]), 'test.json');
     expect(errors).toContain('test.json: level 2 needs at least one main line (main lines unlock the next level)');

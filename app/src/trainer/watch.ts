@@ -7,7 +7,7 @@ export type WatchFrame = {
   position: GamePosition;
   /** SAN of the moves played so far. */
   moves: string[];
-  /** The note on the move that led here, plus any other good moves there, if any. */
+  /** The note on the move that led here, plus other good moves and known mistakes there, if any. */
   note: string | null;
 };
 
@@ -27,9 +27,11 @@ export function watchFrames(line: OpeningLine): WatchFrame[] {
     if (!move) throw new Error(`Line ${line.id}: ply ${ply} "${san}" is illegal`);
     moves.push(move.san);
     const alternatives = line.accept?.[String(ply)];
+    const mistakes = Object.entries(line.mistakes?.[String(ply)] ?? {});
     const parts = [
       line.notes?.[String(ply)],
       alternatives?.length ? `Also good: ${alternativesText(alternatives, ply)}.` : undefined,
+      ...mistakes.map(([san, reason]) => `Avoid ${alternativesText([san], ply)}? ${reason}`),
     ].filter((part) => part !== undefined);
     frames.push({ ply: ply + 1, position: game.position(), moves: [...moves], note: parts.join(' ') || null });
   });

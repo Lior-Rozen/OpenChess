@@ -39,6 +39,8 @@ export type TrainerState = {
   hint: Arrow | null;
   /** The accepted alternative the user just played, until they play the book move. */
   alternative: { san: string; bookSan: string } | null;
+  /** The known mistake the user just played and why it's wrong, until the next try. */
+  mistake: { san: string; reason: string } | null;
   /** The note of the most recently played move, if it has one. */
   note: string | null;
   /** The line played to the end (phase 'complete'), or the only line still possible. */
@@ -70,6 +72,9 @@ export const TEST_MISTAKE_LIMIT = 2;
  * A line can list other good moves for the user (`accept`). Playing one isn't a mistake: the
  * move is taken back, the book move is shown as an arrow (even in Test), and the run stays clean.
  *
+ * A line can also list known mistakes (`mistakes`) with a reason. They still count as
+ * mistakes, but the reason is exposed in state().mistake so the UI can explain them.
+ *
  * Wrong moves are rejected and counted. In Practice the correct move is shown after
  * TRIES_BEFORE_HINT wrong tries (or on request); a Test run fails at TEST_MISTAKE_LIMIT
  * mistakes. A run is clean with no mistakes and no hints.
@@ -91,6 +96,7 @@ export class Trainer {
   private hint: Arrow | null = null;
   private readonly triesBeforeHint: number;
   private alternative: { san: string; bookSan: string } | null = null;
+  private mistake: { san: string; reason: string } | null = null;
   private note: string | null = null;
 
   constructor(
@@ -131,6 +137,7 @@ export class Trainer {
       triesThisMove: this.triesThisMove,
       hint: this.hint,
       alternative: this.alternative,
+      mistake: this.mistake,
       note: this.note,
       lineId: line?.id ?? null,
       clean: this.mistakes === 0 && this.hintsUsed === 0,
@@ -157,10 +164,12 @@ export class Trainer {
     if (alternative) {
       const book = options[0].move;
       this.alternative = { san: alternative.san, bookSan: book.san };
+      this.mistake = null;
       this.hint = { from: book.from, to: book.to };
       return [{ type: 'alternativeMove', from, to, san: alternative.san, bookSan: book.san }];
     }
 
+    this.mistake = this.knownMistake(from, to);
     this.mistakes++;
     this.triesThisMove++;
     const events: TrainerEvent[] = [{ type: 'wrongMove', from, to, triesThisMove: this.triesThisMove }];
@@ -201,6 +210,17 @@ export class Trainer {
     return null;
   }
 
+  /** The move and its reason, if a candidate line lists it as a known mistake at this ply. */
+  private knownMistake(from: Square, to: Square): { san: string; reason: string } | null {
+    for (const line of this.candidates) {
+      for (const [san, reason] of Object.entries(line.mistakes?.[String(this.ply)] ?? {})) {
+        const move = this.game.resolveSan(san);
+        if (move && move.from === from && move.to === to) return { san: move.san, reason };
+      }
+    }
+    return null;
+  }
+
   /** The distinct book moves from here, each with the candidate lines that continue with it. */
   private nextMoves(): { move: ResolvedMove; lines: OpeningLine[] }[] {
     const options: { move: ResolvedMove; lines: OpeningLine[] }[] = [];
@@ -225,6 +245,7 @@ export class Trainer {
     this.triesThisMove = 0;
     this.hint = null;
     this.alternative = null;
+    this.mistake = null;
     this.note = this.candidates.map((l) => l.notes?.[String(ply)]).find((n) => n !== undefined) ?? null;
 
     const events: TrainerEvent[] = [{ type: 'moved', by, ply, san: move.san, from: move.from, to: move.to, note: this.note }];

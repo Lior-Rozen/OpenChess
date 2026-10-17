@@ -16,6 +16,9 @@ import type { Opening, OpeningLine, Side, Tier } from './types';
  *                          a line ends at this move (it must be the user's move)
  *   {@alt}                 on the first move of a one-move variation: an accepted
  *                          alternative to the user's book move it replaces
+ *   {@mistake …Qh4+! hits the king.}
+ *                          on the first move of a one-move variation: a common mistake
+ *                          for the user there, with the reason shown when it's played
  *
  * Every branch must end with a @line. Where it's the user's move there is one book move
  * (plus any @alt moves), and the same position, however it's reached, must get the same one.
@@ -53,8 +56,8 @@ export function compilePgn(text: string, file: string): CompileResult {
     const nextPly = path.length - 1;
     const where = `${file} ${moveLabel(sans.length - 1, sans[sans.length - 1] ?? '')}`;
     const fen = game.position().fen.split(' ').slice(0, 4).join(' ');
-    const book = node.children.filter((c) => !isAlt(c));
-    const alts = node.children.filter(isAlt);
+    const book = node.children.filter((c) => !isAlt(c) && !isMistake(c));
+    const alts = node.children.filter((c) => isAlt(c) || isMistake(c));
     const userToMove = nextPly % 2 === userParity;
 
     if (userToMove && book.length > 0) {
@@ -68,10 +71,12 @@ export function compilePgn(text: string, file: string): CompileResult {
       } else if (!seen) bookMoveAt.set(fen, { san: resolved, where });
     }
     for (const alt of alts) {
-      if (alt.children.length > 0) errors.push(`${where}: the @alt move ${alt.san} must be a one-move variation`);
-      if (!userToMove) errors.push(`${where}: @alt ${alt.san} is not your move`);
-      if (book.length === 0) errors.push(`${where}: @alt ${alt.san} has no book move to replace`);
-      if (!game.resolveSan(alt.san)) errors.push(`${where}: @alt ${alt.san} is illegal`);
+      const kind = isAlt(alt) ? '@alt' : '@mistake';
+      if (alt.children.length > 0) errors.push(`${where}: the ${kind} move ${alt.san} must be a one-move variation`);
+      if (!userToMove) errors.push(`${where}: ${kind} ${alt.san} is not your move`);
+      if (book.length === 0) errors.push(`${where}: ${kind} ${alt.san} has no book move to replace`);
+      if (!game.resolveSan(alt.san)) errors.push(`${where}: ${kind} ${alt.san} is illegal`);
+      if (isMistake(alt) && !mistakeText(alt)) errors.push(`${where}: @mistake ${alt.san} needs a reason`);
     }
 
     if (node.parent) {
@@ -111,6 +116,9 @@ export function compilePgn(text: string, file: string): CompileResult {
 }
 
 const isAlt = (node: Node) => node.comments.includes('@alt');
+const isMistake = (node: Node) => node.comments.some((c) => c.startsWith('@mistake'));
+const mistakeText = (node: Node) =>
+  node.comments.find((c) => c.startsWith('@mistake'))?.slice('@mistake'.length).trim() ?? '';
 
 /** "5.Nf3" or "5…Qb6" for a 0-based ply. */
 function moveLabel(ply: number, san: string): string {
@@ -138,6 +146,7 @@ function makeLine(
 
   const notes: Record<string, string> = {};
   const accept: Record<string, string[]> = {};
+  const mistakes: Record<string, Record<string, string>> = {};
   let variation: string | undefined;
   path.slice(1).forEach((node, ply) => {
     const note = node.comments.filter((c) => !c.startsWith('@')).join(' ');
@@ -146,6 +155,8 @@ function makeLine(
     if (named) variation = named.slice('@variation'.length).trim();
     const alts = node.parent!.children.filter(isAlt).map((a) => a.san);
     if (alts.length > 0) accept[ply] = alts;
+    const known = node.parent!.children.filter(isMistake);
+    if (known.length > 0) mistakes[ply] = Object.fromEntries(known.map((m) => [m.san, mistakeText(m)]));
   });
 
   return {
@@ -157,6 +168,7 @@ function makeLine(
     moves: sans,
     ...(Object.keys(notes).length > 0 ? { notes } : {}),
     ...(Object.keys(accept).length > 0 ? { accept } : {}),
+    ...(Object.keys(mistakes).length > 0 ? { mistakes } : {}),
     summary: fields.summary,
   };
 }

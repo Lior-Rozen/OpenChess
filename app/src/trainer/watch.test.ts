@@ -32,6 +32,11 @@ describe('watchFrames', () => {
     expect(withAlt[4].note).toBe('Also good: …c5 or …Nf6.');
   });
 
+  it('adds known mistakes to the note', () => {
+    const frames = watchFrames({ ...line, mistakes: { '5': { f6: 'It weakens e6.' } } });
+    expect(frames[6].note).toBe('…c5 strikes at d4. Avoid …f6? It weakens e6.');
+  });
+
   it('rejects an illegal line', () => {
     expect(() => watchFrames({ ...line, moves: ['e4', 'e5', 'e5'] })).toThrow('ply 2 "e5" is illegal');
   });

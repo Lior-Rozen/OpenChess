@@ -21,6 +21,11 @@ export type OpeningLine = {
    * so, shows the book move as an arrow, and the line goes on with the book move.
    */
   accept?: Record<string, string[]>;
+  /**
+   * Common mistakes for the user, keyed by 0-based ply index, then by SAN, with a one-line
+   * reason. Playing one still counts as a mistake, but the reason is shown.
+   */
+  mistakes?: Record<string, Record<string, string>>;
   /** Short takeaway shown on the "Line complete" card. */
   summary?: string;
 };

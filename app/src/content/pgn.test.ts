@@ -87,6 +87,24 @@ describe('compilePgn', () => {
     ]);
   });
 
+  it('compiles known mistakes and checks them', () => {
+    const withMistake = `${headers}
+1. e4 e6 2. d4 d5 (2... f5 {@mistake It loses a pawn to exf5.}) 3. e5 c5
+{@line id=m1 level=1 tier=main name="M" summary="S."} *`;
+    const result = compilePgn(withMistake, 'm.pgn');
+    expect(result.errors).toEqual([]);
+    expect(result.opening!.lines[0].mistakes).toEqual({ '3': { f5: 'It loses a pawn to exf5.' } });
+    expect(validateOpening(result.opening, 'm.json')).toEqual([]);
+
+    const bad = `${headers}
+1. e4 e6 2. d4 d5 (2... f5 {@mistake}) 3. e5 (3. Nc3 {@mistake No.}) 3... c5
+{@line id=m2 level=1 tier=main name="M" summary="S."} *`;
+    expect(compilePgn(bad, 'b.pgn').errors).toEqual([
+      'b.pgn 2.d4: @mistake f5 needs a reason',
+      'b.pgn 2…d5: @mistake Nc3 is not your move',
+    ]);
+  });
+
   it('reports a different book move in a transposed position', () => {
     const transposed = `${headers}
 1. e4 e6 2. d4 (2. Nf3 d5 3. d4 Nf6 4. Nc3 Bb4 {@line id=b level=1 tier=main name="B" summary="S."})

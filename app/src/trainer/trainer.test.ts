@@ -190,7 +190,12 @@ describe('Trainer with one line', () => {
 
 describe('Trainer with accepted alternatives', () => {
   // 3…c5 is the book move; 3…Nc6 is also accepted.
-  const withAlt: OpeningLine = { ...advance, accept: { '5': ['Nc6'] } };
+  // 3…c5 is the book move; 3…Nc6 is also accepted; 3…f6 is a known mistake.
+  const withAlt: OpeningLine = {
+    ...advance,
+    accept: { '5': ['Nc6'] },
+    mistakes: { '5': { f6: 'It weakens e6 and the king.' } },
+  };
 
   /** Plays the line up to the user's 3rd move. */
   function atMoveThree(mode: 'practice' | 'test'): Trainer {
@@ -236,6 +241,26 @@ describe('Trainer with accepted alternatives', () => {
   it('still counts a move that is neither book nor accepted as a mistake', () => {
     const trainer = atMoveThree('practice');
     expect(trainer.tryMove('a7', 'a6')).toEqual([{ type: 'wrongMove', from: 'a7', to: 'a6', triesThisMove: 1 }]);
+    expect(trainer.state().mistake).toBeNull();
+  });
+
+  it('counts a known mistake but gives its reason until the next try', () => {
+    const trainer = atMoveThree('test');
+    expect(trainer.tryMove('f7', 'f6')).toEqual([{ type: 'wrongMove', from: 'f7', to: 'f6', triesThisMove: 1 }]);
+    expect(trainer.state()).toMatchObject({
+      mistakes: 1,
+      mistake: { san: 'f6', reason: 'It weakens e6 and the king.' },
+    });
+
+    trainer.tryMove('a7', 'a6');
+    expect(trainer.state().mistake).toBeNull();
+  });
+
+  it('clears the reason once the book move is played', () => {
+    const trainer = atMoveThree('practice');
+    trainer.tryMove('f7', 'f6');
+    trainer.tryMove('c7', 'c5');
+    expect(trainer.state()).toMatchObject({ phase: 'complete', mistake: null, clean: false });
   });
 });
 
