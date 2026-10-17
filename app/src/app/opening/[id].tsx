@@ -1,8 +1,11 @@
 import { router, Stack, useLocalSearchParams } from 'expo-router';
+import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { Badge, Icon, IconButton, InfoSheet, ProgressBar, type InfoStep } from '@/components/ui';
 import { loadOpening } from '@/content/loader';
 import type { Opening } from '@/content/types';
+import { firstMoves } from '@/openings/filter';
 import { isLevelOpen, isVariationOpen, toggleLevel, toggleVariation, type Folds } from '@/openings/folds';
 import { useFolds } from '@/openings/useFolds';
 import {
@@ -20,6 +23,19 @@ const MODES: { mode: RunMode; label: string }[] = [
   { mode: 'watch', label: 'Watch' },
   { mode: 'practice', label: 'Practice' },
   { mode: 'test', label: 'Test' },
+];
+
+/** The "How it works" sheet behind the ⓘ: every explanation the screen used to print. */
+const HOW_IT_WORKS: InfoStep[] = [
+  { icon: 'eye-outline', title: 'Watch', text: 'See the line played, with a note on the key moves.' },
+  { icon: 'create-outline', title: 'Practice', text: 'Play it yourself. Hints if you need them.' },
+  { icon: 'checkmark', title: 'Test', text: 'No hints. One clean run masters the line.' },
+  {
+    icon: 'star',
+    title: 'Unlock and exam',
+    text: 'Master the main lines to open the next level. The exam mixes them all for a ★.',
+    color: theme.gold,
+  },
 ];
 
 const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
@@ -44,15 +60,32 @@ type FoldProps = { folds: Folds; onFold: (change: (current: Folds) => Folds) => 
 function OpeningDetails({ opening }: { opening: Opening }) {
   const { progress, loaded } = useProgress();
   const [folds, setFolds] = useFolds(opening.id);
+  const [info, setInfo] = useState(false);
   const levels = levelStatuses(opening, progress);
+  const side = opening.side === 'white' ? 'White' : 'Black';
 
   return (
     <ScrollView style={styles.scroll} contentContainerStyle={styles.container}>
-      <Stack.Screen options={{ headerShown: true, title: opening.name }} />
-      <Text style={styles.description}>
-        {opening.description} You play {opening.side === 'white' ? 'White' : 'Black'}.
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          title: opening.name,
+          headerRight: () => <IconButton name="information-outline" label="How it works" onPress={() => setInfo(true)} />,
+        }}
+      />
+      <View style={styles.badges}>
+        <Badge label={side.toUpperCase()} tone="light" />
+        {firstMoves(opening).map((m) => (
+          <Badge key={m} label={`1.${m}`} />
+        ))}
+        {(opening.tags ?? []).map((t) => (
+          <Badge key={t} label={t} />
+        ))}
+      </View>
+      <Text style={styles.description} numberOfLines={2}>
+        {opening.description}
       </Text>
-      <Text style={styles.hint}>One clean Test masters a line. Master the main lines to unlock the next level.</Text>
+
       {loaded &&
         levels.map((level) => (
           <LevelCard
@@ -65,6 +98,14 @@ function OpeningDetails({ opening }: { opening: Opening }) {
             onFold={setFolds}
           />
         ))}
+
+      <InfoSheet
+        visible={info}
+        onClose={() => setInfo(false)}
+        title="How it works"
+        intro={`${opening.name}: ${opening.description} You play ${side}.`}
+        steps={HOW_IT_WORKS}
+      />
     </ScrollView>
   );
 }
@@ -73,38 +114,51 @@ type LevelCardProps = FoldProps & { opening: Opening; level: LevelStatus; open: 
 
 function LevelCard({ opening, level, open, onToggle, folds, onFold }: LevelCardProps) {
   const mastered = level.mainLines.filter((l) => l.mastered).length;
-  const lineCount = level.mainLines.length + level.bonusLines.length;
-  const status = !level.unlocked
-    ? `Locked: complete level ${level.level - 1}`
-    : level.complete
-      ? 'Complete ✓'
-      : `${mastered} of ${level.mainLines.length} mastered`;
+  const total = level.mainLines.length;
+  const lineCount = total + level.bonusLines.length;
 
   return (
     <View style={[styles.card, !level.unlocked && styles.locked]}>
       <Pressable onPress={onToggle} disabled={!level.unlocked} style={styles.levelHeader} hitSlop={8}>
-        <Text style={styles.levelTitle}>
-          <Text style={styles.chevron}>{open ? '▾ ' : '▸ '}</Text>
-          Level {level.level}
-          {level.examPassed ? ' ★' : ''}
-        </Text>
-        <Text style={[styles.levelStatus, level.complete && level.unlocked && styles.good]}>{status}</Text>
+        <Icon name={open ? 'chevron-down' : 'chevron-forward'} size={14} />
+        <Text style={styles.levelTitle}>Level {level.level}</Text>
+        {level.examPassed && <Icon name="star" size={14} color={theme.gold} />}
+        <View style={styles.spacer} />
+        {level.unlocked ? (
+          <>
+            <ProgressBar share={total ? mastered / total : 0} />
+            <Text style={[styles.count, level.complete && styles.good]}>
+              {mastered}/{total}
+            </Text>
+          </>
+        ) : (
+          <View style={styles.lockRow}>
+            <Icon name="lock-closed" size={12} />
+            <Text style={styles.lockText}>Finish level {level.level - 1}</Text>
+          </View>
+        )}
       </Pressable>
 
       {open && (
         <>
           <LineGroups opening={opening} lines={level.mainLines} folds={folds} onFold={onFold} />
-          {level.bonusLines.length > 0 && <Text style={styles.sectionLabel}>BONUS LINES</Text>}
+          {level.bonusLines.length > 0 && (
+            <View style={styles.divider}>
+              <Text style={styles.dividerText}>BONUS</Text>
+              <View style={styles.dividerLine} />
+            </View>
+          )}
           <LineGroups opening={opening} lines={level.bonusLines} folds={folds} onFold={onFold} />
           <View style={styles.exam}>
-            <Text style={styles.examText}>
-              <Text style={styles.examTitle}>Level {level.level} exam: </Text>
-              {level.examPassed
-                ? '★ passed.'
-                : `all ${plural(lineCount, 'line')}, he picks his replies at random. Earns a ★.`}
-            </Text>
+            <Icon name="star" size={16} color={theme.gold} />
+            <View style={styles.examText}>
+              <Text style={styles.examTitle}>Level exam</Text>
+              <Text style={styles.examSub}>
+                {level.examPassed ? 'Passed' : `All ${plural(lineCount, 'line')}, random replies`}
+              </Text>
+            </View>
             <SmallButton
-              label={level.examPassed ? 'Retake' : 'Take exam'}
+              label={level.examPassed ? 'Retake' : 'Start'}
               onPress={() =>
                 router.push({ pathname: '/drill', params: { opening: opening.id, level: String(level.level) } })
               }
@@ -126,15 +180,15 @@ function LineGroups({ opening, lines, folds, onFold }: FoldProps & { opening: Op
       <View key={variation ?? '-'}>
         {variation && (
           <Pressable onPress={() => onFold((f) => toggleVariation(f, variation))} style={styles.variationRow} hitSlop={6}>
-            <Text style={styles.variation}>
-              {open ? '▾ ' : '▸ '}
+            <Icon name={open ? 'chevron-down' : 'chevron-forward'} size={12} />
+            <Text style={styles.variation} numberOfLines={1}>
               {variation}
             </Text>
-            {!open && (
-              <Text style={styles.variationSummary}>
-                {plural(grouped.length, 'line')} · {mastered} mastered
+            <View style={styles.pill}>
+              <Text style={styles.pillText}>
+                {mastered}/{grouped.length}
               </Text>
-            )}
+            </View>
           </Pressable>
         )}
         {open && grouped.map((line) => <LineRow key={line.line.id} opening={opening} status={line} />)}
@@ -150,7 +204,7 @@ function LineRow({ opening, status }: { opening: Opening; status: LineStatus }) 
   return (
     <View style={styles.line}>
       <View style={styles.lineTop}>
-        <Text style={[styles.dot, mastered && styles.good]}>{mastered ? '●' : '○'}</Text>
+        <View style={[styles.dot, mastered && styles.dotOn]} />
         <Text style={styles.lineName} numberOfLines={1}>
           {line.name}
         </Text>
@@ -165,7 +219,7 @@ function LineRow({ opening, status }: { opening: Opening; status: LineStatus }) 
               styles.segment,
               i > 0 && styles.segmentDivider,
               mode === suggested && styles.segmentSuggested,
-              pressed && styles.segmentPressed,
+              pressed && styles.pressed,
             ]}
           >
             <Text style={[styles.segmentText, mode === suggested && styles.segmentTextSuggested]}>{label}</Text>
@@ -178,8 +232,8 @@ function LineRow({ opening, status }: { opening: Opening; status: LineStatus }) 
 
 function SmallButton({ label, onPress }: { label: string; onPress: () => void }) {
   return (
-    <Pressable onPress={onPress} style={({ pressed }) => [styles.smallButton, pressed && styles.segmentPressed]}>
-      <Text style={styles.segmentText}>{label}</Text>
+    <Pressable onPress={onPress} style={({ pressed }) => [styles.smallButton, pressed && styles.pressed]}>
+      <Text style={styles.smallButtonText}>{label}</Text>
     </Pressable>
   );
 }
@@ -187,57 +241,66 @@ function SmallButton({ label, onPress }: { label: string; onPress: () => void })
 const styles = StyleSheet.create({
   scroll: { backgroundColor: theme.background },
   container: { padding: 16, gap: 12, backgroundColor: theme.background, flexGrow: 1 },
-  description: { fontSize: 16, fontFamily: theme.font, color: theme.muted },
-  hint: { fontSize: 14, fontFamily: theme.font, color: theme.muted },
-  card: { backgroundColor: theme.card, borderWidth: 1, borderColor: theme.border, borderRadius: 8, padding: 14, gap: 8 },
-  locked: { opacity: 0.55 },
-  levelHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
-  levelTitle: { fontSize: 21, fontFamily: theme.font, color: theme.text },
-  chevron: { fontSize: 15, color: theme.muted },
-  levelStatus: { fontSize: 14, fontFamily: theme.font, color: theme.muted, flexShrink: 1, textAlign: 'right' },
+  badges: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
+  description: { fontSize: 14, lineHeight: 20, fontFamily: theme.font, color: theme.muted, marginBottom: 2 },
+  card: { backgroundColor: theme.card, borderWidth: 1, borderColor: theme.border, borderRadius: 14, padding: 14 },
+  locked: { opacity: 0.6 },
+  levelHeader: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  levelTitle: { fontSize: 17, fontFamily: theme.fontSemi, color: theme.text },
+  spacer: { flex: 1 },
+  count: { fontSize: 13, fontFamily: theme.fontMedium, color: theme.muted, minWidth: 30, textAlign: 'right' },
   good: { color: theme.good },
-  sectionLabel: { fontSize: 12, fontFamily: theme.mono, color: theme.accent2, letterSpacing: 1, marginTop: 10 },
-  variationRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginTop: 8 },
-  variation: { fontSize: 15, fontFamily: theme.font, color: theme.accent2 },
-  variationSummary: { fontSize: 13, fontFamily: theme.font, color: theme.muted },
-  line: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: theme.border, paddingVertical: 8, marginTop: 6 },
-  lineTop: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  dot: { fontSize: 13, color: theme.muted, width: 14, textAlign: 'center' },
-  lineName: { flex: 1, fontSize: 17, fontFamily: theme.font, color: theme.text },
-  lineMeta: { fontSize: 13, fontFamily: theme.font, color: theme.muted },
+  lockRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  lockText: { fontSize: 13, fontFamily: theme.font, color: theme.muted },
+  variationRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 14, marginBottom: 2 },
+  variation: { flex: 1, fontSize: 14.5, fontFamily: theme.fontSemi, color: theme.accent2 },
+  pill: { backgroundColor: theme.pressed, borderRadius: 9, paddingVertical: 2, paddingHorizontal: 8 },
+  pillText: { fontSize: 12, fontFamily: theme.fontMedium, color: theme.muted },
+  divider: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 18 },
+  dividerText: { fontSize: 11, fontFamily: theme.fontSemi, letterSpacing: 1, color: theme.muted },
+  dividerLine: { flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: theme.border },
+  line: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: theme.border, paddingVertical: 9, marginTop: 4 },
+  lineTop: { flexDirection: 'row', alignItems: 'center', gap: 9 },
+  dot: { width: 8, height: 8, borderRadius: 4, borderWidth: 1.5, borderColor: theme.muted },
+  dotOn: { backgroundColor: theme.good, borderColor: theme.good },
+  lineName: { flex: 1, fontSize: 15, fontFamily: theme.fontMedium, color: theme.text },
+  lineMeta: { fontSize: 12, fontFamily: theme.font, color: theme.muted },
   strip: {
     flexDirection: 'row',
     alignSelf: 'flex-start',
-    marginTop: 7,
-    marginLeft: 22,
+    marginTop: 8,
+    marginLeft: 17,
     borderWidth: 1,
     borderColor: theme.border,
-    borderRadius: 6,
+    borderRadius: 9,
     overflow: 'hidden',
   },
-  segment: { paddingVertical: 7, paddingHorizontal: 14, backgroundColor: theme.background },
+  segment: { paddingVertical: 6, paddingHorizontal: 13, backgroundColor: theme.background },
   segmentDivider: { borderLeftWidth: 1, borderLeftColor: theme.border },
   segmentSuggested: { backgroundColor: theme.accent },
-  segmentPressed: { opacity: 0.7 },
-  segmentText: { fontSize: 14, fontFamily: theme.font, color: theme.text },
+  pressed: { opacity: 0.7 },
+  segmentText: { fontSize: 13, fontFamily: theme.fontMedium, color: theme.text },
   segmentTextSuggested: { color: theme.onAccent, fontFamily: theme.fontSemi },
   exam: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: theme.border,
-    paddingTop: 10,
-    marginTop: 8,
-  },
-  examText: { flex: 1, fontSize: 13, fontFamily: theme.font, color: theme.muted },
-  examTitle: { color: theme.text },
-  smallButton: {
-    paddingVertical: 7,
+    marginTop: 14,
+    paddingVertical: 10,
     paddingHorizontal: 12,
-    borderWidth: 1,
-    borderColor: theme.border,
-    borderRadius: 6,
+    borderRadius: 10,
     backgroundColor: theme.background,
   },
+  examText: { flex: 1 },
+  examTitle: { fontSize: 14, fontFamily: theme.fontSemi, color: theme.text },
+  examSub: { fontSize: 12, fontFamily: theme.font, color: theme.muted, marginTop: 1 },
+  smallButton: {
+    paddingVertical: 7,
+    paddingHorizontal: 14,
+    borderWidth: 1,
+    borderColor: theme.border,
+    borderRadius: 9,
+    backgroundColor: theme.card,
+  },
+  smallButtonText: { fontSize: 14, fontFamily: theme.fontSemi, color: theme.text },
 });

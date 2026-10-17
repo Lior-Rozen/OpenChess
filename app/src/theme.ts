@@ -15,6 +15,8 @@ export const theme = {
   onAccent: '#1a0720',
   good: '#00e6aa',
   bad: '#ff4766',
+  /** Stars and tips. */
+  gold: '#ffd23f',
   /** Inter (OFL, loaded in app/_layout.tsx). On Android each weight is its own font family. */
   font: 'Inter_400Regular',
   fontMedium: 'Inter_500Medium',

@@ -4,6 +4,7 @@ import {
   groupByVariation,
   levelStatuses,
   masteredShare,
+  nextLineTarget,
   randomTarget,
   recordExam,
   recordRun,
@@ -174,5 +175,26 @@ describe('groupByVariation', () => {
       ['Winawer', ['b']],
       [null, ['d']],
     ]);
+  });
+});
+
+describe('nextLineTarget', () => {
+  it('offers the next unmastered main line of the opening, skipping the one just played', () => {
+    expect(nextLineTarget(french, {}, 'a')).toEqual({ openingId: 'french', lineId: 'b', mode: 'watch' });
+    expect(nextLineTarget(french, run({}, 'a'), 'a')?.lineId).toBe('b');
+  });
+
+  it('moves on to the next level once it unlocks, then the bonus lines', () => {
+    const level1 = run(run({}, 'a'), 'b');
+    expect(nextLineTarget(french, level1, 'b')?.lineId).toBe('c');
+    const allMain = run(run(level1, 'c'), 'd');
+    expect(nextLineTarget(french, allMain, 'd')?.lineId).toBe('s');
+  });
+
+  it('returns null when everything else is mastered', () => {
+    let progress: Progress = {};
+    for (const id of ['a', 'b', 's', 'c', 'd']) progress = run(progress, id);
+    expect(nextLineTarget(french, progress, 'd')).toBeNull();
+    expect(nextLineTarget(caro, {}, 'k1')).toBeNull();
   });
 });

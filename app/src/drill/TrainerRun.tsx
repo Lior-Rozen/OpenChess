@@ -6,18 +6,19 @@ import { Board, type BoardFlash } from '@/chess/Board';
 import type { Square } from '@/chess/game';
 import { handleTap, type Selection } from '@/chess/tapToMove';
 import { Button } from '@/components/Button';
+import { Badge } from '@/components/ui';
 import { lineTitle } from '@/content/loader';
 import { useFeedback, type Cue } from '@/feedback/feedback';
 import { GREETING, say, type LineKind } from '@/mastermind/lines';
 import { MastermindSpeech } from '@/mastermind/Speech';
-import { levelStatuses } from '@/progress/mastery';
+import { levelStatuses, nextLineTarget } from '@/progress/mastery';
 import { useProgress } from '@/progress/ProgressContext';
 import { useSettings } from '@/settings/SettingsContext';
 import { TEST_MISTAKE_LIMIT, Trainer, type TrainerEvent, type TrainerMode, type TrainerState } from '@/trainer/trainer';
 
 import { startRandomDrill } from './random';
 import { DrillHeader } from './DrillHeader';
-import { ResultCard } from './ResultCard';
+import { ResultCard, type ResultBadge } from './ResultCard';
 import { drillStyles, formatMoves, MODE_LABELS, type DrillTarget, type Restart } from './shared';
 
 /** What changed in the user's progress when a run finished. */
@@ -157,12 +158,22 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
         <MastermindSpeech text={settings.talk ? speech : null} />
 
         <View style={drillStyles.statusRow}>
-          <Text style={drillStyles.status}>{exam ? 'Exam' : MODE_LABELS[mode]}</Text>
+          <Badge label={(exam ? 'Exam' : MODE_LABELS[mode]).toUpperCase()} tone="cyan" />
           <Text style={drillStyles.status}>{statusText(state)}</Text>
-          <Text style={[drillStyles.status, state.mistakes > 0 && drillStyles.bad]}>
-            Mistakes: {state.mistakes}
-            {mode === 'test' ? ` / ${TEST_MISTAKE_LIMIT}` : ''}
-          </Text>
+          {mode === 'test' ? (
+            // One pip per allowed mistake; they fill red as mistakes are made.
+            <View style={drillStyles.pips} accessibilityLabel={`${state.mistakes} of ${TEST_MISTAKE_LIMIT} mistakes`}>
+              {Array.from({ length: TEST_MISTAKE_LIMIT }, (_, i) => (
+                <View key={i} style={[drillStyles.pip, i < state.mistakes && drillStyles.pipOn]} />
+              ))}
+            </View>
+          ) : (
+            state.mistakes > 0 && (
+              <Text style={drillStyles.bad}>
+                {state.mistakes} {state.mistakes === 1 ? 'mistake' : 'mistakes'}
+              </Text>
+            )
+          )}
         </View>
 
         <Animated.View style={{ transform: [{ translateX: shake }] }}>
@@ -221,22 +232,35 @@ function RunResultCard({ target, mode, state, result, onRestart }: RunResultCard
   const { progress } = useProgress();
   const exam = target.examLevel !== null;
   const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
-  const nextRandom = target.random
-    ? [{ label: 'Next random', onPress: () => startRandomDrill(progress, { exclude: target.lines[0].id, replace: true }) }]
-    : [];
-  const back = { label: 'Back', onPress: () => router.back() };
+  const lineId = state.lineId ?? target.lines[0].id;
+  // After a random drill, another random one; otherwise the next line to learn in this opening.
+  const following = target.random || exam ? null : nextLineTarget(target.opening, progress, lineId);
+  const next = (primary: boolean) =>
+    target.random
+      ? [{ label: 'Next random', primary, onPress: () => startRandomDrill(progress, { exclude: lineId, replace: true }) }]
+      : following
+        ? [
+            {
+              label: 'Next line',
+              primary,
+              onPress: () =>
+                router.replace({
+                  pathname: '/drill',
+                  params: { opening: following.openingId, line: following.lineId, mode: following.mode },
+                }),
+            },
+          ]
+        : [];
 
   if (state.phase === 'failed') {
     return (
       <ResultCard
-        title={exam ? 'Exam failed' : 'Test failed'}
-        outcome={`${plural(state.mistakes, 'mistake')}.`}
         tone="bad"
+        title={exam ? 'Exam failed' : 'Test failed'}
+        outcome={plural(state.mistakes, 'mistake')}
         buttons={[
           { label: 'Try again', primary: true, onPress: () => onRestart('test') },
           ...(exam ? [] : [{ label: 'Practice', onPress: () => onRestart('practice') }]),
-          ...nextRandom,
-          back,
         ]}
       />
     );
@@ -245,31 +269,29 @@ function RunResultCard({ target, mode, state, result, onRestart }: RunResultCard
   const line = target.lines.find((l) => l.id === state.lineId);
   const outcome = state.clean
     ? mode === 'test'
-      ? 'Clean run: no mistakes.'
-      : 'No mistakes, no hints.'
-    : `${plural(state.mistakes, 'mistake')}${state.hintsUsed > 0 ? `, ${plural(state.hintsUsed, 'hint')}` : ''}.`;
-  const highlights = [
-    ...(result?.examPassed ? ['★ Exam passed'] : []),
-    ...(result?.newlyMastered ? ['Line mastered!'] : []),
-    ...(result?.unlockedLevel ? [`Level ${result.unlockedLevel} unlocked!`] : []),
+      ? 'No mistakes'
+      : 'No mistakes, no hints'
+    : [plural(state.mistakes, 'mistake'), ...(state.hintsUsed > 0 ? [plural(state.hintsUsed, 'hint')] : [])].join(', ');
+  const badges: ResultBadge[] = [
+    ...(state.clean ? [{ label: 'CLEAN', tone: 'good' as const }] : []),
+    ...(result?.newlyMastered ? [{ label: 'MASTERED', tone: 'accent' as const }] : []),
+    ...(result?.unlockedLevel ? [{ label: `LEVEL ${result.unlockedLevel} UNLOCKED`, tone: 'accent' as const }] : []),
+    ...(result?.examPassed ? [{ label: '★ EXAM PASSED', tone: 'gold' as const }] : []),
   ];
-  const notes = [
-    ...(mode === 'test' && !state.clean ? ['Only clean runs count.'] : []),
-    ...(line?.summary ? [line.summary] : []),
-  ];
+  const practice = !exam && mode === 'practice';
 
   return (
     <ResultCard
+      tone={state.clean ? 'good' : mode === 'test' ? 'bad' : 'neutral'}
       title={exam ? `${line ? lineTitle(line) : 'Line'} complete` : 'Line complete'}
       outcome={outcome}
-      tone={state.clean ? 'good' : 'bad'}
-      highlights={highlights}
-      notes={notes}
+      badges={badges}
+      tip={line?.summary}
+      note={mode === 'test' && !state.clean ? 'Only clean runs count.' : undefined}
       buttons={[
         { label: 'Again', onPress: () => onRestart(mode) },
-        ...(!exam && mode === 'practice' ? [{ label: 'Test', primary: true, onPress: () => onRestart('test') }] : []),
-        ...nextRandom,
-        back,
+        ...(practice ? [{ label: 'Test', primary: true, onPress: () => onRestart('test') }] : []),
+        ...next(!practice),
       ]}
     />
   );

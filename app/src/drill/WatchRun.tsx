@@ -1,8 +1,8 @@
-import { router } from 'expo-router';
 import { useEffect, useEffectEvent, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
 import { Board } from '@/chess/Board';
+import { Badge } from '@/components/ui';
 import { useFeedback } from '@/feedback/feedback';
 import { GREETING, say } from '@/mastermind/lines';
 import { MastermindSpeech } from '@/mastermind/Speech';
@@ -85,7 +85,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
         <MastermindSpeech text={settings.talk ? speech : null} />
 
         <View style={drillStyles.statusRow}>
-          <Text style={drillStyles.status}>Watch</Text>
+          <Badge label="WATCH" tone="cyan" />
           <Text style={drillStyles.status}>
             {index === 0 ? 'Start' : `Move ${Math.ceil(index / 2)} of ${Math.ceil(last / 2)}`}
           </Text>
@@ -103,17 +103,16 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
 
         {index === last && watched ? (
           <ResultCard
-            title="Line complete"
-            outcome="Watched to the end."
-            tone={null}
-            notes={line.summary ? [line.summary] : []}
+            tone="neutral"
+            title="Watched"
+            outcome="Now play it yourself."
+            tip={line.summary}
             buttons={[
-              { label: 'Watch again', onPress: () => onRestart('watch') },
+              { label: 'Again', onPress: () => onRestart('watch') },
               { label: 'Practice', primary: true, onPress: () => onRestart('practice') },
               ...(target.random
                 ? [{ label: 'Next random', onPress: () => startRandomDrill(progress, { exclude: line.id, replace: true }) }]
                 : []),
-              { label: 'Back', onPress: () => router.back() },
             ]}
           />
         ) : (

@@ -134,6 +134,18 @@ export function continueTarget(
 }
 
 /**
+ * The line to offer after finishing one ("Next line"): in the same opening, the first unmastered
+ * main line of an unlocked level, then the bonus lines, skipping the one just played. Null when
+ * there is nothing left to learn there.
+ */
+export function nextLineTarget(opening: Opening, progress: Progress, exclude: string): ContinueTarget | null {
+  const unlocked = levelStatuses(opening, progress).filter((l) => l.unlocked);
+  const open = (lines: LineStatus[]) => lines.find((l) => !l.mastered && l.line.id !== exclude);
+  const next = open(unlocked.flatMap((l) => l.mainLines)) ?? open(unlocked.flatMap((l) => l.bonusLines));
+  return next ? { openingId: opening.id, lineId: next.line.id, mode: suggestedMode(next.progress) } : null;
+}
+
+/**
  * A random line from every unlocked level of every opening (main and bonus lines), in the mode
  * suggested for it. `exclude` skips a line, e.g. the one just played, unless it's the only one.
  * `random` returns a number in [0, 1), like Math.random.
