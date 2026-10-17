@@ -113,7 +113,8 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
 - **Opening icons:** each opening has an original 8-bit icon (16 × 16 pixel art drawn as code in
   `app/src/openings/icons.ts`, colours in `theme.pixel`): French baguette, Caro-Kann shield,
   Sicilian lemon, Scandinavian longship, King's Indian elephant, Slav matryoshka, Italian pizza,
-  Ruy Lopez Spanish guitar, Vienna coffee, London double-decker, Queen's Gambit crown. The map
+  Ruy Lopez Spanish guitar, Vienna coffee, London double-decker, Queen's Gambit crown, Alapin
+  lemonade, Scotch whisky glass, English teacup, Nimzo-Indian lotus, QGD castle tower. The map
   lives in the app, not the content, so a new opening shows a magenta pawn until it gets one.
   Shown on the Openings cards and the Home Continue button.
 - One serif or retro font, a muted palette, almost no chrome. The screens:
