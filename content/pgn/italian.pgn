@@ -9,23 +9,38 @@
   (3... Nf6 {@variation Two Knights} 4. d3 {d3 defends e4 and avoids the sharp theory after 4.Ng5.} 4... Bc5
     (4... Be7 5. O-O O-O 6. Re1 {Re1 adds support to e4 and gets the rook to the centre.} 6... d6 7. c3 {c3 prepares d4 and gives the bishop a retreat on c2.}
 {@line id=italian-two-knights-be7 level=1 tier=main name="4…Be7" summary="Against …Be7, the same plan: castle, Re1, c3, then think about d4."}
-7... Na5 8. Bb5 {Bb5 dodges the knight while keeping the bishop on the board.} 8... a6 9. Ba4 b5 10. Bc2 {Bc2 tucks the bishop behind e4, eyeing the kingside.} 10... c5 11. Nbd2 {Nbd2 heads for f1 and g3, as in the Giuoco.}
-{@line id=italian-two-knights-na5 level=2 tier=main name="7…Na5" summary="When …Na5 hits the bishop, keep it with Bb5-a4-c2, then do the Nbd2-f1 knight tour."}
+7... Bg4
+      (7... Na5 8. Bb5 {Bb5 dodges the knight while keeping the bishop on the board.} 8... a6 9. Ba4 b5 10. Bc2 {Bc2 tucks the bishop behind e4, eyeing the kingside.} 10... c5 11. Nbd2 {Nbd2 heads for f1 and g3, as in the Giuoco.}
+{@line id=italian-two-knights-na5 level=2 tier=side name="7…Na5" summary="When …Na5 hits the bishop, keep it with Bb5-a4-c2, then do the Nbd2-f1 knight tour."}
 )
-5. c3 {c3: the position is now the same as the Giuoco Pianissimo.} 5... d6 6. O-O O-O 7. Re1 a6 8. Bb3
+  8. Nbd2 {Nbd2 supports f3, so the pin …Bg4 does no harm; the knight heads for f1.} (8. h3 {@alt})
+{@line id=italian-two-knights-bg4 level=2 tier=main name="7…Bg4" summary="Meet the pin with Nbd2 (or h3): the f3 knight gets support and the knight tour goes on."}
+)
+  5. c3 {c3: the position is now the same as the Giuoco Pianissimo.} 5... d6 6. O-O O-O 7. Re1 a6 8. Bb3
 {@line id=italian-two-knights-bc5 level=1 tier=main name="4…Bc5" summary="4.d3 and 5.c3 bring the Two Knights back into the Giuoco: one plan for both."}
 )
-  (3... Be7 {@variation Hungarian} 4. d3 {d3 keeps things simple; after …Nf6 this is the Two Knights with …Be7.} 4... Nf6 5. O-O O-O 6. Re1 d6 7. c3 {c3: the same position as Two Knights 4…Be7.}
-{@line id=italian-hungarian level=1 tier=side name="Hungarian (3…Be7)" summary="The Hungarian move order changes nothing: d3, O-O, Re1 and c3."}
+  (3... h6 {@variation 3…h6} 4. d3 {d3: the same slow plan; …h6 only stops Bg5 and Ng5.} 4... Nf6 5. c3 {c3: the Two Knights set-up with …h6 thrown in.}
+{@line id=italian-h6 level=1 tier=side name="3…h6" summary="Against the waiting move 3…h6, keep the plan: d3, c3, castle."}
 )
   (3... Nd4 {…Nd4 is a trap: 4.Nxe5?? Qg5! wins material for Black.} {@variation Blackburne Shilling} 4. Nxd4 {Nxd4 takes the knight instead of the e5 pawn; Black's centre pawn is pulled to d4.} 4... exd4 5. O-O {O-O and White is ahead in development, ready for c3 to attack d4.}
 {@line id=italian-blackburne level=1 tier=side name="Blackburne Shilling Trap (3…Nd4)" summary="Against 3…Nd4, don't grab e5: take the knight, castle, and use your lead in development."}
 )
-4. c3 {c3 prepares d4 one day and takes d4 away from Black's knight.} 4... Nf6 5. d3 {d3 protects e4 calmly; White keeps the centre solid and plays slowly.} 5... d6
+4. c3 {c3 prepares d4 one day and takes d4 away from Black's knight.} 4... Nf6
+  (4... d6 5. d3 {d3: the same slow set-up; after …Nf6 it's the main line.} (5. d4 {@alt})
+{@line id=italian-giuoco-d6 level=2 tier=side name="4…d6" summary="Against 4…d6, keep the c3-d3 set-up; d4 straight away is also good."}
+)
+5. d3 {d3 protects e4 calmly; White keeps the centre solid and plays slowly.} 5... d6
   (5... O-O 6. O-O d5 7. exd5 {exd5 trades, so the black knight lands on d5 where it can be chased.} 7... Nxd5 8. Re1 {Re1 puts pressure on the e5 pawn at once.}
 {@line id=italian-giuoco-d5 level=2 tier=side name="Early …d5" summary="If Black plays …d5 early, trade on d5 and hit e5 with Re1."}
 )
-6. O-O O-O 7. Re1 a6 8. Bb3 {Bb3 keeps the bishop safe from …b5 and …Na5.}
+6. O-O O-O
+  (6... Bg4 {…Bg4 pins the f3 knight.} 7. h3 {h3 asks the bishop at once: take on f3 or retreat.} (7. Nbd2 {@alt}) 7... Bh5 8. Nbd2 {Nbd2 supports f3; g4 can come later to break the pin.}
+{@line id=italian-giuoco-bg4 level=1 tier=main name="6…Bg4" summary="Against the pin, play h3 and Nbd2: the knight on f3 stays protected."}
+)
+  (6... h6 7. Re1 {Re1 supports e4 and prepares the knight tour.} (7. h3 {@alt}) 7... O-O 8. h3 {h3 stops …Bg4 and …Ng4 for good.}
+{@line id=italian-giuoco-h6 level=2 tier=main name="6…h6" summary="Against …h6, keep building: Re1, h3, then Nbd2-f1."}
+)
+7. Re1 (7. h3 {@alt}) 7... a6 8. Bb3 {Bb3 keeps the bishop safe from …b5 and …Na5.}
 {@line id=italian-giuoco level=1 tier=main name="Giuoco Pianissimo (3…Bc5)" summary="c3, d3, castle, Re1 and Bb3: a solid set-up, then slowly improve before breaking with d4."}
 8... Ba7 9. h3 {h3 stops …Bg4 and …Ng4.} (9. Nbd2 {@alt}) 9... h6 10. Nbd2 {Nbd2 starts the classic knight tour d2-f1-g3.} 10... Re8 11. Nf1 {Nf1 heads for g3, where the knight eyes f5 and supports the kingside.}
 {@line id=italian-giuoco-deep level=2 tier=main name="Knight tour Nbd2-f1" summary="The Italian knight tour: Nbd2, Nf1, Ng3, slowly building up before d4 or a kingside push."} *

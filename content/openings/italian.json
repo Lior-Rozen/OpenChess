@@ -19,6 +19,9 @@
         "8": "d3 protects e4 calmly; White keeps the centre solid and plays slowly.",
         "14": "Bb3 keeps the bishop safe from …b5 and …Na5."
       },
+      "accept": {
+        "12": ["h3"]
+      },
       "summary": "c3, d3, castle, Re1 and Bb3: a solid set-up, then slowly improve before breaking with d4."
     },
     {
@@ -38,9 +41,49 @@
         "20": "Nf1 heads for g3, where the knight eyes f5 and supports the kingside."
       },
       "accept": {
+        "12": ["h3"],
         "16": ["Nbd2"]
       },
       "summary": "The Italian knight tour: Nbd2, Nf1, Ng3, slowly building up before d4 or a kingside push."
+    },
+    {
+      "id": "italian-giuoco-bg4",
+      "name": "6…Bg4",
+      "level": 1,
+      "tier": "main",
+      "variation": "Giuoco",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "c3", "Nf6", "d3", "d6", "O-O", "Bg4", "h3", "Bh5", "Nbd2"],
+      "notes": {
+        "4": "Bc4 develops towards f7, the weakest point in Black's camp.",
+        "6": "c3 prepares d4 one day and takes d4 away from Black's knight.",
+        "8": "d3 protects e4 calmly; White keeps the centre solid and plays slowly.",
+        "11": "…Bg4 pins the f3 knight.",
+        "12": "h3 asks the bishop at once: take on f3 or retreat.",
+        "14": "Nbd2 supports f3; g4 can come later to break the pin."
+      },
+      "accept": {
+        "12": ["Nbd2"]
+      },
+      "summary": "Against the pin, play h3 and Nbd2: the knight on f3 stays protected."
+    },
+    {
+      "id": "italian-giuoco-h6",
+      "name": "6…h6",
+      "level": 2,
+      "tier": "main",
+      "variation": "Giuoco",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "c3", "Nf6", "d3", "d6", "O-O", "h6", "Re1", "O-O", "h3"],
+      "notes": {
+        "4": "Bc4 develops towards f7, the weakest point in Black's camp.",
+        "6": "c3 prepares d4 one day and takes d4 away from Black's knight.",
+        "8": "d3 protects e4 calmly; White keeps the centre solid and plays slowly.",
+        "12": "Re1 supports e4 and prepares the knight tour.",
+        "14": "h3 stops …Bg4 and …Ng4 for good."
+      },
+      "accept": {
+        "12": ["h3"]
+      },
+      "summary": "Against …h6, keep building: Re1, h3, then Nbd2-f1."
     },
     {
       "id": "italian-giuoco-d5",
@@ -57,6 +100,23 @@
         "14": "Re1 puts pressure on the e5 pawn at once."
       },
       "summary": "If Black plays …d5 early, trade on d5 and hit e5 with Re1."
+    },
+    {
+      "id": "italian-giuoco-d6",
+      "name": "4…d6",
+      "level": 2,
+      "tier": "side",
+      "variation": "Giuoco",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "c3", "d6", "d3"],
+      "notes": {
+        "4": "Bc4 develops towards f7, the weakest point in Black's camp.",
+        "6": "c3 prepares d4 one day and takes d4 away from Black's knight.",
+        "8": "d3: the same slow set-up; after …Nf6 it's the main line."
+      },
+      "accept": {
+        "8": ["d4"]
+      },
+      "summary": "Against 4…d6, keep the c3-d3 set-up; d4 straight away is also good."
     },
     {
       "id": "italian-two-knights-bc5",
@@ -88,10 +148,29 @@
       "summary": "Against …Be7, the same plan: castle, Re1, c3, then think about d4."
     },
     {
+      "id": "italian-two-knights-bg4",
+      "name": "7…Bg4",
+      "level": 2,
+      "tier": "main",
+      "variation": "Two Knights",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d3", "Be7", "O-O", "O-O", "Re1", "d6", "c3", "Bg4", "Nbd2"],
+      "notes": {
+        "4": "Bc4 develops towards f7, the weakest point in Black's camp.",
+        "6": "d3 defends e4 and avoids the sharp theory after 4.Ng5.",
+        "10": "Re1 adds support to e4 and gets the rook to the centre.",
+        "12": "c3 prepares d4 and gives the bishop a retreat on c2.",
+        "14": "Nbd2 supports f3, so the pin …Bg4 does no harm; the knight heads for f1."
+      },
+      "accept": {
+        "14": ["h3"]
+      },
+      "summary": "Meet the pin with Nbd2 (or h3): the f3 knight gets support and the knight tour goes on."
+    },
+    {
       "id": "italian-two-knights-na5",
       "name": "7…Na5",
       "level": 2,
-      "tier": "main",
+      "tier": "side",
       "variation": "Two Knights",
       "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d3", "Be7", "O-O", "O-O", "Re1", "d6", "c3", "Na5", "Bb5", "a6", "Ba4", "b5", "Bc2", "c5", "Nbd2"],
       "notes": {
@@ -106,18 +185,18 @@
       "summary": "When …Na5 hits the bishop, keep it with Bb5-a4-c2, then do the Nbd2-f1 knight tour."
     },
     {
-      "id": "italian-hungarian",
-      "name": "Hungarian (3…Be7)",
+      "id": "italian-h6",
+      "name": "3…h6",
       "level": 1,
       "tier": "side",
-      "variation": "Hungarian",
-      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Be7", "d3", "Nf6", "O-O", "O-O", "Re1", "d6", "c3"],
+      "variation": "3…h6",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "h6", "d3", "Nf6", "c3"],
       "notes": {
         "4": "Bc4 develops towards f7, the weakest point in Black's camp.",
-        "6": "d3 keeps things simple; after …Nf6 this is the Two Knights with …Be7.",
-        "12": "c3: the same position as Two Knights 4…Be7."
+        "6": "d3: the same slow plan; …h6 only stops Bg5 and Ng5.",
+        "8": "c3: the Two Knights set-up with …h6 thrown in."
       },
-      "summary": "The Hungarian move order changes nothing: d3, O-O, Re1 and c3."
+      "summary": "Against the waiting move 3…h6, keep the plan: d3, c3, castle."
     },
     {
       "id": "italian-blackburne",
