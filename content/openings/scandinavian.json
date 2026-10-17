@@ -96,12 +96,16 @@
       "level": 1,
       "tier": "main",
       "variation": "Quiet 3.d4 / 3.Nf3",
-      "moves": ["e4", "d5", "exd5", "Qxd5", "d4", "Nf6", "Nf3", "Bf5", "Be2", "e6", "O-O", "c6", "c4", "Qd8", "Nc3", "Nbd7"],
+      "moves": ["e4", "d5", "exd5", "Qxd5", "d4", "Nf6", "Nf3", "Bf5", "Be2", "e6", "O-O", "c6", "c4", "Qd8", "Nc3", "Be7"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
         "5": "…Nf6 develops; the queen is safe on d5 for now.",
         "7": "…Bf5 gets the bishop out before …e6.",
-        "13": "…Qd8 retreats home when c4 hits the queen; the position is solid."
+        "13": "…Qd8 retreats home when c4 hits the queen; the position is solid.",
+        "15": "…Be7 develops and gets ready to castle."
+      },
+      "accept": {
+        "15": ["Nbd7"]
       },
       "summary": "Same set-up without Nc3: …Nf6, …Bf5, …e6, …c6, and retreat the queen to d8 when kicked."
     },
@@ -111,11 +115,14 @@
       "level": 1,
       "tier": "side",
       "variation": "Quiet 3.d4 / 3.Nf3",
-      "moves": ["e4", "d5", "exd5", "Qxd5", "Nf3", "Nf6", "d4", "Bf5", "Be2", "e6", "O-O", "c6", "c4", "Qd8", "Nc3", "Nbd7"],
+      "moves": ["e4", "d5", "exd5", "Qxd5", "Nf3", "Nf6", "d4", "Bf5", "Be2", "e6", "O-O", "c6", "c4", "Qd8", "Nc3", "Be7"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
         "5": "…Nf6 develops; after d4 this is the same as the 3.d4 line.",
         "7": "…Bf5: the position is now identical to 3.d4 Nf6 4.Nf3 Bf5."
+      },
+      "accept": {
+        "15": ["Nbd7"]
       },
       "summary": "3.Nf3 and 3.d4 lead to the same position: one plan for both."
     }
