@@ -27,7 +27,7 @@
       "level": 2,
       "tier": "main",
       "variation": "Classical",
-      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "Nf3", "O-O", "Be2", "e5", "O-O", "Nc6", "d5", "Ne7", "Ne1", "Nd7", "Nd3", "f5", "Bd2", "Nf6", "f3", "f4"],
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "Nf3", "O-O", "Be2", "e5", "O-O", "Nc6", "d5", "Ne7", "Ne1", "Nd7", "Be3", "f5", "f3", "f4", "Bf2", "g5"],
       "notes": {
         "3": "…g6 prepares …Bg7, a bishop that will press on the long diagonal.",
         "11": "…e5 is Black's central strike; it fixes the centre for the plans to come.",
@@ -35,15 +35,34 @@
         "15": "…Ne7 heads to the kingside, where Black plays …f5 next.",
         "17": "…Nd7 clears the f-pawn for …f5.",
         "19": "…f5 opens the kingside fight; White attacks on the queenside.",
-        "23": "…f4 gains space; next come …g5-g4 and a direct attack on White's king."
+        "21": "…f4 gains space and hits the e3 bishop.",
+        "23": "…g5: the pawn storm begins, aiming at White's king."
       },
       "summary": "The race: Black storms the kingside with …f5, …f4, …g5; White pushes c5 on the queenside."
+    },
+    {
+      "id": "kings-indian-mdp-nd3",
+      "name": "Mar del Plata: 10.Nd3",
+      "level": 2,
+      "tier": "side",
+      "variation": "Classical",
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "Nf3", "O-O", "Be2", "e5", "O-O", "Nc6", "d5", "Ne7", "Ne1", "Nd7", "Nd3", "f5", "f3", "Nf6"],
+      "notes": {
+        "3": "…g6 prepares …Bg7, a bishop that will press on the long diagonal.",
+        "11": "…e5 is Black's central strike; it fixes the centre for the plans to come.",
+        "13": "…Nc6 adds pressure on d4 and invites d5.",
+        "15": "…Ne7 heads to the kingside, where Black plays …f5 next.",
+        "17": "…Nd7 clears the f-pawn for …f5.",
+        "19": "…f5 opens the kingside fight; White attacks on the queenside.",
+        "21": "…Nf6 adds a defender of the kingside and prepares …f4."
+      },
+      "summary": "Against Nd3, play …f5 and …Nf6, then …f4 and the pawn storm."
     },
     {
       "id": "kings-indian-bayonet",
       "name": "Bayonet (9.b4)",
       "level": 2,
-      "tier": "side",
+      "tier": "main",
       "variation": "Classical",
       "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "Nf3", "O-O", "Be2", "e5", "O-O", "Nc6", "d5", "Ne7", "b4", "Nh5", "Re1", "f5", "Ng5", "Nf6"],
       "notes": {
@@ -106,46 +125,81 @@
       "summary": "Against f3 and Be3, play …e5, then …Nh5 and …f5 to break up White's pawn centre."
     },
     {
+      "id": "kings-indian-samisch-nge2",
+      "name": "7.Nge2",
+      "level": 2,
+      "tier": "main",
+      "variation": "Samisch",
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "f3", "O-O", "Be3", "e5", "Nge2", "exd4"],
+      "notes": {
+        "3": "…g6 prepares …Bg7, a bishop that will press on the long diagonal.",
+        "9": "…O-O first; White's f3 means a kingside pawn storm may come.",
+        "11": "…e5 hits the centre, the same answer as against the Classical.",
+        "13": "…exd4 opens the long diagonal for the g7 bishop; …Nc6 follows."
+      },
+      "accept": {
+        "13": ["c6", "Nc6"]
+      },
+      "summary": "When White keeps the tension with Nge2, take on d4 and use the long diagonal."
+    },
+    {
       "id": "kings-indian-four-pawns",
       "name": "Four Pawns Attack (5.f4)",
-      "level": 2,
-      "tier": "side",
+      "level": 1,
+      "tier": "main",
       "variation": "Four Pawns Attack",
-      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "f4", "O-O", "Nf3", "c5", "d5", "e6", "Be2", "exd5", "cxd5", "Bg4"],
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "e4", "d6", "f4", "O-O", "Nf3", "c5", "d5", "e6", "Be2", "exd5", "cxd5", "Re8"],
       "notes": {
         "3": "…g6 prepares …Bg7, a bishop that will press on the long diagonal.",
         "11": "…c5 attacks the overextended centre right away.",
         "13": "…e6 breaks open the e-file against White's uncastled king.",
-        "17": "…Bg4 pins the f3 knight, which supports White's e5 push."
+        "17": "…Re8 hits the e4 pawn and stops White's e5 push."
       },
-      "summary": "The big pawn centre is a target: hit it with …c5 and …e6, then pin the f3 knight."
+      "accept": {
+        "17": ["Bg4"]
+      },
+      "summary": "The big pawn centre is a target: hit it with …c5 and …e6, then press e4 with …Re8."
     },
     {
-      "id": "kings-indian-fianchetto",
-      "name": "Fianchetto (g3)",
+      "id": "kings-indian-4nf3",
+      "name": "4.Nf3",
       "level": 2,
       "tier": "side",
-      "variation": "Fianchetto",
-      "moves": ["d4", "Nf6", "c4", "g6", "Nf3", "Bg7", "g3", "O-O", "Bg2", "d6", "O-O", "Nbd7", "Nc3", "e5", "e4", "c6"],
+      "variation": "Move orders",
+      "moves": ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7", "Nf3", "O-O"],
       "notes": {
         "3": "…g6 prepares …Bg7, a bishop that will press on the long diagonal.",
-        "11": "…Nbd7 supports …e5 against White's solid fianchetto.",
-        "13": "…e5 claims the centre.",
-        "15": "…c6 controls d5 and prepares …Qb6 or …a5."
+        "7": "…O-O: after e4 d6 this is the Classical again."
       },
-      "summary": "Against the fianchetto, play …Nbd7, …e5 and …c6: a solid centre with ideas of …Qb6."
+      "summary": "4.Nf3 changes nothing: castle and play …d6 and …e5 when White plays e4."
+    },
+    {
+      "id": "kings-indian-2nf3",
+      "name": "2.Nf3",
+      "level": 1,
+      "tier": "side",
+      "variation": "Move orders",
+      "moves": ["d4", "Nf6", "Nf3", "g6", "c4", "Bg7", "Nc3", "O-O"],
+      "notes": {
+        "3": "…g6: the King's Indian set-up, whatever White's move order.",
+        "7": "…O-O: after e4 and …d6 this is the main line."
+      },
+      "summary": "2.Nf3 usually transposes: fianchetto, castle, then …d6 and …e5."
     },
     {
       "id": "kings-indian-vs-london",
       "name": "vs the London (2.Bf4)",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "vs the London",
       "moves": ["d4", "Nf6", "Bf4", "g6", "e3", "Bg7", "Nf3", "O-O", "Be2", "d6", "h3", "c5"],
       "notes": {
         "3": "…g6: the same King's Indian set-up works against the London.",
         "9": "…d6 prepares …e5 or …c5 against White's quiet set-up.",
         "11": "…c5 hits d4 and opens the long diagonal for the g7 bishop."
+      },
+      "accept": {
+        "11": ["Nbd7"]
       },
       "summary": "Against the London, keep the fianchetto and strike with …c5 at d4."
     }
