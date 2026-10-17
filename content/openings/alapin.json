@@ -1,0 +1,165 @@
+{
+  "id": "alapin",
+  "name": "Sicilian: Alapin (2.c3)",
+  "side": "white",
+  "eco": "B22",
+  "description": "Your White answer to the Sicilian: 2.c3 prepares d4 and sidesteps the big Open Sicilian theory.",
+  "tags": ["solid", "positional"],
+  "lines": [
+    {
+      "id": "alapin-nc6",
+      "name": "2…Nc6",
+      "level": 1,
+      "tier": "main",
+      "variation": "2…Nc6",
+      "moves": ["e4", "c5", "c3", "Nc6", "d4", "cxd4", "cxd4", "d5", "exd5", "Qxd5", "Nf3"],
+      "notes": {
+        "2": "c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.",
+        "4": "d4: White gets the big centre the Alapin aims for.",
+        "10": "Nf3 develops with the queen on d5 exposed in the centre."
+      },
+      "summary": "Against 2…Nc6, take the centre with d4 and cxd4; after …d5, take and develop Nf3."
+    },
+    {
+      "id": "alapin-nc6-bg4",
+      "name": "2…Nc6: 6…Bg4",
+      "level": 2,
+      "tier": "main",
+      "variation": "2…Nc6",
+      "moves": ["e4", "c5", "c3", "Nc6", "d4", "cxd4", "cxd4", "d5", "exd5", "Qxd5", "Nf3", "Bg4", "Nc3"],
+      "notes": {
+        "2": "c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.",
+        "4": "d4: White gets the big centre the Alapin aims for.",
+        "10": "Nf3 develops with the queen on d5 exposed in the centre.",
+        "12": "Nc3 develops with tempo on the black queen."
+      },
+      "accept": {
+        "12": ["Be2"]
+      },
+      "summary": "Against the pin, develop Nc3 with tempo on the queen; White keeps the d4 pawn."
+    },
+    {
+      "id": "alapin-nc6-e6",
+      "name": "4…e6",
+      "level": 2,
+      "tier": "main",
+      "variation": "2…Nc6",
+      "moves": ["e4", "c5", "c3", "Nc6", "d4", "cxd4", "cxd4", "e6", "Nf3", "d5", "e5"],
+      "notes": {
+        "2": "c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.",
+        "4": "d4: White gets the big centre the Alapin aims for.",
+        "8": "Nf3 develops and protects d4.",
+        "10": "e5 gains space: a French-style structure with an extra tempo for White."
+      },
+      "summary": "Against …e6, develop with Nf3 and push e5 when Black plays …d5."
+    },
+    {
+      "id": "alapin-d5",
+      "name": "2…d5",
+      "level": 1,
+      "tier": "main",
+      "variation": "2…d5",
+      "moves": ["e4", "c5", "c3", "d5", "exd5", "Qxd5", "d4", "Nf6", "Nf3", "Bg4", "Be2", "e6", "O-O"],
+      "notes": {
+        "2": "c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.",
+        "6": "d4: the queen on d5 can't take back on c3 because of the c-pawn.",
+        "10": "Be2 breaks the pin on the f3 knight in advance.",
+        "12": "O-O: White's king is safe; the centre is White's."
+      },
+      "accept": {
+        "12": ["h3", "Be3"]
+      },
+      "summary": "Against 2…d5, take on d5, push d4, then Nf3, Be2 and castle."
+    },
+    {
+      "id": "alapin-d5-e6",
+      "name": "5…e6",
+      "level": 2,
+      "tier": "main",
+      "variation": "2…d5",
+      "moves": ["e4", "c5", "c3", "d5", "exd5", "Qxd5", "d4", "Nf6", "Nf3", "e6", "Be2"],
+      "notes": {
+        "2": "c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.",
+        "6": "d4: the queen on d5 can't take back on c3 because of the c-pawn.",
+        "10": "Be2 develops quietly; O-O and c4 or Be3 come next."
+      },
+      "summary": "If Black skips the pin, develop with Be2 and castle; White keeps a nice centre."
+    },
+    {
+      "id": "alapin-d5-nc6",
+      "name": "4…Nc6",
+      "level": 2,
+      "tier": "main",
+      "variation": "2…d5",
+      "moves": ["e4", "c5", "c3", "d5", "exd5", "Qxd5", "d4", "Nc6", "Nf3"],
+      "notes": {
+        "2": "c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.",
+        "6": "d4: the queen on d5 can't take back on c3 because of the c-pawn.",
+        "8": "Nf3 develops and defends d4."
+      },
+      "summary": "Against …Nc6, develop with Nf3 and keep d4 protected."
+    },
+    {
+      "id": "alapin-d6",
+      "name": "2…d6",
+      "level": 1,
+      "tier": "main",
+      "variation": "2…d6",
+      "moves": ["e4", "c5", "c3", "d6", "d4", "cxd4", "cxd4", "Nf6", "Nc3", "g6", "Nf3"],
+      "notes": {
+        "2": "c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.",
+        "4": "d4: White gets the big centre the Alapin aims for.",
+        "8": "Nc3 defends e4 against the knight.",
+        "10": "Nf3 develops; White has a free, open game."
+      },
+      "summary": "Against 2…d6, take the centre with d4 and recapture with the c-pawn."
+    },
+    {
+      "id": "alapin-e6",
+      "name": "2…e6",
+      "level": 1,
+      "tier": "main",
+      "variation": "2…e6",
+      "moves": ["e4", "c5", "c3", "e6", "d4", "cxd4", "cxd4", "d5", "e5", "Nc6", "Nf3"],
+      "notes": {
+        "2": "c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.",
+        "4": "d4 builds the centre.",
+        "8": "e5 locks the centre and gains space on the kingside.",
+        "10": "Nf3 defends d4, the target of Black's play."
+      },
+      "summary": "Against 2…e6, take the centre, push e5 against …d5, and defend d4 with Nf3."
+    },
+    {
+      "id": "alapin-e6-d5",
+      "name": "2…e6 3.d4 d5",
+      "level": 1,
+      "tier": "side",
+      "variation": "2…e6",
+      "moves": ["e4", "c5", "c3", "e6", "d4", "d5", "e5"],
+      "notes": {
+        "2": "c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.",
+        "4": "d4 builds the centre.",
+        "6": "e5 gains space: a French Advance structure that suits White."
+      },
+      "summary": "If Black hits the centre with …d5, push e5 and play a French Advance."
+    },
+    {
+      "id": "alapin-nf6",
+      "name": "2…Nf6",
+      "level": 1,
+      "tier": "side",
+      "variation": "2…Nf6",
+      "moves": ["e4", "c5", "c3", "Nf6", "e5", "Nd5", "d4", "cxd4", "cxd4", "d6", "Nf3"],
+      "notes": {
+        "2": "c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.",
+        "4": "e5 kicks the knight away from the centre.",
+        "8": "cxd4 keeps a big pawn centre.",
+        "10": "Nf3 defends d4 and e5."
+      },
+      "accept": {
+        "8": ["Nf3"]
+      },
+      "summary": "Against 2…Nf6, push e5, take the centre with d4 and defend it with Nf3."
+    }
+  ]
+}

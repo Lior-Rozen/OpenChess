@@ -1,0 +1,40 @@
+[Id "alapin"]
+[Name "Sicilian: Alapin (2.c3)"]
+[Side "white"]
+[ECO "B22"]
+[Description "Your White answer to the Sicilian: 2.c3 prepares d4 and sidesteps the big Open Sicilian theory."]
+[Tags "solid, positional"]
+
+1. e4 c5 2. c3 {c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.} 2... Nc6 {@variation 2…Nc6}
+  (2... d5 {@variation 2…d5} 3. exd5 Qxd5 4. d4 {d4: the queen on d5 can't take back on c3 because of the c-pawn.} 4... Nf6
+    (4... Nc6 5. Nf3 {Nf3 develops and defends d4.}
+{@line id=alapin-d5-nc6 level=2 tier=main name="4…Nc6" summary="Against …Nc6, develop with Nf3 and keep d4 protected."}
+)
+  5. Nf3 Bg4
+    (5... e6 6. Be2 {Be2 develops quietly; O-O and c4 or Be3 come next.}
+{@line id=alapin-d5-e6 level=2 tier=main name="5…e6" summary="If Black skips the pin, develop with Be2 and castle; White keeps a nice centre."}
+)
+  6. Be2 {Be2 breaks the pin on the f3 knight in advance.} 6... e6 7. O-O {O-O: White's king is safe; the centre is White's.} (7. h3 {@alt}) (7. Be3 {@alt})
+{@line id=alapin-d5 level=1 tier=main name="2…d5" summary="Against 2…d5, take on d5, push d4, then Nf3, Be2 and castle."}
+)
+  (2... d6 {@variation 2…d6} 3. d4 {d4: White gets the big centre the Alapin aims for.} 3... cxd4 4. cxd4 Nf6 5. Nc3 {Nc3 defends e4 against the knight.} 5... g6 6. Nf3 {Nf3 develops; White has a free, open game.}
+{@line id=alapin-d6 level=1 tier=main name="2…d6" summary="Against 2…d6, take the centre with d4 and recapture with the c-pawn."}
+)
+  (2... e6 {@variation 2…e6} 3. d4 {d4 builds the centre.} 3... cxd4
+    (3... d5 4. e5 {e5 gains space: a French Advance structure that suits White.}
+{@line id=alapin-e6-d5 level=1 tier=side name="2…e6 3.d4 d5" summary="If Black hits the centre with …d5, push e5 and play a French Advance."}
+)
+  4. cxd4 d5 5. e5 {e5 locks the centre and gains space on the kingside.} 5... Nc6 6. Nf3 {Nf3 defends d4, the target of Black's play.}
+{@line id=alapin-e6 level=1 tier=main name="2…e6" summary="Against 2…e6, take the centre, push e5 against …d5, and defend d4 with Nf3."}
+)
+  (2... Nf6 {@variation 2…Nf6} 3. e5 {e5 kicks the knight away from the centre.} 3... Nd5 4. d4 cxd4 5. cxd4 {cxd4 keeps a big pawn centre.} (5. Nf3 {@alt}) 5... d6 6. Nf3 {Nf3 defends d4 and e5.}
+{@line id=alapin-nf6 level=1 tier=side name="2…Nf6" summary="Against 2…Nf6, push e5, take the centre with d4 and defend it with Nf3."}
+)
+3. d4 {d4: White gets the big centre the Alapin aims for.} 3... cxd4 4. cxd4 d5
+  (4... e6 5. Nf3 {Nf3 develops and protects d4.} 5... d5 6. e5 {e5 gains space: a French-style structure with an extra tempo for White.}
+{@line id=alapin-nc6-e6 level=2 tier=main name="4…e6" summary="Against …e6, develop with Nf3 and push e5 when Black plays …d5."}
+)
+5. exd5 Qxd5 6. Nf3 {Nf3 develops with the queen on d5 exposed in the centre.}
+{@line id=alapin-nc6 level=1 tier=main name="2…Nc6" summary="Against 2…Nc6, take the centre with d4 and cxd4; after …d5, take and develop Nf3."}
+6... Bg4 7. Nc3 {Nc3 develops with tempo on the black queen.} (7. Be2 {@alt})
+{@line id=alapin-nc6-bg4 level=2 tier=main name="2…Nc6: 6…Bg4" summary="Against the pin, develop Nc3 with tempo on the queen; White keeps the d4 pawn."} *
