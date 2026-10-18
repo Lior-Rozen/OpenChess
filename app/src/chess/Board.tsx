@@ -138,6 +138,7 @@ export function Board({
           orientation={orientation}
           size={size}
           color={MARK_COLOURS[m.color]}
+          light
         />
       ))}
       {threat && <ArrowOverlay arrow={threat} orientation={orientation} size={size} color={colors.threat} />}
@@ -195,17 +196,19 @@ function squareCenter(square: Square, orientation: Color, squareSize: number) {
   return { x: (col + 0.5) * squareSize, y: (row + 0.5) * squareSize };
 }
 
-type ArrowProps = { arrow: BoardArrow; orientation: Color; size: number; color: string };
+/** `light`: thinner and fainter, for a note's illustration rather than something happening now. */
+type ArrowProps = { arrow: BoardArrow; orientation: Color; size: number; color: string; light?: boolean };
 
-function ArrowOverlay({ arrow, orientation, size, color }: ArrowProps) {
+function ArrowOverlay({ arrow, orientation, size, color, light = false }: ArrowProps) {
   const squareSize = size / 8;
   const from = squareCenter(arrow.from, orientation, squareSize);
   const to = squareCenter(arrow.to, orientation, squareSize);
   const length = Math.hypot(to.x - from.x, to.y - from.y);
   const ux = (to.x - from.x) / length;
   const uy = (to.y - from.y) / length;
-  const headLength = squareSize * 0.45;
-  const headHalfWidth = squareSize * 0.28;
+  const scale = light ? 0.75 : 1;
+  const headLength = squareSize * 0.45 * scale;
+  const headHalfWidth = squareSize * 0.28 * scale;
   const base = { x: to.x - ux * headLength, y: to.y - uy * headLength };
   const head = [
     `${to.x},${to.y}`,
@@ -214,14 +217,14 @@ function ArrowOverlay({ arrow, orientation, size, color }: ArrowProps) {
   ].join(' ');
 
   return (
-    <Svg width={size} height={size} style={StyleSheet.absoluteFill} pointerEvents="none">
+    <Svg width={size} height={size} style={StyleSheet.absoluteFill} pointerEvents="none" opacity={light ? 0.6 : 1}>
       <Line
         x1={from.x}
         y1={from.y}
         x2={base.x}
         y2={base.y}
         stroke={color}
-        strokeWidth={squareSize * 0.18}
+        strokeWidth={squareSize * 0.18 * scale}
         strokeLinecap="round"
       />
       <Polygon points={head} fill={color} />

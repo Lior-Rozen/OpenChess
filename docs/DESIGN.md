@@ -185,8 +185,9 @@ a Lichess study or any PGN editor), and `npm run build-content` in `app/` compil
 ```
 - A plain `{comment}` is the note on the move before it (one sentence, *why* the move is played).
 - `[%cal Rd8h4,Ge1g1]` inside a note (Lichess markup) draws arrows with it: R threat, G good,
-  Y key idea, B neutral. It's shown in Watch and in the drill while the note is up; `[%csl …]` is
-  ignored.
+  Y key idea, B neutral. It's shown in Watch and in the drill while the note is up, drawn
+  thinner and fainter than a known mistake's red arrow (an idea, not something happening now);
+  `[%csl …]` is ignored.
 - `{@variation Name}` names the variation of every line through that move; the Opening screen
   groups lines under it, so line names can be short ("6.Be2" under "Advance").
 - `{@line id=… level=… tier=main|side name="…" summary="…"}` ends a line at that move (it must
