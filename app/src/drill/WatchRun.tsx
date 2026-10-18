@@ -1,4 +1,4 @@
-import { useEffect, useEffectEvent, useState } from 'react';
+import { useEffect, useEffectEvent, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
 import { Board } from '@/chess/Board';
@@ -79,10 +79,20 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
     return () => clearTimeout(timer);
   }, [playing, index, last, delay]);
 
+  const done = index === last && watched;
+  const scroll = useRef<ScrollView>(null);
+
+  // When the line has been watched, bring the result card (and its buttons) into view.
+  useEffect(() => {
+    if (!done) return;
+    const timer = setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 50);
+    return () => clearTimeout(timer);
+  }, [done]);
+
   return (
     <View style={drillStyles.screen}>
       <DrillHeader target={target} />
-      <ScrollView contentContainerStyle={drillStyles.content}>
+      <ScrollView ref={scroll} contentContainerStyle={drillStyles.content}>
         <MastermindSpeech text={settings.talk ? speech : null} />
 
         <View style={drillStyles.statusRow}>
@@ -102,7 +112,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
           <Control label="▷|" description="End" onPress={() => step(last)} disabled={index === last} />
         </View>
 
-        {index === last && watched ? (
+        {done ? (
           <ResultCard
             tone="neutral"
             title="Watched"
@@ -121,7 +131,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
           <Text style={drillStyles.note}>{frame.note ?? ' '}</Text>
         )}
 
-        <Text style={drillStyles.moveList}>{formatMoves(frame.moves)}</Text>
+        {!done && <Text style={drillStyles.moveList}>{formatMoves(frame.moves)}</Text>}
       </ScrollView>
     </View>
   );

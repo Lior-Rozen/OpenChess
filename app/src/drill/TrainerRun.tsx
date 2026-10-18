@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { useEffect, useEffectEvent, useState } from 'react';
+import { useEffect, useEffectEvent, useRef, useState } from 'react';
 import { Animated, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 
 import { Board, type BoardFlash } from '@/chess/Board';
@@ -158,11 +158,19 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
   }
 
   const finished = state.phase === 'complete' || state.phase === 'failed';
+  const scroll = useRef<ScrollView>(null);
+
+  // When the run ends, bring the result card (and its buttons) into view on smaller screens.
+  useEffect(() => {
+    if (!finished) return;
+    const timer = setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 50);
+    return () => clearTimeout(timer);
+  }, [finished]);
 
   return (
     <View style={drillStyles.screen}>
       <DrillHeader target={target} />
-      <ScrollView contentContainerStyle={drillStyles.content}>
+      <ScrollView ref={scroll} contentContainerStyle={drillStyles.content}>
         <MastermindSpeech text={settings.talk ? speech : null} />
 
         <View style={drillStyles.statusRow}>
@@ -210,7 +218,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
           </View>
         )}
 
-        <Text style={drillStyles.moveList}>{formatMoves(state.moves)}</Text>
+        {!finished && <Text style={drillStyles.moveList}>{formatMoves(state.moves)}</Text>}
       </ScrollView>
     </View>
   );

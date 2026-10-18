@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
   primary: { backgroundColor: theme.accent, borderColor: theme.accent, boxShadow: theme.glow },
   primaryPressed: { opacity: 0.8 },
   disabled: { opacity: 0.4 },
-  text: { fontSize: 15, fontFamily: theme.fontMedium, color: theme.text },
+  text: { fontSize: 15, fontFamily: theme.fontMedium, color: theme.text, textAlign: 'center' },
   primaryText: { color: theme.onAccent, fontFamily: theme.fontSemi },
 });

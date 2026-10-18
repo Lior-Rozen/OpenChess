@@ -31,11 +31,17 @@ export function ResultCard({ tone, title, outcome, badges = [], tip, note, butto
   const t = TONES[tone];
   return (
     <View style={styles.card}>
-      <View style={[styles.mark, { borderColor: t.color, backgroundColor: t.tint }]}>
-        <Icon name={t.icon} size={26} color={t.color} />
+      <View style={styles.head}>
+        <View style={[styles.mark, { borderColor: t.color, backgroundColor: t.tint }]}>
+          <Icon name={t.icon} size={20} color={t.color} />
+        </View>
+        <View style={styles.headText}>
+          <Text style={styles.title} numberOfLines={1}>
+            {title}
+          </Text>
+          {outcome && <Text style={styles.outcome}>{outcome}</Text>}
+        </View>
       </View>
-      <Text style={styles.title}>{title}</Text>
-      {outcome && <Text style={styles.outcome}>{outcome}</Text>}
       {badges.length > 0 && (
         <View style={styles.badges}>
           {badges.map((b) => (
@@ -52,7 +58,9 @@ export function ResultCard({ tone, title, outcome, badges = [], tip, note, butto
       {note && <Text style={styles.note}>{note}</Text>}
       <View style={styles.buttons}>
         {buttons.map((b) => (
-          <Button key={b.label} label={b.label} primary={b.primary} onPress={b.onPress} />
+          <View key={b.label} style={styles.button}>
+            <Button label={b.label} primary={b.primary} onPress={b.onPress} />
+          </View>
         ))}
       </View>
     </View>
@@ -66,15 +74,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: theme.border,
     borderRadius: 16,
-    padding: 16,
-    paddingTop: 18,
-    gap: 8,
-    alignItems: 'center',
+    padding: 14,
+    gap: 10,
   },
-  mark: { width: 52, height: 52, borderRadius: 26, borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
-  title: { fontSize: 20, fontFamily: theme.fontSemi, color: theme.text, textAlign: 'center' },
-  outcome: { fontSize: 14, fontFamily: theme.font, color: theme.muted, textAlign: 'center' },
-  badges: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, justifyContent: 'center' },
+  head: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  headText: { flex: 1 },
+  mark: { width: 40, height: 40, borderRadius: 20, borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
+  title: { fontSize: 18, fontFamily: theme.fontSemi, color: theme.text },
+  outcome: { fontSize: 13, fontFamily: theme.font, color: theme.muted, marginTop: 1 },
+  badges: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
   tip: {
     flexDirection: 'row',
     gap: 10,
@@ -83,9 +91,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,
-    marginTop: 4,
   },
   tipText: { flex: 1, fontSize: 13.5, lineHeight: 19, fontFamily: theme.font, color: theme.text },
-  note: { fontSize: 13, fontFamily: theme.font, color: theme.muted, textAlign: 'center' },
-  buttons: { flexDirection: 'row', gap: 8, marginTop: 6, flexWrap: 'wrap', justifyContent: 'center' },
+  note: { fontSize: 13, lineHeight: 18, fontFamily: theme.font, color: theme.muted },
+  buttons: { flexDirection: 'row', gap: 8 },
+  button: { flex: 1 },
 });
