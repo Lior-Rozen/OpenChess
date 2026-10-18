@@ -18,6 +18,11 @@
         "4": "d4: White gets the big centre the Alapin aims for.",
         "10": "Nf3 develops with the queen on d5 exposed in the centre."
       },
+      "mistakes": {
+        "10": {
+          "Nc3": "…Qxd4 grabs the pawn; Nf3 first keeps d4 protected."
+        }
+      },
       "summary": "Against 2…Nc6, take the centre with d4 and cxd4; after …d5, take and develop Nf3."
     },
     {
@@ -44,6 +49,11 @@
       },
       "accept": {
         "12": ["Be2"]
+      },
+      "mistakes": {
+        "10": {
+          "Nc3": "…Qxd4 grabs the pawn; Nf3 first keeps d4 protected."
+        }
       },
       "summary": "Against the pin, develop Nc3 with tempo on the queen; White keeps the d4 pawn."
     },

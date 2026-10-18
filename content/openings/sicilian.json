@@ -63,6 +63,9 @@
       "mistakes": {
         "11": {
           "e5": "Nf5! and d5 is too weak while f6 is pinned."
+        },
+        "17": {
+          "b5": "e5! hits the f6 knight before Black has developed."
         }
       },
       "summary": "After White castles long, complete the set-up with …Nbd7 and start …b5."

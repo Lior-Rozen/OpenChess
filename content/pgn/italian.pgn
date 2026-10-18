@@ -34,7 +34,7 @@
 {@line id=italian-giuoco-d5 level=2 tier=side name="Early …d5" summary="If Black plays …d5 early, trade on d5 and hit e5 with Re1."}
 )
 6. O-O O-O
-  (6... Bg4 {…Bg4 pins the f3 knight. [%cal Yg4d1]} 7. h3 {h3 asks the bishop at once: take on f3 or retreat.} (7. Nbd2 {@alt}) 7... Bh5 8. Nbd2 {Nbd2 supports f3; g4 can come later to break the pin. [%cal Gg2g4]}
+  (6... Bg4 {…Bg4 pins the f3 knight. [%cal Yg4d1]} 7. h3 {h3 asks the bishop at once: take on f3 or retreat.} (7. Nbd2 {@alt}) 7... Bh5 8. Nbd2 {Nbd2 supports f3; g4 can come later to break the pin. [%cal Gg2g4]} (8. Be3 {@mistake …Bxe3 fxe3 leaves you with doubled e-pawns.})
 {@line id=italian-giuoco-bg4 level=1 tier=main name="6…Bg4" summary="Against the pin, play h3 and Nbd2: the knight on f3 stays protected."}
 )
   (6... h6 7. Re1 {Re1 supports e4 and prepares the knight tour.} (7. h3 {@alt}) 7... O-O 8. h3 {h3 stops …Bg4 and …Ng4 for good.}

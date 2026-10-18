@@ -89,6 +89,11 @@
       "accept": {
         "12": ["Nbd2"]
       },
+      "mistakes": {
+        "14": {
+          "Be3": "…Bxe3 fxe3 leaves you with doubled e-pawns."
+        }
+      },
       "summary": "Against the pin, play h3 and Nbd2: the knight on f3 stays protected."
     },
     {

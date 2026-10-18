@@ -120,6 +120,11 @@
         "6": "Ba4 keeps the bishop aimed at the c6 knight.",
         "12": "Re1: this is the same position as the main Closed line."
       },
+      "mistakes": {
+        "12": {
+          "c3": "…Nxe4! wins the e4 pawn; Re1 first protects it."
+        }
+      },
       "summary": "5…b5 6.Bb3 Be7 7.Re1 reaches the main Closed line by another move order."
     },
     {

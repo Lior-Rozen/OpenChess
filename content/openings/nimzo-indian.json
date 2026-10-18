@@ -71,7 +71,8 @@
       },
       "mistakes": {
         "9": {
-          "Bxc3+": "bxc3 gives White a big centre; hit e4 with …d5 first."
+          "Bxc3+": "bxc3 gives White a big centre; hit e4 with …d5 first.",
+          "c5": "e5! kicks the f6 knight out of the centre."
         }
       },
       "summary": "If White grabs the centre with e4, strike back at once with …d5."

@@ -32,7 +32,7 @@
     (6... Bc5 {@variation Moller} 7. c3 {c3 prepares d4 to kick the active c5 bishop. [%cal Gd2d4]} (7. a4 {@alt}) 7... d6 8. d4 {d4 hits e5 and the bishop; White gains space in the centre.}
 {@line id=ruy-lopez-moller level=2 tier=main name="Moller / Arkhangelsk (6…Bc5)" summary="When the bishop goes to c5, play c3 and d4 to push it back."}
 )
-  7. Re1 {Re1: this is the same position as the main Closed line.}
+  7. Re1 {Re1: this is the same position as the main Closed line.} (7. c3 {@mistake …Nxe4! wins the e4 pawn; Re1 first protects it.})
 {@line id=ruy-lopez-5b5 level=1 tier=side name="5…b5" summary="5…b5 6.Bb3 Be7 7.Re1 reaches the main Closed line by another move order."}
 )
   (5... Nxe4 {@variation Open} 6. d4 {d4 opens the centre while the black king is still uncastled.} 6... b5 7. Bb3 d5 8. dxe5 {dxe5 wins back the pawn and gains space.} 8... Be6 9. c3 {c3 gives the bishop a retreat to c2 and keeps the e5 pawn strong.}

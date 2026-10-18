@@ -46,5 +46,5 @@
 )
 6... e6 {…e6 here, not …e5: the pin on f6 makes d5 too weak after …e5. [%cal Yg5d8]} (6... e5 {@mistake Nf5! and d5 is too weak while f6 is pinned.}) 7. f4 Be7 {…Be7 breaks the pin on the f6 knight.} 8. Qf3 Qc7 {…Qc7 watches e5 and the c-file.}
 {@line id=sicilian-najdorf-bg5 level=1 tier=main name="6.Bg5" summary="Against 6.Bg5, switch to …e6, unpin with …Be7, then …Qc7, …Nbd7 and …b5."}
-9. O-O-O Nbd7 {…Nbd7 supports the f6 knight; next is …b5 and a queenside attack.}
+9. O-O-O Nbd7 {…Nbd7 supports the f6 knight; next is …b5 and a queenside attack.} (9... b5 {@mistake e5! hits the f6 knight before Black has developed.})
 {@line id=sicilian-najdorf-bg5-deep level=2 tier=main name="6.Bg5, 9.O-O-O" summary="After White castles long, complete the set-up with …Nbd7 and start …b5."} *

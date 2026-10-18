@@ -36,6 +36,11 @@
           }
         ]
       },
+      "mistakes": {
+        "10": {
+          "Nxc6": "…Bxe3! fxe3 and …Qh4+: your pawns fall apart."
+        }
+      },
       "summary": "Defend d4 with Be3 and c3, then develop Bc4 and castle."
     },
     {
@@ -68,6 +73,11 @@
             "to": "f7"
           }
         ]
+      },
+      "mistakes": {
+        "10": {
+          "Nxc6": "…Bxe3! fxe3 and …Qh4+: your pawns fall apart."
+        }
       },
       "summary": "Castle short and keep d4 strong; Black's pieces press on d4 but can't break through."
     },
@@ -155,6 +165,11 @@
         "6": "Nxd4 recaptures with a strong central knight.",
         "8": "Qxd4: the queen is strong in the centre and hard to chase.",
         "10": "e5 kicks the knight; White's space advantage grows."
+      },
+      "mistakes": {
+        "10": {
+          "Bg5": "…h6! kicks the bishop and Black gains time."
+        }
       },
       "summary": "Against 5…Nf6, push e5 at once and chase the knight."
     },

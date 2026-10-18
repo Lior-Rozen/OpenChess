@@ -29,7 +29,7 @@
 {@line id=nimzo-indian-a3 level=1 tier=side name="4.a3 (Samisch)" summary="When a3 asks the bishop, take on c3 and aim at the doubled c-pawns with …c5."}
 )
 4... O-O 5. a3
-  (5. e4 d5 {…d5 hits e4 at once, before White's centre gets going. [%cal Gd5e4]} (5... Bxc3+ {@mistake bxc3 gives White a big centre; hit e4 with …d5 first.})
+  (5. e4 d5 {…d5 hits e4 at once, before White's centre gets going. [%cal Gd5e4]} (5... Bxc3+ {@mistake bxc3 gives White a big centre; hit e4 with …d5 first.}) (5... c5 {@mistake e5! kicks the f6 knight out of the centre.})
 {@line id=nimzo-indian-qc2-e4 level=2 tier=main name="4.Qc2 O-O 5.e4" summary="If White grabs the centre with e4, strike back at once with …d5."}
 )
   (5. Nf3 d5 {…d5 claims the centre; …c5 can follow.}

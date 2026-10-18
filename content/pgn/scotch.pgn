@@ -10,7 +10,7 @@
     (5... Qf6 6. e5 {e5 gains space with tempo on the queen. [%cal Ge5f6]} (6. Qe3 {@alt})
 {@line id=scotch-qxd4-qf6 level=1 tier=main name="5…Qf6" summary="If Black offers a queen trade with …Qf6, push e5 with tempo (or keep queens with Qe3)."}
 )
-    (5... Nf6 6. e5 {e5 kicks the knight; White's space advantage grows.}
+    (5... Nf6 6. e5 {e5 kicks the knight; White's space advantage grows.} (6. Bg5 {@mistake …h6! kicks the bishop and Black gains time.})
 {@line id=scotch-qxd4-nf6 level=1 tier=side name="5…Nf6" summary="Against 5…Nf6, push e5 at once and chase the knight."}
 )
     (5... c5 6. Qe3 {Qe3 keeps the queen central and eyes e5.} (6. Qd3 {@alt}) (6. Qc3 {@alt})
@@ -35,7 +35,7 @@
   (5... Bb6 6. Nc3 {Nc3 develops; the bishop on b6 has no targets.} (6. Nf5 {@alt})
 {@line id=scotch-bc5-bb6 level=2 tier=side name="4…Bc5 5…Bb6" summary="If the bishop retreats to b6, develop with Nc3; Nf5 is also strong."}
 )
-6. c3 {c3 holds d4 a second time.} 6... Nge7 7. Bc4 {Bc4 develops to the active diagonal towards f7. [%cal Yc4f7]}
+6. c3 {c3 holds d4 a second time.} (6. Nxc6 {@mistake …Bxe3! fxe3 and …Qh4+: your pawns fall apart.}) 6... Nge7 7. Bc4 {Bc4 develops to the active diagonal towards f7. [%cal Yc4f7]}
 {@line id=scotch-bc5 level=1 tier=main name="4…Bc5" summary="Defend d4 with Be3 and c3, then develop Bc4 and castle."}
 7... O-O 8. O-O {O-O: White's position is solid; Nd2 or Nc2 comes next.}
 {@line id=scotch-bc5-deep level=2 tier=main name="4…Bc5 7.Bc4 O-O" summary="Castle short and keep d4 strong; Black's pieces press on d4 but can't break through."} *
