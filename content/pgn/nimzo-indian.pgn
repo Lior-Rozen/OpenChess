@@ -9,12 +9,12 @@
   (3. Nf3 {@variation Bogo-Indian (3.Nf3)} 3... Bb4+ {…Bb4+: the same bishop check idea, even without a knight on c3.} 4. Bd2 Bxd2+ {…Bxd2+ trades the bishop for White's good bishop and simplifies.} (4... Qe7 {@alt}) (4... Be7 {@alt})
 {@line id=nimzo-indian-bogo level=2 tier=main name="3.Nf3 Bb4+" summary="When White avoids Nc3, give the check anyway and trade bishops on d2."}
 )
-3... Bb4 {…Bb4 pins the c3 knight, so White can't easily play e4.} {@variation Nimzo-Indian}
+3... Bb4 {…Bb4 pins the c3 knight, so White can't easily play e4. [%cal Yb4e1]} {@variation Nimzo-Indian}
 4. Qc2 {Qc2 avoids doubled pawns after …Bxc3, taking back with the queen.}
   (4. Nf3 O-O {…O-O: castle first and keep all options: …d5, …c5 or …b6.} (4... b6 {@alt}) (4... d5 {@alt})
 {@line id=nimzo-indian-nf3 level=1 tier=main name="4.Nf3" summary="Against the quiet 4.Nf3, castle first and decide later between …d5, …c5 and …b6."}
 )
-  (4. Bg5 h6 {…h6 asks the bishop at once.} 5. Bh4 c5 {…c5 hits d4; the pin on c3 makes it hard for White to keep the centre.}
+  (4. Bg5 h6 {…h6 asks the bishop at once.} 5. Bh4 c5 {…c5 hits d4; the pin on c3 makes it hard for White to keep the centre. [%cal Gc5d4]}
 {@line id=nimzo-indian-bg5 level=1 tier=main name="4.Bg5 (Leningrad)" summary="Against 4.Bg5, kick the bishop with …h6 and hit d4 with …c5."}
 )
   (4. e3 O-O 5. Bd3 d5 {…d5 claims the centre; …c5 and …Nc6 come next.}
@@ -29,11 +29,11 @@
 {@line id=nimzo-indian-a3 level=1 tier=side name="4.a3 (Samisch)" summary="When a3 asks the bishop, take on c3 and aim at the doubled c-pawns with …c5."}
 )
 4... O-O 5. a3
-  (5. e4 d5 {…d5 hits e4 at once, before White's centre gets going.} (5... Bxc3+ {@mistake bxc3 gives White a big centre; hit e4 with …d5 first.})
+  (5. e4 d5 {…d5 hits e4 at once, before White's centre gets going. [%cal Gd5e4]} (5... Bxc3+ {@mistake bxc3 gives White a big centre; hit e4 with …d5 first.})
 {@line id=nimzo-indian-qc2-e4 level=2 tier=main name="4.Qc2 O-O 5.e4" summary="If White grabs the centre with e4, strike back at once with …d5."}
 )
   (5. Nf3 d5 {…d5 claims the centre; …c5 can follow.}
 {@line id=nimzo-indian-qc2-nf3 level=2 tier=side name="4.Qc2 O-O 5.Nf3" summary="Against 5.Nf3, take the centre with …d5."}
 )
-5... Bxc3+ 6. Qxc3 b6 {…b6 prepares …Bb7 to control e4 and the long diagonal.} (6... d5 {@alt})
+5... Bxc3+ 6. Qxc3 b6 {…b6 prepares …Bb7 to control e4 and the long diagonal. [%cal Gc8b7]} (6... d5 {@alt})
 {@line id=nimzo-indian-qc2 level=1 tier=main name="4.Qc2 (Classical)" summary="Against Qc2, castle; after a3 give the bishop on c3 and fight for e4 with …b6 and …Bb7."} *

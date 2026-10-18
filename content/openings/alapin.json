@@ -33,6 +33,15 @@
         "10": "Nf3 develops with the queen on d5 exposed in the centre.",
         "12": "Nc3 develops with tempo on the black queen."
       },
+      "arrows": {
+        "12": [
+          {
+            "color": "green",
+            "from": "c3",
+            "to": "d5"
+          }
+        ]
+      },
       "accept": {
         "12": ["Be2"]
       },

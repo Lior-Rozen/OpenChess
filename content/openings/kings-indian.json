@@ -19,6 +19,15 @@
         "13": "…Nc6 adds pressure on d4 and invites d5.",
         "15": "…Ne7 heads to the kingside, where Black plays …f5 next."
       },
+      "arrows": {
+        "15": [
+          {
+            "color": "green",
+            "from": "f7",
+            "to": "f5"
+          }
+        ]
+      },
       "summary": "Fianchetto, castle, strike with …e5; when White locks the centre with d5, attack with …f5."
     },
     {
@@ -38,6 +47,22 @@
         "21": "…f4 gains space and hits the e3 bishop.",
         "23": "…g5: the pawn storm begins, aiming at White's king."
       },
+      "arrows": {
+        "15": [
+          {
+            "color": "green",
+            "from": "f7",
+            "to": "f5"
+          }
+        ],
+        "23": [
+          {
+            "color": "green",
+            "from": "g5",
+            "to": "g4"
+          }
+        ]
+      },
       "summary": "The race: Black storms the kingside with …f5, …f4, …g5; White pushes c5 on the queenside."
     },
     {
@@ -56,6 +81,15 @@
         "19": "…f5 opens the kingside fight; White attacks on the queenside.",
         "21": "…Nf6 adds a defender of the kingside and prepares …f4."
       },
+      "arrows": {
+        "15": [
+          {
+            "color": "green",
+            "from": "f7",
+            "to": "f5"
+          }
+        ]
+      },
       "summary": "Against Nd3, play …f5 and …Nf6, then …f4 and the pawn storm."
     },
     {
@@ -73,6 +107,15 @@
         "17": "…Nh5 prepares …f5 at once, faster than …Nd7.",
         "19": "…f5 hits e4 as usual.",
         "21": "…Nf6 brings the knight back to the centre and covers h7 against the g5 knight."
+      },
+      "arrows": {
+        "15": [
+          {
+            "color": "green",
+            "from": "f7",
+            "to": "f5"
+          }
+        ]
       },
       "summary": "Against b4, go for …Nh5 and …f5 straight away; speed matters in the race."
     },
@@ -106,6 +149,15 @@
         "17": "…Na6 heads for c5, a great square for the knight.",
         "19": "…Qe8 unpins the f6 knight so Black can play …Nh7 and …f5."
       },
+      "arrows": {
+        "17": [
+          {
+            "color": "green",
+            "from": "a6",
+            "to": "c5"
+          }
+        ]
+      },
       "summary": "Against an early d5, stop b4 with …a5, then knight to c5 and break the pin before …f5."
     },
     {
@@ -122,6 +174,15 @@
         "13": "…Nh5 prepares …f5 and eyes the f4 square.",
         "15": "…f5 strikes at e4, Black's main lever in the King's Indian."
       },
+      "arrows": {
+        "13": [
+          {
+            "color": "green",
+            "from": "f7",
+            "to": "f5"
+          }
+        ]
+      },
       "summary": "Against f3 and Be3, play …e5, then …Nh5 and …f5 to break up White's pawn centre."
     },
     {
@@ -135,7 +196,7 @@
         "3": "…g6 prepares …Bg7, a bishop that will press on the long diagonal.",
         "9": "…O-O first; White's f3 means a kingside pawn storm may come.",
         "11": "…e5 hits the centre, the same answer as against the Classical.",
-        "13": "…exd4 opens the long diagonal for the g7 bishop; …Nc6 follows."
+        "13": "…exd4 opens the centre for Black's pieces; …Nc6 and …Re8 follow."
       },
       "accept": {
         "13": ["c6", "Nc6"]
@@ -154,6 +215,15 @@
         "11": "…c5 attacks the overextended centre right away.",
         "13": "…e6 breaks open the e-file against White's uncastled king.",
         "17": "…Re8 hits the e4 pawn and stops White's e5 push."
+      },
+      "arrows": {
+        "17": [
+          {
+            "color": "green",
+            "from": "e8",
+            "to": "e4"
+          }
+        ]
       },
       "accept": {
         "17": ["Bg4"]
@@ -201,7 +271,7 @@
       "notes": {
         "3": "…g6: the same King's Indian set-up works against the London.",
         "9": "…d6 prepares …e5 or …c5 against White's quiet set-up.",
-        "11": "…c5 hits d4 and opens the long diagonal for the g7 bishop."
+        "11": "…c5 hits d4, the base of White's set-up."
       },
       "accept": {
         "11": ["Nbd7"]

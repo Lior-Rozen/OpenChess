@@ -40,6 +40,15 @@
         "18": "Nbd2 starts the classic knight tour d2-f1-g3.",
         "20": "Nf1 heads for g3, where the knight eyes f5 and supports the kingside."
       },
+      "arrows": {
+        "20": [
+          {
+            "color": "green",
+            "from": "f1",
+            "to": "g3"
+          }
+        ]
+      },
       "accept": {
         "12": ["h3"],
         "16": ["Nbd2"]
@@ -60,6 +69,22 @@
         "11": "…Bg4 pins the f3 knight.",
         "12": "h3 asks the bishop at once: take on f3 or retreat.",
         "14": "Nbd2 supports f3; g4 can come later to break the pin."
+      },
+      "arrows": {
+        "11": [
+          {
+            "color": "yellow",
+            "from": "g4",
+            "to": "d1"
+          }
+        ],
+        "14": [
+          {
+            "color": "green",
+            "from": "g2",
+            "to": "g4"
+          }
+        ]
       },
       "accept": {
         "12": ["Nbd2"]
@@ -98,6 +123,15 @@
         "8": "d3 protects e4 calmly; White keeps the centre solid and plays slowly.",
         "12": "exd5 trades, so the black knight lands on d5 where it can be chased.",
         "14": "Re1 puts pressure on the e5 pawn at once."
+      },
+      "arrows": {
+        "14": [
+          {
+            "color": "green",
+            "from": "e1",
+            "to": "e5"
+          }
+        ]
       },
       "summary": "If Black plays …d5 early, trade on d5 and hit e5 with Re1."
     },
@@ -210,6 +244,15 @@
         "5": "…Nd4 is a trap: 4.Nxe5?? Qg5! wins material for Black.",
         "6": "Nxd4 takes the knight instead of the e5 pawn; Black's centre pawn is pulled to d4.",
         "8": "O-O and White is ahead in development, ready for c3 to attack d4."
+      },
+      "arrows": {
+        "5": [
+          {
+            "color": "red",
+            "from": "d8",
+            "to": "g5"
+          }
+        ]
       },
       "mistakes": {
         "6": {

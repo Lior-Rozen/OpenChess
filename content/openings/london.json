@@ -19,6 +19,15 @@
         "12": "Bg3 keeps the bishop when …Bd6 offers a trade, and opens the h-file if Black takes.",
         "14": "Bd3 aims at Black's king; Ne5 and a kingside attack can follow."
       },
+      "arrows": {
+        "14": [
+          {
+            "color": "green",
+            "from": "f3",
+            "to": "e5"
+          }
+        ]
+      },
       "summary": "Bf4, e3, Nf3, c3, Nbd2, Bd3: the London pyramid, the same set-up every time."
     },
     {
@@ -36,6 +45,15 @@
         "16": "Ne5 grabs the outpost and starts a kingside attack.",
         "18": "f4 supports the e5 knight, a Stonewall-style attacking set-up."
       },
+      "arrows": {
+        "14": [
+          {
+            "color": "green",
+            "from": "f3",
+            "to": "e5"
+          }
+        ]
+      },
       "summary": "When Black plays slowly, put a knight on e5, back it with f4 and attack the king."
     },
     {
@@ -49,6 +67,15 @@
         "2": "Bf4 develops the bishop before e3 shuts it in.",
         "8": "Bg3 keeps the bishop; if Black takes, hxg3 opens the h-file.",
         "10": "Bd3 aims at h7, as in the main line."
+      },
+      "arrows": {
+        "10": [
+          {
+            "color": "yellow",
+            "from": "d3",
+            "to": "h7"
+          }
+        ]
       },
       "summary": "Against …Bd6, retreat to g3 instead of trading, then Bd3 and the usual pyramid."
     },
@@ -65,6 +92,15 @@
         "10": "Bd3 aims at h7, as in the main line.",
         "14": "Nbd2: the same position as the main line."
       },
+      "arrows": {
+        "10": [
+          {
+            "color": "yellow",
+            "from": "d3",
+            "to": "h7"
+          }
+        ]
+      },
       "summary": "…Bd6 and …c5 bring us to the main line: Bg3, Bd3, c3, Nbd2."
     },
     {
@@ -77,6 +113,15 @@
       "notes": {
         "2": "Bf4 develops the bishop before e3 shuts it in.",
         "6": "Bd3 offers to trade off Black's best minor piece."
+      },
+      "arrows": {
+        "6": [
+          {
+            "color": "green",
+            "from": "d3",
+            "to": "f5"
+          }
+        ]
       },
       "summary": "When Black copies with …Bf5, challenge the bishop with Bd3."
     },
@@ -91,6 +136,22 @@
         "2": "Bf4 develops the bishop before e3 shuts it in.",
         "6": "Bd3 offers to trade off Black's best minor piece.",
         "10": "Nf3: the queen on d3 eyes h7 and supports a later e4."
+      },
+      "arrows": {
+        "6": [
+          {
+            "color": "green",
+            "from": "d3",
+            "to": "f5"
+          }
+        ],
+        "10": [
+          {
+            "color": "green",
+            "from": "e3",
+            "to": "e4"
+          }
+        ]
       },
       "summary": "After the bishop trade, develop with Nf3 and Nbd2 and prepare e4 with the queen on d3."
     },
@@ -121,6 +182,22 @@
         "9": "…Qb6 attacks b2, which the f4 bishop no longer defends.",
         "10": "Qb3 offers a queen trade that would open the a-file for White's rook.",
         "12": "Qc2 keeps the queen; White wants e4 next to break the black centre."
+      },
+      "arrows": {
+        "9": [
+          {
+            "color": "red",
+            "from": "b6",
+            "to": "b2"
+          }
+        ],
+        "12": [
+          {
+            "color": "green",
+            "from": "e3",
+            "to": "e4"
+          }
+        ]
       },
       "accept": {
         "10": ["Qc2"]
@@ -180,6 +257,15 @@
         "8": "Be2 is the usual square here: against …g6 the bishop has little to aim at on d3.",
         "10": "h3 gives the f4 bishop a retreat on h2, so …Nh5 can't trade it."
       },
+      "arrows": {
+        "10": [
+          {
+            "color": "yellow",
+            "from": "f4",
+            "to": "h2"
+          }
+        ]
+      },
       "accept": {
         "10": ["O-O"]
       },
@@ -197,6 +283,15 @@
         "8": "Be2 is the usual square here: against …g6 the bishop has little to aim at on d3.",
         "10": "h3 gives the f4 bishop a retreat on h2, so …Nh5 can't trade it.",
         "12": "O-O: if Black plays …e5, the f4 bishop drops back to h2 and keeps its diagonal."
+      },
+      "arrows": {
+        "10": [
+          {
+            "color": "yellow",
+            "from": "f4",
+            "to": "h2"
+          }
+        ]
       },
       "accept": {
         "10": ["O-O"]

@@ -19,6 +19,15 @@
         "6": "fxe5 gains space and pushes the f6 knight away.",
         "10": "Qe2 attacks the e4 knight a third time and frees White's game."
       },
+      "arrows": {
+        "10": [
+          {
+            "color": "green",
+            "from": "e2",
+            "to": "e4"
+          }
+        ]
+      },
       "summary": "When Black pins with …Bg4, hit the e4 knight with Qe2."
     },
     {
@@ -33,6 +42,15 @@
         "4": "f4 is the Vienna Gambit: it attacks e5 and opens the f-file.",
         "6": "fxe5 gains space and pushes the f6 knight away.",
         "10": "bxc3 strengthens the centre; d4 comes next."
+      },
+      "arrows": {
+        "10": [
+          {
+            "color": "green",
+            "from": "d2",
+            "to": "d4"
+          }
+        ]
       },
       "accept": {
         "10": ["dxc3"]
@@ -68,6 +86,15 @@
         "12": "Bd3 challenges the strong e4 knight.",
         "14": "exf6 takes en passant, opening the f-file for White's rook.",
         "16": "O-O puts the rook on the open f-file, aimed at f7."
+      },
+      "arrows": {
+        "12": [
+          {
+            "color": "green",
+            "from": "d3",
+            "to": "e4"
+          }
+        ]
       },
       "summary": "Against …Be7, develop with d4 and Bd3; if …f5, take en passant and castle onto the f-file."
     },
@@ -145,6 +172,15 @@
         "6": "Nf3 develops and adds pressure on e5.",
         "8": "Bb5 pins the knight that defends e5."
       },
+      "arrows": {
+        "8": [
+          {
+            "color": "yellow",
+            "from": "b5",
+            "to": "e8"
+          }
+        ]
+      },
       "summary": "Against the solid 3…d6, develop with Nf3 and pin the e5 defender with Bb5."
     },
     {
@@ -176,6 +212,15 @@
         "8": "f4 attacks e5 and opens the f-file once White castles.",
         "12": "Na4 trades off the c5 bishop before it can stop White castling."
       },
+      "arrows": {
+        "12": [
+          {
+            "color": "green",
+            "from": "a4",
+            "to": "c5"
+          }
+        ]
+      },
       "summary": "Against the pin, Na4 first: without the c5 bishop, White can castle and break the pin later."
     },
     {
@@ -192,6 +237,15 @@
         "8": "f4 attacks e5 and opens the f-file once White castles.",
         "12": "Na4 trades off the c5 bishop, which stops White from castling safely.",
         "16": "O-O and the f-file is ready for White's rook."
+      },
+      "arrows": {
+        "12": [
+          {
+            "color": "green",
+            "from": "a4",
+            "to": "c5"
+          }
+        ]
       },
       "summary": "Trade off the dangerous c5 bishop with Na4, then castle and use the f-file."
     },

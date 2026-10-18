@@ -16,10 +16,10 @@
   (3. cxd5 {@variation Exchange} 3... cxd5 {…cxd5 keeps a symmetrical, very solid pawn structure.} 4. Nc3 Nf6 5. Nf3 Nc6 {…Nc6 develops and adds a defender to d4 and e5.} 6. Bf4 Bf5 {…Bf5 mirrors White's active bishop.} (6... a6 {@alt}) 7. e3 e6
 {@line id=slav-exchange level=1 tier=main name="Exchange (3.cxd5)" summary="Symmetry is fine for Black: develop knights and bishop actively, then …e6."}
 8. Bd3
-    (8. Bb5 Nd7 {…Nd7 covers e5 and c5 and gets ready to chase the bishop with …a6.} (8... Bd6 {@alt}) (8... Bb4 {@alt})
+    (8. Bb5 Nd7 {…Nd7 covers e5 and c5 and gets ready to chase the bishop with …a6. [%cal Ga7a6]} (8... Bd6 {@alt}) (8... Bb4 {@alt})
 {@line id=slav-exchange-bb5 level=2 tier=side name="8.Bb5" summary="Against the pin Bb5, play …Nd7 and be ready to ask the bishop with …a6."}
 )
-  8... Bxd3 {…Bxd3 trades bishops; the symmetrical position is very solid for Black.} 9. Qxd3 Bd6 {…Bd6 challenges White's strong f4 bishop.} 10. Bxd6 Qxd6 11. O-O O-O
+  8... Bxd3 {…Bxd3 trades bishops; the symmetrical position is very solid for Black.} 9. Qxd3 Bd6 {…Bd6 challenges White's strong f4 bishop. [%cal Gd6f4]} 10. Bxd6 Qxd6 11. O-O O-O
 {@line id=slav-exchange-deep level=2 tier=main name="8.Bd3" summary="Trade both pairs of bishops and castle; the Exchange Slav is then completely level."}
 )
 3... Nf6 (3... Bf5 {@mistake Qb3! hits b7, which the bishop no longer guards.}) 4. Nf3
@@ -28,22 +28,22 @@
 )
 4... dxc4 {@variation Main Line} {…dxc4 takes the pawn when White can't easily win it back with tempo.} (4... e6 {@alt}) 5. a4
   (5. e4 b5 {…b5 holds on to the c4 pawn; Black gets queenside play against White's big centre.} 6. e5
-    (6. a4 b4 {…b4 kicks the knight away from the centre.} 7. Na2 Nxe4 {…Nxe4 grabs the centre pawn while the a2 knight is out of play.}
+    (6. a4 b4 {…b4 kicks the knight away from the centre. [%cal Gb4c3]} 7. Na2 Nxe4 {…Nxe4 grabs the centre pawn while the a2 knight is out of play.}
 {@line id=slav-5e4-a4 level=2 tier=main name="5.e4 b5 6.a4" summary="When a4 hits the b5 pawn, push …b4 and take the e4 pawn while White's knight sits on a2."}
 )
-  6... Nd5 {…Nd5: the knight is safe in the centre and eyes c3.}
+  6... Nd5 {…Nd5: the knight is safe in the centre and eyes c3. [%cal Gd5c3]}
 {@line id=slav-5e4 level=1 tier=main name="5.e4 b5" summary="Meet 5.e4 with …b5 to keep the pawn, then put the knight on d5 when it's kicked."}
 7. a4 e6 {…e6 supports the d5 knight and opens the f8 bishop.} 8. axb5 Nxc3 9. bxc3 cxb5 10. Ng5 Bb7 {…Bb7 guards d5 and the long diagonal; Black stays a pawn up.} (10... Be7 {@mistake Nxf7! Kxf7 Qf3+ and Qxa8 wins the rook.})
 {@line id=slav-5e4-deep level=2 tier=main name="5.e4 b5 6.e5" summary="After 6.e5 Nd5 7.a4 e6, trade on c3, keep the b5 pawn and guard the long diagonal with …Bb7."}
 )
-  (5. e3 b5 {…b5 holds the extra c4 pawn for now.} 6. a4 b4 {…b4 kicks the knight to a poor square on the rim.} 7. Na2 e6 8. Bxc4 Be7 {…Be7 develops; Black plans …O-O and …c5.}
+  (5. e3 b5 {…b5 holds the extra c4 pawn for now.} 6. a4 b4 {…b4 kicks the knight to a poor square on the rim. [%cal Gb4c3]} 7. Na2 e6 8. Bxc4 Be7 {…Be7 develops; Black plans …O-O and …c5.}
 {@line id=slav-5e3 level=2 tier=side name="5.e3 b5" summary="When White plays slowly with 5.e3, hold the pawn with …b5, then kick the knight with …b4."}
 )
 5... Bf5 {…Bf5 develops the bishop before …e6.} 6. e3
-  (6. Ne5 Nbd7 {…Nbd7 challenges the e5 knight right away.} 7. Nxc4 Qc7 {…Qc7 supports the …e5 push.} 8. g3 e5 {…e5 frees Black's game in the centre.}
+  (6. Ne5 Nbd7 {…Nbd7 challenges the e5 knight right away. [%cal Gd7e5]} 7. Nxc4 Qc7 {…Qc7 supports the …e5 push.} 8. g3 e5 {…e5 frees Black's game in the centre.}
 {@line id=slav-krause level=2 tier=side name="Krause (6.Ne5)" summary="Against 6.Ne5, challenge the knight with …Nbd7, then free your game with …Qc7 and …e5."}
 )
-6... e6 7. Bxc4 Bb4 {…Bb4 pins the c3 knight and stops White's e4 push.}
+6... e6 7. Bxc4 Bb4 {…Bb4 pins the c3 knight and stops White's e4 push. [%cal Yb4e1]}
 {@line id=slav-main level=1 tier=main name="Main Line (5.a4 Bf5)" summary="Take on c4, develop the bishop to f5 before …e6, then pin with …Bb4."}
-8. O-O O-O 9. Qe2 Nbd7 {…Nbd7 prepares for e4 by covering e5.} 10. e4 Bg6 {…Bg6 steps back from the pawn's attack, still eyeing e4.} 11. Bd3 Bh5 {…Bh5 pins the f3 knight, so White's e5 push leaves d4 weaker.}
+8. O-O O-O 9. Qe2 Nbd7 {…Nbd7 prepares for e4 by covering e5.} 10. e4 Bg6 {…Bg6 steps back from the pawn's attack, still eyeing e4.} 11. Bd3 Bh5 {…Bh5 pins the f3 knight, so White's e5 push leaves d4 weaker. [%cal Yh5e2]}
 {@line id=slav-main-deep level=2 tier=main name="9.Qe2" summary="When White pushes e4, retreat the bishop to g6 and then pin with …Bh5."} *

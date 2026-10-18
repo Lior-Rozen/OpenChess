@@ -17,12 +17,12 @@
 {@line id=queens-gambit-declined-3cxd5 level=1 tier=side name="3.cxd5" summary="After an early cxd5, take back with the pawn and develop …Nf6, …Be7 and castle."}
 )
 3... Nf6 4. Bg5 {@variation Orthodox (4.Bg5)}
-  (4. Nf3 {@variation 4.Nf3} 4... Be7 {…Be7 develops and prepares to castle.} 5. Bf4 O-O 6. e3 b6 {…b6 prepares …Bb7 and …c5, the plan of the Tartakower.} (6... c5 {@alt}) (6... Nbd7 {@alt})
+  (4. Nf3 {@variation 4.Nf3} 4... Be7 {…Be7 develops and prepares to castle.} 5. Bf4 O-O 6. e3 b6 {…b6 prepares …Bb7 and …c5, the plan of the Tartakower. [%cal Gc8b7]} (6... c5 {@alt}) (6... Nbd7 {@alt})
 {@line id=queens-gambit-declined-nf3-bf4 level=1 tier=main name="4.Nf3 Be7 5.Bf4" summary="Against Bf4, castle and play …b6 and …Bb7, or hit the centre with …c5."}
 )
   (4. cxd5 {@variation Exchange} 4... exd5 5. Bg5 Be7 6. e3 O-O {…O-O: Black has a solid position; White usually plans the minority attack.} (6... c6 {@alt})
 {@line id=queens-gambit-declined-exchange level=1 tier=main name="Exchange (4.cxd5)" summary="In the Exchange, develop …Be7 and castle; …c6, …Nbd7 and …Re8 make a solid set-up."}
-7. Bd3 h6 {…h6 asks the g5 bishop to make a decision before Black finishes developing.} (7... c6 {@alt})
+7. Bd3 h6 {…h6 asks the g5 bishop to make a decision before Black finishes developing. [%cal Gh6g5]} (7... c6 {@alt})
 {@line id=queens-gambit-declined-exchange-bd3 level=2 tier=main name="Exchange: 7.Bd3" summary="Against Bd3, ask the bishop with …h6, then …c6, …Nbd7 and …Re8."}
 )
   (4. e3 {@variation 4.e3} 4... Be7 5. Nf3 O-O {…O-O: the solid set-up again; …b6 or …c5 next.}
@@ -31,7 +31,7 @@
   (4. Bf4 {@variation 4.Bf4} 4... Be7 5. e3 O-O {…O-O, with …c5 or …b6 to follow.} (5... c5 {@alt})
 {@line id=queens-gambit-declined-bf4 level=2 tier=side name="4.Bf4" summary="Against 4.Bf4, develop and castle; …c5 is a good way to hit back."}
 )
-4... Be7 {…Be7 breaks the pin on the f6 knight.} 5. e3 O-O 6. Nf3 h6 {…h6 asks the bishop to decide.} (6... Nbd7 {@alt}) 7. Bh4 b6 {…b6 prepares …Bb7: the Tartakower set-up.}
+4... Be7 {…Be7 breaks the pin on the f6 knight.} 5. e3 O-O 6. Nf3 h6 {…h6 asks the bishop to decide.} (6... Nbd7 {@alt}) 7. Bh4 b6 {…b6 prepares …Bb7: the Tartakower set-up. [%cal Gc8b7]}
 {@line id=queens-gambit-declined-tartakower level=1 tier=main name="Tartakower (7…b6)" summary="The Orthodox QGD: …Be7, castle, …h6, then …b6 and …Bb7 to solve the problem bishop."}
 8. cxd5 Nxd5 {…Nxd5 trades pieces to free Black's game.}
 {@line id=queens-gambit-declined-tartakower-cxd5 level=2 tier=main name="Tartakower: 8.cxd5" summary="After cxd5, take back with the knight and trade pieces; then …Bb7 and …c5."} *

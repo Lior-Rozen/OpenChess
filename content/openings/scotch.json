@@ -20,6 +20,22 @@
         "10": "c3 holds d4 a second time.",
         "12": "Bc4 develops to the active diagonal towards f7."
       },
+      "arrows": {
+        "8": [
+          {
+            "color": "red",
+            "from": "c5",
+            "to": "d4"
+          }
+        ],
+        "12": [
+          {
+            "color": "yellow",
+            "from": "c4",
+            "to": "f7"
+          }
+        ]
+      },
       "summary": "Defend d4 with Be3 and c3, then develop Bc4 and castle."
     },
     {
@@ -37,6 +53,22 @@
         "12": "Bc4 develops to the active diagonal towards f7.",
         "14": "O-O: White's position is solid; Nd2 or Nc2 comes next."
       },
+      "arrows": {
+        "8": [
+          {
+            "color": "red",
+            "from": "c5",
+            "to": "d4"
+          }
+        ],
+        "12": [
+          {
+            "color": "yellow",
+            "from": "c4",
+            "to": "f7"
+          }
+        ]
+      },
       "summary": "Castle short and keep d4 strong; Black's pieces press on d4 but can't break through."
     },
     {
@@ -51,6 +83,15 @@
         "6": "Nxd4 recaptures with a strong central knight.",
         "8": "Be3 defends the d4 knight against the c5 bishop.",
         "10": "Nc3 develops; the bishop on b6 has no targets."
+      },
+      "arrows": {
+        "8": [
+          {
+            "color": "red",
+            "from": "c5",
+            "to": "d4"
+          }
+        ]
       },
       "accept": {
         "10": ["Nf5"]
@@ -87,6 +128,15 @@
         "6": "Nxd4 recaptures with a strong central knight.",
         "8": "Qxd4: the queen is strong in the centre and hard to chase.",
         "10": "e5 gains space with tempo on the queen."
+      },
+      "arrows": {
+        "10": [
+          {
+            "color": "green",
+            "from": "e5",
+            "to": "f6"
+          }
+        ]
       },
       "accept": {
         "10": ["Qe3"]

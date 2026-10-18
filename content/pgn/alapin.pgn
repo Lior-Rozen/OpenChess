@@ -36,5 +36,5 @@
 )
 5. exd5 Qxd5 6. Nf3 {Nf3 develops with the queen on d5 exposed in the centre.}
 {@line id=alapin-nc6 level=1 tier=main name="2…Nc6" summary="Against 2…Nc6, take the centre with d4 and cxd4; after …d5, take and develop Nf3."}
-6... Bg4 7. Nc3 {Nc3 develops with tempo on the black queen.} (7. Be2 {@alt})
+6... Bg4 7. Nc3 {Nc3 develops with tempo on the black queen. [%cal Gc3d5]} (7. Be2 {@alt})
 {@line id=alapin-nc6-bg4 level=2 tier=main name="2…Nc6: 6…Bg4" summary="Against the pin, develop Nc3 with tempo on the queen; White keeps the d4 pawn."} *

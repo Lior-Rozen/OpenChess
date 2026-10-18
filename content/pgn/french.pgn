@@ -15,7 +15,7 @@
 )
   (3. Nc3 {@variation Winawer} 3... Bb4 {…Bb4 pins the c3 knight, adding pressure on e4.} 4. e5 c5 {…c5 hits the d4 pawn, the classic French counter.} 5. a3 Bxc3+ {…Bxc3+ gives up the bishop to double White's c-pawns.} 6. bxc3 Ne7 {…Ne7 develops and keeps the f-pawn free; the knight can go to f5 or c6.}
 {@line id=french-winawer-main level=1 tier=main name="Winawer Variation" summary="Pin with …Bb4, hit d4 with …c5, then trade on c3 to damage White's pawns."}
-7. Qg4 {Qg4 attacks g7, which the dark-squared bishop no longer defends.}
+7. Qg4 {Qg4 attacks g7, which the dark-squared bishop no longer defends. [%cal Rg4g7]}
     (7. Nf3 Nbc6 {…Nbc6 adds pressure on d4 against White's quiet set-up.} (7... b6 {@alt})
 {@line id=french-winawer-nf3 level=2 tier=side name="7.Nf3" summary="Against the quiet 7.Nf3, keep hitting d4 with …Nbc6; …b6 and …Ba6 to trade bishops is also good."}
 )
@@ -26,23 +26,23 @@
 {@line id=french-tarrasch-open level=1 tier=side name="Open (3…c5)" summary="Meet 3.Nd2 with …c5: active pieces in return for an isolated d-pawn."}
 )
 3... c5 {…c5 strikes at d4, the base of White's pawn chain.} 4. c3 Nc6 5. Nf3 Qb6 {…Qb6 piles up on d4 and eyes the b2 pawn.} 6. a3
-  (6. Bd3 {Bd3 develops and offers the d4 pawn: the Milner-Barry Gambit.} 6... cxd4 7. cxd4 Bd7 {…Bd7 first: taking on d4 now loses the queen to Bb5+.} (7... Nxd4 {@mistake Nxd4 Qxd4 Bb5+ and White wins your queen.})
+  (6. Bd3 {Bd3 develops and offers the d4 pawn: the Milner-Barry Gambit.} 6... cxd4 7. cxd4 Bd7 {…Bd7 first: taking on d4 now loses the queen to Bb5+. [%cal Rd3b5]} (7... Nxd4 {@mistake Nxd4 Qxd4 Bb5+ and White wins your queen. [%cal Rd3b5]})
 {@line id=french-advance-bd3 level=1 tier=main name="Milner-Barry (6.Bd3)" summary="Against 6.Bd3, trade on d4 and play …Bd7 before taking anything: Bb5+ is the trap."}
 8. O-O
-    (8. Bc2 Nb4 {…Nb4 hits the c2 bishop and eyes d3.}
+    (8. Bc2 Nb4 {…Nb4 hits the c2 bishop and eyes d3. [%cal Gb4c2]}
 {@line id=french-advance-mb-bc2 level=2 tier=side name="Milner-Barry: 8.Bc2" summary="If White keeps the bishop with Bc2, jump into b4 with the knight."}
 )
-  8... Nxd4 {…Nxd4 takes the offered pawn, now that Bb5+ is covered.} 9. Nxd4 Qxd4 10. Nc3 a6 {…a6 stops Nb5, which would hit the queen and c7.} (10... Qxe5 {@mistake Re1 and Nb5 chase your queen while White develops.})
+  8... Nxd4 {…Nxd4 takes the offered pawn, now that Bb5+ is covered.} 9. Nxd4 Qxd4 10. Nc3 a6 {…a6 stops Nb5, which would hit the queen and c7. [%cal Rc3b5]} (10... Qxe5 {@mistake Re1 and Nb5 chase your queen while White develops.})
 {@line id=french-advance-milner-barry level=2 tier=main name="Milner-Barry Gambit" summary="With …Bd7 in, the d4 pawn is safe to take; then …a6 stops Nb5."}
 )
-  (6. Be2 cxd4 {…cxd4 opens the c-file and leaves d4 without its c3 support.} 7. cxd4 Nh6 {…Nh6 heads for f5, where the knight attacks d4.} (7... Nge7 {@alt}) 8. O-O Nf5 {…Nf5 adds a third attacker on d4, next to the c6 knight and the b6 queen.}
+  (6. Be2 cxd4 {…cxd4 opens the c-file and leaves d4 without its c3 support.} 7. cxd4 Nh6 {…Nh6 heads for f5, where the knight attacks d4. [%cal Gh6f5]} (7... Nge7 {@alt}) 8. O-O Nf5 {…Nf5 adds a third attacker on d4, next to the c6 knight and the b6 queen.}
 {@line id=french-advance-be2 level=2 tier=main name="6.Be2" summary="Trade on d4, then bring the g8 knight via h6 to f5 to pile up on the d4 pawn."}
 )
 6... c4 {…c4 clamps the queenside, taking b3 and d3 away from White.} (6... Bd7 {@alt})
 {@line id=french-advance-main level=1 tier=main name="Advance Variation" summary="Attack the base of the chain: …c5, …Nc6 and …Qb6 all hit d4."}
 7. Be2
-  (7. Nbd2 Na5 {…Na5 heads for b3 as usual.} 8. Be2 Bd7 {…Bd7: the same position as the 7.Be2 order.}
+  (7. Nbd2 Na5 {…Na5 heads for b3 as usual. [%cal Ga5b3]} 8. Be2 Bd7 {…Bd7: the same position as the 7.Be2 order.}
 {@line id=french-advance-a3-nbd2 level=2 tier=side name="6.a3 c4 7.Nbd2" summary="7.Nbd2 and 7.Be2 lead to the same position: …Na5 and …Bd7 either way."}
 )
-7... Na5 {…Na5 heads for b3, a strong square White can no longer guard with a pawn.} 8. Nbd2 Bd7 {…Bd7 develops and supports …Bb5 or …Nb3 later.}
+7... Na5 {…Na5 heads for b3, a strong square White can no longer guard with a pawn. [%cal Ga5b3]} 8. Nbd2 Bd7 {…Bd7 develops and supports …Bb5 or …Nb3 later.}
 {@line id=french-advance-a3 level=2 tier=main name="6.a3 c4 7.Be2" summary="After …c4, the queenside is Black's: aim the knight at b3 and keep White's b4 in check."} *

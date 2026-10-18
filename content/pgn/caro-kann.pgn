@@ -7,14 +7,14 @@
 
 1. e4 c6 {…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.} 2. d4 d5 3. e5 {@variation Advance}
   (3. Nc3 {@variation Classical} 3... dxe4 4. Nxe4 Bf5 {…Bf5 develops with tempo on the e4 knight.} 5. Ng3 Bg6 6. Nf3
-    (6. h4 h6 {…h6 keeps a retreat square for the bishop, so h5 doesn't trap it.} 7. Nf3 Nd7 8. h5 Bh7 {…Bh7: the same position as the 6.Nf3 order.}
+    (6. h4 h6 {…h6 keeps a retreat square for the bishop, so h5 doesn't trap it. [%cal Yg6h7]} 7. Nf3 Nd7 8. h5 Bh7 {…Bh7: the same position as the 6.Nf3 order.}
 {@line id=caro-kann-classical-h4 level=2 tier=side name="6.h4 move order" summary="If White starts with h4, answer …h6, then …Nd7 and …Bh7 as usual."}
 )
   6... Nd7 {…Nd7 stops Ne5 and prepares …Ngf6 without allowing a pawn-breaking Nxf6+.} (6... e6 {@alt}) 7. h4
     (7. Bd3 e6 {…e6: if White takes on g6, Black recaptures towards the centre with the h-pawn.} (7... Bxd3 {@alt})
 {@line id=caro-kann-classical-bd3 level=2 tier=main name="6.Nf3 Nd7 7.Bd3" summary="Against 7.Bd3, play …e6 and let White decide about the bishops."}
 )
-  7... h6 {…h6 keeps a retreat square for the bishop, so h5 doesn't trap it.} 8. h5 Bh7 {…Bh7 keeps the bishop alive on its diagonal; White has spent time on h-pawn moves.}
+  7... h6 {…h6 keeps a retreat square for the bishop, so h5 doesn't trap it. [%cal Yg6h7]} 8. h5 Bh7 {…Bh7 keeps the bishop alive on its diagonal; White has spent time on h-pawn moves.}
 {@line id=caro-kann-classical-main level=1 tier=main name="Classical (4…Bf5)" summary="Bishop to f5, then g6 and h7: answer the h-pawn march with …h6 and keep the bishop."}
 9. Bd3 Bxd3 {…Bxd3 trades the good bishop for White's; Black's position is solid but a little passive.} 10. Qxd3 e6 {…e6 opens the f8 bishop; the black king will castle short or stay in the centre.} 11. Bd2 Ngf6 {…Ngf6 develops the last knight, eyeing e4 and g4.} 12. O-O-O Be7 {…Be7 prepares …O-O; the h5 pawn can become a target later.}
 {@line id=caro-kann-classical-deep level=2 tier=main name="11.Bd2" summary="Trade light-squared bishops, then develop quietly with …e6, …Ngf6 and …Be7."}
@@ -26,9 +26,9 @@
     (4. Nf3 {@variation Exchange} 4... Nc6 {…Nc6 develops and puts pressure on d4.} (4... Nf6 {@alt})
 {@line id=caro-kann-exchange-nf3 level=1 tier=side name="4.Nf3" summary="Against 4.Nf3, develop with …Nc6 and …Nf6 and hit d4."}
 )
-4... Nc6 5. c3 Nf6 6. Bf4 Bg4 {…Bg4 develops the bishop actively before …e6 locks it in.} 7. Qb3 Qd7 {…Qd7 defends b7 along the seventh rank.} 8. Nd2 e6 {…e6 opens the f8 bishop; next come …Bd6 and castling.}
+4... Nc6 5. c3 Nf6 6. Bf4 Bg4 {…Bg4 develops the bishop actively before …e6 locks it in.} 7. Qb3 Qd7 {…Qd7 defends b7 along the seventh rank. [%cal Rb3b7]} 8. Nd2 e6 {…e6 opens the f8 bishop; next come …Bd6 and castling.}
 {@line id=caro-kann-exchange-main level=1 tier=main name="Exchange Variation" summary="Develop the bishop to g4 before …e6, guard b7 with …Qd7, then play on the c-file."}
-9. Ngf3 Bd6 {…Bd6 challenges White's good bishop on f4.} 10. Bxd6 Qxd6 {…Qxd6 recaptures and keeps the queen central.} 11. O-O O-O {…O-O: next Black plays on the queenside with …Rab8 and …b5.}
+9. Ngf3 Bd6 {…Bd6 challenges White's good bishop on f4. [%cal Gd6f4]} 10. Bxd6 Qxd6 {…Qxd6 recaptures and keeps the queen central.} 11. O-O O-O {…O-O: next Black plays on the queenside with …Rab8 and …b5.}
 {@line id=caro-kann-exchange-deep level=2 tier=side name="9.Ngf3" summary="Trade dark-squared bishops, castle, then push …b5-b4 on the queenside (a minority attack)."}
 )
 3... Bf5 {…Bf5 develops the bishop outside the chain before …e6 shuts it in.} 4. Nf3
@@ -46,6 +46,6 @@
   (6. O-O Nc6 {…Nc6 adds a second attacker on d4.}
 {@line id=caro-kann-advance-oo level=2 tier=side name="Short, 6.O-O" summary="Against 6.O-O, develop with …Nc6 and keep hitting d4."}
 )
-6... Qb6 {…Qb6 hits b2 and adds a second attacker on d4.}
+6... Qb6 {…Qb6 hits b2 and adds a second attacker on d4. [%cal Gb6b2]}
   (6... cxd4 {@alt}) (6... Nc6 {@mistake dxc5! wins a pawn, and the e3 bishop guards it.})
 {@line id=caro-kann-advance-main level=1 tier=main name="Short System" summary="Get the bishop out to f5 first, then …e6, …c5 and …Qb6 to hit d4 and b2."} *

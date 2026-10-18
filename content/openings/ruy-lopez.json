@@ -38,6 +38,22 @@
         "20": "d4 finally builds the big centre that the whole set-up was preparing.",
         "22": "Nbd2 starts the Nf1-g3 knight tour."
       },
+      "arrows": {
+        "16": [
+          {
+            "color": "red",
+            "from": "c8",
+            "to": "g4"
+          }
+        ],
+        "22": [
+          {
+            "color": "green",
+            "from": "d2",
+            "to": "f1"
+          }
+        ]
+      },
       "summary": "h3, Bc2 and d4, then Nbd2-f1-g3: the classical Ruy Lopez plan."
     },
     {
@@ -53,6 +69,15 @@
         "12": "Bb3 retreats to a great diagonal aiming at f7.",
         "13": "…O-O prepares the Marshall Attack, a famous pawn sacrifice after 8.c3 d5.",
         "14": "h3 avoids the Marshall; after …d6, c3 brings us back to the main line."
+      },
+      "arrows": {
+        "13": [
+          {
+            "color": "red",
+            "from": "d7",
+            "to": "d5"
+          }
+        ]
       },
       "summary": "When Black castles before …d6, play h3 to dodge the Marshall Attack."
     },
@@ -71,6 +96,15 @@
         "14": "h3 avoids the Marshall; after …d6, c3 brings us back to the main line.",
         "16": "c3: this is now the Closed Ruy Lopez main line.",
         "20": "d4 builds the centre, just as in the Chigorin."
+      },
+      "arrows": {
+        "13": [
+          {
+            "color": "red",
+            "from": "d7",
+            "to": "d5"
+          }
+        ]
       },
       "summary": "The Anti-Marshall order joins the main line: same plan, same position."
     },
@@ -100,6 +134,15 @@
         "6": "Ba4 keeps the bishop aimed at the c6 knight.",
         "12": "c3 prepares d4 to kick the active c5 bishop.",
         "14": "d4 hits e5 and the bishop; White gains space in the centre."
+      },
+      "arrows": {
+        "12": [
+          {
+            "color": "green",
+            "from": "d2",
+            "to": "d4"
+          }
+        ]
       },
       "accept": {
         "12": ["a4"]
@@ -180,6 +223,15 @@
         "6": "d3 defends e4 and avoids the drawish Berlin endgame.",
         "8": "c3 gives the bishop a retreat and prepares d4.",
         "12": "h3 stops …Bg4."
+      },
+      "arrows": {
+        "12": [
+          {
+            "color": "red",
+            "from": "c8",
+            "to": "g4"
+          }
+        ]
       },
       "summary": "Against the Berlin, keep it simple with d3 and c3, like an Italian with the bishop on b5."
     },

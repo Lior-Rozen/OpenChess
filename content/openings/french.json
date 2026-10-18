@@ -39,6 +39,15 @@
         "13": "…Na5 heads for b3, a strong square White can no longer guard with a pawn.",
         "15": "…Bd7 develops and supports …Bb5 or …Nb3 later."
       },
+      "arrows": {
+        "13": [
+          {
+            "color": "green",
+            "from": "a5",
+            "to": "b3"
+          }
+        ]
+      },
       "accept": {
         "11": ["Bd7"]
       },
@@ -59,6 +68,15 @@
         "13": "…Na5 heads for b3 as usual.",
         "15": "…Bd7: the same position as the 7.Be2 order."
       },
+      "arrows": {
+        "13": [
+          {
+            "color": "green",
+            "from": "a5",
+            "to": "b3"
+          }
+        ]
+      },
       "accept": {
         "11": ["Bd7"]
       },
@@ -78,9 +96,18 @@
         "10": "Bd3 develops and offers the d4 pawn: the Milner-Barry Gambit.",
         "13": "…Bd7 first: taking on d4 now loses the queen to Bb5+."
       },
+      "arrows": {
+        "13": [
+          {
+            "color": "red",
+            "from": "d3",
+            "to": "b5"
+          }
+        ]
+      },
       "mistakes": {
         "13": {
-          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen."
+          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen. [%cal Rd3b5]"
         }
       },
       "summary": "Against 6.Bd3, trade on d4 and play …Bd7 before taking anything: Bb5+ is the trap."
@@ -101,9 +128,25 @@
         "15": "…Nxd4 takes the offered pawn, now that Bb5+ is covered.",
         "19": "…a6 stops Nb5, which would hit the queen and c7."
       },
+      "arrows": {
+        "13": [
+          {
+            "color": "red",
+            "from": "d3",
+            "to": "b5"
+          }
+        ],
+        "19": [
+          {
+            "color": "red",
+            "from": "c3",
+            "to": "b5"
+          }
+        ]
+      },
       "mistakes": {
         "13": {
-          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen."
+          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen. [%cal Rd3b5]"
         },
         "19": {
           "Qxe5": "Re1 and Nb5 chase your queen while White develops."
@@ -126,9 +169,25 @@
         "13": "…Bd7 first: taking on d4 now loses the queen to Bb5+.",
         "15": "…Nb4 hits the c2 bishop and eyes d3."
       },
+      "arrows": {
+        "13": [
+          {
+            "color": "red",
+            "from": "d3",
+            "to": "b5"
+          }
+        ],
+        "15": [
+          {
+            "color": "green",
+            "from": "b4",
+            "to": "c2"
+          }
+        ]
+      },
       "mistakes": {
         "13": {
-          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen."
+          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen. [%cal Rd3b5]"
         }
       },
       "summary": "If White keeps the bishop with Bc2, jump into b4 with the knight."
@@ -147,6 +206,15 @@
         "11": "…cxd4 opens the c-file and leaves d4 without its c3 support.",
         "13": "…Nh6 heads for f5, where the knight attacks d4.",
         "15": "…Nf5 adds a third attacker on d4, next to the c6 knight and the b6 queen."
+      },
+      "arrows": {
+        "13": [
+          {
+            "color": "green",
+            "from": "h6",
+            "to": "f5"
+          }
+        ]
       },
       "accept": {
         "13": ["Nge7"]
@@ -200,6 +268,15 @@
         "13": "…Qc7 counterattacks e5 and c3 instead of defending g7.",
         "17": "…cxd4 opens the c-file; Black gives kingside pawns for a strong centre attack.",
         "21": "…Bd7 prepares …O-O-O, so the black king hides on the queenside."
+      },
+      "arrows": {
+        "12": [
+          {
+            "color": "red",
+            "from": "g4",
+            "to": "g7"
+          }
+        ]
       },
       "summary": "Let White take g7 and h7: hit c3 and the centre, then castle long."
     },

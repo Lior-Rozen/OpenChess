@@ -18,21 +18,21 @@
 2. Nc3 {Nc3 covers d5 and e4.} 2... Nf6
   (2... Nc6 3. g3 Nf6 4. Bg2 {Bg2: the same fianchetto set-up against 2…Nc6.}
 {@line id=english-e5-nc6 level=1 tier=main name="1…e5 2…Nc6" summary="Against 2…Nc6, the plan doesn't change: g3, Bg2, then Nf3 or e3."}
-4... Bc5 5. Nf3 {Nf3 develops and hits e5.} (5. e3 {@alt})
+4... Bc5 5. Nf3 {Nf3 develops and hits e5. [%cal Gf3e5]} (5. e3 {@alt})
 {@line id=english-e5-nc6-bc5 level=2 tier=main name="1…e5 2…Nc6 4…Bc5" summary="Against …Bc5, develop with Nf3 (or e3 to blunt the bishop) and castle."}
 )
 3. g3 {g3 prepares Bg2, the key piece in the English.} 3... d5
-  (3... Bc5 4. Bg2 O-O 5. Nf3 {Nf3 develops and hits e5.} (5. e3 {@alt})
+  (3... Bc5 4. Bg2 O-O 5. Nf3 {Nf3 develops and hits e5. [%cal Gf3e5]} (5. e3 {@alt})
 {@line id=english-e5-bc5 level=2 tier=main name="1…e5 3…Bc5" summary="Against …Bc5, fianchetto, then Nf3 or e3 and castle."}
 )
-  (3... Bb4 4. Bg2 O-O 5. Nf3 {Nf3 develops; if …e4, the knight goes to d4.} (5. e3 {@alt}) (5. e4 {@alt})
+  (3... Bb4 4. Bg2 O-O 5. Nf3 {Nf3 develops; if …e4, the knight goes to d4. [%cal Yf3d4]} (5. e3 {@alt}) (5. e4 {@alt})
 {@line id=english-e5-bb4 level=1 tier=side name="1…e5 3…Bb4" summary="Against …Bb4, fianchetto and develop Nf3; the c3 knight can be taken but White gets the bishop pair."}
 )
-4. cxd5 (4. Bg2 {@mistake …d4! hits the c3 knight and grabs space.}) 4... Nxd5 5. Bg2 {Bg2: the bishop hits the d5 knight along the long diagonal.} 5... Nb6
-  (5... Nxc3 6. bxc3 {bxc3 strengthens the centre and opens the b-file for a rook.}
+4. cxd5 (4. Bg2 {@mistake …d4! hits the c3 knight and grabs space.}) 4... Nxd5 5. Bg2 {Bg2: the bishop hits the d5 knight along the long diagonal. [%cal Gg2d5]} 5... Nb6
+  (5... Nxc3 6. bxc3 {bxc3 strengthens the centre and opens the b-file for a rook. [%cal Ga1b1]}
 {@line id=english-e5-nxc3 level=2 tier=main name="Reversed Dragon: 5…Nxc3" summary="When Black trades on c3, take back towards the centre and use the open b-file."}
 )
-  (5... Be6 6. Nf3 {Nf3 develops and hits e5.}
+  (5... Be6 6. Nf3 {Nf3 develops and hits e5. [%cal Gf3e5]}
 {@line id=english-e5-be6 level=2 tier=side name="Reversed Dragon: 5…Be6" summary="Against …Be6, develop Nf3 and castle; the e5 pawn is a target."}
 )
 6. Nf3 Nc6 7. O-O {O-O: a Sicilian Dragon with colours reversed and an extra move for White.}

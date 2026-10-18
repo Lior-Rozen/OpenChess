@@ -20,6 +20,15 @@
         "13": "…Be7 breaks the pin on the f6 knight.",
         "15": "…Qc7 watches e5 and the c-file."
       },
+      "arrows": {
+        "11": [
+          {
+            "color": "yellow",
+            "from": "g5",
+            "to": "d8"
+          }
+        ]
+      },
       "mistakes": {
         "11": {
           "e5": "Nf5! and d5 is too weak while f6 is pinned."
@@ -42,6 +51,15 @@
         "15": "…Qc7 watches e5 and the c-file.",
         "17": "…Nbd7 supports the f6 knight; next is …b5 and a queenside attack."
       },
+      "arrows": {
+        "11": [
+          {
+            "color": "yellow",
+            "from": "g5",
+            "to": "d8"
+          }
+        ]
+      },
       "mistakes": {
         "11": {
           "e5": "Nf5! and d5 is too weak while f6 is pinned."
@@ -62,6 +80,15 @@
         "11": "…e5 grabs space and kicks the d4 knight; d5 becomes the key square.",
         "13": "…Be6 develops and controls d5, the hole White wants to use."
       },
+      "arrows": {
+        "13": [
+          {
+            "color": "yellow",
+            "from": "e6",
+            "to": "d5"
+          }
+        ]
+      },
       "summary": "…a6, then …e5 and …Be6: control d5 and you control the Najdorf."
     },
     {
@@ -79,6 +106,15 @@
         "15": "…Be7 gets ready to castle; White is preparing g4 and O-O-O.",
         "19": "…Nbd7 covers c5 and supports …b5.",
         "21": "…b5 starts Black's own attack on the castled white king; it's a race."
+      },
+      "arrows": {
+        "13": [
+          {
+            "color": "yellow",
+            "from": "e6",
+            "to": "d5"
+          }
+        ]
       },
       "summary": "Opposite-side castling means a race: White pushes g4-g5, Black answers with …b5-b4."
     },
@@ -130,6 +166,15 @@
         "13": "…b5 gains space and threatens …b4 against the c3 knight.",
         "17": "…Qc7 guards e5 and avoids tricks on the a8 rook."
       },
+      "arrows": {
+        "13": [
+          {
+            "color": "green",
+            "from": "b5",
+            "to": "b4"
+          }
+        ]
+      },
       "mistakes": {
         "17": {
           "O-O": "e5! dxe5 Nxe6 fxe6 Qxa8 wins the rook."
@@ -166,6 +211,15 @@
         "9": "…Bg4 develops and pins the knight that defends d4.",
         "13": "…Nc6 piles up on d4; Black is comfortable."
       },
+      "arrows": {
+        "9": [
+          {
+            "color": "yellow",
+            "from": "g4",
+            "to": "d1"
+          }
+        ]
+      },
       "accept": {
         "9": ["e6", "Nc6"]
       },
@@ -184,6 +238,15 @@
         "5": "…Qxd5 is safe because c3 takes the c3 square from White's knight.",
         "7": "…Nf6: after d4 this is the main Alapin line.",
         "9": "…Bg4 pins the knight that defends d4."
+      },
+      "arrows": {
+        "9": [
+          {
+            "color": "yellow",
+            "from": "g4",
+            "to": "d1"
+          }
+        ]
       },
       "summary": "4.Nf3 changes nothing: …Nf6, and after d4 the pin …Bg4."
     },
@@ -226,6 +289,15 @@
       "notes": {
         "1": "…c5 fights for d4 from the side, keeping the game unbalanced.",
         "5": "…Nc6 develops with tempo on the centralised queen."
+      },
+      "arrows": {
+        "5": [
+          {
+            "color": "green",
+            "from": "c6",
+            "to": "d4"
+          }
+        ]
       },
       "summary": "If White takes back with the queen, develop …Nc6 with tempo and keep developing."
     }

@@ -19,6 +19,15 @@
         "9": "…Bf5 develops the bishop before …e6.",
         "13": "…Bb4 pins the c3 knight and stops White's e4 push."
       },
+      "arrows": {
+        "13": [
+          {
+            "color": "yellow",
+            "from": "b4",
+            "to": "e1"
+          }
+        ]
+      },
       "accept": {
         "7": ["e6"]
       },
@@ -45,6 +54,22 @@
         "19": "…Bg6 steps back from the pawn's attack, still eyeing e4.",
         "21": "…Bh5 pins the f3 knight, so White's e5 push leaves d4 weaker."
       },
+      "arrows": {
+        "13": [
+          {
+            "color": "yellow",
+            "from": "b4",
+            "to": "e1"
+          }
+        ],
+        "21": [
+          {
+            "color": "yellow",
+            "from": "h5",
+            "to": "e2"
+          }
+        ]
+      },
       "accept": {
         "7": ["e6"]
       },
@@ -70,6 +95,15 @@
         "13": "…Qc7 supports the …e5 push.",
         "15": "…e5 frees Black's game in the centre."
       },
+      "arrows": {
+        "11": [
+          {
+            "color": "green",
+            "from": "d7",
+            "to": "e5"
+          }
+        ]
+      },
       "accept": {
         "7": ["e6"]
       },
@@ -92,6 +126,15 @@
         "7": "…dxc4 takes the pawn when White can't easily win it back with tempo.",
         "9": "…b5 holds on to the c4 pawn; Black gets queenside play against White's big centre.",
         "11": "…Nd5: the knight is safe in the centre and eyes c3."
+      },
+      "arrows": {
+        "11": [
+          {
+            "color": "green",
+            "from": "d5",
+            "to": "c3"
+          }
+        ]
       },
       "accept": {
         "7": ["e6"]
@@ -117,6 +160,15 @@
         "11": "…Nd5: the knight is safe in the centre and eyes c3.",
         "13": "…e6 supports the d5 knight and opens the f8 bishop.",
         "19": "…Bb7 guards d5 and the long diagonal; Black stays a pawn up."
+      },
+      "arrows": {
+        "11": [
+          {
+            "color": "green",
+            "from": "d5",
+            "to": "c3"
+          }
+        ]
       },
       "accept": {
         "7": ["e6"]
@@ -145,6 +197,15 @@
         "11": "…b4 kicks the knight away from the centre.",
         "13": "…Nxe4 grabs the centre pawn while the a2 knight is out of play."
       },
+      "arrows": {
+        "11": [
+          {
+            "color": "green",
+            "from": "b4",
+            "to": "c3"
+          }
+        ]
+      },
       "accept": {
         "7": ["e6"]
       },
@@ -168,6 +229,15 @@
         "9": "…b5 holds the extra c4 pawn for now.",
         "11": "…b4 kicks the knight to a poor square on the rim.",
         "15": "…Be7 develops; Black plans …O-O and …c5."
+      },
+      "arrows": {
+        "11": [
+          {
+            "color": "green",
+            "from": "b4",
+            "to": "c3"
+          }
+        ]
       },
       "accept": {
         "7": ["e6"]
@@ -268,6 +338,15 @@
         "15": "…Bxd3 trades bishops; the symmetrical position is very solid for Black.",
         "17": "…Bd6 challenges White's strong f4 bishop."
       },
+      "arrows": {
+        "17": [
+          {
+            "color": "green",
+            "from": "d6",
+            "to": "f4"
+          }
+        ]
+      },
       "accept": {
         "11": ["a6"]
       },
@@ -286,6 +365,15 @@
         "9": "…Nc6 develops and adds a defender to d4 and e5.",
         "11": "…Bf5 mirrors White's active bishop.",
         "15": "…Nd7 covers e5 and c5 and gets ready to chase the bishop with …a6."
+      },
+      "arrows": {
+        "15": [
+          {
+            "color": "green",
+            "from": "a7",
+            "to": "a6"
+          }
+        ]
       },
       "accept": {
         "11": ["a6"],

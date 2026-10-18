@@ -7,7 +7,7 @@
 
 1. e4 e5 2. Nf3 Nc6 3. d4 {d4 strikes the centre at once instead of slow Bc4 or Bb5 play.} 3... exd4 4. Nxd4 {Nxd4 recaptures with a strong central knight.} 4... Bc5 {@variation 4…Bc5}
   (4... Nxd4 {@variation 4…Nxd4} 5. Qxd4 {Qxd4: the queen is strong in the centre and hard to chase.} 5... d6
-    (5... Qf6 6. e5 {e5 gains space with tempo on the queen.} (6. Qe3 {@alt})
+    (5... Qf6 6. e5 {e5 gains space with tempo on the queen. [%cal Ge5f6]} (6. Qe3 {@alt})
 {@line id=scotch-qxd4-qf6 level=1 tier=main name="5…Qf6" summary="If Black offers a queen trade with …Qf6, push e5 with tempo (or keep queens with Qe3)."}
 )
     (5... Nf6 6. e5 {e5 kicks the knight; White's space advantage grows.}
@@ -31,11 +31,11 @@
   (4... Qf6 {@variation 4…Qf6} 5. Be3 {Be3 develops and protects the d4 knight.} (5. Nb5 {@alt}) (5. c3 {@alt})
 {@line id=scotch-qf6 level=1 tier=side name="4…Qf6" summary="Against the early queen, defend d4 with Be3 and keep developing."}
 )
-5. Be3 {Be3 defends the d4 knight against the c5 bishop.} 5... Qf6
+5. Be3 {Be3 defends the d4 knight against the c5 bishop. [%cal Rc5d4]} 5... Qf6
   (5... Bb6 6. Nc3 {Nc3 develops; the bishop on b6 has no targets.} (6. Nf5 {@alt})
 {@line id=scotch-bc5-bb6 level=2 tier=side name="4…Bc5 5…Bb6" summary="If the bishop retreats to b6, develop with Nc3; Nf5 is also strong."}
 )
-6. c3 {c3 holds d4 a second time.} 6... Nge7 7. Bc4 {Bc4 develops to the active diagonal towards f7.}
+6. c3 {c3 holds d4 a second time.} 6... Nge7 7. Bc4 {Bc4 develops to the active diagonal towards f7. [%cal Yc4f7]}
 {@line id=scotch-bc5 level=1 tier=main name="4…Bc5" summary="Defend d4 with Be3 and c3, then develop Bc4 and castle."}
 7... O-O 8. O-O {O-O: White's position is solid; Nd2 or Nc2 comes next.}
 {@line id=scotch-bc5-deep level=2 tier=main name="4…Bc5 7.Bc4 O-O" summary="Castle short and keep d4 strong; Black's pieces press on d4 but can't break through."} *

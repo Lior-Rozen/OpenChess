@@ -20,6 +20,15 @@
         "8": "Bg2: the bishop hits the d5 knight along the long diagonal.",
         "12": "O-O: a Sicilian Dragon with colours reversed and an extra move for White."
       },
+      "arrows": {
+        "8": [
+          {
+            "color": "green",
+            "from": "g2",
+            "to": "d5"
+          }
+        ]
+      },
       "mistakes": {
         "6": {
           "Bg2": "…d4! hits the c3 knight and grabs space."
@@ -40,6 +49,22 @@
         "4": "g3 prepares Bg2, the key piece in the English.",
         "8": "Bg2: the bishop hits the d5 knight along the long diagonal.",
         "10": "bxc3 strengthens the centre and opens the b-file for a rook."
+      },
+      "arrows": {
+        "8": [
+          {
+            "color": "green",
+            "from": "g2",
+            "to": "d5"
+          }
+        ],
+        "10": [
+          {
+            "color": "green",
+            "from": "a1",
+            "to": "b1"
+          }
+        ]
       },
       "mistakes": {
         "6": {
@@ -62,6 +87,22 @@
         "8": "Bg2: the bishop hits the d5 knight along the long diagonal.",
         "10": "Nf3 develops and hits e5."
       },
+      "arrows": {
+        "8": [
+          {
+            "color": "green",
+            "from": "g2",
+            "to": "d5"
+          }
+        ],
+        "10": [
+          {
+            "color": "green",
+            "from": "f3",
+            "to": "e5"
+          }
+        ]
+      },
       "mistakes": {
         "6": {
           "Bg2": "…d4! hits the c3 knight and grabs space."
@@ -82,6 +123,15 @@
         "4": "g3 prepares Bg2, the key piece in the English.",
         "8": "Nf3 develops and hits e5."
       },
+      "arrows": {
+        "8": [
+          {
+            "color": "green",
+            "from": "f3",
+            "to": "e5"
+          }
+        ]
+      },
       "accept": {
         "8": ["e3"]
       },
@@ -99,6 +149,15 @@
         "2": "Nc3 covers d5 and e4.",
         "4": "g3 prepares Bg2, the key piece in the English.",
         "8": "Nf3 develops; if …e4, the knight goes to d4."
+      },
+      "arrows": {
+        "8": [
+          {
+            "color": "yellow",
+            "from": "f3",
+            "to": "d4"
+          }
+        ]
       },
       "accept": {
         "8": ["e3", "e4"]
@@ -131,6 +190,15 @@
         "2": "Nc3 covers d5 and e4.",
         "6": "Bg2: the same fianchetto set-up against 2…Nc6.",
         "8": "Nf3 develops and hits e5."
+      },
+      "arrows": {
+        "8": [
+          {
+            "color": "green",
+            "from": "f3",
+            "to": "e5"
+          }
+        ]
       },
       "accept": {
         "8": ["e3"]

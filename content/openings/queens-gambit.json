@@ -20,6 +20,15 @@
         "10": "e3 supports d4 and frees the f1 bishop.",
         "12": "Bd3 develops towards Black's king and stops …Bf5."
       },
+      "arrows": {
+        "8": [
+          {
+            "color": "yellow",
+            "from": "g5",
+            "to": "d8"
+          }
+        ]
+      },
       "summary": "Trade on d5, pin with Bg5, then e3 and Bd3: a clear plan for White."
     },
     {
@@ -36,6 +45,15 @@
         "10": "e3 supports d4 and frees the f1 bishop.",
         "12": "Bd3 develops towards Black's king and stops …Bf5.",
         "14": "Qc2 stops …Bf5, which would trade Black's problem bishop."
+      },
+      "arrows": {
+        "8": [
+          {
+            "color": "yellow",
+            "from": "g5",
+            "to": "d8"
+          }
+        ]
       },
       "summary": "Against …c6, Qc2 stops …Bf5; then Nf3 (or Nge2), castle and start the minority attack."
     },
@@ -55,6 +73,15 @@
         "14": "Bh4 keeps the pin on the f6 knight.",
         "16": "Qc2 stops …Bf5 and lines up on h7."
       },
+      "arrows": {
+        "8": [
+          {
+            "color": "yellow",
+            "from": "g5",
+            "to": "d8"
+          }
+        ]
+      },
       "summary": "Against …h6, keep the pin with Bh4, then Qc2 as usual."
     },
     {
@@ -69,6 +96,15 @@
         "6": "cxd5 fixes Black's pawns and gives White a clear plan.",
         "8": "Bg5 pins the f6 knight, the main defender of d5.",
         "14": "Qc2 stops …Bf5, which would trade Black's problem bishop."
+      },
+      "arrows": {
+        "8": [
+          {
+            "color": "yellow",
+            "from": "g5",
+            "to": "d8"
+          }
+        ]
       },
       "summary": "Trade on d5, pin with Bg5, then Bd3 and Qc2 to keep Black's light-squared bishop passive."
     },
@@ -87,6 +123,22 @@
         "16": "Nf3 develops and watches e5.",
         "18": "O-O completes development; now the queenside plan starts.",
         "20": "Rab1 prepares b4-b5, the minority attack against Black's c6 pawn."
+      },
+      "arrows": {
+        "8": [
+          {
+            "color": "yellow",
+            "from": "g5",
+            "to": "d8"
+          }
+        ],
+        "20": [
+          {
+            "color": "green",
+            "from": "b2",
+            "to": "b4"
+          }
+        ]
       },
       "summary": "The minority attack: Rab1, b4, b5, and trade on c6 to leave Black a weak pawn."
     },
@@ -118,6 +170,15 @@
         "8": "Bxc4 wins the pawn back with a lead in development.",
         "12": "a4 stops …b5, which would gain space with tempo on the bishop."
       },
+      "arrows": {
+        "12": [
+          {
+            "color": "red",
+            "from": "b7",
+            "to": "b5"
+          }
+        ]
+      },
       "summary": "Don't rush to win the pawn back: develop, retake on c4, and stop …b5 with a4."
     },
     {
@@ -135,6 +196,22 @@
         "14": "Qe2 connects the rooks and supports a later d5 push.",
         "16": "Rd1 puts the rook opposite the d4 pawn before taking it back.",
         "18": "exd4 leaves White an isolated d-pawn, but with active pieces and d5 ideas."
+      },
+      "arrows": {
+        "12": [
+          {
+            "color": "red",
+            "from": "b7",
+            "to": "b5"
+          }
+        ],
+        "16": [
+          {
+            "color": "green",
+            "from": "d1",
+            "to": "d4"
+          }
+        ]
       },
       "summary": "White gets an isolated d-pawn with active pieces: aim for the d5 push."
     },
@@ -165,6 +242,15 @@
         "4": "cxd5 makes a symmetrical structure where White keeps the extra move.",
         "8": "Bf4 develops actively before e3.",
         "14": "Bb5 pins the c6 knight, adding pressure on Black's centre."
+      },
+      "arrows": {
+        "14": [
+          {
+            "color": "yellow",
+            "from": "b5",
+            "to": "e8"
+          }
+        ]
       },
       "accept": {
         "14": ["Qb3"]
@@ -216,6 +302,15 @@
         "6": "Nf3 defends e5 and avoids the trap after 4.e3? Bb4+.",
         "8": "g3 prepares Bg2, aiming the bishop at the queenside.",
         "10": "Bg2 develops and eyes b7; the d4 pawn will need a lot of defending."
+      },
+      "arrows": {
+        "6": [
+          {
+            "color": "red",
+            "from": "f8",
+            "to": "b4"
+          }
+        ]
       },
       "mistakes": {
         "6": {

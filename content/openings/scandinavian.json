@@ -15,7 +15,7 @@
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "O-O", "e6"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
-        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "5": "…Qa5 steps out of the knight's attack; once White plays d4, it pins the c3 knight to the king.",
         "9": "…c6 gives the queen a retreat and stops Nb5 or Bb5 tricks.",
         "11": "…Bf5 develops the bishop outside the pawn chain before …e6.",
         "13": "…e6 completes a solid pawn chain and opens the f8 bishop."
@@ -31,7 +31,7 @@
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "O-O", "e6", "Re1", "Nbd7"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
-        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "5": "…Qa5 steps out of the knight's attack; once White plays d4, it pins the c3 knight to the king.",
         "9": "…c6 gives the queen a retreat and stops Nb5 or Bb5 tricks.",
         "11": "…Bf5 develops the bishop outside the pawn chain before …e6.",
         "13": "…e6 completes a solid pawn chain and opens the f8 bishop.",
@@ -51,7 +51,7 @@
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Bd2", "e6"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
-        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "5": "…Qa5 steps out of the knight's attack; once White plays d4, it pins the c3 knight to the king.",
         "9": "…c6 gives the queen a retreat and stops Nb5 or Bb5 tricks.",
         "11": "…Bf5 develops the bishop outside the pawn chain before …e6.",
         "13": "…e6 completes the pawn chain and opens the f8 bishop."
@@ -67,7 +67,7 @@
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Bd2", "e6", "O-O", "Nbd7"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
-        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "5": "…Qa5 steps out of the knight's attack; once White plays d4, it pins the c3 knight to the king.",
         "9": "…c6 gives the queen a retreat and stops Nb5 or Bb5 tricks.",
         "11": "…Bf5 develops the bishop outside the pawn chain before …e6.",
         "13": "…e6 completes the pawn chain and opens the f8 bishop.",
@@ -84,13 +84,22 @@
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Bd2", "e6", "Nd5", "Qd8", "Nxf6+", "Qxf6"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
-        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "5": "…Qa5 steps out of the knight's attack; once White plays d4, it pins the c3 knight to the king.",
         "9": "…c6 gives the queen a retreat and stops Nb5 or Bb5 tricks.",
         "11": "…Bf5 develops the bishop outside the pawn chain before …e6.",
         "13": "…e6 completes the pawn chain and opens the f8 bishop.",
         "14": "Nd5 discovers an attack from the d2 bishop on the a5 queen.",
         "15": "…Qd8 is the safe retreat; taking with …cxd5 or …exd5 loses to Bxa5.",
         "17": "…Qxf6 recaptures with an active queen."
+      },
+      "arrows": {
+        "14": [
+          {
+            "color": "red",
+            "from": "d2",
+            "to": "a5"
+          }
+        ]
       },
       "summary": "When Nd5 uncovers Bd2 on your queen, retreat with …Qd8; never capture the knight."
     },
@@ -103,12 +112,21 @@
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Ne5", "e6", "g4", "Bg6", "h4", "Nbd7"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
-        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "5": "…Qa5 steps out of the knight's attack; once White plays d4, it pins the c3 knight to the king.",
         "9": "…c6 gives the queen a retreat and stops Nb5 or Bb5 tricks.",
         "11": "…Bf5 develops the bishop outside the pawn chain before …e6.",
         "13": "…e6 makes room for the bishop and opens the f8 bishop.",
         "15": "…Bg6 keeps the bishop; White attacks it with the h-pawn next.",
         "17": "…Nbd7 challenges the strong e5 knight so that h5 can be met calmly."
+      },
+      "arrows": {
+        "17": [
+          {
+            "color": "green",
+            "from": "d7",
+            "to": "e5"
+          }
+        ]
       },
       "summary": "Against Ne5 and the g4/h4 pawn storm, challenge the e5 knight with …Nbd7."
     },
@@ -121,7 +139,7 @@
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bf5"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
-        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "5": "…Qa5 steps out of the knight's attack; once White plays d4, it pins the c3 knight to the king.",
         "9": "…c6 gives the queen a retreat and stops Nb5 or Bb5 tricks.",
         "11": "…Bf5: the same set-up; Bc4 and …e6 usually follow."
       },
@@ -136,9 +154,18 @@
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Bd2", "c6", "Nf3", "Bf5"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
-        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "5": "…Qa5 steps out of the knight's attack; once White plays d4, it pins the c3 knight to the king.",
         "9": "…c6 makes room for the queen, because Bd2 now eyes a5 through the c3 knight.",
         "11": "…Bf5 develops; this is the main-line set-up again."
+      },
+      "arrows": {
+        "9": [
+          {
+            "color": "red",
+            "from": "d2",
+            "to": "a5"
+          }
+        ]
       },
       "accept": {
         "9": ["Bg4"]
@@ -159,11 +186,27 @@
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Bd2", "c6", "Ne4", "Qd8", "Nxf6+", "exf6"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
-        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "5": "…Qa5 steps out of the knight's attack; once White plays d4, it pins the c3 knight to the king.",
         "9": "…c6 makes room for the queen, because Bd2 now eyes a5 through the c3 knight.",
         "10": "Ne4 uncovers the d2 bishop on the a5 queen and attacks f6.",
         "11": "…Qd8 is the safe retreat; from d8 the queen also defends f6.",
         "13": "…exf6 opens the e-file and the f8 bishop's diagonal."
+      },
+      "arrows": {
+        "9": [
+          {
+            "color": "red",
+            "from": "d2",
+            "to": "a5"
+          }
+        ],
+        "10": [
+          {
+            "color": "red",
+            "from": "d2",
+            "to": "a5"
+          }
+        ]
       },
       "accept": {
         "9": ["Bg4"]
@@ -184,7 +227,7 @@
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "Nf3", "Nf6", "d4", "c6"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
-        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "5": "…Qa5 steps out of the knight's attack; once White plays d4, it pins the c3 knight to the king.",
         "7": "…Nf6: the usual move, whatever White's order.",
         "9": "…c6: the position is now the same as the main line."
       },
@@ -199,7 +242,7 @@
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "Nf3", "Nf6", "Bc4", "c6", "O-O", "Bf5"],
       "notes": {
         "1": "…d5 challenges e4 at once, so White has no time to build a big centre.",
-        "5": "…Qa5 steps out of the knight's attack and pins the c3 knight against the king.",
+        "5": "…Qa5 steps out of the knight's attack; once White plays d4, it pins the c3 knight to the king.",
         "7": "…Nf6: the usual move, whatever White's order.",
         "9": "…c6 gives the queen a retreat and blunts the c4 bishop's path to b5.",
         "11": "…Bf5 develops the bishop before …e6."
