@@ -184,6 +184,9 @@ a Lichess study or any PGN editor), and `npm run build-content` in `app/` compil
 {@line id=french-advance-main level=1 tier=main name="Advance Variation" summary="…"} *
 ```
 - A plain `{comment}` is the note on the move before it (one sentence, *why* the move is played).
+- `[%cal Rd8h4,Ge1g1]` inside a note (Lichess markup) draws arrows with it: R threat, G good,
+  Y key idea, B neutral. It's shown in Watch and in the drill while the note is up; `[%csl …]` is
+  ignored.
 - `{@variation Name}` names the variation of every line through that move; the Opening screen
   groups lines under it, so line names can be short ("6.Be2" under "Advance").
 - `{@line id=… level=… tier=main|side name="…" summary="…"}` ends a line at that move (it must
@@ -223,6 +226,7 @@ The compiled JSON, `content/openings/french.json`:
   reason. Playing one still counts as a mistake, but the drill shows the reason ("d4? …Qh4+! …").
 - Watch stays the clean textbook pass (book moves and notes only); the card at its end adds one
   "Good to know" row listing the line's other good moves and known mistakes.
+- `arrows` (optional) maps a ply index to the arrows of that move's note (from `[%cal]`).
 - `summary` (optional) is the short takeaway shown on the "Line complete" card.
 - `tags` (optional, opening level) are labels for filtering on the Openings screen, from a fixed
   vocabulary in `app/src/content/types.ts` (`OPENING_TAGS`): `gambit` (gives up material early),

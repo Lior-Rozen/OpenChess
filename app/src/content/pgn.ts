@@ -1,6 +1,6 @@
 // Relative imports only: this file also runs outside the app, via content/build.ts.
 import { ChessGame } from '../chess/game';
-import type { Opening, OpeningLine, Side, Tier } from './types';
+import type { NoteArrow, Opening, OpeningLine, Side, Tier } from './types';
 
 /*
  * Opening sources are PGN files with variations (content/pgn/<id>.pgn), compiled into the
@@ -145,12 +145,15 @@ function makeLine(
   if (!fields.id) return null;
 
   const notes: Record<string, string> = {};
+  const arrows: Record<string, NoteArrow[]> = {};
   const accept: Record<string, string[]> = {};
   const mistakes: Record<string, Record<string, string>> = {};
   let variation: string | undefined;
   path.slice(1).forEach((node, ply) => {
-    const note = node.comments.filter((c) => !c.startsWith('@')).join(' ');
+    const plain = node.comments.filter((c) => !c.startsWith('@')).join(' ');
+    const { text: note, arrows: drawn } = readArrows(plain, `${where} (${moveLabel(ply, node.san)})`, errors);
     if (note) notes[ply] = note;
+    if (drawn.length > 0) arrows[ply] = drawn;
     const named = node.comments.find((c) => c.startsWith('@variation'));
     if (named) variation = named.slice('@variation'.length).trim();
     const alts = node.parent!.children.filter(isAlt).map((a) => a.san);
@@ -167,10 +170,34 @@ function makeLine(
     ...(variation ? { variation } : {}),
     moves: sans,
     ...(Object.keys(notes).length > 0 ? { notes } : {}),
+    ...(Object.keys(arrows).length > 0 ? { arrows } : {}),
     ...(Object.keys(accept).length > 0 ? { accept } : {}),
     ...(Object.keys(mistakes).length > 0 ? { mistakes } : {}),
     summary: fields.summary,
   };
+}
+
+const ARROW_COLOURS: Record<string, NoteArrow['color']> = { G: 'green', R: 'red', Y: 'yellow', B: 'blue' };
+
+/**
+ * Takes Lichess's board markup out of a comment: `[%cal Gd8h4,Re1e8]` becomes arrows, and
+ * `[%csl …]` (highlighted squares) is dropped. Returns the remaining note text.
+ */
+function readArrows(comment: string, where: string, errors: string[]): { text: string; arrows: NoteArrow[] } {
+  const arrows: NoteArrow[] = [];
+  const text = comment
+    .replace(/\[%cal\s+([^\]]*)\]/g, (_, list: string) => {
+      for (const item of list.split(',').map((s) => s.trim()).filter(Boolean)) {
+        const m = /^([GRYB])([a-h][1-8])([a-h][1-8])$/.exec(item);
+        if (m) arrows.push({ color: ARROW_COLOURS[m[1]], from: m[2], to: m[3] });
+        else errors.push(`${where}: bad arrow "${item}" in [%cal]; use e.g. Gd8h4 (colour G/R/Y/B, from, to)`);
+      }
+      return ' ';
+    })
+    .replace(/\[%csl\s+[^\]]*\]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return { text, arrows };
 }
 
 /** key=value pairs; values are bare words or "quoted strings" (\" inside quotes). */

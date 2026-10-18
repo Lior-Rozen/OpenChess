@@ -128,6 +128,34 @@ describe('compilePgn', () => {
   });
 });
 
+describe('note arrows', () => {
+  it('reads [%cal] arrows out of a note and keeps the text', () => {
+    const { opening, errors } = compilePgn(
+      `${headers}
+1. e4 e6 {Prepares …d5. [%cal Gd7d5,Rd1h5] [%csl Ge4]} 2. d4 d5 {[%cal Bc8g4]} {@line id=t-a level=1 tier=main name="A" summary="S."} *`,
+      'test.pgn',
+    );
+    expect(errors).toEqual([]);
+    expect(opening!.lines[0].notes).toEqual({ '1': 'Prepares …d5.' });
+    expect(opening!.lines[0].arrows).toEqual({
+      '1': [
+        { color: 'green', from: 'd7', to: 'd5' },
+        { color: 'red', from: 'd1', to: 'h5' },
+      ],
+      '3': [{ color: 'blue', from: 'c8', to: 'g4' }],
+    });
+  });
+
+  it('reports a malformed arrow', () => {
+    const { errors } = compilePgn(
+      `${headers}
+1. e4 e6 {[%cal Xd7d5]} 2. d4 d5 {@line id=t-a level=1 tier=main name="A" summary="S."} *`,
+      'test.pgn',
+    );
+    expect(errors.join('\n')).toMatch(/bad arrow "Xd7d5"/);
+  });
+});
+
 describe('openingToJson', () => {
   it('keeps short string arrays on one line', () => {
     const json = openingToJson(compilePgn(pgn, 'test.pgn').opening!);

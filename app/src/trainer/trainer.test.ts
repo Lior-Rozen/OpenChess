@@ -60,7 +60,7 @@ describe('Trainer with one line', () => {
     const trainer = new Trainer([advance], 'b', 'practice');
 
     expect(trainer.advance()).toEqual([
-      { type: 'moved', by: 'auto', ply: 0, san: 'e4', from: 'e2', to: 'e4', note: null },
+      { type: 'moved', by: 'auto', ply: 0, san: 'e4', from: 'e2', to: 'e4', note: null, noteArrows: [] },
     ]);
     expect(trainer.state()).toMatchObject({ phase: 'user', ply: 1, moves: ['e4'] });
     expect(trainer.advance()).toEqual([]); // not the app's turn
@@ -71,7 +71,7 @@ describe('Trainer with one line', () => {
     trainer.advance();
 
     expect(trainer.tryMove('e7', 'e6')).toEqual([
-      { type: 'moved', by: 'user', ply: 1, san: 'e6', from: 'e7', to: 'e6', note: null },
+      { type: 'moved', by: 'user', ply: 1, san: 'e6', from: 'e7', to: 'e6', note: null, noteArrows: [] },
     ]);
     expect(trainer.state()).toMatchObject({ phase: 'auto', ply: 2 });
   });
@@ -160,6 +160,16 @@ describe('Trainer with one line', () => {
     const c5 = events.find((e) => e.type === 'moved' && e.ply === 5);
     expect(c5).toMatchObject({ san: 'c5', note: '…c5 strikes at d4.' });
     expect(trainer.state().note).toBe('…c5 strikes at d4.');
+  });
+
+  it("attaches a note's arrows", () => {
+    const withArrows: OpeningLine = { ...advance, arrows: { '5': [{ color: 'red', from: 'd1', to: 'h5' }] } };
+    const trainer = new Trainer([withArrows], 'b', 'practice');
+    const events = playThrough(trainer, [withArrows]);
+
+    const c5 = events.find((e) => e.type === 'moved' && e.ply === 5);
+    expect(c5).toMatchObject({ noteArrows: [{ color: 'red', from: 'd1', to: 'h5' }] });
+    expect(trainer.state().noteArrows).toEqual([{ color: 'red', from: 'd1', to: 'h5' }]);
   });
 
   it('completes a clean run', () => {

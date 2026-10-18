@@ -1,5 +1,5 @@
 import { ChessGame, type Color, type GamePosition, type ResolvedMove, type Square } from '../chess/game';
-import type { OpeningLine } from '../content/types';
+import type { NoteArrow, OpeningLine } from '../content/types';
 
 /** Watch mode isn't a drill: it steps through precomputed frames (see watch.ts). */
 export type TrainerMode = 'practice' | 'test';
@@ -14,7 +14,16 @@ export type Arrow = { from: Square; to: Square };
 export type KnownMistake = { san: string; reason: string; refutation: Arrow | null };
 
 export type TrainerEvent =
-  | { type: 'moved'; by: 'auto' | 'user'; ply: number; san: string; from: Square; to: Square; note: string | null }
+  | {
+      type: 'moved';
+      by: 'auto' | 'user';
+      ply: number;
+      san: string;
+      from: Square;
+      to: Square;
+      note: string | null;
+      noteArrows: NoteArrow[];
+    }
   | { type: 'wrongMove'; from: Square; to: Square; triesThisMove: number }
   | { type: 'hintShown'; from: Square; to: Square }
   /** The user played an accepted alternative: not a mistake. The book move is shown as an arrow. */
@@ -47,6 +56,8 @@ export type TrainerState = {
   mistake: KnownMistake | null;
   /** The note of the most recently played move, if it has one. */
   note: string | null;
+  /** The arrows that go with that note (empty if none). */
+  noteArrows: NoteArrow[];
   /** The line played to the end (phase 'complete'), or the only line still possible. */
   lineId: string | null;
   /** No mistakes and no hints. Only meaningful in practice/test. */
@@ -102,6 +113,7 @@ export class Trainer {
   private alternative: { san: string; bookSan: string } | null = null;
   private mistake: KnownMistake | null = null;
   private note: string | null = null;
+  private noteArrows: NoteArrow[] = [];
 
   constructor(
     lines: OpeningLine[],
@@ -143,6 +155,7 @@ export class Trainer {
       alternative: this.alternative,
       mistake: this.mistake,
       note: this.note,
+      noteArrows: this.noteArrows,
       lineId: line?.id ?? null,
       clean: this.mistakes === 0 && this.hintsUsed === 0,
     };
@@ -265,8 +278,9 @@ export class Trainer {
     this.alternative = null;
     this.mistake = null;
     this.note = this.candidates.map((l) => l.notes?.[String(ply)]).find((n) => n !== undefined) ?? null;
+    this.noteArrows = this.candidates.map((l) => l.arrows?.[String(ply)]).find((a) => a !== undefined) ?? [];
 
-    const events: TrainerEvent[] = [{ type: 'moved', by, ply, san: move.san, from: move.from, to: move.to, note: this.note }];
+    const events: TrainerEvent[] = [{ type: 'moved', by, ply, san: move.san, from: move.from, to: move.to, note: this.note, noteArrows: this.noteArrows }];
 
     const finished = this.candidates.find((l) => l.moves.length === this.ply);
     if (finished) {

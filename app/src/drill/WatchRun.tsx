@@ -92,7 +92,7 @@ export function WatchRun({ target, onRestart }: { target: DrillTarget; onRestart
           </Text>
         </View>
 
-        <Board position={frame.position} orientation={userColor} selection={null} onSquarePress={() => {}} size={boardSize} slide={slideIn} />
+        <Board position={frame.position} orientation={userColor} selection={null} onSquarePress={() => {}} size={boardSize} slide={slideIn} marks={frame.arrows} />
 
         <View style={styles.controls}>
           <Control label="|◁" description="Start" onPress={() => step(0)} disabled={index === 0} />

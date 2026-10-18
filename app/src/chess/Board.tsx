@@ -5,6 +5,8 @@ import Svg, { Line, Polygon } from 'react-native-svg';
 import { useSettings } from '@/settings/SettingsContext';
 import { theme } from '@/theme';
 
+import type { NoteArrow } from '@/content/types';
+
 import type { BoardPiece, Color, GamePosition, Square } from './game';
 import { Piece } from './Piece';
 import type { Selection } from './tapToMove';
@@ -13,6 +15,13 @@ const FILES = 'abcdefgh';
 
 // Violet board with neon accents (magenta for the user's focus, cyan for the Mastermind's hints).
 const colors = theme.board;
+
+const MARK_COLOURS: Record<NoteArrow['color'], string> = {
+  green: colors.good,
+  red: colors.threat,
+  yellow: colors.mark,
+  blue: colors.arrow,
+};
 
 /** How long a sliding piece takes to reach its square. */
 const SLIDE_MS = 200;
@@ -32,13 +41,26 @@ type Props = {
   arrow?: BoardArrow | null;
   /** A danger to point out, e.g. how a mistake gets punished (red). */
   threat?: BoardArrow | null;
+  /** Arrows that go with a move's note, in the content's colours. */
+  marks?: NoteArrow[];
   /** A brief green/red tint on a square, as feedback for a move. */
   flash?: BoardFlash | null;
   /** Slide the last move's piece into place instead of showing it there at once. */
   slide?: boolean;
 };
 
-export function Board({ position, orientation, selection, onSquarePress, size, arrow, threat, flash, slide = false }: Props) {
+export function Board({
+  position,
+  orientation,
+  selection,
+  onSquarePress,
+  size,
+  arrow,
+  threat,
+  marks = [],
+  flash,
+  slide = false,
+}: Props) {
   const squareSize = size / 8;
   const { coordinates } = useSettings().settings;
   // While sliding, the moved piece is drawn on its own layer above the squares, not in its square.
@@ -109,6 +131,15 @@ export function Board({ position, orientation, selection, onSquarePress, size, a
           squareSize={squareSize}
         />
       )}
+      {marks.map((m) => (
+        <ArrowOverlay
+          key={`${m.from}${m.to}`}
+          arrow={{ from: m.from as Square, to: m.to as Square }}
+          orientation={orientation}
+          size={size}
+          color={MARK_COLOURS[m.color]}
+        />
+      ))}
       {threat && <ArrowOverlay arrow={threat} orientation={orientation} size={size} color={colors.threat} />}
       {arrow && <ArrowOverlay arrow={arrow} orientation={orientation} size={size} color={colors.arrow} />}
     </View>

@@ -88,7 +88,8 @@ compile it into `content/openings/<id>.json`, which the app bundles. Never edit 
 - **Known mistakes:** where club players often go wrong at the user's move, add the bad move as a
   one-move variation `(5. d4 {@mistake …Qh4+! forces your king to move.})`. It still counts as a
   mistake, but the drill shows the reason. Keep it to 1–3 per opening, only moves that are both
-  common (club data) and clearly worse (engine), with a reason of about 10 words.
+  common (club data) and clearly worse (engine), with a reason of about 10 words. **Start the
+  reason with the punishing reply in SAN** (`…Qh4+! …`): the app draws that move as a red arrow.
 - **Variations:** `{@variation Name}` on a move names every line through it, and the Opening
   screen groups lines under it. Keep line names short within it, e.g. "6.Be2" under "Advance".
 - **Ids:** kebab-case. The opening `[Id]` matches the file name. Line ids are unique across all
@@ -101,6 +102,11 @@ compile it into `content/openings/<id>.json`, which the app bundles. Never edit 
     new ones per line), and none on obvious moves.
   - Write Black moves as `…c5` and White moves as `Nf3`.
   - The audience is club players: plain words, no engine numbers.
+  - **Arrows:** when a note warns about or points to a move, draw it with Lichess's markup inside
+    the note: `{Nf3 stops …Qh4+. [%cal Rd8h4]}`. Colours: `R` a threat, `G` a good move or plan,
+    `Y` a key square or idea, `B` neutral. Several arrows: `[%cal Rd8h4,Ge1g1]`. Lichess studies
+    export this markup when you draw arrows, so it survives a round trip. Use it on notes that
+    name a move the user should see (about one per line at most); not on every note.
 - **`summary=`:** every line needs one: a single sentence with the plan or idea to remember.
 - **`tags`** (opening level): labels the Openings screen filters by. Give every opening 1–3 from
   the fixed list in `app/src/content/types.ts`:

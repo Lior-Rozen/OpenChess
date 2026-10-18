@@ -8,6 +8,7 @@ import { handleTap, type Selection } from '@/chess/tapToMove';
 import { Button } from '@/components/Button';
 import { Badge } from '@/components/ui';
 import { lineTitle } from '@/content/loader';
+import type { NoteArrow } from '@/content/types';
 import { useFeedback, type Cue } from '@/feedback/feedback';
 import { GREETING, say, type LineKind } from '@/mastermind/lines';
 import { MastermindSpeech } from '@/mastermind/Speech';
@@ -48,7 +49,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
   const [slideLast, setSlideLast] = useState(false);
   // The latest move note. It stays up through the Mastermind's reply (which would otherwise
   // replace it at once) until a newer note arrives or the user moves again.
-  const [note, setNote] = useState<string | null>(null);
+  const [note, setNote] = useState<{ text: string | null; arrows: NoteArrow[] }>({ text: null, arrows: [] });
   const [shake] = useState(() => new Animated.Value(0));
   const { width } = useWindowDimensions();
   const boardSize = Math.min(width - 16, 520);
@@ -70,7 +71,9 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
     if (cue) feedback(cue);
 
     for (const event of events) {
-      if (event.type === 'moved' && (event.note || event.by === 'user')) setNote(event.note);
+      if (event.type === 'moved' && (event.note || event.noteArrows.length > 0 || event.by === 'user')) {
+        setNote({ text: event.note, arrows: event.noteArrows });
+      }
       if (event.type === 'wrongMove') talk('mistake');
       if (event.type === 'hintShown') talk('hint');
       if (event.type === 'alternativeMove') talk('alternative');
@@ -190,6 +193,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
             size={boardSize}
             arrow={state.hint}
             threat={state.mistake?.refutation}
+            marks={state.mistake || state.alternative ? [] : note.arrows}
             flash={flash}
             slide={slideLast}
           />
@@ -199,7 +203,7 @@ export function TrainerRun({ target, mode, onRestart }: { target: DrillTarget; m
           <RunResultCard target={target} mode={mode} state={state} result={result} onRestart={onRestart} />
         ) : (
           <View style={drillStyles.below}>
-            <Text style={drillStyles.note}>{alternativeText(state) ?? mistakeText(state) ?? note ?? ' '}</Text>
+            <Text style={drillStyles.note}>{alternativeText(state) ?? mistakeText(state) ?? note.text ?? ' '}</Text>
             {mode === 'practice' && (
               <Button label="Hint" onPress={onHint} disabled={state.phase !== 'user' || state.hint !== null} />
             )}

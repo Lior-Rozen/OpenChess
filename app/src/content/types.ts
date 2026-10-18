@@ -5,6 +5,9 @@ export type Tier = 'main' | 'side';
 export const OPENING_TAGS = ['gambit', 'aggressive', 'solid', 'positional', 'system', 'beginner-friendly'] as const;
 export type OpeningTag = (typeof OPENING_TAGS)[number];
 
+/** An arrow on the board next to a note. The colours follow Lichess: G, R, Y, B. */
+export type NoteArrow = { from: string; to: string; color: 'green' | 'red' | 'yellow' | 'blue' };
+
 export type OpeningLine = {
   id: string;
   name: string;
@@ -16,6 +19,11 @@ export type OpeningLine = {
   moves: string[];
   /** One-line "why" notes, keyed by 0-based ply index. */
   notes?: Record<string, string>;
+  /**
+   * Arrows drawn with a move's note, keyed by 0-based ply index (from Lichess-style
+   * `[%cal Gd8h4,Re1e8]` in the PGN comment), e.g. to show a threat the note warns about.
+   */
+  arrows?: Record<string, NoteArrow[]>;
   /**
    * Other good moves for the user, keyed by 0-based ply index. They aren't mistakes: the app says
    * so, shows the book move as an arrow, and the line goes on with the book move.

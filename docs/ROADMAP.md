@@ -112,6 +112,8 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
 - **Done when:** a new opening added on the server appears in the app without an app update.
 
 ## Ideas (not scheduled, not in v1)
+- **Content scramble** (parked): a build-time scramble of the bundled content, as a speed bump
+  against casual copying. Not real protection (the key ships with the app); about an hour's work.
 - **Level 3 lines** (parked): a third, deeper level for the openings. A content task for the
   chess session (PGN in `content/pgn/`); the app already supports any number of levels.
 - **Kids mode** on the home screen: a simpler, friendlier presentation for children. Needs a

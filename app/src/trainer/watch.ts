@@ -1,5 +1,5 @@
 import { ChessGame, type GamePosition } from '../chess/game';
-import type { OpeningLine } from '../content/types';
+import type { NoteArrow, OpeningLine } from '../content/types';
 
 /** One step of a watched line: the position after `ply` moves. */
 export type WatchFrame = {
@@ -9,6 +9,8 @@ export type WatchFrame = {
   moves: string[];
   /** The note on the move that led here, if any. */
   note: string | null;
+  /** Arrows that go with the note. */
+  arrows: NoteArrow[];
 };
 
 /**
@@ -18,14 +20,20 @@ export type WatchFrame = {
  */
 export function watchFrames(line: OpeningLine): WatchFrame[] {
   const game = new ChessGame();
-  const frames: WatchFrame[] = [{ ply: 0, position: game.position(), moves: [], note: null }];
+  const frames: WatchFrame[] = [{ ply: 0, position: game.position(), moves: [], note: null, arrows: [] }];
   const moves: string[] = [];
 
   line.moves.forEach((san, ply) => {
     const move = game.playSan(san);
     if (!move) throw new Error(`Line ${line.id}: ply ${ply} "${san}" is illegal`);
     moves.push(move.san);
-    frames.push({ ply: ply + 1, position: game.position(), moves: [...moves], note: line.notes?.[String(ply)] ?? null });
+    frames.push({
+      ply: ply + 1,
+      position: game.position(),
+      moves: [...moves],
+      note: line.notes?.[String(ply)] ?? null,
+      arrows: line.arrows?.[String(ply)] ?? [],
+    });
   });
   return frames;
 }

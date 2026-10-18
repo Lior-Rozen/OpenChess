@@ -37,6 +37,7 @@ export const theme = {
     target: 'rgba(30, 10, 55, 0.5)',
     arrow: 'rgba(0, 229, 255, 0.85)',
     threat: 'rgba(255, 71, 102, 0.85)',
+    mark: 'rgba(255, 210, 63, 0.85)',
     good: 'rgba(0, 230, 170, 0.6)',
     bad: 'rgba(255, 40, 70, 0.75)',
   },
