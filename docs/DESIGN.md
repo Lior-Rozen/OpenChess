@@ -158,7 +158,9 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
     current position: drag pieces in from a pool of all 12, drag them around, drag one off the
     board to remove it; choose who moves; Start position and Clear. "Play from here" checks one
     king each, no pawns on the edge ranks, and that the side not to move isn't in check. Castling
-    is allowed where king and rook are home. Take back stops at the set-up position.
+    is allowed where king and rook are home. Take back stops at the set-up position. **Save**
+    keeps the board (with a name) and **Saved** lists them to load or delete; stored on the device
+    under `editor:positions:v1`, as the editor's board, so unfinished setups can be saved too.
   - **Settings:** the Mastermind's speed (Slow / Normal / Fast; his pause before a move and
     Watch's pace), board coordinates on/off, when the Practice arrow appears (after 1 try, 2, or
     never; the Hint button always works); Sounds and Vibration switches; whether the Mastermind talks (on/off; off, he

@@ -1,8 +1,9 @@
 import { useRef, useState, type RefObject } from 'react';
-import { Animated, StyleSheet, Text, View, type GestureResponderEvent } from 'react-native';
+import { Animated, Pressable, StyleSheet, Text, TextInput, View, type GestureResponderEvent } from 'react-native';
 
 import { Button } from '@/components/Button';
 import { Chip } from '@/components/Chip';
+import { Icon, InfoSheet } from '@/components/ui';
 import { theme } from '@/theme';
 
 import { Board } from './Board';
@@ -21,6 +22,8 @@ import {
 } from './editor';
 import { ChessGame, type Color, type Square } from './game';
 import { Piece } from './Piece';
+import { addPosition, defaultName, removePosition } from './savedPositions';
+import { useSavedPositions } from './useSavedPositions';
 
 type Props = {
   initial: EditorBoard;
@@ -46,6 +49,10 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
   const [board, setBoard] = useState<EditorBoard>(initial);
   const [turn, setTurn] = useState<Color>(initialTurn);
   const [problem, setProblem] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [saved, setSaved] = useSavedPositions();
+  const [sheet, setSheet] = useState<'save' | 'load' | null>(null);
+  const [name, setName] = useState('');
   const [drag, setDrag] = useState<Drag | null>(null);
   // The square the dragged piece would land on, lit up while dragging.
   const [hover, setHover] = useState<Square | null>(null);
@@ -84,6 +91,22 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
   function change(next: EditorBoard) {
     setBoard(next);
     setProblem(null);
+    setNotice(null);
+  }
+
+  function save() {
+    const label = name.trim() || defaultName(saved);
+    setSaved((list) => addPosition(list, { name: label, board, turn }));
+    setSheet(null);
+    setName('');
+    setNotice(`Saved as "${label}".`);
+  }
+
+  function load(position: { board: EditorBoard; turn: Color; name: string }) {
+    change(position.board);
+    setTurn(position.turn);
+    setSheet(null);
+    setNotice(`Loaded "${position.name}".`);
   }
 
   /** What is under a finger: a piece on the board or in the pool. */
@@ -181,12 +204,55 @@ export function BoardEditor({ initial, initialTurn, orientation, size, onPlay, o
       <View style={styles.chips}>
         <Chip label="Start position" onPress={() => change(START)} />
         <Chip label="Clear" dashed onPress={() => change({})} />
+        <Chip label="Save" onPress={() => setSheet('save')} />
+        <Chip label={saved.length ? `Saved (${saved.length})` : 'Saved'} onPress={() => setSheet('load')} />
       </View>
       <View style={styles.chips}>
         <Button label="Cancel" onPress={onCancel} />
         <Button label="Play from here" primary onPress={play} />
       </View>
       {problem && <Text style={styles.problem}>{problem}</Text>}
+      {!problem && notice && <Text style={styles.notice}>{notice}</Text>}
+
+      <InfoSheet visible={sheet === 'save'} onClose={() => setSheet(null)} title="Save this position">
+        <TextInput
+          value={name}
+          onChangeText={setName}
+          placeholder={defaultName(saved)}
+          placeholderTextColor={theme.muted}
+          style={styles.input}
+          autoFocus
+          onSubmitEditing={save}
+          returnKeyType="done"
+        />
+        <View style={styles.sheetButtons}>
+          <Button label="Save" primary onPress={save} />
+        </View>
+      </InfoSheet>
+
+      <InfoSheet visible={sheet === 'load'} onClose={() => setSheet(null)} title="Saved positions">
+        {saved.length === 0 && <Text style={styles.empty}>Nothing saved yet.</Text>}
+        {saved.map((p) => (
+          <View key={p.id} style={styles.savedRow}>
+            <Pressable onPress={() => load(p)} style={({ pressed }) => [styles.savedMain, pressed && styles.pressed]}>
+              <Text style={styles.savedName} numberOfLines={1}>
+                {p.name}
+              </Text>
+              <Text style={styles.savedMeta}>
+                {Object.keys(p.board).length} pieces · {p.turn === 'w' ? 'White' : 'Black'} to move
+              </Text>
+            </Pressable>
+            <Pressable
+              onPress={() => setSaved((list) => removePosition(list, p.id))}
+              accessibilityLabel={`Delete ${p.name}`}
+              hitSlop={8}
+              style={styles.delete}
+            >
+              <Icon name="trash-outline" size={18} />
+            </Pressable>
+          </View>
+        ))}
+      </InfoSheet>
 
       {drag && (
         <Animated.View
@@ -214,5 +280,32 @@ const styles = StyleSheet.create({
   tile: { flex: 1, backgroundColor: theme.pressed, borderRadius: 6 },
   chips: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8 },
   problem: { fontSize: 15, fontFamily: theme.font, color: theme.bad, textAlign: 'center' },
+  notice: { fontSize: 14, fontFamily: theme.font, color: theme.muted, textAlign: 'center' },
+  input: {
+    marginTop: 12,
+    borderWidth: 1,
+    borderColor: theme.border,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    fontSize: 16,
+    fontFamily: theme.font,
+    color: theme.text,
+    backgroundColor: theme.background,
+  },
+  sheetButtons: { flexDirection: 'row', justifyContent: 'flex-end', marginTop: 12 },
+  empty: { fontSize: 14, fontFamily: theme.font, color: theme.muted, marginTop: 10 },
+  savedRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: theme.border,
+    marginTop: 8,
+  },
+  savedMain: { flex: 1, paddingVertical: 10 },
+  savedName: { fontSize: 15, fontFamily: theme.fontMedium, color: theme.text },
+  savedMeta: { fontSize: 12, fontFamily: theme.font, color: theme.muted, marginTop: 2 },
+  delete: { padding: 8 },
+  pressed: { opacity: 0.7 },
   ghost: { position: 'absolute', left: 0, top: 0 },
 });
