@@ -107,7 +107,7 @@
       },
       "mistakes": {
         "13": {
-          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen. [%cal Rd3b5]"
+          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen."
         }
       },
       "summary": "Against 6.Bd3, trade on d4 and play …Bd7 before taking anything: Bb5+ is the trap."
@@ -146,7 +146,7 @@
       },
       "mistakes": {
         "13": {
-          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen. [%cal Rd3b5]"
+          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen."
         },
         "19": {
           "Qxe5": "Re1 and Nb5 chase your queen while White develops."
@@ -187,7 +187,7 @@
       },
       "mistakes": {
         "13": {
-          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen. [%cal Rd3b5]"
+          "Nxd4": "Nxd4 Qxd4 Bb5+ and White wins your queen."
         }
       },
       "summary": "If White keeps the bishop with Bc2, jump into b4 with the knight."
