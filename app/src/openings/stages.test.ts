@@ -19,11 +19,11 @@ const level = (unlocked = true): LevelStatus => ({
 });
 
 describe('stage rows', () => {
-  it('puts each variation in one row, bonus lines after its main lines, numbered through the level', () => {
+  it('puts each variation in one row, bonus lines after its main lines, numbered in reading order', () => {
     const rows = stageRows(level(), 'c');
     expect(rows.map((r) => [r.variation, r.stages.map((s) => `${s.number}${s.bonus ? 'b' : ''}`)])).toEqual([
-      ['Gambit', ['1.1', '1.2', '1.4b']],
-      ['vs Nc6', ['1.3']],
+      ['Gambit', ['1.1', '1.2', '1.3b']],
+      ['vs Nc6', ['1.4']],
       ['vs Bc5', ['1.5b']],
     ]);
   });

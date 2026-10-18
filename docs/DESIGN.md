@@ -141,7 +141,7 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
     several chips mean "any of them"; each tag narrows further (an opening needs all picked tags).
     Each card shows its first move and tags. The logic is `app/src/openings/filter.ts`.
   - **Opening:** Level → Variation → stage tiles. Each line is a numbered tile ("1.2" = level 1,
-    line 2; main lines first, then bonus) in its variation's row; a variation's bonus lines join
+    line 2, numbered in reading order) in its variation's row; a variation's bonus lines join
     its row as dashed tiles, so each variation shows once per level. A tile's colour is its state
     (green ✓ mastered, magenta "next", magenta outline started, plain new, dim with a lock in a
     locked level) and its dots are Watch / Practice / Test. Tapping a tile opens its **line card**

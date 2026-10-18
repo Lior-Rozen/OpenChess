@@ -5,7 +5,7 @@ export type StageState = 'mastered' | 'next' | 'started' | 'new' | 'locked';
 
 export type Stage = {
   status: LineStatus;
-  /** "1.2": level, then the line's place in the level (main lines first, then bonus). */
+  /** "1.2": level, then the tile's place in the level, in reading order (row by row). */
   number: string;
   bonus: boolean;
   state: StageState;
@@ -24,20 +24,19 @@ export function stageRows(level: LevelStatus, nextLineId: string | null): StageR
     ...level.bonusLines.map((status) => ({ status, bonus: true })),
   ];
   const rows: StageRow[] = [];
-  all.forEach(({ status, bonus }, i) => {
-    const stage: Stage = {
-      status,
-      number: `${level.level}.${i + 1}`,
-      bonus,
-      state: stageState(status, level.unlocked, nextLineId),
-    };
+  for (const { status, bonus } of all) {
+    const stage: Stage = { status, number: '', bonus, state: stageState(status, level.unlocked, nextLineId) };
     const variation = status.line.variation ?? null;
     const row = rows.find((r) => r.variation === variation);
     if (row) row.stages.push(stage);
     else rows.push({ variation, stages: [stage] });
-  });
-  // Within a row, main lines come before bonus lines.
-  for (const row of rows) row.stages.sort((a, b) => Number(a.bonus) - Number(b.bonus));
+  }
+  // Main lines come before bonus lines within a row; then number the tiles in reading order.
+  let n = 0;
+  for (const row of rows) {
+    row.stages.sort((a, b) => Number(a.bonus) - Number(b.bonus));
+    for (const stage of row.stages) stage.number = `${level.level}.${++n}`;
+  }
   return rows;
 }
 
