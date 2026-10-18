@@ -77,11 +77,6 @@ export function compilePgn(text: string, file: string): CompileResult {
       if (book.length === 0) errors.push(`${where}: ${kind} ${alt.san} has no book move to replace`);
       if (!game.resolveSan(alt.san)) errors.push(`${where}: ${kind} ${alt.san} is illegal`);
       if (isMistake(alt) && !mistakeText(alt)) errors.push(`${where}: @mistake ${alt.san} needs a reason`);
-      if (isMistake(alt)) {
-        // An optional [%cal …] picks the refutation arrow; it stays in the reason for the trainer.
-        const { arrows } = readArrows(mistakeText(alt), `${where} (@mistake ${alt.san})`, errors);
-        if (arrows.length > 1) errors.push(`${where}: @mistake ${alt.san} can draw only one arrow`);
-      }
     }
 
     if (node.parent) {

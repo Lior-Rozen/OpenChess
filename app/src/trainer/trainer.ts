@@ -77,16 +77,6 @@ export const TRIES_BEFORE_HINT = 2;
 export const TEST_MISTAKE_LIMIT = 2;
 
 /**
- * A `[%cal Rd3b5]` in a mistake's reason picks the red arrow (when the first move of the reason
- * isn't the real point, e.g. a recapture before Bb5+). It's taken out of the text shown.
- */
-export function splitMistakeArrow(reason: string): { text: string; arrow: Arrow | null } {
-  const m = /\s*\[%cal\s+[GRYB]([a-h][1-8])([a-h][1-8])\]/.exec(reason);
-  if (!m) return { text: reason, arrow: null };
-  return { text: reason.replace(m[0], '').trim(), arrow: { from: m[1] as Square, to: m[2] as Square } };
-}
-
-/**
  * Drills opening lines. The app plays the opponent's book moves;
  * the user must find their side's book moves.
  *
@@ -243,8 +233,7 @@ export class Trainer {
       for (const [san, reason] of Object.entries(line.mistakes?.[String(this.ply)] ?? {})) {
         const move = this.game.resolveSan(san);
         if (move && move.from === from && move.to === to) {
-          const { text, arrow } = splitMistakeArrow(reason);
-          return { san: move.san, reason: text, refutation: arrow ?? this.refutation(from, to, text) };
+          return { san: move.san, reason, refutation: this.refutation(from, to, reason) };
         }
       }
     }

@@ -90,8 +90,6 @@ compile it into `content/openings/<id>.json`, which the app bundles. Never edit 
   mistake, but the drill shows the reason. Keep it to 1–3 per opening, only moves that are both
   common (club data) and clearly worse (engine), with a reason of about 10 words. **Start the
   reason with the punishing reply in SAN** (`…Qh4+! …`): the app draws that move as a red arrow.
-  When that first move isn't the real point (a recapture before the winning move), pick the arrow
-  with one `[%cal …]` in the reason: `{@mistake Nxd4 Qxd4 Bb5+ wins your queen. [%cal Rd3b5]}`.
 - **Variations:** `{@variation Name}` on a move names every line through it, and the Opening
   screen groups lines under it. Keep line names short within it, e.g. "6.Be2" under "Advance".
 - **Ids:** kebab-case. The opening `[Id]` matches the file name. Line ids are unique across all
