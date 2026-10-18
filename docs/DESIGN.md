@@ -140,12 +140,16 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
     the top (always visible) for side, first move and style tags. Within side and first move,
     several chips mean "any of them"; each tag narrows further (an opening needs all picked tags).
     Each card shows its first move and tags. The logic is `app/src/openings/filter.ts`.
-  - **Opening:** Level → Variation → Line. Levels and variations fold: the level being worked
-    on starts open, finished and locked ones start closed, variations start open and each heading
-    folds on its own (main and bonus, per level; a folded one shows a "1/3" count). Choices are remembered per
-    opening (`ui:folds:v1`). Each line is one compact row with a Watch | Practice | Test strip,
-    the suggested mode in magenta. The level exam (its main lines, the Mastermind picks his replies
-    at random) is one row at the bottom of the level. Explanations sit behind the header's ⓘ.
+  - **Opening:** Level → Variation → stage tiles. Each line is a numbered tile ("1.2" = level 1,
+    line 2; main lines first, then bonus) in its variation's row; a variation's bonus lines join
+    its row as dashed tiles, so each variation shows once per level. A tile's colour is its state
+    (green ✓ mastered, magenta "next", magenta outline started, plain new, dim with a lock in a
+    locked level) and its dots are Watch / Practice / Test. Tapping a tile opens its **line card**
+    (a bottom sheet): "VIENNA 1.2 · VIENNA GAMBIT", the line, its moves, the takeaway as a tip,
+    Watched / Practised / Mastered, and Watch / Practice / Test with the suggested one in magenta.
+    Levels and variations fold (the level being worked on starts open; choices are remembered per
+    opening in `ui:folds:v1`). The level exam (its main lines, random replies) is one row at the
+    bottom of the level. Explanations sit behind the header's ⓘ. Logic: `src/openings/stages.ts`.
   - **Drill:** a header with the opening's icon and name over the line; the Mastermind's bubble;
     a mode badge (WATCH / PRACTICE / TEST / EXAM), the status, and in Test one pip per allowed
     mistake that fills red; the board; the move's note; the move list; the result card.

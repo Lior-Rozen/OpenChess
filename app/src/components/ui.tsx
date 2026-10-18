@@ -55,18 +55,25 @@ type InfoSheetProps = {
   visible: boolean;
   onClose: () => void;
   title: string;
+  /** A small line above the title, e.g. "VIENNA 1.2 · VIENNA GAMBIT". */
+  kicker?: string;
   intro?: string;
   steps?: InfoStep[];
   children?: ReactNode;
 };
 
 /** A sheet that slides up from the bottom with an explanation; tap outside it to close. */
-export function InfoSheet({ visible, onClose, title, intro, steps = [], children }: InfoSheetProps) {
+export function InfoSheet({ visible, onClose, title, kicker, intro, steps = [], children }: InfoSheetProps) {
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose} statusBarTranslucent>
       <Pressable style={styles.shade} onPress={onClose} accessibilityLabel="Close" />
       <View style={styles.sheet}>
         <View style={styles.grab} />
+        {kicker && (
+          <Text style={styles.sheetKicker} numberOfLines={1}>
+            {kicker}
+          </Text>
+        )}
         <Text style={styles.sheetTitle}>{title}</Text>
         {intro && <Text style={styles.sheetIntro}>{intro}</Text>}
         {steps.map((step) => (
@@ -113,6 +120,7 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
   },
   grab: { width: 40, height: 4, borderRadius: 2, backgroundColor: theme.border, alignSelf: 'center', marginBottom: 14 },
+  sheetKicker: { fontSize: 12, fontFamily: theme.fontSemi, color: theme.accent2, letterSpacing: 0.5, marginBottom: 2 },
   sheetTitle: { fontSize: 18, fontFamily: theme.fontSemi, color: theme.text },
   sheetIntro: { fontSize: 14, lineHeight: 20, fontFamily: theme.font, color: theme.muted, marginTop: 4, marginBottom: 6 },
   step: { flexDirection: 'row', gap: 12, marginTop: 14 },

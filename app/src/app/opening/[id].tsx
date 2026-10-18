@@ -2,20 +2,15 @@ import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { Button } from '@/components/Button';
 import { Badge, Icon, IconButton, InfoSheet, ProgressBar, type InfoStep } from '@/components/ui';
 import { loadOpening } from '@/content/loader';
 import type { Opening } from '@/content/types';
 import { firstMoves } from '@/openings/filter';
 import { isLevelOpen, isVariationOpen, toggleLevel, toggleVariation, variationKey, type Folds } from '@/openings/folds';
+import { stageRows, stageSteps, type Stage } from '@/openings/stages';
 import { useFolds } from '@/openings/useFolds';
-import {
-  groupByVariation,
-  levelStatuses,
-  suggestedMode,
-  type LevelStatus,
-  type LineStatus,
-  type RunMode,
-} from '@/progress/mastery';
+import { levelStatuses, nextLineTarget, suggestedMode, type LevelStatus, type RunMode } from '@/progress/mastery';
 import { useProgress } from '@/progress/ProgressContext';
 import { theme } from '@/theme';
 
@@ -27,13 +22,14 @@ const MODES: { mode: RunMode; label: string }[] = [
 
 /** The "How it works" sheet behind the ⓘ: every explanation the screen used to print. */
 const HOW_IT_WORKS: InfoStep[] = [
+  { icon: 'grid-outline', title: 'Stages', text: 'Each tile is one line. Tap it to see what it teaches and to play it.' },
   { icon: 'eye-outline', title: 'Watch', text: 'See the line played, with a note on the key moves.' },
   { icon: 'create-outline', title: 'Practice', text: 'Play it yourself. Hints if you need them.' },
   { icon: 'checkmark', title: 'Test', text: 'No hints. One clean run masters the line.' },
   {
     icon: 'star',
     title: 'Unlock and exam',
-    text: 'Master the main lines to open the next level. The exam mixes them for a ★. Bonus lines are extra.',
+    text: 'Master the main lines to open the next level. The exam mixes them for a ★. Dashed tiles are bonus lines: extra, never required.',
     color: theme.gold,
   },
 ];
@@ -61,7 +57,9 @@ function OpeningDetails({ opening }: { opening: Opening }) {
   const { progress, loaded } = useProgress();
   const [folds, setFolds] = useFolds(opening.id);
   const [info, setInfo] = useState(false);
+  const [card, setCard] = useState<Stage | null>(null);
   const levels = levelStatuses(opening, progress);
+  const nextLineId = nextLineTarget(opening, progress, '')?.lineId ?? null;
   const side = opening.side === 'white' ? 'White' : 'Black';
 
   return (
@@ -92,8 +90,10 @@ function OpeningDetails({ opening }: { opening: Opening }) {
             key={level.level}
             opening={opening}
             level={level}
+            nextLineId={nextLineId}
             open={isLevelOpen(folds, level.level, levels)}
             onToggle={() => setFolds((f) => toggleLevel(f, level.level, levels))}
+            onStage={setCard}
             folds={folds}
             onFold={setFolds}
           />
@@ -106,15 +106,24 @@ function OpeningDetails({ opening }: { opening: Opening }) {
         intro={`${opening.name}: ${opening.description} You play ${side}.`}
         steps={HOW_IT_WORKS}
       />
+      <LineCard opening={opening} stage={card} onClose={() => setCard(null)} />
     </ScrollView>
   );
 }
 
-type LevelCardProps = FoldProps & { opening: Opening; level: LevelStatus; open: boolean; onToggle: () => void };
+type LevelCardProps = FoldProps & {
+  opening: Opening;
+  level: LevelStatus;
+  nextLineId: string | null;
+  open: boolean;
+  onToggle: () => void;
+  onStage: (stage: Stage) => void;
+};
 
-function LevelCard({ opening, level, open, onToggle, folds, onFold }: LevelCardProps) {
+function LevelCard({ opening, level, nextLineId, open, onToggle, onStage, folds, onFold }: LevelCardProps) {
   const mastered = level.mainLines.filter((l) => l.mastered).length;
   const total = level.mainLines.length;
+  const rows = stageRows(level, nextLineId);
 
   return (
     <View style={[styles.card, !level.unlocked && styles.locked]}>
@@ -138,105 +147,145 @@ function LevelCard({ opening, level, open, onToggle, folds, onFold }: LevelCardP
         )}
       </Pressable>
 
+      {/* A locked level shows its tiles dimmed, as a preview; nothing in it can be opened. */}
+      {(open || !level.unlocked) &&
+        rows.map(({ variation, stages }) => {
+          const key = variation === null ? null : variationKey(level.level, false, variation);
+          const rowOpen = !level.unlocked || key === null || isVariationOpen(folds, key);
+          const done = stages.filter((s) => s.status.mastered).length;
+          return (
+            <View key={variation ?? '-'}>
+              {variation && (
+                <Pressable
+                  onPress={() => key && onFold((f) => toggleVariation(f, key))}
+                  disabled={!level.unlocked}
+                  style={styles.variationRow}
+                  hitSlop={6}
+                >
+                  {level.unlocked && <Icon name={rowOpen ? 'chevron-down' : 'chevron-forward'} size={12} />}
+                  <Text style={styles.variation} numberOfLines={1}>
+                    {variation}
+                  </Text>
+                  <View style={styles.pill}>
+                    <Text style={styles.pillText}>
+                      {done}/{stages.length}
+                    </Text>
+                  </View>
+                </Pressable>
+              )}
+              {rowOpen && (
+                <View style={styles.tiles}>
+                  {stages.map((stage) => (
+                    <StageTile key={stage.status.line.id} stage={stage} onPress={() => onStage(stage)} />
+                  ))}
+                </View>
+              )}
+            </View>
+          );
+        })}
+
       {open && (
-        <>
-          <LineGroups opening={opening} level={level.level} bonus={false} lines={level.mainLines} folds={folds} onFold={onFold} />
-          {level.bonusLines.length > 0 && (
-            <View style={styles.divider}>
-              <Text style={styles.dividerText}>BONUS</Text>
-              <View style={styles.dividerLine} />
-            </View>
-          )}
-          <LineGroups opening={opening} level={level.level} bonus lines={level.bonusLines} folds={folds} onFold={onFold} />
-          <View style={styles.exam}>
-            <Icon name="star" size={16} color={theme.gold} />
-            <View style={styles.examText}>
-              <Text style={styles.examTitle}>Level exam</Text>
-              <Text style={styles.examSub}>
-                {level.examPassed ? 'Passed' : `All ${plural(total, 'main line')}, random replies`}
-              </Text>
-            </View>
-            <SmallButton
-              label={level.examPassed ? 'Retake' : 'Start'}
-              onPress={() =>
-                router.push({ pathname: '/drill', params: { opening: opening.id, level: String(level.level) } })
-              }
-            />
+        <View style={styles.exam}>
+          <Icon name="star" size={16} color={theme.gold} />
+          <View style={styles.examText}>
+            <Text style={styles.examTitle}>Level exam</Text>
+            <Text style={styles.examSub}>
+              {level.examPassed ? 'Passed' : `All ${plural(total, 'main line')}, random replies`}
+            </Text>
           </View>
-        </>
+          <Pressable
+            onPress={() => router.push({ pathname: '/drill', params: { opening: opening.id, level: String(level.level) } })}
+            style={({ pressed }) => [styles.smallButton, pressed && styles.pressed]}
+          >
+            <Text style={styles.smallButtonText}>{level.examPassed ? 'Retake' : 'Start'}</Text>
+          </Pressable>
+        </View>
       )}
     </View>
   );
 }
 
-/** Lines grouped by variation, in the order the variations first appear. A variation folds by tapping its name. */
-type LineGroupsProps = FoldProps & { opening: Opening; level: number; bonus: boolean; lines: LineStatus[] };
+const TILE_LOOK = {
+  mastered: { box: { backgroundColor: 'rgba(0, 230, 170, 0.13)', borderColor: theme.good }, text: theme.good },
+  next: { box: { backgroundColor: theme.accent, borderColor: theme.accent, boxShadow: theme.glow }, text: theme.onAccent },
+  started: { box: { backgroundColor: theme.background, borderColor: theme.accent }, text: theme.text },
+  new: { box: { backgroundColor: theme.background, borderColor: theme.border }, text: theme.text },
+  locked: { box: { backgroundColor: theme.background, borderColor: theme.pressed }, text: theme.border },
+} as const;
 
-function LineGroups({ opening, level, bonus, lines, folds, onFold }: LineGroupsProps) {
-  const groups = groupByVariation(lines);
-  return groups.map(({ variation, lines: grouped }) => {
-    const key = variation === null ? null : variationKey(level, bonus, variation);
-    const open = key === null || isVariationOpen(folds, key);
-    const mastered = grouped.filter((l) => l.mastered).length;
-    return (
-      <View key={variation ?? '-'}>
-        {variation && key && (
-          <Pressable onPress={() => onFold((f) => toggleVariation(f, key))} style={styles.variationRow} hitSlop={6}>
-            <Icon name={open ? 'chevron-down' : 'chevron-forward'} size={12} />
-            <Text style={styles.variation} numberOfLines={1}>
-              {variation}
-            </Text>
-            <View style={styles.pill}>
-              <Text style={styles.pillText}>
-                {mastered}/{grouped.length}
-              </Text>
-            </View>
-          </Pressable>
-        )}
-        {open && grouped.map((line) => <LineRow key={line.line.id} opening={opening} status={line} />)}
-      </View>
-    );
-  });
-}
-
-function LineRow({ opening, status }: { opening: Opening; status: LineStatus }) {
-  const { line, mastered, progress } = status;
-  const suggested = mastered ? null : suggestedMode(progress);
-
+/** One line as a numbered tile: its colour is its state, the dots are Watch / Practice / Test. */
+function StageTile({ stage, onPress }: { stage: Stage; onPress: () => void }) {
+  const look = TILE_LOOK[stage.state];
+  const steps = stageSteps(stage.status);
   return (
-    <View style={styles.line}>
-      <View style={styles.lineTop}>
-        <View style={[styles.dot, mastered && styles.dotOn]} />
-        <Text style={styles.lineName} numberOfLines={1}>
-          {line.name}
-        </Text>
-        <Text style={styles.lineMeta}>{plural(Math.ceil(line.moves.length / 2), 'move')}</Text>
-      </View>
-      <View style={styles.strip}>
-        {MODES.map(({ mode, label }, i) => (
-          <Pressable
-            key={mode}
-            onPress={() => router.push({ pathname: '/drill', params: { opening: opening.id, line: line.id, mode } })}
-            style={({ pressed }) => [
-              styles.segment,
-              i > 0 && styles.segmentDivider,
-              mode === suggested && styles.segmentSuggested,
-              pressed && styles.pressed,
-            ]}
-          >
-            <Text style={[styles.segmentText, mode === suggested && styles.segmentTextSuggested]}>{label}</Text>
-          </Pressable>
-        ))}
-      </View>
-    </View>
+    <Pressable
+      onPress={onPress}
+      disabled={stage.state === 'locked'}
+      accessibilityLabel={`Stage ${stage.number}: ${stage.status.line.name}${stage.bonus ? ', bonus' : ''}`}
+      style={({ pressed }) => [styles.tile, look.box, stage.bonus && styles.tileBonus, pressed && styles.pressed]}
+    >
+      <Text style={[styles.tileNumber, { color: look.text }]}>{stage.number}</Text>
+      {stage.state === 'mastered' ? (
+        <Icon name="checkmark" size={12} color={theme.good} />
+      ) : stage.state === 'next' ? (
+        <Text style={[styles.tileLabel, { color: look.text }]}>next</Text>
+      ) : stage.state === 'locked' ? (
+        <Icon name="lock-closed" size={11} color={theme.border} />
+      ) : (
+        <View style={styles.tileDots}>
+          {steps.map((on, i) => (
+            <View key={i} style={[styles.tileDot, on && { backgroundColor: theme.accent }]} />
+          ))}
+        </View>
+      )}
+    </Pressable>
   );
 }
 
-function SmallButton({ label, onPress }: { label: string; onPress: () => void }) {
+/** The card a tile opens: what the line is, what it teaches, how far it's come, and its three modes. */
+function LineCard({ opening, stage, onClose }: { opening: Opening; stage: Stage | null; onClose: () => void }) {
+  if (!stage) return null;
+  const { line, mastered, progress } = stage.status;
+  const suggested = mastered ? null : suggestedMode(progress);
+  const steps = stageSteps(stage.status);
+  const kicker = [
+    `${opening.name.split(':')[0]} ${stage.number}`,
+    ...(line.variation ? [line.variation] : []),
+    ...(stage.bonus ? ['Bonus'] : []),
+  ]
+    .join(' · ')
+    .toUpperCase();
+
+  function play(mode: RunMode) {
+    onClose();
+    router.push({ pathname: '/drill', params: { opening: opening.id, line: line.id, mode } });
+  }
+
   return (
-    <Pressable onPress={onPress} style={({ pressed }) => [styles.smallButton, pressed && styles.pressed]}>
-      <Text style={styles.smallButtonText}>{label}</Text>
-    </Pressable>
+    <InfoSheet visible onClose={onClose} kicker={kicker} title={line.name}>
+      <Text style={styles.cardMeta}>{plural(Math.ceil(line.moves.length / 2), 'move')}</Text>
+      {line.summary && (
+        <View style={styles.tip}>
+          <Icon name="bulb-outline" size={16} color={theme.gold} />
+          <Text style={styles.tipText}>{line.summary}</Text>
+        </View>
+      )}
+      <View style={styles.steps}>
+        {['Watched', 'Practised', 'Mastered'].map((label, i) => (
+          <View key={label} style={styles.step}>
+            <View style={[styles.stepBar, steps[i] && styles.stepBarOn]} />
+            <Text style={styles.stepText}>{label}</Text>
+          </View>
+        ))}
+      </View>
+      <View style={styles.actions}>
+        {MODES.map(({ mode, label }) => (
+          <View key={mode} style={styles.action}>
+            <Button label={label} primary={mode === suggested} onPress={() => play(mode)} />
+          </View>
+        ))}
+      </View>
+    </InfoSheet>
   );
 }
 
@@ -254,40 +303,31 @@ const styles = StyleSheet.create({
   good: { color: theme.good },
   lockRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   lockText: { fontSize: 13, fontFamily: theme.font, color: theme.muted },
-  variationRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 14, marginBottom: 2 },
+  variationRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 16, marginBottom: 10 },
   variation: { flex: 1, fontSize: 14.5, fontFamily: theme.fontSemi, color: theme.accent2 },
   pill: { backgroundColor: theme.pressed, borderRadius: 9, paddingVertical: 2, paddingHorizontal: 8 },
   pillText: { fontSize: 12, fontFamily: theme.fontMedium, color: theme.muted },
-  divider: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 18 },
-  dividerText: { fontSize: 11, fontFamily: theme.fontSemi, letterSpacing: 1, color: theme.muted },
-  dividerLine: { flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: theme.border },
-  line: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: theme.border, paddingVertical: 9, marginTop: 4 },
-  lineTop: { flexDirection: 'row', alignItems: 'center', gap: 9 },
-  dot: { width: 8, height: 8, borderRadius: 4, borderWidth: 1.5, borderColor: theme.muted },
-  dotOn: { backgroundColor: theme.good, borderColor: theme.good },
-  lineName: { flex: 1, fontSize: 15, fontFamily: theme.fontMedium, color: theme.text },
-  lineMeta: { fontSize: 12, fontFamily: theme.font, color: theme.muted },
-  strip: {
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    marginTop: 8,
-    marginLeft: 17,
-    borderWidth: 1,
-    borderColor: theme.border,
-    borderRadius: 9,
-    overflow: 'hidden',
+  tiles: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
+  tile: {
+    width: 64,
+    height: 64,
+    borderRadius: 14,
+    borderWidth: 1.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
   },
-  segment: { paddingVertical: 6, paddingHorizontal: 13, backgroundColor: theme.background },
-  segmentDivider: { borderLeftWidth: 1, borderLeftColor: theme.border },
-  segmentSuggested: { backgroundColor: theme.accent },
+  tileBonus: { borderStyle: 'dashed' },
+  tileNumber: { fontSize: 17, fontFamily: theme.fontBold },
+  tileLabel: { fontSize: 10, fontFamily: theme.fontSemi },
+  tileDots: { flexDirection: 'row', gap: 3 },
+  tileDot: { width: 5, height: 5, borderRadius: 3, backgroundColor: theme.border },
   pressed: { opacity: 0.7 },
-  segmentText: { fontSize: 13, fontFamily: theme.fontMedium, color: theme.text },
-  segmentTextSuggested: { color: theme.onAccent, fontFamily: theme.fontSemi },
   exam: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    marginTop: 14,
+    marginTop: 16,
     paddingVertical: 10,
     paddingHorizontal: 12,
     borderRadius: 10,
@@ -305,4 +345,22 @@ const styles = StyleSheet.create({
     backgroundColor: theme.card,
   },
   smallButtonText: { fontSize: 14, fontFamily: theme.fontSemi, color: theme.text },
+  cardMeta: { fontSize: 13, fontFamily: theme.font, color: theme.muted, marginTop: 2 },
+  tip: {
+    flexDirection: 'row',
+    gap: 10,
+    backgroundColor: theme.background,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    marginTop: 14,
+  },
+  tipText: { flex: 1, fontSize: 13.5, lineHeight: 19, fontFamily: theme.font, color: theme.text },
+  steps: { flexDirection: 'row', gap: 6, marginTop: 14 },
+  step: { flex: 1, alignItems: 'center', gap: 4 },
+  stepBar: { alignSelf: 'stretch', height: 4, borderRadius: 2, backgroundColor: theme.pressed },
+  stepBarOn: { backgroundColor: theme.good },
+  stepText: { fontSize: 11, fontFamily: theme.font, color: theme.muted },
+  actions: { flexDirection: 'row', gap: 8, marginTop: 16 },
+  action: { flex: 1 },
 });
