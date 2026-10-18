@@ -127,7 +127,8 @@ compile it into `content/openings/<id>.json`, which the app bundles. Never edit 
   those `side`).
 - Prefer solid, principled repertoire choices over sharp memorisation-heavy lines, unless the
   user asks otherwise.
-- If you have tools to check an opening explorer or database, use them. **If you're unsure of a
+- Use the scripts in `tools/content/` (see its README) to check the Lichess explorer (club games)
+  and cloud engine: position lookup, line audit and the known-mistake search. **If you're unsure of a
   move, say so and ask. Never invent theory.** At the end of each opening, flag any line you're
   less than confident about. Where two sound moves are both common, use an `{@alt}` (for the
   user) or a second branch (for the opponent) rather than flagging it. When you do flag lines,
