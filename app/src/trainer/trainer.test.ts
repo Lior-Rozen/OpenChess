@@ -204,7 +204,7 @@ describe('Trainer with accepted alternatives', () => {
   const withAlt: OpeningLine = {
     ...advance,
     accept: { '5': ['Nc6'] },
-    mistakes: { '5': { f6: 'It weakens e6 and the king.', g5: 'Qh5! and f7 falls apart.' } },
+    mistakes: { '5': { f6: 'It weakens e6 and the king.', g5: 'Qh5! and f7 falls apart.', h6: 'It loses time; Qg4 is coming. [%cal Rd1g4]' } },
   };
 
   /** Plays the line up to the user's 3rd move. */
@@ -276,6 +276,16 @@ describe('Trainer with accepted alternatives', () => {
       refutation: { from: 'd1', to: 'h5' },
     });
     expect(trainer.state().position.fen).toBe(before);
+  });
+
+  it('uses a [%cal] in the reason as the arrow, and hides the markup', () => {
+    const trainer = atMoveThree('practice');
+    trainer.tryMove('h7', 'h6');
+    expect(trainer.state().mistake).toEqual({
+      san: 'h6',
+      reason: 'It loses time; Qg4 is coming.',
+      refutation: { from: 'd1', to: 'g4' },
+    });
   });
 
   it('clears the reason once the book move is played', () => {
