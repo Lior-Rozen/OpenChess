@@ -16,7 +16,9 @@ const MODE_LABELS = { watch: 'Watch', practice: 'Practice', test: 'Test' };
 
 export default function Home() {
   const { progress, loaded } = useProgress();
-  const next = loaded ? continueTarget(contentIndex, loadOpening, progress) : null;
+  // Before the first line is played there's nothing to continue: the main button picks an opening.
+  const started = Object.values(progress).some((o) => Object.values(o.lines).some((l) => l.lastPlayed));
+  const next = loaded && started ? continueTarget(contentIndex, loadOpening, progress) : null;
   const nextLine = next ? loadLine(next.openingId, next.lineId) : null;
 
   return (
@@ -53,16 +55,18 @@ export default function Home() {
                   <OpeningIcon openingId={next.openingId} size={24} />
                 </View>
               )}
-              <Text style={styles.mainLabel}>{next ? 'Continue' : 'All mastered'}</Text>
+              <Text style={styles.mainLabel}>{next ? 'Continue' : started ? 'All mastered' : 'Pick an opening'}</Text>
             </View>
             <Text style={styles.mainDetail}>
               {nextLine && next
                 ? `${nextLine.opening.name} · ${nextLine.line.name} · ${MODE_LABELS[next.mode]}`
-                : 'Every line is yours.'}
+                : started
+                  ? 'Every line is yours.'
+                  : 'Start with your first line.'}
             </Text>
           </Pressable>
         )}
-        <MenuButton icon="library-outline" label="Openings" onPress={() => router.push('/openings')} />
+        {started && <MenuButton icon="library-outline" label="Openings" onPress={() => router.push('/openings')} />}
         {loaded && <MenuButton icon="shuffle" label="Random drill" onPress={() => startRandomDrill(progress)} />}
         <MenuButton icon="grid-outline" label="Free board" onPress={() => router.push('/free-board')} />
       </View>

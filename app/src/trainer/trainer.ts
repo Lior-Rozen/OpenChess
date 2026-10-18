@@ -11,6 +11,7 @@ export type TrainerMode = 'practice' | 'test';
 export type TrainerPhase = 'auto' | 'user' | 'complete' | 'failed';
 
 export type Arrow = { from: Square; to: Square };
+export type KnownMistake = { san: string; reason: string; refutation: Arrow | null };
 
 export type TrainerEvent =
   | { type: 'moved'; by: 'auto' | 'user'; ply: number; san: string; from: Square; to: Square; note: string | null }
@@ -39,8 +40,11 @@ export type TrainerState = {
   hint: Arrow | null;
   /** The accepted alternative the user just played, until they play the book move. */
   alternative: { san: string; bookSan: string } | null;
-  /** The known mistake the user just played and why it's wrong, until the next try. */
-  mistake: { san: string; reason: string } | null;
+  /**
+   * The known mistake the user just played and why it's wrong, until the next try. `refutation`
+   * is the punishing reply the reason starts with ("…Qh4+! forces…"), to show as an arrow.
+   */
+  mistake: KnownMistake | null;
   /** The note of the most recently played move, if it has one. */
   note: string | null;
   /** The line played to the end (phase 'complete'), or the only line still possible. */
@@ -96,7 +100,7 @@ export class Trainer {
   private hint: Arrow | null = null;
   private readonly triesBeforeHint: number;
   private alternative: { san: string; bookSan: string } | null = null;
-  private mistake: { san: string; reason: string } | null = null;
+  private mistake: KnownMistake | null = null;
   private note: string | null = null;
 
   constructor(
@@ -211,14 +215,28 @@ export class Trainer {
   }
 
   /** The move and its reason, if a candidate line lists it as a known mistake at this ply. */
-  private knownMistake(from: Square, to: Square): { san: string; reason: string } | null {
+  private knownMistake(from: Square, to: Square): KnownMistake | null {
     for (const line of this.candidates) {
       for (const [san, reason] of Object.entries(line.mistakes?.[String(this.ply)] ?? {})) {
         const move = this.game.resolveSan(san);
-        if (move && move.from === from && move.to === to) return { san: move.san, reason };
+        if (move && move.from === from && move.to === to) {
+          return { san: move.san, reason, refutation: this.refutation(from, to, reason) };
+        }
       }
     }
     return null;
+  }
+
+  /**
+   * The reply a mistake's reason opens with ("…Qh4+! forces your king to move." → Qh4+), found in
+   * the position after the mistake. Null if the reason doesn't start with a legal move there.
+   */
+  private refutation(from: Square, to: Square, reason: string): Arrow | null {
+    const san = /^…?\s*(O-O-O|O-O|[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8](?:=[QRBN])?[+#]?)/.exec(reason)?.[1];
+    if (!san || this.game.move(from, to) === null) return null;
+    const reply = this.game.resolveSan(san);
+    this.game.undo();
+    return reply ? { from: reply.from, to: reply.to } : null;
   }
 
   /** The distinct book moves from here, each with the candidate lines that continue with it. */

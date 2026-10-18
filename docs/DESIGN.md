@@ -44,7 +44,10 @@ updates and sync later, but it is never required to train.
    - Correct: the move plays and the line continues.
    - Wrong: the board shakes or flashes red, the move is undone, and the mistake is counted.
      In Practice, after 2 wrong tries (configurable in Settings), the correct move is shown as an
-     arrow and must be played.
+     arrow and must be played. A **known mistake** (`mistakes` in the content) shows its reason, and
+     the punishing reply the reason opens with ("…Qh4+! forces…") appears as a **red arrow**.
+   - A move's note stays on screen through the Mastermind's reply, until a newer note or the
+     user's next move.
 5. The line ends with a result card: the outcome, badges (CLEAN, MASTERED, LEVEL N UNLOCKED,
    ★ EXAM PASSED), the line's takeaway as a tip, and **Next line** (the next line to learn in the
    same opening; "Next random" after a random drill).
@@ -130,7 +133,8 @@ lines live in `app/src/mastermind/lines.ts`, and he's drawn as an original 8-bit
   screens; information is shown as badges, pills, progress bars and icons where possible.
 - One font, a muted palette, almost no chrome. The screens:
   - **Home:** the Mastermind and "Hello, friend.", one big magenta **Continue** button (straight
-    into the next suggested line and mode, with that opening's icon), then **Openings**, **Random
+    into the next suggested line and mode, with that opening's icon; before the first line is
+    played it's **Pick an opening** instead), then **Openings**, **Random
     drill** and **Free board** as icon rows, and a settings icon.
   - **Openings:** the grid, with % mastered, grouped under AS WHITE and AS BLACK. Filter chips at
     the top (always visible) for side, first move and style tags. Within side and first move,

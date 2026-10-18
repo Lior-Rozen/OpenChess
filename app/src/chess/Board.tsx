@@ -28,15 +28,17 @@ type Props = {
   onSquarePress: (square: Square) => void;
   /** Width and height in pixels. */
   size: number;
-  /** A move to point out, e.g. a hint. */
+  /** A move to point out, e.g. a hint (cyan). */
   arrow?: BoardArrow | null;
+  /** A danger to point out, e.g. how a mistake gets punished (red). */
+  threat?: BoardArrow | null;
   /** A brief green/red tint on a square, as feedback for a move. */
   flash?: BoardFlash | null;
   /** Slide the last move's piece into place instead of showing it there at once. */
   slide?: boolean;
 };
 
-export function Board({ position, orientation, selection, onSquarePress, size, arrow, flash, slide = false }: Props) {
+export function Board({ position, orientation, selection, onSquarePress, size, arrow, threat, flash, slide = false }: Props) {
   const squareSize = size / 8;
   const { coordinates } = useSettings().settings;
   // While sliding, the moved piece is drawn on its own layer above the squares, not in its square.
@@ -107,7 +109,8 @@ export function Board({ position, orientation, selection, onSquarePress, size, a
           squareSize={squareSize}
         />
       )}
-      {arrow && <ArrowOverlay arrow={arrow} orientation={orientation} size={size} />}
+      {threat && <ArrowOverlay arrow={threat} orientation={orientation} size={size} color={colors.threat} />}
+      {arrow && <ArrowOverlay arrow={arrow} orientation={orientation} size={size} color={colors.arrow} />}
     </View>
   );
 }
@@ -161,7 +164,9 @@ function squareCenter(square: Square, orientation: Color, squareSize: number) {
   return { x: (col + 0.5) * squareSize, y: (row + 0.5) * squareSize };
 }
 
-function ArrowOverlay({ arrow, orientation, size }: { arrow: BoardArrow; orientation: Color; size: number }) {
+type ArrowProps = { arrow: BoardArrow; orientation: Color; size: number; color: string };
+
+function ArrowOverlay({ arrow, orientation, size, color }: ArrowProps) {
   const squareSize = size / 8;
   const from = squareCenter(arrow.from, orientation, squareSize);
   const to = squareCenter(arrow.to, orientation, squareSize);
@@ -184,11 +189,11 @@ function ArrowOverlay({ arrow, orientation, size }: { arrow: BoardArrow; orienta
         y1={from.y}
         x2={base.x}
         y2={base.y}
-        stroke={colors.arrow}
+        stroke={color}
         strokeWidth={squareSize * 0.18}
         strokeLinecap="round"
       />
-      <Polygon points={head} fill={colors.arrow} />
+      <Polygon points={head} fill={color} />
     </Svg>
   );
 }

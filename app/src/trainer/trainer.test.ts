@@ -194,7 +194,7 @@ describe('Trainer with accepted alternatives', () => {
   const withAlt: OpeningLine = {
     ...advance,
     accept: { '5': ['Nc6'] },
-    mistakes: { '5': { f6: 'It weakens e6 and the king.' } },
+    mistakes: { '5': { f6: 'It weakens e6 and the king.', g5: 'Qh5! and f7 falls apart.' } },
   };
 
   /** Plays the line up to the user's 3rd move. */
@@ -249,11 +249,23 @@ describe('Trainer with accepted alternatives', () => {
     expect(trainer.tryMove('f7', 'f6')).toEqual([{ type: 'wrongMove', from: 'f7', to: 'f6', triesThisMove: 1 }]);
     expect(trainer.state()).toMatchObject({
       mistakes: 1,
-      mistake: { san: 'f6', reason: 'It weakens e6 and the king.' },
+      mistake: { san: 'f6', reason: 'It weakens e6 and the king.', refutation: null },
     });
 
     trainer.tryMove('a7', 'a6');
     expect(trainer.state().mistake).toBeNull();
+  });
+
+  it("shows the punishing reply a known mistake's reason starts with, without moving anything", () => {
+    const trainer = atMoveThree('practice');
+    const before = trainer.state().position.fen;
+    trainer.tryMove('g7', 'g5');
+    expect(trainer.state().mistake).toEqual({
+      san: 'g5',
+      reason: 'Qh5! and f7 falls apart.',
+      refutation: { from: 'd1', to: 'h5' },
+    });
+    expect(trainer.state().position.fen).toBe(before);
   });
 
   it('clears the reason once the book move is played', () => {
