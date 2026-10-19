@@ -16,7 +16,7 @@
 )
   (4. Bg5 h6 {…h6 asks the bishop at once.} 5. Bh4
     (5. Bxf6 Qxf6 {…Qxf6: Black has the two bishops, and the queen adds pressure on c3.}
-{@line id=nimzo-indian-bg5-bxf6 level=2 tier=side name="4.Bg5 h6 5.Bxf6" summary="If White takes on f6, recapture with the queen: Black gets the bishop pair for free."}
+{@line id=nimzo-indian-bg5-bxf6 level=2 tier=main name="4.Bg5 h6 5.Bxf6" summary="If White takes on f6, recapture with the queen: Black gets the bishop pair for free."}
 )
   5... c5 {…c5 hits d4; the pin on c3 makes it hard for White to keep the centre. [%cal Gc5d4]}
 {@line id=nimzo-indian-bg5 level=1 tier=main name="4.Bg5 (Leningrad)" summary="Against 4.Bg5, kick the bishop with …h6 and hit d4 with …c5."}
@@ -46,4 +46,4 @@
 5... Bxc3+ 6. Qxc3 b6 {…b6 prepares …Bb7 to control e4 and the long diagonal. [%cal Gc8b7]} (6... d5 {@alt})
 {@line id=nimzo-indian-qc2 level=1 tier=main name="4.Qc2 (Classical)" summary="Against Qc2, castle; after a3 give the bishop on c3 and fight for e4 with …b6 and …Bb7."}
 7. Bg5 Bb7 {…Bb7: the bishop now controls e4, so White can't build a big centre.}
-{@line id=nimzo-indian-qc2-deep level=2 tier=main name="4.Qc2: 7.Bg5" summary="After the trade on c3, …b6 and …Bb7 take control of e4; the pin on f6 doesn't change the plan."} *
+{@line id=nimzo-indian-qc2-deep level=2 tier=side name="4.Qc2: 7.Bg5" summary="After the trade on c3, …b6 and …Bb7 take control of e4; the pin on f6 doesn't change the plan."} *

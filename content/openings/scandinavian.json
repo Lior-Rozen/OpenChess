@@ -46,7 +46,7 @@
       "id": "scandinavian-7bd2",
       "name": "7.Bd2",
       "level": 1,
-      "tier": "main",
+      "tier": "side",
       "variation": "Main Line",
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Bd2", "e6"],
       "notes": {
@@ -62,7 +62,7 @@
       "id": "scandinavian-7bd2-oo",
       "name": "7.Bd2 e6 8.O-O",
       "level": 2,
-      "tier": "main",
+      "tier": "side",
       "variation": "Main Line",
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bc4", "Bf5", "Bd2", "e6", "O-O", "Nbd7"],
       "notes": {
@@ -181,7 +181,7 @@
       "id": "scandinavian-6ne4",
       "name": "5.Bd2 c6 6.Ne4",
       "level": 2,
-      "tier": "side",
+      "tier": "main",
       "variation": "Main Line",
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Bd2", "c6", "Ne4", "Qd8", "Nxf6+", "exf6"],
       "notes": {
@@ -276,7 +276,7 @@
       "id": "scandinavian-3nf3",
       "name": "3.Nf3",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "Quiet 3.d4 / 3.Nf3",
       "moves": ["e4", "d5", "exd5", "Qxd5", "Nf3", "Nf6", "d4", "Bf5", "Be2", "e6", "O-O", "c6", "c4", "Qd8", "Nc3", "Be7"],
       "notes": {

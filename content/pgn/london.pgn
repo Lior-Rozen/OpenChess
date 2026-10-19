@@ -13,10 +13,10 @@
 )
 2. Bf4 {Bf4 develops the bishop before e3 shuts it in.} {@variation Main Line} 2... Nf6
   (2... e6 3. e3 Nf6 4. Nf3 {Nf3: the same position as 2…Nf6 3.e3 e6 4.Nf3.}
-{@line id=london-2e6 level=1 tier=side name="vs 2…e6" summary="2…e6 changes nothing: e3, Nf3, and the usual pyramid."}
+{@line id=london-2e6 level=1 tier=main name="vs 2…e6" summary="2…e6 changes nothing: e3, Nf3, and the usual pyramid."}
 )
   (2... Nc6 3. e3 Nf6 4. Nf3 {Nf3: develop as usual; c3 and Bd3 come next.}
-{@line id=london-2nc6 level=2 tier=side name="vs 2…Nc6" summary="Against 2…Nc6, keep the same set-up: e3, Nf3, then c3 and Bd3."}
+{@line id=london-2nc6 level=2 tier=main name="vs 2…Nc6" summary="Against 2…Nc6, keep the same set-up: e3, Nf3, then c3 and Bd3."}
 )
   (2... c5 3. e3 {e3 backs up d4 and keeps the set-up.} 3... Nc6 4. c3 {c3 holds d4 firmly.} 4... Nf6 5. Nf3 e6 6. Nbd2 Bd6 7. Bg3 O-O 8. Bd3 {Bd3: the same position as the main line.}
 {@line id=london-2c5 level=2 tier=side name="vs 2…c5" summary="2…c5 changes nothing: build the same pyramid and you reach the main line."}
@@ -41,6 +41,6 @@
 {@line id=london-bd6-deep level=2 tier=main name="4…Bd6 into the main line" summary="…Bd6 and …c5 bring us to the main line: Bg3, Bd3, c3, Nbd2."}
 )
 5. c3 {c3 holds the d4 pawn firmly against …c5.} 5... Nc6 6. Nbd2 Bd6 7. Bg3 {Bg3 keeps the bishop when …Bd6 offers a trade, and opens the h-file if Black takes.} 7... O-O 8. Bd3 {Bd3 aims at Black's king; Ne5 and a kingside attack can follow. [%cal Gf3e5]}
-{@line id=london-main level=1 tier=main name="Main Line vs …d5, …c5" summary="Bf4, e3, Nf3, c3, Nbd2, Bd3: the London pyramid, the same set-up every time."}
+{@line id=london-main level=1 tier=side name="Main Line vs …d5, …c5" summary="Bf4, e3, Nf3, c3, Nbd2, Bd3: the London pyramid, the same set-up every time."}
 8... b6 9. Ne5 {Ne5 grabs the outpost and starts a kingside attack.} 9... Bb7 10. f4 {f4 supports the e5 knight, a Stonewall-style attacking set-up.}
-{@line id=london-main-deep level=2 tier=main name="Ne5 and f4" summary="When Black plays slowly, put a knight on e5, back it with f4 and attack the king."} *
+{@line id=london-main-deep level=2 tier=side name="Ne5 and f4" summary="When Black plays slowly, put a knight on e5, back it with f4 and attack the king."} *

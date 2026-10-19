@@ -76,7 +76,7 @@
       "id": "vienna-gambit-d5-deep",
       "name": "5…Be7",
       "level": 2,
-      "tier": "main",
+      "tier": "side",
       "variation": "Vienna Gambit",
       "moves": ["e4", "e5", "Nc3", "Nf6", "f4", "d5", "fxe5", "Nxe4", "Nf3", "Be7", "d4", "O-O", "Bd3", "f5", "exf6", "Bxf6", "O-O"],
       "notes": {
@@ -142,7 +142,7 @@
       "id": "vienna-gambit-qe7",
       "name": "3…exf4 4.e5 Qe7",
       "level": 2,
-      "tier": "side",
+      "tier": "main",
       "variation": "Vienna Gambit",
       "moves": ["e4", "e5", "Nc3", "Nf6", "f4", "exf4", "e5", "Qe7", "Qe2", "Ng8", "Nf3"],
       "notes": {

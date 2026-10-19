@@ -44,7 +44,7 @@
       "id": "nimzo-indian-qc2-deep",
       "name": "4.Qc2: 7.Bg5",
       "level": 2,
-      "tier": "main",
+      "tier": "side",
       "variation": "Nimzo-Indian",
       "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "Qc2", "O-O", "a3", "Bxc3+", "Qxc3", "b6", "Bg5", "Bb7"],
       "notes": {
@@ -198,7 +198,7 @@
       "id": "nimzo-indian-bg5-bxf6",
       "name": "4.Bg5 h6 5.Bxf6",
       "level": 2,
-      "tier": "side",
+      "tier": "main",
       "variation": "Nimzo-Indian",
       "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "Bg5", "h6", "Bxf6", "Qxf6"],
       "notes": {

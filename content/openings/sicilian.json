@@ -140,7 +140,7 @@
       "id": "sicilian-najdorf-be2",
       "name": "6.Be2",
       "level": 1,
-      "tier": "main",
+      "tier": "side",
       "variation": "Najdorf",
       "moves": ["e4", "c5", "Nf3", "d6", "d4", "cxd4", "Nxd4", "Nf6", "Nc3", "a6", "Be2", "e5", "Nb3", "Be7", "O-O", "O-O"],
       "notes": {
@@ -232,7 +232,7 @@
       "id": "sicilian-alapin-nf3",
       "name": "4.Nf3",
       "level": 2,
-      "tier": "main",
+      "tier": "side",
       "variation": "Alapin",
       "moves": ["e4", "c5", "c3", "d5", "exd5", "Qxd5", "Nf3", "Nf6", "d4", "Bg4"],
       "notes": {
@@ -271,7 +271,7 @@
       "id": "sicilian-smith-morra",
       "name": "Smith-Morra Gambit",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "Smith-Morra",
       "moves": ["e4", "c5", "d4", "cxd4", "c3", "dxc3", "Nxc3", "Nc6", "Nf3", "d6", "Bc4", "e6", "O-O", "Nf6"],
       "notes": {
@@ -286,7 +286,7 @@
       "id": "sicilian-morra-qxd4",
       "name": "3.Qxd4",
       "level": 2,
-      "tier": "side",
+      "tier": "main",
       "variation": "Smith-Morra",
       "moves": ["e4", "c5", "d4", "cxd4", "Qxd4", "Nc6"],
       "notes": {

@@ -7,7 +7,7 @@
 
 1. e4 e6 {…e6 prepares …d5, with a pawn ready to recapture on d5.} 2. d4
   (2. Nf3 {@variation 2.Nf3} 2... d5 {…d5 claims the centre, just as against 2.d4.} 3. exd5 exd5 {…exd5: when White plays d4, this is the Exchange Variation.}
-{@line id=french-2nf3 level=1 tier=side name="2.Nf3" summary="Against 2.Nf3, still play …d5; after exd5 exd5 it's an Exchange French."}
+{@line id=french-2nf3 level=1 tier=main name="2.Nf3" summary="Against 2.Nf3, still play …d5; after exd5 exd5 it's an Exchange French."}
 )
 2... d5 3. e5 {@variation Advance}
   (3. exd5 {@variation Exchange} 3... exd5 {…exd5 gives a symmetrical structure, and Black's light-squared bishop is free.} 4. Nf3 Nf6 5. Bd3 Bd6 {…Bd6 mirrors White's development; the position is level.} 6. O-O O-O
@@ -39,7 +39,7 @@
 {@line id=french-advance-be2 level=2 tier=main name="6.Be2" summary="Trade on d4, then bring the g8 knight via h6 to f5 to pile up on the d4 pawn."}
 )
 6... c4 {…c4 clamps the queenside, taking b3 and d3 away from White.} (6... Bd7 {@alt})
-{@line id=french-advance-main level=1 tier=main name="Advance Variation" summary="Attack the base of the chain: …c5, …Nc6 and …Qb6 all hit d4."}
+{@line id=french-advance-main level=1 tier=side name="Advance Variation" summary="Attack the base of the chain: …c5, …Nc6 and …Qb6 all hit d4."}
 7. Be2
   (7. Nbd2 Na5 {…Na5 heads for b3 as usual. [%cal Ga5b3]} 8. Be2 Bd7 {…Bd7: the same position as the 7.Be2 order.}
 {@line id=french-advance-a3-nbd2 level=2 tier=side name="6.a3 c4 7.Nbd2" summary="7.Nbd2 and 7.Be2 lead to the same position: …Na5 and …Bd7 either way."}

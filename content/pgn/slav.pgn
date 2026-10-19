@@ -24,7 +24,7 @@
 )
 3... Nf6 (3... Bf5 {@mistake Qb3! hits b7, which the bishop no longer guards.}) 4. Nf3
   (4. Bg5 {@variation 4.Bg5} 4... Bf5 {…Bf5 develops the bishop before the pin on f6 can bother Black.} (4... e6 {@alt}) 5. e3 e6 {…e6 supports d5; if White takes on f6, Black has the two bishops.}
-{@line id=slav-4bg5 level=1 tier=side name="4.Bg5 Bf5" summary="Against the early pin, develop with …Bf5 and …e6; Bxf6 gives you the two bishops."}
+{@line id=slav-4bg5 level=1 tier=main name="4.Bg5 Bf5" summary="Against the early pin, develop with …Bf5 and …e6; Bxf6 gives you the two bishops."}
 )
 4... dxc4 {@variation Main Line} {…dxc4 takes the pawn when White can't easily win it back with tempo.} (4... e6 {@alt}) 5. a4
   (5. e4 b5 {…b5 holds on to the c4 pawn; Black gets queenside play against White's big centre.} 6. e5
@@ -32,7 +32,7 @@
 {@line id=slav-5e4-a4 level=2 tier=main name="5.e4 b5 6.a4" summary="When a4 hits the b5 pawn, push …b4 and take the e4 pawn while White's knight sits on a2."}
 )
   6... Nd5 {…Nd5: the knight is safe in the centre and eyes c3. [%cal Gd5c3]}
-{@line id=slav-5e4 level=1 tier=main name="5.e4 b5" summary="Meet 5.e4 with …b5 to keep the pawn, then put the knight on d5 when it's kicked."}
+{@line id=slav-5e4 level=1 tier=side name="5.e4 b5" summary="Meet 5.e4 with …b5 to keep the pawn, then put the knight on d5 when it's kicked."}
 7. a4 e6 {…e6 supports the d5 knight and opens the f8 bishop.} 8. axb5 Nxc3 9. bxc3 cxb5 10. Ng5 Bb7 {…Bb7 guards d5 and the long diagonal; Black stays a pawn up.} (10... Be7 {@mistake Nxf7! Kxf7 Qf3+ and Qxa8 wins the rook.})
 {@line id=slav-5e4-deep level=2 tier=main name="5.e4 b5 6.e5" summary="After 6.e5 Nd5 7.a4 e6, trade on c3, keep the b5 pawn and guard the long diagonal with …Bb7."}
 )

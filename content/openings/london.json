@@ -10,7 +10,7 @@
       "id": "london-main",
       "name": "Main Line vs …d5, …c5",
       "level": 1,
-      "tier": "main",
+      "tier": "side",
       "variation": "Main Line",
       "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "e6", "Nf3", "c5", "c3", "Nc6", "Nbd2", "Bd6", "Bg3", "O-O", "Bd3"],
       "notes": {
@@ -34,7 +34,7 @@
       "id": "london-main-deep",
       "name": "Ne5 and f4",
       "level": 2,
-      "tier": "main",
+      "tier": "side",
       "variation": "Main Line",
       "moves": ["d4", "d5", "Bf4", "Nf6", "e3", "e6", "Nf3", "c5", "c3", "Nc6", "Nbd2", "Bd6", "Bg3", "O-O", "Bd3", "b6", "Ne5", "Bb7", "f4"],
       "notes": {
@@ -208,7 +208,7 @@
       "id": "london-2e6",
       "name": "vs 2…e6",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "Main Line",
       "moves": ["d4", "d5", "Bf4", "e6", "e3", "Nf6", "Nf3"],
       "notes": {
@@ -221,7 +221,7 @@
       "id": "london-2nc6",
       "name": "vs 2…Nc6",
       "level": 2,
-      "tier": "side",
+      "tier": "main",
       "variation": "Main Line",
       "moves": ["d4", "d5", "Bf4", "Nc6", "e3", "Nf6", "Nf3"],
       "notes": {

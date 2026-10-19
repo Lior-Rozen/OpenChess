@@ -118,7 +118,7 @@
       "id": "slav-5e4",
       "name": "5.e4 b5",
       "level": 1,
-      "tier": "main",
+      "tier": "side",
       "variation": "Main Line",
       "moves": ["d4", "d5", "c4", "c6", "Nc3", "Nf6", "Nf3", "dxc4", "e4", "b5", "e5", "Nd5"],
       "notes": {
@@ -253,7 +253,7 @@
       "id": "slav-4bg5",
       "name": "4.Bg5 Bf5",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "4.Bg5",
       "moves": ["d4", "d5", "c4", "c6", "Nc3", "Nf6", "Bg5", "Bf5", "e3", "e6"],
       "notes": {

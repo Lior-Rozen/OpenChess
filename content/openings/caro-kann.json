@@ -10,7 +10,7 @@
       "id": "caro-kann-advance-main",
       "name": "Short System",
       "level": 1,
-      "tier": "main",
+      "tier": "side",
       "variation": "Advance",
       "moves": ["e4", "c6", "d4", "d5", "e5", "Bf5", "Nf3", "e6", "Be2", "c5", "Be3", "Qb6"],
       "notes": {
@@ -131,7 +131,7 @@
       "id": "caro-kann-classical-deep",
       "name": "11.Bd2",
       "level": 2,
-      "tier": "main",
+      "tier": "side",
       "variation": "Classical",
       "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Bf5", "Ng3", "Bg6", "Nf3", "Nd7", "h4", "h6", "h5", "Bh7", "Bd3", "Bxd3", "Qxd3", "e6", "Bd2", "Ngf6", "O-O-O", "Be7"],
       "notes": {
@@ -231,7 +231,7 @@
       "id": "caro-kann-exchange-deep",
       "name": "9.Ngf3",
       "level": 2,
-      "tier": "side",
+      "tier": "main",
       "variation": "Exchange",
       "moves": ["e4", "c6", "d4", "d5", "exd5", "cxd5", "Bd3", "Nc6", "c3", "Nf6", "Bf4", "Bg4", "Qb3", "Qd7", "Nd2", "e6", "Ngf3", "Bd6", "Bxd6", "Qxd6", "O-O", "O-O"],
       "notes": {
@@ -287,7 +287,7 @@
       "id": "caro-kann-2nf3",
       "name": "2.Nf3",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "2.Nf3",
       "moves": ["e4", "c6", "Nf3", "d5", "exd5", "cxd5", "d4", "Nc6"],
       "notes": {

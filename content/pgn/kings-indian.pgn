@@ -7,14 +7,14 @@
 
 1. d4 Nf6 2. c4
   (2. Nf3 {@variation Move orders} 2... g6 {…g6: the King's Indian set-up, whatever White's move order.} 3. c4 Bg7 4. Nc3 O-O {…O-O: after e4 and …d6 this is the main line.}
-{@line id=kings-indian-2nf3 level=1 tier=side name="2.Nf3" summary="2.Nf3 usually transposes: fianchetto, castle, then …d6 and …e5."}
+{@line id=kings-indian-2nf3 level=1 tier=main name="2.Nf3" summary="2.Nf3 usually transposes: fianchetto, castle, then …d6 and …e5."}
 )
   (2. Bf4 {@variation vs the London} 2... g6 {…g6: the same King's Indian set-up works against the London.} 3. e3 Bg7 4. Nf3 O-O 5. Be2 d6 {…d6 prepares …e5 or …c5 against White's quiet set-up.} 6. h3 c5 {…c5 hits d4, the base of White's set-up.} (6... Nbd7 {@alt})
 {@line id=kings-indian-vs-london level=1 tier=main name="vs the London (2.Bf4)" summary="Against the London, keep the fianchetto and strike with …c5 at d4."}
 )
 2... g6 {…g6 prepares …Bg7, a bishop that will press on the long diagonal.} 3. Nc3 Bg7 4. e4
   (4. Nf3 {@variation Move orders} 4... O-O {…O-O: after e4 d6 this is the Classical again.}
-{@line id=kings-indian-4nf3 level=2 tier=side name="4.Nf3" summary="4.Nf3 changes nothing: castle and play …d6 and …e5 when White plays e4."}
+{@line id=kings-indian-4nf3 level=2 tier=main name="4.Nf3" summary="4.Nf3 changes nothing: castle and play …d6 and …e5 when White plays e4."}
 )
 4... d6 5. Nf3 {@variation Classical}
   (5. f3 {@variation Samisch} 5... O-O {…O-O first; White's f3 means a kingside pawn storm may come.} 6. Be3 e5 {…e5 hits the centre, the same answer as against the Classical.} 7. d5
@@ -22,7 +22,7 @@
 {@line id=kings-indian-samisch-nge2 level=2 tier=main name="7.Nge2" summary="When White keeps the tension with Nge2, take on d4 and use the long diagonal."}
 )
   7... Nh5 {…Nh5 prepares …f5 and eyes the f4 square. [%cal Gf7f5]} 8. Qd2 f5 {…f5 strikes at e4, Black's main lever in the King's Indian.}
-{@line id=kings-indian-samisch level=1 tier=main name="Samisch (5.f3)" summary="Against f3 and Be3, play …e5, then …Nh5 and …f5 to break up White's pawn centre."}
+{@line id=kings-indian-samisch level=1 tier=side name="Samisch (5.f3)" summary="Against f3 and Be3, play …e5, then …Nh5 and …f5 to break up White's pawn centre."}
 )
   (5. f4 {@variation Four Pawns Attack} 5... O-O 6. Nf3 c5 {…c5 attacks the overextended centre right away.} (6... Nbd7 {@mistake e5! kicks the f6 knight and the pawns roll on.}) 7. d5 e6 {…e6 breaks open the e-file against White's uncastled king.} 8. Be2 exd5 9. cxd5 Re8 {…Re8 hits the e4 pawn and stops White's e5 push. [%cal Ge8e4]} (9... Bg4 {@alt})
 {@line id=kings-indian-four-pawns level=1 tier=main name="Four Pawns Attack (5.f4)" summary="The big pawn centre is a target: hit it with …c5 and …e6, then press e4 with …Re8."}
@@ -38,7 +38,7 @@
 {@line id=kings-indian-classical level=1 tier=main name="8.d5 Ne7" summary="Fianchetto, castle, strike with …e5; when White locks the centre with d5, attack with …f5."}
 9. Ne1
   (9. b4 Nh5 {…Nh5 prepares …f5 at once, faster than …Nd7.} 10. Re1 f5 {…f5 hits e4 as usual.} 11. Ng5 Nf6 {…Nf6 brings the knight back to the centre and covers h7 against the g5 knight.}
-{@line id=kings-indian-bayonet level=2 tier=main name="Bayonet (9.b4)" summary="Against b4, go for …Nh5 and …f5 straight away; speed matters in the race."}
+{@line id=kings-indian-bayonet level=2 tier=side name="Bayonet (9.b4)" summary="Against b4, go for …Nh5 and …f5 straight away; speed matters in the race."}
 )
 9... Nd7 {…Nd7 clears the f-pawn for …f5.} 10. Be3
   (10. Nd3 f5 {…f5 opens the kingside fight; White attacks on the queenside.} 11. f3 Nf6 {…Nf6 adds a defender of the kingside and prepares …f4.}

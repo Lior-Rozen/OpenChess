@@ -84,7 +84,7 @@
       "id": "kings-gambit-kieseritzky-d6",
       "name": "Kieseritzky: 5…d6",
       "level": 2,
-      "tier": "main",
+      "tier": "side",
       "variation": "Kieseritzky (3…g5)",
       "moves": ["e4", "e5", "f4", "exf4", "Nf3", "g5", "h4", "g4", "Ne5", "d6", "Nxg4"],
       "notes": {
@@ -184,7 +184,7 @@
       "id": "kings-gambit-3nc6",
       "name": "3…Nc6",
       "level": 1,
-      "tier": "main",
+      "tier": "side",
       "variation": "3…Nc6",
       "moves": ["e4", "e5", "f4", "exf4", "Nf3", "Nc6", "d4"],
       "notes": {
@@ -352,7 +352,7 @@
       "id": "kings-gambit-2d6-bg4",
       "name": "2…d6 3…Bg4",
       "level": 2,
-      "tier": "side",
+      "tier": "main",
       "variation": "2…d6",
       "moves": ["e4", "e5", "f4", "d6", "Nf3", "Bg4", "h3", "Bxf3", "Qxf3"],
       "notes": {
@@ -375,7 +375,7 @@
       "id": "kings-gambit-falkbeer",
       "name": "Falkbeer (2…d5)",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "Falkbeer (2…d5)",
       "moves": ["e4", "e5", "f4", "d5", "exd5", "e4", "d3"],
       "notes": {

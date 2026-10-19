@@ -8,7 +8,7 @@
 1. e4 c5 2. c3 {c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.} 2... Nc6 {@variation 2…Nc6}
   (2... d5 {@variation 2…d5} 3. exd5 Qxd5 4. d4 {d4: the queen on d5 can't take back on c3 because of the c-pawn.} 4... Nf6
     (4... Nc6 5. Nf3 {Nf3 develops and defends d4.} 5... Bg4 6. Be2 e6 7. O-O {O-O: the same calm set-up as against 4…Nf6.} (7. h3 {@alt})
-{@line id=alapin-d5-nc6 level=2 tier=main name="4…Nc6" summary="Against …Nc6, develop with Nf3, Be2 and castle; d4 stays protected."}
+{@line id=alapin-d5-nc6 level=2 tier=side name="4…Nc6" summary="Against …Nc6, develop with Nf3, Be2 and castle; d4 stays protected."}
 )
     (4... cxd4 5. cxd4 Nc6 6. Nf3 {Nf3: the same position as 2…Nc6 3.d4 cxd4 4.cxd4 d5 5.exd5 Qxd5 6.Nf3.} (6. Nc3 {@mistake …Qxd4 grabs the pawn; Nf3 first keeps d4 protected.})
 {@line id=alapin-d5-cxd4 level=2 tier=side name="4…cxd4" summary="If Black swaps on d4 first, take back and play Nf3: it's the 2…Nc6 line."}
@@ -32,7 +32,7 @@
 )
   (2... Nf6 {@variation 2…Nf6} 3. e5 {e5 kicks the knight away from the centre.} 3... Nd5 4. d4 cxd4 5. cxd4 {cxd4 keeps a big pawn centre.} (5. Nf3 {@alt}) 5... d6
     (5... Nc6 6. Nf3 {Nf3 defends d4 and e5, the same as against …d6.} (6. Nc3 {@alt})
-{@line id=alapin-nf6-nc6 level=2 tier=side name="2…Nf6 5…Nc6" summary="Against …Nc6, the plan is the same: Nf3 holds d4 and e5."}
+{@line id=alapin-nf6-nc6 level=2 tier=main name="2…Nf6 5…Nc6" summary="Against …Nc6, the plan is the same: Nf3 holds d4 and e5."}
 )
   6. Nf3 {Nf3 defends d4 and e5.}
 {@line id=alapin-nf6 level=1 tier=side name="2…Nf6" summary="Against 2…Nf6, push e5, take the centre with d4 and defend it with Nf3."}

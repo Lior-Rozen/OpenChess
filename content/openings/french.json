@@ -10,7 +10,7 @@
       "id": "french-advance-main",
       "name": "Advance Variation",
       "level": 1,
-      "tier": "main",
+      "tier": "side",
       "variation": "Advance",
       "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "a3", "c4"],
       "notes": {
@@ -319,7 +319,7 @@
       "id": "french-2nf3",
       "name": "2.Nf3",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "2.Nf3",
       "moves": ["e4", "e6", "Nf3", "d5", "exd5", "exd5"],
       "notes": {

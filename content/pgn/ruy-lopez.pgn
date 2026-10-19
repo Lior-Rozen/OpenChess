@@ -8,7 +8,7 @@
 1. e4 e5 2. Nf3 Nc6 3. Bb5 {Bb5 attacks the knight that defends e5, a long-term pressure.} 3... a6
   (3... d6 {@variation Steinitz} 4. d4 {d4 attacks e5 at once; Black's set-up is passive.} 4... exd4
     (4... Bd7 5. Nc3 {Nc3 develops and adds support to e4.} 5... exd4 6. Nxd4 {Nxd4: the same position as 4…exd4 5.Nxd4 Bd7 6.Nc3.}
-{@line id=ruy-lopez-steinitz-bd7 level=2 tier=side name="4…Bd7" summary="If Black plays …Bd7 first, develop Nc3; after …exd4, take back and it's the main Steinitz line."}
+{@line id=ruy-lopez-steinitz-bd7 level=2 tier=main name="4…Bd7" summary="If Black plays …Bd7 first, develop Nc3; after …exd4, take back and it's the main Steinitz line."}
 )
   5. Nxd4 {Nxd4 recaptures with a strong central knight.} 5... Bd7 6. Nc3 {Nc3 develops and keeps the d4 knight protected by the queen.} 6... Nxd4 7. Bxd7+ Qxd7 8. Qxd4 {Qxd4: White has a strong centralised queen and more space.}
 {@line id=ruy-lopez-steinitz level=1 tier=main name="Steinitz (3…d6)" summary="Against 3…d6, push d4 at once; after …exd4, recapture and develop with a big space advantage."}
@@ -22,10 +22,10 @@
 )
   (3... Bc5 {@variation Classical} 4. c3 {c3 prepares d4, which hits the c5 bishop with tempo.} (4. Bxc6 {@mistake …dxc6 frees Black's game, and Nxe5 then fails to …Qd4.}) 4... Nf6
     (4... d6 5. d4 {d4! hits the e5 pawn and the c5 bishop at once. [%cal Gd4c5]} 5... exd4 6. cxd4 {cxd4: White has the ideal pawn centre and the bishop must retreat.}
-{@line id=ruy-lopez-classical-d6 level=2 tier=side name="Classical: 4…d6" summary="Against …d6, push d4 at once: the c5 bishop is hit and White gets a big centre."}
+{@line id=ruy-lopez-classical-d6 level=2 tier=main name="Classical: 4…d6" summary="Against …d6, push d4 at once: the c5 bishop is hit and White gets a big centre."}
 )
   5. O-O O-O 6. d4 {d4 claims the centre and pushes the bishop back.} 6... exd4 7. cxd4 Bb6 8. e5 {e5 kicks the f6 knight and grabs space in the centre.}
-{@line id=ruy-lopez-classical level=1 tier=side name="Classical (3…Bc5)" summary="Against …Bc5, c3 and d4 take the centre with tempo; after …exd4 cxd4, push e5."}
+{@line id=ruy-lopez-classical level=1 tier=main name="Classical (3…Bc5)" summary="Against …Bc5, c3 and d4 take the centre with tempo; after …exd4 cxd4, push e5."}
 )
 4. Ba4 {Ba4 keeps the bishop aimed at the c6 knight.} 4... Nf6
   (4... b5 {@variation Closed} 5. Bb3 {Bb3 keeps the bishop on the diagonal aiming at f7.} 5... Nf6 6. O-O {O-O: after …Be7 or …Bc5 we're back in the main lines.}
@@ -43,9 +43,9 @@
   (7... O-O {…O-O prepares the Marshall Attack, a famous pawn sacrifice after 8.c3 d5. [%cal Rd7d5]} 8. h3 {h3 avoids the Marshall; after …d6, c3 brings us back to the main line.}
 {@line id=ruy-lopez-anti-marshall level=1 tier=main name="Anti-Marshall (8.h3)" summary="When Black castles before …d6, play h3 to dodge the Marshall Attack."}
 8... d6 9. c3 {c3: this is now the Closed Ruy Lopez main line.} 9... Na5 10. Bc2 c5 11. d4 {d4 builds the centre, just as in the Chigorin.}
-{@line id=ruy-lopez-anti-marshall-deep level=2 tier=main name="Anti-Marshall into the Chigorin" summary="The Anti-Marshall order joins the main line: same plan, same position."}
+{@line id=ruy-lopez-anti-marshall-deep level=2 tier=side name="Anti-Marshall into the Chigorin" summary="The Anti-Marshall order joins the main line: same plan, same position."}
 )
 8. c3 {c3 prepares d4 and gives the bishop a retreat to c2.}
-{@line id=ruy-lopez-closed level=1 tier=main name="Closed (5…Be7)" summary="Bb5, Ba4, O-O, Re1, Bb3 and c3: the classic slow build-up before d4."}
+{@line id=ruy-lopez-closed level=1 tier=side name="Closed (5…Be7)" summary="Bb5, Ba4, O-O, Re1, Bb3 and c3: the classic slow build-up before d4."}
 8... O-O 9. h3 {h3 stops …Bg4, which would pin the knight that supports d4. [%cal Rc8g4]} 9... Na5 10. Bc2 {Bc2 keeps the bishop on its diagonal towards Black's king.} 10... c5 11. d4 {d4 finally builds the big centre that the whole set-up was preparing.} 11... Qc7 12. Nbd2 {Nbd2 starts the Nf1-g3 knight tour. [%cal Gd2f1]}
-{@line id=ruy-lopez-chigorin level=2 tier=main name="Chigorin (9…Na5)" summary="h3, Bc2 and d4, then Nbd2-f1-g3: the classical Ruy Lopez plan."} *
+{@line id=ruy-lopez-chigorin level=2 tier=side name="Chigorin (9…Na5)" summary="h3, Bc2 and d4, then Nbd2-f1-g3: the classical Ruy Lopez plan."} *

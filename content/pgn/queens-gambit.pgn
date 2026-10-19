@@ -17,13 +17,13 @@
 )
   (2... c6 {@variation Slav} 3. cxd5 {cxd5 makes a symmetrical structure where White keeps the extra move.} 3... cxd5 4. Nc3 Nf6 5. Bf4 {Bf4 develops actively before e3.} 5... Nc6 6. e3 Bf5
     (6... a6 7. Bd3 {Bd3 develops and stops …Bf5.} (7. Qb3 {@alt})
-{@line id=queens-gambit-slav-a6 level=2 tier=side name="Exchange: 6…a6" summary="Against …a6, develop the bishop to d3 first so …Bf5 is no longer possible."}
+{@line id=queens-gambit-slav-a6 level=2 tier=main name="Exchange: 6…a6" summary="Against …a6, develop the bishop to d3 first so …Bf5 is no longer possible."}
 )
   7. Nf3 e6 8. Bb5 {Bb5 pins the c6 knight, adding pressure on Black's centre. [%cal Yb5e8]} (8. Qb3 {@alt})
 {@line id=queens-gambit-slav-exchange level=1 tier=main name="Exchange (3.cxd5)" summary="Against the Slav, trade on d5, develop fast and use the extra move: Bf4, e3, Nf3, Bb5."}
 )
   (2... Nf6 {@variation 2…Nf6} 3. cxd5 {cxd5 wins space: Black can't keep a pawn on d5.} 3... Nxd5 4. Nf3 {Nf3 develops; e4 next builds a big centre.}
-{@line id=queens-gambit-2nf6 level=1 tier=side name="2…Nf6" summary="Against 2…Nf6, take on d5 and develop; Black has given up the centre."}
+{@line id=queens-gambit-2nf6 level=1 tier=main name="2…Nf6" summary="Against 2…Nf6, take on d5 and develop; Black has given up the centre."}
 )
   (2... e5 {@variation Albin Countergambit} 3. dxe5 {dxe5 takes the pawn; the d4 pawn will be a target later.} 3... d4 4. Nf3 {Nf3 defends e5 and avoids the trap after 4.e3? Bb4+. [%cal Rf8b4]} (4. e3 {@mistake …Bb4+ and …dxe3: the Lasker Trap, ending in …fxg1=N+!}) 4... Nc6 5. g3 {g3 prepares Bg2, aiming the bishop at the queenside.} 5... Bg4 6. Bg2 {Bg2 develops and eyes b7; the d4 pawn will need a lot of defending.}
 {@line id=queens-gambit-albin level=1 tier=side name="Albin Countergambit (2…e5)" summary="Take the Albin pawn, develop with Nf3, g3 and Bg2, and keep the e5 pawn protected."}
@@ -34,7 +34,7 @@
 )
 5. Bg5 {Bg5 pins the f6 knight, the main defender of d5. [%cal Yg5d8]} 5... Be7
   (5... c6 6. e3 Be7 7. Bd3 Nbd7 8. Qc2 {Qc2 stops …Bf5, which would trade Black's problem bishop.}
-{@line id=queens-gambit-qgd-c6 level=1 tier=main name="Exchange: 5…c6" summary="Trade on d5, pin with Bg5, then Bd3 and Qc2 to keep Black's light-squared bishop passive."}
+{@line id=queens-gambit-qgd-c6 level=1 tier=side name="Exchange: 5…c6" summary="Trade on d5, pin with Bg5, then Bd3 and Qc2 to keep Black's light-squared bishop passive."}
 8... O-O 9. Nf3 {Nf3 develops and watches e5.} 9... Re8 10. O-O {O-O completes development; now the queenside plan starts.} 10... Nf8 11. Rab1 {Rab1 prepares b4-b5, the minority attack against Black's c6 pawn. [%cal Gb2b4]}
 {@line id=queens-gambit-qgd-minority level=2 tier=main name="Exchange, minority attack" summary="The minority attack: Rab1, b4, b5, and trade on c6 to leave Black a weak pawn."}
 )
@@ -42,7 +42,7 @@
 {@line id=queens-gambit-qgd-exchange level=1 tier=main name="Exchange (4.cxd5)" summary="Trade on d5, pin with Bg5, then e3 and Bd3: a clear plan for White."}
 7... c6
   (7... h6 8. Bh4 {Bh4 keeps the pin on the f6 knight.} 8... c6 9. Qc2 {Qc2 stops …Bf5 and lines up on h7.}
-{@line id=queens-gambit-qgd-h6 level=2 tier=main name="Exchange: 7…h6" summary="Against …h6, keep the pin with Bh4, then Qc2 as usual."}
+{@line id=queens-gambit-qgd-h6 level=2 tier=side name="Exchange: 7…h6" summary="Against …h6, keep the pin with Bh4, then Qc2 as usual."}
 )
 8. Qc2 {Qc2 stops …Bf5, which would trade Black's problem bishop.}
 {@line id=queens-gambit-qgd-be7-c6 level=2 tier=main name="Exchange: 7…c6" summary="Against …c6, Qc2 stops …Bf5; then Nf3 (or Nge2), castle and start the minority attack."} *

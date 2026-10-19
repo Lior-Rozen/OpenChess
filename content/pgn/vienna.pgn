@@ -25,7 +25,7 @@
 3. f4 {f4 is the Vienna Gambit: it attacks e5 and opens the f-file.} {@variation Vienna Gambit} 3... d5
   (3... exf4 4. e5 {e5 kicks the knight back to g8, a big gain of time.} (4. Nf3 {@mistake …d5! frees Black's game and keeps the extra pawn.}) 4... Ng8
     (4... Qe7 5. Qe2 {Qe2 holds the e5 pawn; the black knight has to go back to g8 anyway.} 5... Ng8 6. Nf3 {Nf3 develops; Black's queen and knight are in each other's way.}
-{@line id=vienna-gambit-qe7 level=2 tier=side name="3…exf4 4.e5 Qe7" summary="If Black pins the e5 pawn with …Qe7, answer Qe2: the knight must retreat and Black is worse."}
+{@line id=vienna-gambit-qe7 level=2 tier=main name="3…exf4 4.e5 Qe7" summary="If Black pins the e5 pawn with …Qe7, answer Qe2: the knight must retreat and Black is worse."}
 )
   5. Nf3 {Nf3 before d4: it stops …Qh4+, which would force the white king to move after 5.d4? [%cal Rd8h4]} (5. d4 {@mistake …Qh4+! forces your king to move.}) 5... d6 6. d4 {d4 builds a strong centre and opens the bishop to win back f4.} 6... dxe5 7. Qe2 {Qe2 pins the e5 pawn on the e-file, so White wins it back.} (7. dxe5 {@alt}) (7. Nxe5 {@mistake …Qh4+! and your king has to walk.})
 {@line id=vienna-gambit-accepted level=1 tier=main name="3…exf4" summary="If Black takes the gambit pawn, kick the knight with e5 and build a big centre with d4."}
@@ -45,7 +45,7 @@
 {@line id=vienna-gambit-bc5 level=2 tier=main name="5…Bc5" summary="Against …Bc5, push d4 at once: the centre comes with tempo."}
 )
   (5... Be7 6. d4 O-O 7. Bd3 {Bd3 challenges the strong e4 knight. [%cal Gd3e4]} 7... f5 8. exf6 {exf6 takes en passant, opening the f-file for White's rook.} 8... Bxf6 9. O-O {O-O puts the rook on the open f-file, aimed at f7.}
-{@line id=vienna-gambit-d5-deep level=2 tier=main name="5…Be7" summary="Against …Be7, develop with d4 and Bd3; if …f5, take en passant and castle onto the f-file."}
+{@line id=vienna-gambit-d5-deep level=2 tier=side name="5…Be7" summary="Against …Be7, develop with d4 and Bd3; if …f5, take en passant and castle onto the f-file."}
 )
 6. Qe2 {Qe2 attacks the e4 knight a third time and frees White's game. [%cal Ge2e4]}
 {@line id=vienna-gambit-bg4 level=1 tier=main name="3…d5 5…Bg4" summary="When Black pins with …Bg4, hit the e4 knight with Qe2."} *
