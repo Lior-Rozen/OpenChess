@@ -294,7 +294,7 @@
       "id": "nimzo-indian-bd2",
       "name": "4.Bd2",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "Nimzo-Indian",
       "moves": ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4", "Bd2", "O-O"],
       "notes": {

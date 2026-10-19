@@ -31,7 +31,7 @@
 {@line id=nimzo-indian-e3-deep level=2 tier=main name="4.e3 O-O 5.Bd3 d5 6.Nf3" summary="The Rubinstein main line: …d5, …c5 and …Nc6, with pressure on d4 and c4."}
 )
   (4. Bd2 O-O {…O-O: the bishop on d2 is passive, so Black simply castles.} (4... c5 {@alt})
-{@line id=nimzo-indian-bd2 level=1 tier=side name="4.Bd2" summary="Against the modest 4.Bd2, castle and play …d5 or …c5."}
+{@line id=nimzo-indian-bd2 level=1 tier=main name="4.Bd2" summary="Against the modest 4.Bd2, castle and play …d5 or …c5."}
 )
   (4. a3 Bxc3+ {…Bxc3+ doubles White's c-pawns; that's the point of the pin.} 5. bxc3 c5 {…c5 fixes the doubled pawns and pressures d4.} (5... O-O {@alt}) (5... b6 {@alt})
 {@line id=nimzo-indian-a3 level=1 tier=side name="4.a3 (Samisch)" summary="When a3 asks the bishop, take on c3 and aim at the doubled c-pawns with …c5."}

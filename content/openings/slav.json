@@ -275,7 +275,7 @@
       "id": "slav-3nf3",
       "name": "3.Nf3 move order",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "Main Line",
       "moves": ["d4", "d5", "c4", "c6", "Nf3", "Nf6", "Nc3", "dxc4"],
       "notes": {

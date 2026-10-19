@@ -285,7 +285,7 @@
       "id": "vienna-bc5",
       "name": "vs 2…Bc5 (3.Bc4)",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "vs 2…Bc5",
       "moves": ["e4", "e5", "Nc3", "Bc5", "Bc4", "Nf6", "d3", "Nc6", "f4", "d6", "Nf3"],
       "notes": {

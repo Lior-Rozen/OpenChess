@@ -187,7 +187,7 @@
       "id": "english-e5-nc6",
       "name": "1…e5 2…Nc6",
       "level": 1,
-      "tier": "main",
+      "tier": "side",
       "variation": "1…e5",
       "moves": ["c4", "e5", "Nc3", "Nc6", "g3", "Nf6", "Bg2"],
       "notes": {
@@ -305,7 +305,7 @@
       "id": "english-e6",
       "name": "1…e6",
       "level": 1,
-      "tier": "side",
+      "tier": "main",
       "variation": "1…e6",
       "moves": ["c4", "e6", "Nc3", "d5", "d4"],
       "notes": {

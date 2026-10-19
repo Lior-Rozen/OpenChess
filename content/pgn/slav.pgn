@@ -11,7 +11,7 @@
 {@line id=slav-4e3 level=1 tier=main name="Quiet 4.e3" summary="Against 4.e3, play …Bf5 at once, trade it on d3, then develop with …Nbd7."}
 )
   4... dxc4 {@variation Main Line} {…dxc4: the same position as 3.Nc3 Nf6 4.Nf3 dxc4.} (4... e6 {@alt})
-{@line id=slav-3nf3 level=1 tier=side name="3.Nf3 move order" summary="3.Nf3 and 3.Nc3 lead to the same main line: …Nf6, then …dxc4."}
+{@line id=slav-3nf3 level=1 tier=main name="3.Nf3 move order" summary="3.Nf3 and 3.Nc3 lead to the same main line: …Nf6, then …dxc4."}
 )
   (3. cxd5 {@variation Exchange} 3... cxd5 {…cxd5 keeps a symmetrical, very solid pawn structure.} 4. Nc3 Nf6 5. Nf3 Nc6 {…Nc6 develops and adds a defender to d4 and e5.} 6. Bf4 Bf5 {…Bf5 mirrors White's active bishop.} (6... a6 {@alt}) 7. e3 e6
 {@line id=slav-exchange level=1 tier=main name="Exchange (3.cxd5)" summary="Symmetry is fine for Black: develop knights and bishop actively, then …e6."}

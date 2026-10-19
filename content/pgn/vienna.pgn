@@ -20,7 +20,7 @@
 {@line id=vienna-nc6-bg4 level=2 tier=main name="6…Bg4" summary="Against the pin, Na4 first: without the c5 bishop, White can castle and break the pin later."}
 )
   (2... Bc5 {@variation vs 2…Bc5} 3. Bc4 {Bc4 mirrors Black's bishop and keeps the plan simple.} 3... Nf6 4. d3 Nc6 5. f4 d6 6. Nf3 {Nf3: this is the same position as the 2…Nc6 line.}
-{@line id=vienna-bc5 level=1 tier=side name="vs 2…Bc5 (3.Bc4)" summary="2…Bc5 reaches the same position as 2…Nc6: Bc4, d3, f4 and Nf3."}
+{@line id=vienna-bc5 level=1 tier=main name="vs 2…Bc5 (3.Bc4)" summary="2…Bc5 reaches the same position as 2…Nc6: Bc4, d3, f4 and Nf3."}
 )
 3. f4 {f4 is the Vienna Gambit: it attacks e5 and opens the f-file.} {@variation Vienna Gambit} 3... d5
   (3... exf4 4. e5 {e5 kicks the knight back to g8, a big gain of time.} (4. Nf3 {@mistake …d5! frees Black's game and keeps the extra pawn.}) 4... Ng8

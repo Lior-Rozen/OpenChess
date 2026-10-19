@@ -44,7 +44,15 @@ Start with the **French review**:
   - `main` lines are **required**: mastering every main line of a level unlocks the next level.
   - `side` lines are optional **bonus** lines, for useful but less common opponent tries.
   - Every level needs at least one main line (the validator enforces this).
-  - Aim for roughly 2–4 main lines and 0–3 bonus lines per level.
+  - Pick the tier from club data (Lichess 1600-2000), not by feel. The required lines of a
+    level are the 4 that cover the most games, picked one at a time: each pick is the line
+    that adds the most games not already covered by the lines picked before it. Within 1.5x,
+    keep the current main line, so near ties don't churn.
+  - On top of those 4, a bonus line that adds 8% or more of games is also required when it's
+    cheap to learn: at most 2 of the user's moves after its fork, or it transposes into a
+    required line.
+  - Everything else is a bonus line: rarer replies, traps, longer side theory. About 13
+    lines per opening (2 levels) is the current size.
 - **Lines in the same level form a tree** for the optional **level exam**:
   - Where lines split on the **opponent's** move, the Mastermind picks a branch at random.
     Design these forks deliberately: they are how the user learns to meet different replies.
