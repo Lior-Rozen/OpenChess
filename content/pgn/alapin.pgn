@@ -7,11 +7,14 @@
 
 1. e4 c5 2. c3 {c3 prepares d4, so White can take back on d4 with a pawn and keep a big centre.} 2... Nc6 {@variation 2…Nc6}
   (2... d5 {@variation 2…d5} 3. exd5 Qxd5 4. d4 {d4: the queen on d5 can't take back on c3 because of the c-pawn.} 4... Nf6
-    (4... Nc6 5. Nf3 {Nf3 develops and defends d4.}
-{@line id=alapin-d5-nc6 level=2 tier=main name="4…Nc6" summary="Against …Nc6, develop with Nf3 and keep d4 protected."}
+    (4... Nc6 5. Nf3 {Nf3 develops and defends d4.} 5... Bg4 6. Be2 e6 7. O-O {O-O: the same calm set-up as against 4…Nf6.} (7. h3 {@alt})
+{@line id=alapin-d5-nc6 level=2 tier=main name="4…Nc6" summary="Against …Nc6, develop with Nf3, Be2 and castle; d4 stays protected."}
+)
+    (4... cxd4 5. cxd4 Nc6 6. Nf3 {Nf3: the same position as 2…Nc6 3.d4 cxd4 4.cxd4 d5 5.exd5 Qxd5 6.Nf3.} (6. Nc3 {@mistake …Qxd4 grabs the pawn; Nf3 first keeps d4 protected.})
+{@line id=alapin-d5-cxd4 level=2 tier=side name="4…cxd4" summary="If Black swaps on d4 first, take back and play Nf3: it's the 2…Nc6 line."}
 )
   5. Nf3 Bg4
-    (5... e6 6. Be2 {Be2 develops quietly; O-O and c4 or Be3 come next.}
+    (5... e6 6. Be2 {Be2 develops quietly; O-O and c4 or Be3 come next.} 6... Nc6 7. O-O
 {@line id=alapin-d5-e6 level=2 tier=main name="5…e6" summary="If Black skips the pin, develop with Be2 and castle; White keeps a nice centre."}
 )
   6. Be2 {Be2 breaks the pin on the f3 knight in advance.} 6... e6 7. O-O {O-O: White's king is safe; the centre is White's.} (7. h3 {@alt}) (7. Be3 {@alt})
@@ -27,14 +30,22 @@
   4. cxd4 d5 5. e5 {e5 locks the centre and gains space on the kingside.} 5... Nc6 6. Nf3 {Nf3 defends d4, the target of Black's play.}
 {@line id=alapin-e6 level=1 tier=main name="2…e6" summary="Against 2…e6, take the centre, push e5 against …d5, and defend d4 with Nf3."}
 )
-  (2... Nf6 {@variation 2…Nf6} 3. e5 {e5 kicks the knight away from the centre.} 3... Nd5 4. d4 cxd4 5. cxd4 {cxd4 keeps a big pawn centre.} (5. Nf3 {@alt}) 5... d6 6. Nf3 {Nf3 defends d4 and e5.}
+  (2... Nf6 {@variation 2…Nf6} 3. e5 {e5 kicks the knight away from the centre.} 3... Nd5 4. d4 cxd4 5. cxd4 {cxd4 keeps a big pawn centre.} (5. Nf3 {@alt}) 5... d6
+    (5... Nc6 6. Nf3 {Nf3 defends d4 and e5, the same as against …d6.} (6. Nc3 {@alt})
+{@line id=alapin-nf6-nc6 level=2 tier=side name="2…Nf6 5…Nc6" summary="Against …Nc6, the plan is the same: Nf3 holds d4 and e5."}
+)
+  6. Nf3 {Nf3 defends d4 and e5.}
 {@line id=alapin-nf6 level=1 tier=side name="2…Nf6" summary="Against 2…Nf6, push e5, take the centre with d4 and defend it with Nf3."}
 )
 3. d4 {d4: White gets the big centre the Alapin aims for.} 3... cxd4 4. cxd4 d5
-  (4... e6 5. Nf3 {Nf3 develops and protects d4.} 5... d5 6. e5 {e5 gains space: a French-style structure with an extra tempo for White.}
-{@line id=alapin-nc6-e6 level=2 tier=main name="4…e6" summary="Against …e6, develop with Nf3 and push e5 when Black plays …d5."}
+  (4... e6 5. Nf3 {Nf3 develops and protects d4.} 5... d5 6. e5 {e5 gains space: a French-style structure with an extra tempo for White.} 6... Nge7 7. Nc3
+{@line id=alapin-nc6-e6 level=2 tier=main name="4…e6" summary="Against …e6, develop with Nf3, push e5 when Black plays …d5, then Nc3."}
 )
 5. exd5 Qxd5 6. Nf3 {Nf3 develops with the queen on d5 exposed in the centre.} (6. Nc3 {@mistake …Qxd4 grabs the pawn; Nf3 first keeps d4 protected.})
 {@line id=alapin-nc6 level=1 tier=main name="2…Nc6" summary="Against 2…Nc6, take the centre with d4 and cxd4; after …d5, take and develop Nf3."}
-6... Bg4 7. Nc3 {Nc3 develops with tempo on the black queen. [%cal Gc3d5]} (7. Be2 {@alt})
-{@line id=alapin-nc6-bg4 level=2 tier=main name="2…Nc6: 6…Bg4" summary="Against the pin, develop Nc3 with tempo on the queen; White keeps the d4 pawn."} *
+6... Bg4 7. Nc3 {Nc3 develops with tempo on the black queen. [%cal Gc3d5]} (7. Be2 {@alt}) 7... Bxf3
+  (7... Qd8 8. d5 {d5! kicks the c6 knight, and Black's pieces get tangled: Qa4+ and Bb5+ are coming. [%cal Gd4d5]}
+{@line id=alapin-nc6-qd8 level=2 tier=side name="6…Bg4 7…Qd8" summary="When the queen retreats, d5! kicks the knight and the checks on a4 and b5 win material."}
+)
+8. gxf3 {gxf3 takes back; after the queen trade on d4, the c3 knight jumps to b5.} (8. Nxd5 {@alt}) 8... Qxd4 9. Qxd4 Nxd4 10. Nb5 {Nb5 attacks the d4 knight and threatens Nc7+. [%cal Rb5c7]} (10. Bd3 {@mistake …Nxf3+! grabs a pawn with check; Nb5 first keeps Black busy.})
+{@line id=alapin-nc6-bg4 level=2 tier=main name="2…Nc6: 6…Bg4" summary="Against the pin, develop Nc3 with tempo on the queen; after the trades, Nb5 hits c7 and d4."} *
