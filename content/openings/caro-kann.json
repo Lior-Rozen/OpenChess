@@ -284,21 +284,21 @@
       "summary": "Against the isolated d-pawn, blockade d5 with a knight and trade pieces."
     },
     {
-      "id": "caro-kann-exchange-nf3",
-      "name": "4.Nf3",
+      "id": "caro-kann-2nf3",
+      "name": "2.Nf3",
       "level": 1,
       "tier": "side",
-      "variation": "Exchange",
-      "moves": ["e4", "c6", "d4", "d5", "exd5", "cxd5", "Nf3", "Nc6"],
+      "variation": "2.Nf3",
+      "moves": ["e4", "c6", "Nf3", "d5", "exd5", "cxd5", "d4", "Nc6"],
       "notes": {
         "1": "…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.",
-        "5": "…cxd5 gives Black the half-open c-file for the queenside play.",
+        "3": "…d5: the usual Caro-Kann answer; after exd5 cxd5 and d4 it's an Exchange.",
         "7": "…Nc6 develops and puts pressure on d4."
       },
       "accept": {
         "7": ["Nf6"]
       },
-      "summary": "Against 4.Nf3, develop with …Nc6 and …Nf6 and hit d4."
+      "summary": "Against 2.Nf3, still play …d5; after exd5 cxd5 and d4, develop with …Nc6 and …Nf6."
     }
   ]
 }

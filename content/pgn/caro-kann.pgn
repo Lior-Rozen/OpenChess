@@ -5,7 +5,11 @@
 [Description "Rock-solid defence: 1.e4 c6 2.d4 d5, with the light-squared bishop developed outside the pawn chain."]
 [Tags "solid, beginner-friendly"]
 
-1. e4 c6 {…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.} 2. d4 d5 3. e5 {@variation Advance}
+1. e4 c6 {…c6 prepares …d5 and keeps the c8 bishop's path open, unlike the French.} 2. d4
+  (2. Nf3 {@variation 2.Nf3} 2... d5 {…d5: the usual Caro-Kann answer; after exd5 cxd5 and d4 it's an Exchange.} 3. exd5 cxd5 4. d4 Nc6 {…Nc6 develops and puts pressure on d4.} (4... Nf6 {@alt})
+{@line id=caro-kann-2nf3 level=1 tier=side name="2.Nf3" summary="Against 2.Nf3, still play …d5; after exd5 cxd5 and d4, develop with …Nc6 and …Nf6."}
+)
+2... d5 3. e5 {@variation Advance}
   (3. Nc3 {@variation Classical} 3... dxe4 4. Nxe4 Bf5 {…Bf5 develops with tempo on the e4 knight.} 5. Ng3 Bg6 6. Nf3
     (6. h4 h6 {…h6 keeps a retreat square for the bishop, so h5 doesn't trap it. [%cal Yg6h7]} 7. Nf3 Nd7 8. h5 Bh7 {…Bh7: the same position as the 6.Nf3 order.}
 {@line id=caro-kann-classical-h4 level=2 tier=side name="6.h4 move order" summary="If White starts with h4, answer …h6, then …Nd7 and …Bh7 as usual."}
@@ -22,9 +26,6 @@
   (3. exd5 cxd5 {…cxd5 gives Black the half-open c-file for the queenside play.} 4. Bd3 {@variation Exchange}
     (4. c4 {@variation Panov Attack} 4... Nf6 {…Nf6 hits d5 and develops; White aims for an isolated d-pawn position.} 5. Nc3 e6 {…e6 supports d5 and opens the f8 bishop.} (5... Bf5 {@mistake Qb3! hits b7 and d5 at once.}) 6. Nf3 Be7 7. cxd5 Nxd5 {…Nxd5 puts the knight on a strong central square in front of White's isolated pawn.} 8. Bd3 Nc6 9. O-O O-O
 {@line id=caro-kann-panov level=1 tier=side name="Panov Attack (4.c4)" summary="Against the isolated d-pawn, blockade d5 with a knight and trade pieces."}
-)
-    (4. Nf3 {@variation Exchange} 4... Nc6 {…Nc6 develops and puts pressure on d4.} (4... Nf6 {@alt})
-{@line id=caro-kann-exchange-nf3 level=1 tier=side name="4.Nf3" summary="Against 4.Nf3, develop with …Nc6 and …Nf6 and hit d4."}
 )
 4... Nc6 5. c3 Nf6 6. Bf4 Bg4 {…Bg4 develops the bishop actively before …e6 locks it in.} 7. Qb3 Qd7 {…Qd7 defends b7 along the seventh rank. [%cal Rb3b7]} 8. Nd2 e6 {…e6 opens the f8 bishop; next come …Bd6 and castling.}
 {@line id=caro-kann-exchange-main level=1 tier=main name="Exchange Variation" summary="Develop the bishop to g4 before …e6, guard b7 with …Qd7, then play on the c-file."}
