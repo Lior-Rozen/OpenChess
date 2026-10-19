@@ -112,6 +112,14 @@ Run this in a dedicated UI/front-end session (also used for later UI work): star
 - **Done when:** a new opening added on the server appears in the app without an app update.
 
 ## Ideas (not scheduled, not in v1)
+- **PC / web version** (parked): the app already builds for the web (`npx expo export --platform
+  web` works; `npx expo start`, then `w`, runs it in a browser). To ship it: switch `web.output`
+  in `app.json` from `server` to static, check the board editor's drag with a mouse, then a
+  responsive 16:9 layout above about 900 px wide (phones unchanged): board left and a panel right
+  in drills, a filter sidebar and 4 cards per row on Openings, levels side by side on an opening,
+  a top navigation bar. Mock: `docs/mocks/web-16x9.html`. Host as a static site (Expo hosting or
+  GitHub Pages); a desktop .exe (Electron/Tauri) only if really wanted. Progress stays separate
+  per device until a backend syncs it (phase 7).
 - **Content scramble** (parked): a build-time scramble of the bundled content, as a speed bump
   against casual copying. Not real protection (the key ships with the app); about an hour's work.
 - **Level 3 lines** (parked): a third, deeper level for the openings. A content task for the

@@ -1,0 +1,109 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>OpenChess on PC (16:9 mock)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Parked idea (see ROADMAP Ideas): a wide layout for the web build. Frames are 1280x720. */
+  :root { --bg:#130c20; --card:#1f1533; --pressed:#2c1f48; --border:#4a3670; --text:#efe8ff; --muted:#a395c9; --accent:#ff40c8; --accent2:#00e5ff; --on:#1a0720; --good:#00e6aa; --bad:#ff4766; --gold:#ffd23f; }
+  body { background:#2b2b2b; color:#eee; font-family: system-ui, sans-serif; margin:20px; }
+  .tabs { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; align-items:center; }
+  .tabs button { font: 14px system-ui; padding:8px 14px; border-radius:18px; border:1px solid #666; background:#222; color:#eee; cursor:pointer; }
+  .tabs button.on { background:#ff40c8; color:#1a0720; border-color:#ff40c8; }
+  .note { color:#bbb; font-size:13px; margin-left:8px; }
+  .frame { width:1280px; height:720px; background:var(--bg); color:var(--text); font-family:Inter, sans-serif; border-radius:10px; overflow:hidden; box-shadow:0 0 0 6px #111, 0 12px 40px #000; position:relative; transform-origin:top left; }
+  .bar { height:52px; display:flex; align-items:center; gap:14px; padding:0 22px; border-bottom:1px solid #2d2147; }
+  .bar .logo { font-weight:700; font-size:18px; letter-spacing:-.3px; } .bar .nav { display:flex; gap:4px; margin-left:20px; }
+  .bar .nav span { font-size:14px; color:var(--muted); padding:7px 12px; border-radius:8px; } .bar .nav span.on { color:var(--text); background:var(--pressed); }
+  .bar .r { margin-left:auto; color:var(--muted); font-size:14px; }
+  .chip { font-size:11px; font-weight:600; padding:3px 8px; border-radius:8px; background:var(--pressed); color:var(--muted); display:inline-block; }
+  .chip.l { background:var(--text); color:var(--bg); } .chip.c { background:var(--accent2); color:#00222a; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:14px; }
+  .btn { font-size:14px; font-weight:600; padding:10px 16px; border-radius:10px; border:1px solid var(--border); background:var(--card); color:var(--text); text-align:center; }
+  .btn.p { background:var(--accent); border-color:var(--accent); color:var(--on); box-shadow:0 0 16px #ff40c855; }
+  .board { display:grid; grid-template-columns:repeat(8,1fr); border-radius:6px; overflow:hidden; position:relative; }
+  .board div { position:relative; } .board img { position:absolute; width:100%; height:100%; }
+  .muted { color:var(--muted); }
+  /* drill */
+  .drill { display:flex; gap:28px; padding:22px 28px; height:calc(100% - 52px); box-sizing:border-box; }
+  .side { flex:1; display:flex; flex-direction:column; gap:14px; min-width:0; }
+  .speech { display:flex; gap:12px; align-items:center; } .speech .b { flex:1; background:var(--card); border:1px solid var(--border); border-left:3px solid var(--accent2); border-radius:10px; padding:9px 13px; font-size:15px; }
+  .speech .b small { display:block; font:500 10px monospace; letter-spacing:1px; color:var(--accent2); margin-bottom:2px; }
+  .pips { display:flex; gap:5px; } .pips i { width:11px; height:11px; border-radius:6px; border:1.5px solid var(--bad); display:block; box-sizing:border-box; } .pips i.on { background:var(--bad); }
+  .moves { font: 14px monospace; color:var(--muted); line-height:1.9; padding:12px 14px; }
+  .moves b { color:var(--text); font-weight:500; }
+  .tip { display:flex; gap:10px; background:var(--bg); border-radius:10px; padding:10px 12px; font-size:13.5px; line-height:1.4; }
+  /* openings */
+  .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .oc { padding:14px; } .oc .t { font-size:15px; font-weight:600; margin:8px 0 6px; } .pb { height:6px; border-radius:3px; background:var(--pressed); overflow:hidden; } .pb div { height:6px; background:var(--accent); }
+  .filters { width:230px; flex-shrink:0; display:flex; flex-direction:column; gap:16px; }
+  .fl { font-size:11px; font-weight:600; color:var(--muted); letter-spacing:1px; margin-bottom:8px; }
+  .fchips { display:flex; flex-wrap:wrap; gap:6px; } .fchips span { font-size:13px; padding:5px 11px; border-radius:14px; border:1px solid var(--border); background:var(--card); } .fchips span.on { background:var(--accent); color:var(--on); border-color:var(--accent); }
+  /* opening */
+  .tile { width:64px; height:64px; border-radius:14px; border:1.5px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; font-weight:700; font-size:17px; gap:4px; }
+  .tile.n { background:var(--accent); border-color:var(--accent); color:var(--on); box-shadow:0 0 14px #ff40c855; } .tile.m { background:#00e6aa22; border-color:var(--good); color:var(--good); } .tile.s { border-color:var(--accent); } .tile.b { border-style:dashed; } .tile.x { opacity:.35; }
+  .tile small { font-size:10px; font-weight:600; }
+  .vn { color:var(--accent2); font-weight:600; font-size:14px; margin:14px 0 8px; display:flex; justify-content:space-between; } .vn span { color:var(--muted); font-size:12px; font-weight:500; }
+</style></head>
+<body>
+<div class="tabs"><b style="margin-right:6px">Screen:</b>
+  <button data-s="drill" class="on">Drill (Practice)</button><button data-s="result">Drill (line complete)</button><button data-s="openings">Openings</button><button data-s="opening">Opening (tiles)</button>
+  <span class="note">1280×720, scaled to fit. Below about 900 px wide the app would keep today's phone layout.</span></div>
+<div id="wrap"></div>
+<script>
+const PIECES = '../../app/assets/pieces/';
+function board(fen, px, hl = []) {
+  const rows = fen.split('/').map(r => { const o = []; for (const c of r) { if (/\d/.test(c)) for (let i = 0; i < +c; i++) o.push(null); else o.push(c); } return o; });
+  let h = ''; for (let r = 0; r < 8; r++) for (let f = 0; f < 8; f++) { const light = (r + f) % 2 === 0, p = rows[r][f], sq = 'abcdefgh'[f] + (8 - r);
+    h += `<div style="background:${light ? '#b9a6d6' : '#5e3b8c'}">${hl.includes(sq) ? '<span style="position:absolute;inset:0;background:rgba(255,64,200,.42)"></span>' : ''}${p ? `<img src="${PIECES}${p === p.toUpperCase() ? 'w' : 'b'}${p.toUpperCase()}.png">` : ''}</div>`; }
+  return `<div class="board" style="width:${px}px;height:${px}px">${h}</div>`;
+}
+const bar = on => `<div class="bar"><span class="logo">OpenChess</span><span class="nav">${['Home','Openings','Random drill','Free board'].map(n => `<span class="${n === on ? 'on' : ''}">${n}</span>`).join('')}</span><span class="r">⚙ Settings</span></div>`;
+const FEN = 'rnbqkb1r/ppp2ppp/8/3pP3/4n3/2N2N2/PPPP2PP/R1BQKB1R';
+const head = `<div style="display:flex;align-items:center;gap:10px"><span style="font-size:26px">☕</span><div><div class="muted" style="font-size:12px;font-weight:500">Vienna Game</div><div style="font-size:19px;font-weight:600">Vienna Gambit · 3…d5 5…Bg4</div></div></div>`;
+const speech = t => `<div class="speech"><span style="font-size:34px">🧑‍💻</span><div class="b"><small>THE MASTERMIND</small>${t}</div></div>`;
+const S = {
+  drill: () => bar('Openings') + `<div class="drill">${board(FEN, 620, ['f3','g1'])}<div class="side">${head}${speech("Let's see what you remember.")}
+    <div style="display:flex;align-items:center;gap:10px"><span class="chip c">PRACTICE</span><span class="muted" style="flex:1;font-size:14px">Your move</span><span class="muted" style="font-size:13px">1 mistake</span></div>
+    <div class="card" style="padding:14px 16px;font-size:15px;line-height:1.5;color:var(--muted)">Nf3 before d4: it stops …Qh4+, which would force the white king to move after 5.d4?</div>
+    <div class="card moves" style="flex:1"><b>1.</b> e4 e5 &nbsp;<b>2.</b> Nc3 Nf6 &nbsp;<b>3.</b> f4 d5 &nbsp;<b>4.</b> fxe5 Nxe4 &nbsp;<b>5.</b> Nf3 <span style="color:var(--accent)">…</span></div>
+    <div style="display:flex;gap:8px"><span class="btn">Hint</span><span class="btn">Take back</span><span class="btn" style="margin-left:auto">Restart</span></div></div></div>`,
+  result: () => bar('Openings') + `<div class="drill">${board('rn1qkb1r/ppp2ppp/8/3pP3/4n1b1/2N2N2/PPPPQ1PP/R1B1KB1R', 620, ['d1','e2'])}<div class="side">${head}${speech('You know this one now.')}
+    <div style="display:flex;align-items:center;gap:10px"><span class="chip c">TEST</span><span class="muted" style="flex:1;font-size:14px">Line complete</span><span class="pips"><i></i><i></i></span></div>
+    <div class="card" style="padding:16px;display:flex;flex-direction:column;gap:12px"><div style="display:flex;gap:12px;align-items:center"><span style="width:42px;height:42px;border-radius:21px;border:2px solid var(--good);background:#00e6aa22;display:flex;align-items:center;justify-content:center;color:var(--good);font-size:20px">✓</span><div><div style="font-size:19px;font-weight:600">Line complete</div><div class="muted" style="font-size:13px">No mistakes</div></div></div>
+      <div style="display:flex;gap:6px"><span class="chip" style="background:#00e6aa22;color:var(--good)">CLEAN</span><span class="chip" style="background:#ff40c822;color:var(--accent)">MASTERED</span></div>
+      <div class="tip"><span style="color:var(--gold)">💡</span><span>When Black pins with …Bg4, hit the e4 knight with Qe2.</span></div>
+      <div style="display:flex;gap:8px"><span class="btn" style="flex:1">Again</span><span class="btn p" style="flex:1">Next line</span></div></div>
+    <div class="card moves" style="flex:1"><b>1.</b> e4 e5 <b>2.</b> Nc3 Nf6 <b>3.</b> f4 d5 <b>4.</b> fxe5 Nxe4 <b>5.</b> Nf3 Bg4 <b>6.</b> Qe2</div></div></div>`,
+  openings: () => bar('Openings') + `<div style="display:flex;gap:28px;padding:22px 28px">
+    <div class="filters"><div style="font-size:22px;font-weight:700">Openings</div>
+      <div><div class="fl">SIDE</div><div class="fchips"><span>As White</span><span class="on">As Black</span></div></div>
+      <div><div class="fl">FIRST MOVE</div><div class="fchips"><span>1.e4</span><span>1.d4</span><span>1.c4</span></div></div>
+      <div><div class="fl">STYLE</div><div class="fchips"><span>gambit</span><span>aggressive</span><span class="on">solid</span><span>positional</span><span>system</span><span>beginner-friendly</span></div></div></div>
+    <div style="flex:1"><div class="fl" style="display:flex;justify-content:space-between">AS BLACK<span>6</span></div><div class="grid">${[
+      ['🥖','French Defense',62,'1.e4 · solid · positional'],['🛡️','Caro-Kann Defense',20,'1.e4 · solid · beginner-friendly'],['⛵','Scandinavian Defense',0,'1.e4 · beginner-friendly · solid'],
+      ['🪆','Slav Defense',0,'1.d4 · solid · positional'],['🏰',"Queen's Gambit Declined",0,'1.d4 · solid · positional'],['🪷','Nimzo-Indian Defense',0,'1.d4 · positional · solid']]
+      .map(([i, t, p, d]) => `<div class="card oc"><span style="font-size:30px">${i}</span><div class="t">${t}</div><div class="pb"><div style="width:${p}%"></div></div><div class="muted" style="font-size:12px;margin-top:5px">${p}% mastered</div><div class="muted" style="font-size:11px;margin-top:4px">${d}</div></div>`).join('')}</div>
+      <div class="muted" style="font-size:12px;margin-top:14px">Emoji stand in for the 8-bit opening icons.</div></div></div>`,
+  opening: () => bar('Openings') + `<div style="display:flex;gap:28px;padding:22px 28px">
+    <div style="width:300px;flex-shrink:0"><div style="font-size:26px;font-weight:700">Vienna Game</div><div style="display:flex;gap:6px;margin:10px 0"><span class="chip l">WHITE</span><span class="chip">1.e4</span><span class="chip">aggressive</span><span class="chip">gambit</span></div>
+      <div class="muted" style="font-size:14px;line-height:1.5">2.Nc3 and an early f4: a King's Gambit idea with better timing.</div>
+      <div class="card" style="padding:14px;margin-top:18px;font-size:13px;line-height:1.6"><b>How it works</b><br><span class="muted">Each tile is one line. Watch, then Practice, then Test: one clean Test masters it. Master the main lines to open the next level. Dashed tiles are bonus lines. On a wide screen this stays visible instead of hiding behind the ⓘ.</span></div></div>
+    <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:start">
+      <div class="card" style="padding:16px"><div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600">Level 1<span style="margin-left:auto" class="muted">1/4</span></div>
+        <div class="vn">Vienna Gambit<span>1/4</span></div><div style="display:flex;gap:10px"><div class="tile m">1.1<small>✓</small></div><div class="tile n">1.2<small>next</small></div><div class="tile">1.3</div><div class="tile b">1.4</div></div>
+        <div class="vn">vs 2…Nc6<span>0/1</span></div><div style="display:flex;gap:10px"><div class="tile s">1.5</div></div>
+        <div class="vn">vs 2…Bc5<span>0/1</span></div><div style="display:flex;gap:10px"><div class="tile b">1.6</div></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:16px;padding:10px 12px;border-radius:10px;background:var(--bg)"><span style="color:var(--gold)">★</span><span style="flex:1;font-size:14px;font-weight:600">Level exam</span><span class="btn" style="padding:7px 14px">Start</span></div></div>
+      <div class="card" style="padding:16px;opacity:.6"><div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600">Level 2<span style="margin-left:auto;font-size:13px" class="muted">🔒 Finish level 1</span></div>
+        <div class="vn">Vienna Gambit<span>0/3</span></div><div style="display:flex;gap:10px"><div class="tile x">2.1</div><div class="tile x">2.2</div><div class="tile x b">2.3</div></div>
+        <div class="vn">vs 2…Nc6<span>0/3</span></div><div style="display:flex;gap:10px"><div class="tile x">2.4</div><div class="tile x">2.5</div><div class="tile x b">2.6</div></div></div></div></div>`,
+};
+function show(name) {
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('on', b.dataset.s === name));
+  const scale = Math.min(1, (window.innerWidth - 60) / 1280);
+  document.getElementById('wrap').innerHTML = `<div style="width:${1280 * scale}px;height:${720 * scale}px"><div class="frame" style="transform:scale(${scale})">${S[name]()}</div></div>`;
+}
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => show(b.dataset.s));
+window.onresize = () => show(document.querySelector('.tabs button.on').dataset.s);
+show('drill');
+</script>
+</body></html>
