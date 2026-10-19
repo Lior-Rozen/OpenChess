@@ -7,8 +7,8 @@
 
 1. e4 e5 2. Nf3 Nc6 3. Bb5 {Bb5 attacks the knight that defends e5, a long-term pressure.} 3... a6
   (3... d6 {@variation Steinitz} 4. d4 {d4 attacks e5 at once; Black's set-up is passive.} 4... exd4
-    (4... Bd7 5. Nc3 {Nc3 develops and adds support to e4.} 5... Nf6 6. O-O Be7 7. Re1 {Re1 defends e4 and keeps the pressure on e5.}
-{@line id=ruy-lopez-steinitz-bd7 level=2 tier=side name="4…Bd7" summary="If Black holds e5 with …Bd7, develop with Nc3, O-O and Re1; Black stays cramped."}
+    (4... Bd7 5. Nc3 {Nc3 develops and adds support to e4.} 5... exd4 6. Nxd4 {Nxd4: the same position as 4…exd4 5.Nxd4 Bd7 6.Nc3.}
+{@line id=ruy-lopez-steinitz-bd7 level=2 tier=side name="4…Bd7" summary="If Black plays …Bd7 first, develop Nc3; after …exd4, take back and it's the main Steinitz line."}
 )
   5. Nxd4 {Nxd4 recaptures with a strong central knight.} 5... Bd7 6. Nc3 {Nc3 develops and keeps the d4 knight protected by the queen.} 6... Nxd4 7. Bxd7+ Qxd7 8. Qxd4 {Qxd4: White has a strong centralised queen and more space.}
 {@line id=ruy-lopez-steinitz level=1 tier=main name="Steinitz (3…d6)" summary="Against 3…d6, push d4 at once; after …exd4, recapture and develop with a big space advantage."}
@@ -20,7 +20,11 @@
   5. c3 {c3 gives the bishop a retreat and prepares d4.} 5... O-O 6. O-O d6 7. h3 {h3 stops …Bg4. [%cal Rc8g4]}
 {@line id=ruy-lopez-berlin level=1 tier=main name="4.d3" summary="Against the Berlin, keep it simple with d3 and c3, like an Italian with the bishop on b5."}
 )
-  (3... Bc5 {@variation Classical} 4. c3 {c3 prepares d4, which hits the c5 bishop with tempo.} (4. Bxc6 {@mistake …dxc6 frees Black's game, and Nxe5 then fails to …Qd4.}) 4... Nf6 5. O-O O-O 6. d4 {d4 claims the centre and pushes the bishop back.} 6... exd4 7. cxd4 Bb6 8. e5 {e5 kicks the f6 knight and grabs space in the centre.}
+  (3... Bc5 {@variation Classical} 4. c3 {c3 prepares d4, which hits the c5 bishop with tempo.} (4. Bxc6 {@mistake …dxc6 frees Black's game, and Nxe5 then fails to …Qd4.}) 4... Nf6
+    (4... d6 5. d4 {d4! hits the e5 pawn and the c5 bishop at once. [%cal Gd4c5]} 5... exd4 6. cxd4 {cxd4: White has the ideal pawn centre and the bishop must retreat.}
+{@line id=ruy-lopez-classical-d6 level=2 tier=side name="Classical: 4…d6" summary="Against …d6, push d4 at once: the c5 bishop is hit and White gets a big centre."}
+)
+  5. O-O O-O 6. d4 {d4 claims the centre and pushes the bishop back.} 6... exd4 7. cxd4 Bb6 8. e5 {e5 kicks the f6 knight and grabs space in the centre.}
 {@line id=ruy-lopez-classical level=1 tier=side name="Classical (3…Bc5)" summary="Against …Bc5, c3 and d4 take the centre with tempo; after …exd4 cxd4, push e5."}
 )
 4. Ba4 {Ba4 keeps the bishop aimed at the c6 knight.} 4... Nf6
@@ -34,9 +38,6 @@
 )
   7. Re1 {Re1: this is the same position as the main Closed line.} (7. c3 {@mistake …Nxe4! wins the e4 pawn; Re1 first protects it.})
 {@line id=ruy-lopez-5b5 level=1 tier=side name="5…b5" summary="5…b5 6.Bb3 Be7 7.Re1 reaches the main Closed line by another move order."}
-)
-  (5... Nxe4 {@variation Open} 6. d4 {d4 opens the centre while the black king is still uncastled.} 6... b5 7. Bb3 d5 8. dxe5 {dxe5 wins back the pawn and gains space.} 8... Be6 9. c3 {c3 gives the bishop a retreat to c2 and keeps the e5 pawn strong.}
-{@line id=ruy-lopez-open level=2 tier=side name="Open (5…Nxe4)" summary="Let Black take e4, then open the centre with d4 and win the pawn back on e5."}
 )
 6. Re1 b5 7. Bb3 {Bb3 retreats to a great diagonal aiming at f7.} 7... d6
   (7... O-O {…O-O prepares the Marshall Attack, a famous pawn sacrifice after 8.c3 d5. [%cal Rd7d5]} 8. h3 {h3 avoids the Marshall; after …d6, c3 brings us back to the main line.}
