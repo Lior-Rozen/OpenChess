@@ -30,7 +30,11 @@
   5. Nf3 {Nf3 before d4: it stops …Qh4+, which would force the white king to move after 5.d4? [%cal Rd8h4]} (5. d4 {@mistake …Qh4+! forces your king to move.}) 5... d6 6. d4 {d4 builds a strong centre and opens the bishop to win back f4.} 6... dxe5 7. Qe2 {Qe2 pins the e5 pawn on the e-file, so White wins it back.} (7. dxe5 {@alt}) (7. Nxe5 {@mistake …Qh4+! and your king has to walk.})
 {@line id=vienna-gambit-accepted level=1 tier=main name="3…exf4" summary="If Black takes the gambit pawn, kick the knight with e5 and build a big centre with d4."}
 )
-  (3... d6 4. Nf3 {Nf3 develops and adds pressure on e5.} 4... Nc6 5. Bb5 {Bb5 pins the knight that defends e5. [%cal Yb5e8]}
+  (3... d6 4. Nf3 {Nf3 develops and adds pressure on e5.} 4... Nc6
+    (4... Bg4 5. h3 {h3 asks the bishop at once; after …Bxf3 Qxf3, White has the two bishops.} 5... Bxf3 6. Qxf3
+{@line id=vienna-gambit-d6-bg4 level=2 tier=side name="3…d6 4…Bg4" summary="Against the pin, play h3: White gets the bishop pair and keeps pressure on the f-file."}
+)
+  5. Bb5 {Bb5 pins the knight that defends e5. [%cal Yb5e8]}
 {@line id=vienna-gambit-d6 level=1 tier=main name="3…d6" summary="Against the solid 3…d6, develop with Nf3 and pin the e5 defender with Bb5."}
 )
 4. fxe5 {fxe5 gains space and pushes the f6 knight away.} 4... Nxe4 5. Nf3 Bg4

@@ -184,6 +184,21 @@
       "summary": "Against the solid 3…d6, develop with Nf3 and pin the e5 defender with Bb5."
     },
     {
+      "id": "vienna-gambit-d6-bg4",
+      "name": "3…d6 4…Bg4",
+      "level": 2,
+      "tier": "side",
+      "variation": "Vienna Gambit",
+      "moves": ["e4", "e5", "Nc3", "Nf6", "f4", "d6", "Nf3", "Bg4", "h3", "Bxf3", "Qxf3"],
+      "notes": {
+        "2": "Nc3 defends e4 and prepares f4, without blocking the f-pawn.",
+        "4": "f4 is the Vienna Gambit: it attacks e5 and opens the f-file.",
+        "6": "Nf3 develops and adds pressure on e5.",
+        "8": "h3 asks the bishop at once; after …Bxf3 Qxf3, White has the two bishops."
+      },
+      "summary": "Against the pin, play h3: White gets the bishop pair and keeps pressure on the f-file."
+    },
+    {
       "id": "vienna-nc6",
       "name": "vs 2…Nc6 (3.Bc4)",
       "level": 1,
