@@ -1,0 +1,44 @@
+[Id "kings-gambit"]
+[Name "King's Gambit"]
+[Side "white"]
+[ECO "C30-C39"]
+[Description "2.f4 offers a pawn to open the f-file and build a big centre: sharp, attacking chess."]
+[Tags "gambit, aggressive"]
+
+1. e4 e5 2. f4 {f4 offers a pawn to pull the e5 pawn away and open the f-file. [%cal Gf4e5]} 2... exf4
+  (2... Nc6 {@variation 2…Nc6} 3. Nf3 {Nf3 develops and covers h4 against …Qh4+.} 3... d6 4. Bc4 {Bc4 aims at f7; castling and d3 come next. [%cal Gc4f7]}
+{@line id=kings-gambit-2nc6 level=1 tier=main name="2…Nc6" summary="Against 2…Nc6, develop Nf3 and Bc4, then castle and open the f-file."}
+)
+  (2... d6 {@variation 2…d6} 3. Nf3 Bg4 4. h3 {h3 asks the bishop at once.} 4... Bxf3 5. Qxf3 {Qxf3: White has the two bishops and an active queen.}
+{@line id=kings-gambit-2d6-bg4 level=2 tier=side name="2…d6 3…Bg4" summary="Against the early pin, play h3: White gets the bishop pair."}
+)
+  (2... d5 {@variation Falkbeer (2…d5)} 3. exd5 e4 4. d3 {d3 hits the e4 pawn at once, before Black can support it.}
+{@line id=kings-gambit-falkbeer level=1 tier=side name="Falkbeer (2…d5)" summary="Against the Falkbeer, take on d5 and hit the e4 pawn with d3."}
+)
+3. Nf3 {Nf3 covers h4 against …Qh4+ and prepares d4.} 3... g5 {@variation Kieseritzky (3…g5)}
+  (3... d6 {@variation Fischer (3…d6)} 4. d4 {d4 takes the centre; the c1 bishop now eyes f4. [%cal Gc1f4]}
+{@line id=kings-gambit-fischer level=1 tier=main name="3…d6" summary="Against 3…d6, take the centre with d4 and aim to win back f4."}
+4... g5 5. h4 {h4 hits the g5 pawn, which holds f4.} (5. Bc4 {@mistake …g4! hits the f3 knight; h4 first stops this.}) 5... g4 6. Ng1 {Ng1 steps back: the knight goes to e2 and helps win back f4.} (6. Ng5 {@alt})
+{@line id=kings-gambit-fischer-deep level=2 tier=main name="3…d6 4…g5" summary="When Black holds f4 with …g5, break with h4; after …g4, the knight drops back and comes again via e2."}
+)
+  (3... Nc6 {@variation 3…Nc6} 4. d4 {d4 takes the centre and opens the c1 bishop. [%cal Gc1f4]}{@line id=kings-gambit-3nc6 level=1 tier=main name="3…Nc6" summary="Against 3…Nc6, take the centre with d4 at once."}
+4... d5 5. exd5 {exd5 opens the e-file while Black's king is still in the centre.} (5. e5 {@mistake …g5! keeps the extra pawn; exd5 first opens lines.}) 5... Qxd5 6. Nc3 {Nc3 develops with tempo on the black queen.}
+{@line id=kings-gambit-3nc6-d5 level=2 tier=main name="3…Nc6 4…d5" summary="When Black hits back with …d5, take on d5 and develop Nc3 with tempo."}
+)
+  (3... Be7 {@variation Cunningham (3…Be7)} 4. Bc4 Bh4+ 5. Kf1 {Kf1: the king is safe enough, and d4 and Bxf4 come next.}
+{@line id=kings-gambit-cunningham level=1 tier=side name="Cunningham (3…Be7)" summary="When the bishop checks on h4, step aside with Kf1; then d4 and win back f4."}
+)
+  (3... d5 {@variation Modern (3…d5)} 4. exd5 {exd5 opens the e-file; the black queen is drawn into the centre.} 4... Qxd5 5. Nc3 {Nc3 develops with tempo on the black queen.}
+{@line id=kings-gambit-modern level=2 tier=side name="Modern (3…d5)" summary="Against …d5, take on d5 and develop Nc3 with tempo on the queen."}
+)
+  (3... Nf6 {@variation Schallopp (3…Nf6)} 4. e5 {e5 kicks the knight away from the centre.} 4... Nh5 5. d4 {d4 builds the centre; the h5 knight is out of play.}
+{@line id=kings-gambit-schallopp level=2 tier=side name="Schallopp (3…Nf6)" summary="Against …Nf6, push e5 and d4: the black knight ends up on the edge."}
+)
+4. h4 {h4 attacks g5 before Black can defend it with …h6 or …Bg7.} (4. Bc4 {@mistake …g4! hits the f3 knight; h4 first stops this.}) 4... g4 5. Ne5 {Ne5: the knight jumps forward, eyeing g4 and f7.}
+{@line id=kings-gambit-kieseritzky level=1 tier=main name="Kieseritzky (3…g5)" summary="Against 3…g5, hit the pawn chain with h4; after …g4, jump to e5 with the knight."}
+5... h5
+  (5... d6 6. Nxg4 {Nxg4 wins a pawn back; d4 and Bxf4 come next.}
+{@line id=kings-gambit-kieseritzky-d6 level=2 tier=main name="Kieseritzky: 5…d6" summary="When …d6 kicks the knight, take on g4 and then win back f4 with d4 and Bxf4."}
+)
+6. Bc4 {Bc4 aims at f7, the weakest point in Black's camp. [%cal Gc4f7]} 6... Nh6 7. d4 {d4 opens the c1 bishop to win back f4. [%cal Gc1f4]}
+{@line id=kings-gambit-kieseritzky-h5 level=2 tier=main name="Kieseritzky: 5…h5" summary="Against …h5, aim the bishop at f7 with Bc4, then d4 to win back the f4 pawn."} *

@@ -16,6 +16,7 @@
     { "id": "scotch", "name": "Scotch Game", "side": "white", "file": "openings/scotch.json" },
     { "id": "english", "name": "English Opening", "side": "white", "file": "openings/english.json" },
     { "id": "nimzo-indian", "name": "Nimzo-Indian Defense", "side": "black", "file": "openings/nimzo-indian.json" },
-    { "id": "queens-gambit-declined", "name": "Queen's Gambit Declined", "side": "black", "file": "openings/queens-gambit-declined.json" }
+    { "id": "queens-gambit-declined", "name": "Queen's Gambit Declined", "side": "black", "file": "openings/queens-gambit-declined.json" },
+    { "id": "kings-gambit", "name": "King's Gambit", "side": "white", "file": "openings/kings-gambit.json" }
   ]
 }

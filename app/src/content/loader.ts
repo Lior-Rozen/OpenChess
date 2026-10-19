@@ -15,6 +15,7 @@ import scotch from '../../../content/openings/scotch.json';
 import english from '../../../content/openings/english.json';
 import nimzoIndian from '../../../content/openings/nimzo-indian.json';
 import queensGambitDeclined from '../../../content/openings/queens-gambit-declined.json';
+import kingsGambit from '../../../content/openings/kings-gambit.json';
 
 import type { ContentIndex, Opening, OpeningLine } from './types';
 
@@ -37,6 +38,7 @@ const bundledByFile: Record<string, unknown> = {
   'openings/english.json': english,
   'openings/nimzo-indian.json': nimzoIndian,
   'openings/queens-gambit-declined.json': queensGambitDeclined,
+  'openings/kings-gambit.json': kingsGambit,
 };
 
 export const contentIndex = index as ContentIndex;

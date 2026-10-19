@@ -1,0 +1,397 @@
+{
+  "id": "kings-gambit",
+  "name": "King's Gambit",
+  "side": "white",
+  "eco": "C30-C39",
+  "description": "2.f4 offers a pawn to open the f-file and build a big centre: sharp, attacking chess.",
+  "tags": ["gambit", "aggressive"],
+  "lines": [
+    {
+      "id": "kings-gambit-kieseritzky",
+      "name": "Kieseritzky (3…g5)",
+      "level": 1,
+      "tier": "main",
+      "variation": "Kieseritzky (3…g5)",
+      "moves": ["e4", "e5", "f4", "exf4", "Nf3", "g5", "h4", "g4", "Ne5"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "4": "Nf3 covers h4 against …Qh4+ and prepares d4.",
+        "6": "h4 attacks g5 before Black can defend it with …h6 or …Bg7.",
+        "8": "Ne5: the knight jumps forward, eyeing g4 and f7."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ]
+      },
+      "mistakes": {
+        "6": {
+          "Bc4": "…g4! hits the f3 knight; h4 first stops this."
+        }
+      },
+      "summary": "Against 3…g5, hit the pawn chain with h4; after …g4, jump to e5 with the knight."
+    },
+    {
+      "id": "kings-gambit-kieseritzky-h5",
+      "name": "Kieseritzky: 5…h5",
+      "level": 2,
+      "tier": "main",
+      "variation": "Kieseritzky (3…g5)",
+      "moves": ["e4", "e5", "f4", "exf4", "Nf3", "g5", "h4", "g4", "Ne5", "h5", "Bc4", "Nh6", "d4"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "4": "Nf3 covers h4 against …Qh4+ and prepares d4.",
+        "6": "h4 attacks g5 before Black can defend it with …h6 or …Bg7.",
+        "8": "Ne5: the knight jumps forward, eyeing g4 and f7.",
+        "10": "Bc4 aims at f7, the weakest point in Black's camp.",
+        "12": "d4 opens the c1 bishop to win back f4."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ],
+        "10": [
+          {
+            "color": "green",
+            "from": "c4",
+            "to": "f7"
+          }
+        ],
+        "12": [
+          {
+            "color": "green",
+            "from": "c1",
+            "to": "f4"
+          }
+        ]
+      },
+      "mistakes": {
+        "6": {
+          "Bc4": "…g4! hits the f3 knight; h4 first stops this."
+        }
+      },
+      "summary": "Against …h5, aim the bishop at f7 with Bc4, then d4 to win back the f4 pawn."
+    },
+    {
+      "id": "kings-gambit-kieseritzky-d6",
+      "name": "Kieseritzky: 5…d6",
+      "level": 2,
+      "tier": "main",
+      "variation": "Kieseritzky (3…g5)",
+      "moves": ["e4", "e5", "f4", "exf4", "Nf3", "g5", "h4", "g4", "Ne5", "d6", "Nxg4"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "4": "Nf3 covers h4 against …Qh4+ and prepares d4.",
+        "6": "h4 attacks g5 before Black can defend it with …h6 or …Bg7.",
+        "8": "Ne5: the knight jumps forward, eyeing g4 and f7.",
+        "10": "Nxg4 wins a pawn back; d4 and Bxf4 come next."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ]
+      },
+      "mistakes": {
+        "6": {
+          "Bc4": "…g4! hits the f3 knight; h4 first stops this."
+        }
+      },
+      "summary": "When …d6 kicks the knight, take on g4 and then win back f4 with d4 and Bxf4."
+    },
+    {
+      "id": "kings-gambit-fischer",
+      "name": "3…d6",
+      "level": 1,
+      "tier": "main",
+      "variation": "Fischer (3…d6)",
+      "moves": ["e4", "e5", "f4", "exf4", "Nf3", "d6", "d4"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "4": "Nf3 covers h4 against …Qh4+ and prepares d4.",
+        "6": "d4 takes the centre; the c1 bishop now eyes f4."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ],
+        "6": [
+          {
+            "color": "green",
+            "from": "c1",
+            "to": "f4"
+          }
+        ]
+      },
+      "summary": "Against 3…d6, take the centre with d4 and aim to win back f4."
+    },
+    {
+      "id": "kings-gambit-fischer-deep",
+      "name": "3…d6 4…g5",
+      "level": 2,
+      "tier": "main",
+      "variation": "Fischer (3…d6)",
+      "moves": ["e4", "e5", "f4", "exf4", "Nf3", "d6", "d4", "g5", "h4", "g4", "Ng1"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "4": "Nf3 covers h4 against …Qh4+ and prepares d4.",
+        "6": "d4 takes the centre; the c1 bishop now eyes f4.",
+        "8": "h4 hits the g5 pawn, which holds f4.",
+        "10": "Ng1 steps back: the knight goes to e2 and helps win back f4."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ],
+        "6": [
+          {
+            "color": "green",
+            "from": "c1",
+            "to": "f4"
+          }
+        ]
+      },
+      "accept": {
+        "10": ["Ng5"]
+      },
+      "mistakes": {
+        "8": {
+          "Bc4": "…g4! hits the f3 knight; h4 first stops this."
+        }
+      },
+      "summary": "When Black holds f4 with …g5, break with h4; after …g4, the knight drops back and comes again via e2."
+    },
+    {
+      "id": "kings-gambit-3nc6",
+      "name": "3…Nc6",
+      "level": 1,
+      "tier": "main",
+      "variation": "3…Nc6",
+      "moves": ["e4", "e5", "f4", "exf4", "Nf3", "Nc6", "d4"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "4": "Nf3 covers h4 against …Qh4+ and prepares d4.",
+        "6": "d4 takes the centre and opens the c1 bishop."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ],
+        "6": [
+          {
+            "color": "green",
+            "from": "c1",
+            "to": "f4"
+          }
+        ]
+      },
+      "summary": "Against 3…Nc6, take the centre with d4 at once."
+    },
+    {
+      "id": "kings-gambit-3nc6-d5",
+      "name": "3…Nc6 4…d5",
+      "level": 2,
+      "tier": "main",
+      "variation": "3…Nc6",
+      "moves": ["e4", "e5", "f4", "exf4", "Nf3", "Nc6", "d4", "d5", "exd5", "Qxd5", "Nc3"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "4": "Nf3 covers h4 against …Qh4+ and prepares d4.",
+        "6": "d4 takes the centre and opens the c1 bishop.",
+        "8": "exd5 opens the e-file while Black's king is still in the centre.",
+        "10": "Nc3 develops with tempo on the black queen."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ],
+        "6": [
+          {
+            "color": "green",
+            "from": "c1",
+            "to": "f4"
+          }
+        ]
+      },
+      "mistakes": {
+        "8": {
+          "e5": "…g5! keeps the extra pawn; exd5 first opens lines."
+        }
+      },
+      "summary": "When Black hits back with …d5, take on d5 and develop Nc3 with tempo."
+    },
+    {
+      "id": "kings-gambit-cunningham",
+      "name": "Cunningham (3…Be7)",
+      "level": 1,
+      "tier": "side",
+      "variation": "Cunningham (3…Be7)",
+      "moves": ["e4", "e5", "f4", "exf4", "Nf3", "Be7", "Bc4", "Bh4+", "Kf1"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "4": "Nf3 covers h4 against …Qh4+ and prepares d4.",
+        "8": "Kf1: the king is safe enough, and d4 and Bxf4 come next."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ]
+      },
+      "summary": "When the bishop checks on h4, step aside with Kf1; then d4 and win back f4."
+    },
+    {
+      "id": "kings-gambit-modern",
+      "name": "Modern (3…d5)",
+      "level": 2,
+      "tier": "side",
+      "variation": "Modern (3…d5)",
+      "moves": ["e4", "e5", "f4", "exf4", "Nf3", "d5", "exd5", "Qxd5", "Nc3"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "4": "Nf3 covers h4 against …Qh4+ and prepares d4.",
+        "6": "exd5 opens the e-file; the black queen is drawn into the centre.",
+        "8": "Nc3 develops with tempo on the black queen."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ]
+      },
+      "summary": "Against …d5, take on d5 and develop Nc3 with tempo on the queen."
+    },
+    {
+      "id": "kings-gambit-schallopp",
+      "name": "Schallopp (3…Nf6)",
+      "level": 2,
+      "tier": "side",
+      "variation": "Schallopp (3…Nf6)",
+      "moves": ["e4", "e5", "f4", "exf4", "Nf3", "Nf6", "e5", "Nh5", "d4"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "4": "Nf3 covers h4 against …Qh4+ and prepares d4.",
+        "6": "e5 kicks the knight away from the centre.",
+        "8": "d4 builds the centre; the h5 knight is out of play."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ]
+      },
+      "summary": "Against …Nf6, push e5 and d4: the black knight ends up on the edge."
+    },
+    {
+      "id": "kings-gambit-2nc6",
+      "name": "2…Nc6",
+      "level": 1,
+      "tier": "main",
+      "variation": "2…Nc6",
+      "moves": ["e4", "e5", "f4", "Nc6", "Nf3", "d6", "Bc4"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "4": "Nf3 develops and covers h4 against …Qh4+.",
+        "6": "Bc4 aims at f7; castling and d3 come next."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ],
+        "6": [
+          {
+            "color": "green",
+            "from": "c4",
+            "to": "f7"
+          }
+        ]
+      },
+      "summary": "Against 2…Nc6, develop Nf3 and Bc4, then castle and open the f-file."
+    },
+    {
+      "id": "kings-gambit-2d6-bg4",
+      "name": "2…d6 3…Bg4",
+      "level": 2,
+      "tier": "side",
+      "variation": "2…d6",
+      "moves": ["e4", "e5", "f4", "d6", "Nf3", "Bg4", "h3", "Bxf3", "Qxf3"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "6": "h3 asks the bishop at once.",
+        "8": "Qxf3: White has the two bishops and an active queen."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ]
+      },
+      "summary": "Against the early pin, play h3: White gets the bishop pair."
+    },
+    {
+      "id": "kings-gambit-falkbeer",
+      "name": "Falkbeer (2…d5)",
+      "level": 1,
+      "tier": "side",
+      "variation": "Falkbeer (2…d5)",
+      "moves": ["e4", "e5", "f4", "d5", "exd5", "e4", "d3"],
+      "notes": {
+        "2": "f4 offers a pawn to pull the e5 pawn away and open the f-file.",
+        "6": "d3 hits the e4 pawn at once, before Black can support it."
+      },
+      "arrows": {
+        "2": [
+          {
+            "color": "green",
+            "from": "f4",
+            "to": "e5"
+          }
+        ]
+      },
+      "summary": "Against the Falkbeer, take on d5 and hit the e4 pawn with d3."
+    }
+  ]
+}

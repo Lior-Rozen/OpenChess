@@ -233,6 +233,24 @@ const ART = {
     'nNNNNNNNNNNNNNn',
     '.nnnnnnnnnnnnn.',
   ],
+  sword: [
+    '.....W.....',
+    '....WWG....',
+    '....WWG....',
+    '....WWG....',
+    '....WWG....',
+    '....WWG....',
+    '....WWG....',
+    '....WWG....',
+    '....WWG....',
+    '....WWG....',
+    'yYYYYRYYYYy',
+    '.yyyyyyyyy.',
+    '....ooo....',
+    '....ooo....',
+    '....YYY....',
+    '.....y.....',
+  ],
   tower: [
     '.GG..GG..GG..GG.',
     '.GG..GG..GG..GG.',
@@ -283,6 +301,7 @@ const OPENING_ICONS: Record<string, IconName> = {
   english: 'teacup',
   'nimzo-indian': 'lotus',
   'queens-gambit-declined': 'tower',
+  'kings-gambit': 'sword',
 };
 
 export const FALLBACK_ICON: IconName = 'pawn';
