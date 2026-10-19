@@ -42,7 +42,7 @@
       "level": 2,
       "tier": "main",
       "variation": "1…e5",
-      "moves": ["c4", "e5", "Nc3", "Nf6", "g3", "d5", "cxd5", "Nxd5", "Bg2", "Nxc3", "bxc3"],
+      "moves": ["c4", "e5", "Nc3", "Nf6", "g3", "d5", "cxd5", "Nxd5", "Bg2", "Nxc3", "bxc3", "Nc6", "Nf3"],
       "notes": {
         "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
         "2": "Nc3 covers d5 and e4.",
@@ -116,7 +116,7 @@
       "level": 2,
       "tier": "main",
       "variation": "1…e5",
-      "moves": ["c4", "e5", "Nc3", "Nf6", "g3", "Bc5", "Bg2", "O-O", "Nf3"],
+      "moves": ["c4", "e5", "Nc3", "Nf6", "g3", "Bc5", "Bg2", "O-O", "Nf3", "d6", "O-O"],
       "notes": {
         "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
         "2": "Nc3 covers d5 and e4.",
@@ -133,7 +133,8 @@
         ]
       },
       "accept": {
-        "8": ["e3"]
+        "8": ["e3"],
+        "10": ["d4"]
       },
       "summary": "Against …Bc5, fianchetto, then Nf3 or e3 and castle."
     },
@@ -165,6 +166,24 @@
       "summary": "Against …Bb4, fianchetto and develop Nf3; the c3 knight can be taken but White gets the bishop pair."
     },
     {
+      "id": "english-e5-bxc3",
+      "name": "1…e5 3…Bb4 4…Bxc3",
+      "level": 2,
+      "tier": "side",
+      "variation": "1…e5",
+      "moves": ["c4", "e5", "Nc3", "Nf6", "g3", "Bb4", "Bg2", "Bxc3", "bxc3"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "2": "Nc3 covers d5 and e4.",
+        "4": "g3 prepares Bg2, the key piece in the English.",
+        "8": "bxc3 takes back towards the centre; White keeps the two bishops."
+      },
+      "accept": {
+        "8": ["dxc3"]
+      },
+      "summary": "When Black gives up the bishop on c3, take back with the b-pawn and enjoy the bishop pair."
+    },
+    {
       "id": "english-e5-nc6",
       "name": "1…e5 2…Nc6",
       "level": 1,
@@ -184,7 +203,7 @@
       "level": 2,
       "tier": "main",
       "variation": "1…e5",
-      "moves": ["c4", "e5", "Nc3", "Nc6", "g3", "Nf6", "Bg2", "Bc5", "Nf3"],
+      "moves": ["c4", "e5", "Nc3", "Nc6", "g3", "Nf6", "Bg2", "Bc5", "Nf3", "d6", "O-O"],
       "notes": {
         "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
         "2": "Nc3 covers d5 and e4.",
@@ -206,6 +225,33 @@
       "summary": "Against …Bc5, develop with Nf3 (or e3 to blunt the bishop) and castle."
     },
     {
+      "id": "english-e5-nc6-bb4",
+      "name": "1…e5 2…Nc6 4…Bb4",
+      "level": 2,
+      "tier": "side",
+      "variation": "1…e5",
+      "moves": ["c4", "e5", "Nc3", "Nc6", "g3", "Nf6", "Bg2", "Bb4", "Nd5"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "2": "Nc3 covers d5 and e4.",
+        "6": "Bg2: the same fianchetto set-up against 2…Nc6.",
+        "8": "Nd5 attacks the b4 bishop and takes the key d5 square."
+      },
+      "arrows": {
+        "8": [
+          {
+            "color": "green",
+            "from": "d5",
+            "to": "b4"
+          }
+        ]
+      },
+      "accept": {
+        "8": ["Nf3"]
+      },
+      "summary": "Against …Bb4, jump into d5 with the knight: it hits the bishop and controls the centre."
+    },
+    {
       "id": "english-nf6-g6",
       "name": "1…Nf6 2…g6",
       "level": 1,
@@ -221,6 +267,23 @@
         "10": ["d4"]
       },
       "summary": "Against the King's Indian set-up, fianchetto too: g3, Bg2, Nf3 and castle."
+    },
+    {
+      "id": "english-nf6-e6",
+      "name": "1…Nf6 2…e6",
+      "level": 2,
+      "tier": "main",
+      "variation": "1…Nf6",
+      "moves": ["c4", "Nf6", "Nc3", "e6", "Nf3", "d5", "cxd5"],
+      "notes": {
+        "0": "c4 controls d5 from the side; White builds slowly and keeps options open.",
+        "4": "Nf3 keeps the options open; against …d5, White takes on d5.",
+        "6": "cxd5 gives the same pawn structure as your Queen's Gambit Exchange."
+      },
+      "accept": {
+        "6": ["d4"]
+      },
+      "summary": "Against …e6 and …d5, develop Nf3 and take on d5: a Queen's Gambit Exchange structure."
     },
     {
       "id": "english-c5",
