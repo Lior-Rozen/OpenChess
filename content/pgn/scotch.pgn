@@ -9,6 +9,8 @@
   (4... Nxd4 {@variation 4…Nxd4} 5. Qxd4 {Qxd4: the queen is strong in the centre and hard to chase.} 5... d6
     (5... Qf6 6. e5 {e5 gains space with tempo on the queen. [%cal Ge5f6]} (6. Qe3 {@alt})
 {@line id=scotch-qxd4-qf6 level=1 tier=main name="5…Qf6" summary="If Black offers a queen trade with …Qf6, push e5 with tempo (or keep queens with Qe3)."}
+6... Qb6 7. Qxb6 {Qxb6 trades queens; after …axb6, Black's b-pawns are doubled.} (7. Be3 {@alt})
+{@line id=scotch-qxd4-qb6 level=2 tier=side name="5…Qf6 6.e5 Qb6" summary="When the queen goes to b6, trade queens: White keeps the space and Black gets doubled pawns."}
 )
     (5... Nf6 6. e5 {e5 kicks the knight; White's space advantage grows.} (6. Bg5 {@mistake …h6! kicks the bishop and Black gains time.})
 {@line id=scotch-qxd4-nf6 level=1 tier=side name="5…Nf6" summary="Against 5…Nf6, push e5 at once and chase the knight."}
@@ -20,8 +22,8 @@
 {@line id=scotch-nxd4 level=1 tier=main name="4…Nxd4" summary="After the knight trade, the white queen dominates the centre: develop around it."}
 )
   (4... Nf6 {@variation 4…Nf6} 5. Nxc6 bxc6 6. Bd3 {Bd3 defends e4 calmly; White plans O-O and quick development.} 6... d5
-    (6... Bc5 7. O-O {O-O: White is ready for e5 or Nc3.} (7. e5 {@alt})
-{@line id=scotch-nf6-bc5 level=2 tier=main name="4…Nf6 6…Bc5" summary="Against …Bc5, castle; e5 to kick the knight is also strong."}
+    (6... Bc5 7. O-O {O-O: White is ready for e5 or Nc3.} (7. e5 {@alt}) 7... O-O 8. e5 {e5 kicks the f6 knight now that White's king is safe. [%cal Ge5f6]} (8. Nc3 {@alt}) (8. Bg5 {@mistake …h6! asks the bishop, and Black's pieces get active.})
+{@line id=scotch-nf6-bc5 level=2 tier=main name="4…Nf6 6…Bc5" summary="Against …Bc5, castle, then kick the knight with e5."}
 )
   7. exd5 {exd5 trades in the centre; Black is left with a weak c-pawn structure.}
 {@line id=scotch-nf6 level=1 tier=main name="4…Nf6" summary="Trade on c6 to damage Black's pawns, then Bd3 and exd5 against …d5."}
@@ -32,10 +34,14 @@
 {@line id=scotch-qf6 level=1 tier=side name="4…Qf6" summary="Against the early queen, defend d4 with Be3 and keep developing."}
 )
 5. Be3 {Be3 defends the d4 knight against the c5 bishop. [%cal Rc5d4]} 5... Qf6
-  (5... Bb6 6. Nc3 {Nc3 develops; the bishop on b6 has no targets.} (6. Nf5 {@alt})
-{@line id=scotch-bc5-bb6 level=2 tier=side name="4…Bc5 5…Bb6" summary="If the bishop retreats to b6, develop with Nc3; Nf5 is also strong."}
+  (5... Bb6 6. Nc3 {Nc3 develops; the bishop on b6 has no targets.} (6. Nf5 {@alt}) 6... Nge7 7. Qd2 {Qd2 connects the pieces and prepares O-O-O.}
+{@line id=scotch-bc5-bb6 level=2 tier=side name="4…Bc5 5…Bb6" summary="If the bishop retreats to b6, develop with Nc3 and Qd2, then castle long."}
 )
 6. c3 {c3 holds d4 a second time.} (6. Nxc6 {@mistake …Bxe3! fxe3 and …Qh4+: your pawns fall apart.}) 6... Nge7 7. Bc4 {Bc4 develops to the active diagonal towards f7. [%cal Yc4f7]}
 {@line id=scotch-bc5 level=1 tier=main name="4…Bc5" summary="Defend d4 with Be3 and c3, then develop Bc4 and castle."}
-7... O-O 8. O-O {O-O: White's position is solid; Nd2 or Nc2 comes next.}
-{@line id=scotch-bc5-deep level=2 tier=main name="4…Bc5 7.Bc4 O-O" summary="Castle short and keep d4 strong; Black's pieces press on d4 but can't break through."} *
+7... O-O
+  (7... Ne5 8. Be2 {Be2 steps away from the knight; the e5 knight will be kicked by f4 later.} (8. Bb3 {@alt})
+{@line id=scotch-bc5-ne5 level=2 tier=side name="4…Bc5 7…Ne5" summary="When the knight hits the c4 bishop, drop back to e2 and keep d4 safe."}
+)
+8. O-O {O-O: White's position is solid; Nd2 or Nc2 comes next.} 8... d6 9. Nxc6 {Nxc6 Nxc6 and Bxc5 trades off Black's best bishop and doubles the c-pawns.}
+{@line id=scotch-bc5-deep level=2 tier=main name="4…Bc5 7.Bc4 O-O" summary="Castle short, then trade on c6 and c5: Black's pressure on d4 is gone."} *

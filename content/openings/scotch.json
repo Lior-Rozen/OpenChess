@@ -49,14 +49,15 @@
       "level": 2,
       "tier": "main",
       "variation": "4…Bc5",
-      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Bc5", "Be3", "Qf6", "c3", "Nge7", "Bc4", "O-O", "O-O"],
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Bc5", "Be3", "Qf6", "c3", "Nge7", "Bc4", "O-O", "O-O", "d6", "Nxc6"],
       "notes": {
         "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
         "6": "Nxd4 recaptures with a strong central knight.",
         "8": "Be3 defends the d4 knight against the c5 bishop.",
         "10": "c3 holds d4 a second time.",
         "12": "Bc4 develops to the active diagonal towards f7.",
-        "14": "O-O: White's position is solid; Nd2 or Nc2 comes next."
+        "14": "O-O: White's position is solid; Nd2 or Nc2 comes next.",
+        "16": "Nxc6 Nxc6 and Bxc5 trades off Black's best bishop and doubles the c-pawns."
       },
       "arrows": {
         "8": [
@@ -79,7 +80,48 @@
           "Nxc6": "…Bxe3! fxe3 and …Qh4+: your pawns fall apart."
         }
       },
-      "summary": "Castle short and keep d4 strong; Black's pieces press on d4 but can't break through."
+      "summary": "Castle short, then trade on c6 and c5: Black's pressure on d4 is gone."
+    },
+    {
+      "id": "scotch-bc5-ne5",
+      "name": "4…Bc5 7…Ne5",
+      "level": 2,
+      "tier": "side",
+      "variation": "4…Bc5",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Bc5", "Be3", "Qf6", "c3", "Nge7", "Bc4", "Ne5", "Be2"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "8": "Be3 defends the d4 knight against the c5 bishop.",
+        "10": "c3 holds d4 a second time.",
+        "12": "Bc4 develops to the active diagonal towards f7.",
+        "14": "Be2 steps away from the knight; the e5 knight will be kicked by f4 later."
+      },
+      "arrows": {
+        "8": [
+          {
+            "color": "red",
+            "from": "c5",
+            "to": "d4"
+          }
+        ],
+        "12": [
+          {
+            "color": "yellow",
+            "from": "c4",
+            "to": "f7"
+          }
+        ]
+      },
+      "accept": {
+        "14": ["Bb3"]
+      },
+      "mistakes": {
+        "10": {
+          "Nxc6": "…Bxe3! fxe3 and …Qh4+: your pawns fall apart."
+        }
+      },
+      "summary": "When the knight hits the c4 bishop, drop back to e2 and keep d4 safe."
     },
     {
       "id": "scotch-bc5-bb6",
@@ -87,12 +129,13 @@
       "level": 2,
       "tier": "side",
       "variation": "4…Bc5",
-      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Bc5", "Be3", "Bb6", "Nc3"],
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Bc5", "Be3", "Bb6", "Nc3", "Nge7", "Qd2"],
       "notes": {
         "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
         "6": "Nxd4 recaptures with a strong central knight.",
         "8": "Be3 defends the d4 knight against the c5 bishop.",
-        "10": "Nc3 develops; the bishop on b6 has no targets."
+        "10": "Nc3 develops; the bishop on b6 has no targets.",
+        "12": "Qd2 connects the pieces and prepares O-O-O."
       },
       "arrows": {
         "8": [
@@ -106,7 +149,7 @@
       "accept": {
         "10": ["Nf5"]
       },
-      "summary": "If the bishop retreats to b6, develop with Nc3; Nf5 is also strong."
+      "summary": "If the bishop retreats to b6, develop with Nc3 and Qd2, then castle long."
     },
     {
       "id": "scotch-nxd4",
@@ -152,6 +195,35 @@
         "10": ["Qe3"]
       },
       "summary": "If Black offers a queen trade with …Qf6, push e5 with tempo (or keep queens with Qe3)."
+    },
+    {
+      "id": "scotch-qxd4-qb6",
+      "name": "5…Qf6 6.e5 Qb6",
+      "level": 2,
+      "tier": "side",
+      "variation": "4…Nxd4",
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Nxd4", "Qxd4", "Qf6", "e5", "Qb6", "Qxb6"],
+      "notes": {
+        "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
+        "6": "Nxd4 recaptures with a strong central knight.",
+        "8": "Qxd4: the queen is strong in the centre and hard to chase.",
+        "10": "e5 gains space with tempo on the queen.",
+        "12": "Qxb6 trades queens; after …axb6, Black's b-pawns are doubled."
+      },
+      "arrows": {
+        "10": [
+          {
+            "color": "green",
+            "from": "e5",
+            "to": "f6"
+          }
+        ]
+      },
+      "accept": {
+        "10": ["Qe3"],
+        "12": ["Be3"]
+      },
+      "summary": "When the queen goes to b6, trade queens: White keeps the space and Black gets doubled pawns."
     },
     {
       "id": "scotch-qxd4-nf6",
@@ -228,17 +300,33 @@
       "level": 2,
       "tier": "main",
       "variation": "4…Nf6",
-      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Nf6", "Nxc6", "bxc6", "Bd3", "Bc5", "O-O"],
+      "moves": ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Nf6", "Nxc6", "bxc6", "Bd3", "Bc5", "O-O", "O-O", "e5"],
       "notes": {
         "4": "d4 strikes the centre at once instead of slow Bc4 or Bb5 play.",
         "6": "Nxd4 recaptures with a strong central knight.",
         "10": "Bd3 defends e4 calmly; White plans O-O and quick development.",
-        "12": "O-O: White is ready for e5 or Nc3."
+        "12": "O-O: White is ready for e5 or Nc3.",
+        "14": "e5 kicks the f6 knight now that White's king is safe."
+      },
+      "arrows": {
+        "14": [
+          {
+            "color": "green",
+            "from": "e5",
+            "to": "f6"
+          }
+        ]
       },
       "accept": {
-        "12": ["e5"]
+        "12": ["e5"],
+        "14": ["Nc3"]
       },
-      "summary": "Against …Bc5, castle; e5 to kick the knight is also strong."
+      "mistakes": {
+        "14": {
+          "Bg5": "…h6! asks the bishop, and Black's pieces get active."
+        }
+      },
+      "summary": "Against …Bc5, castle, then kick the knight with e5."
     },
     {
       "id": "scotch-qf6",
